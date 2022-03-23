@@ -3,7 +3,7 @@
     /* 设置宽度高度背景颜色 */
     height: 10; /*高度改为自动高度*/
     width:100%;
-    margin-left: 0;
+    margin-left: auto;
     background:#B2E2DC;
     position: fixed; /*fixed on the top*/
     top: 0;/*离顶部的距离为0*/
