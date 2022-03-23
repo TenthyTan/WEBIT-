@@ -8,6 +8,7 @@
     position: fixed; /*fixed on the top*/
     top: 0;/*离顶部的距离为0*/
     margin-bottom: auto;
+    z-index: 10;
 }
 .top lif a{
    /* 设置链接内容显示的格式*/
@@ -90,5 +91,41 @@ Button {
     box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.4);
 
 }
+
+
+.top lir :hover{
+/* 鼠标选中时背景变为浅绿色 */
+     background-color: #E3F9EE;
+}
+.top lif :hover{
+/* 鼠标选中时背景变为浅绿色 */
+     background-color: #E3F9EE;
+}
+
+body {background-color:#E3F9EE} 
+
+.video_back {
+    width: 1020px ;
+    height: 720px;
+    
+    position: relative;
+
+    left: 9.07%;
+    right: 9.07%;
+    top: 17.6%;
+    bottom: 71.32%;
+
+    z-index: auto;
+ 
+    object-fit: fill;
+
+
+    background: url(1646979850(1).png);
+}
+#parent{
+    position:relative;
+}
+
+
 
 
