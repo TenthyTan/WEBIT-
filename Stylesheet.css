@@ -68,6 +68,27 @@
 
 body {background-color:#E3F9EE} 
 
+.LeftB{
+    float: left;
+    width: 750px;
+    height: 90px;
+    left: 74px;
+    top: 820px;
+}
 
+.RightB{
+    float:right;
+    width: 700px;
+    height: 90px;
+    left: 1144px;
+    top: 820px;
+}
+
+Button {
+    position: absolute;
+    background: #C4F0E4;
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.4);
+
+}
 
 
