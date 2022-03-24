@@ -117,15 +117,17 @@ body {background-color:#E3F9EE}
 }
 
 
-p.serif{font-family:  'Playfair Display', serif;
+p.serif{
+    
+    font-family: 'EB Garamond';
     font-style: normal;
-    font-weight: 700;
-    font-size: 18px;
-    line-height: 28px; 
+    font-weight: 600;
+    font-size: 24px;
+    line-height: 20px;
     text-align:justify;
 }
 
-p.mid{font-family: 'EB Garamond', serif;
+p.mid{font-family: 'EB Garamond';
     font-style: normal;
     font-weight: 600;
     font-size: 18px;
@@ -135,58 +137,35 @@ p.mid{font-family: 'EB Garamond', serif;
 }
 
 .button ul {
-    position: absolute;
     list-style-type:none;
-    width: 100%;
-    height: 80px;
-    left: -3%;
-    top: 70%;
-
-    font-family: "Quando";
-    font-style: normal;
-    font-weight: 400;
-    font-size: 60px;
-    line-height: 80px;
-    /* identical to box height */
-    color: #2978C1;
-}
-.button ul a{ 
-    width: 20%;
-    text-decoration: none;
-    color:inherit;
-    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.4);
-    background-color:  #c4f0e4;
-
-}
-
-
-
-
-
-.welcome {
     position: absolute;
-    left: 0%;
-    right: 0%;
-    top: 50.61%;
-    bottom: 24.91%;
+width: 511px;
+height: 80px;
+left: 193px;
+top: 825px;
+
+font-family: 'Quando';
+font-style: normal;
+font-weight: 400;
+font-size: 64px;
+line-height: 80px;
+/* identical to box height */
+
+text-align: center;
+
+color: #2978C1;
+}
+.button ul a{
+    border-bottom: #C4F0E4;
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.4);;
 }
 
-.welcome p {
-    font-family: 'IBM Plex Serif';
-    font-style: italic;
-    font-weight: 600;
-    font-size: 96px;
-    line-height: 125px;
-    text-align: center;
+.abd {
+    width:500px;
+    height:200px;
 
-color: #000000;
 }
-
-.pic{
-    position:absolute;
-    left: 0%;
-    right: 0%;
-    top: -10%;
-    bottom: 60%;
+.abd p{
+    width:250px;
+    margin:auto
 }
-
