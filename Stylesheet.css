@@ -136,6 +136,7 @@ p.mid{font-family: 'EB Garamond'; serif;
 
 .button ul {
     list-style-type:none;
+    text-decoration: none;
     position: absolute;
     width: 511px;
     height: 80px;
@@ -153,10 +154,22 @@ p.mid{font-family: 'EB Garamond'; serif;
 
     color: #2978C1;
 }
-.button ul a{
+.button ul a{ 
+    text-decoration: none;
+    color:inherit;
     border-bottom: #C4F0E4;
     box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.4);;
 }
 
 
+.button lif {
+    float:left; /* 使li内容横向浮动，即横向排列  */
+    margin: right 1px; /* 两个li之间的距离*/
+    position: relative;
+    overflow: hidden;
 }
+.button lir{
+    float:right; /* 使li内容横向浮动，即横向排列  */
+    margin: right 1px;  /* 两个li之间的距离*/
+    position: relative;
+    overflow: hidden;
