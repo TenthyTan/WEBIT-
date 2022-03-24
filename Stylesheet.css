@@ -8,6 +8,7 @@
     position: fixed; /*fixed on the top*/
     top: 0;/*离顶部的距离为0*/
     margin-bottom: auto;
+    z-index: 10;
 }
 .top lif a{
    /* 设置链接内容显示的格式*/
@@ -68,27 +69,102 @@
 
 body {background-color:#E3F9EE} 
 
+
 .LeftB{
     float: left;
-    width: 750px;
-    height: 90px;
-    left: 74px;
-    top: 820px;
 }
 
 .RightB{
     float:right;
-    width: 700px;
-    height: 90px;
-    left: 1144px;
-    top: 820px;
+
 }
 
-Button {
-    position: absolute;
-    background: #C4F0E4;
-    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.4);
+img{height: auto; width: auto\9; width:100%;} 
 
+.top lir :hover{
+/* 鼠标选中时背景变为浅绿色 */
+     background-color: #E3F9EE;
+}
+.top lif :hover{
+/* 鼠标选中时背景变为浅绿色 */
+     background-color: #E3F9EE;
+}
+
+body {background-color:#E3F9EE} 
+
+.video_back {
+    width: 1080px;
+    height: 640px;
+    
+    position: relative;
+
+    left: 9.07%;
+    right: 9.07%;
+    top: 17.6%;
+    bottom: 71.32%;
+
+    z-index: auto;
+ 
+    object-fit: fill;
+
+
+    background: url(1646979850(1).png);
+}
+#parent{
+    position:relative;
+}
+
+
+p.serif{ 
+    font-family: 'EB Garamond';
+    font-style: normal;
+    font-weight: 600;
+    font-size: 20px;
+    line-height: 25px;
+    text-align:justify;
+}
+
+p.mid{font-family: 'EB Garamond';
+    font-style: normal;
+    font-weight: 600;
+    font-size: 18px;
+    line-height: 28px; 
+    text-align:center;
+
+}
+
+.button ul {
+    list-style-type:none;
+    position: absolute;
+width: 511px;
+height: 80px;
+left: 193px;
+top: 825px;
+
+font-family: 'Quando';
+font-style: normal;
+font-weight: 400;
+font-size: 64px;
+line-height: 80px;
+/* identical to box height */
+
+text-align: center;
+
+color: #2978C1;
+}
+.button ul a{
+    border-bottom: #C4F0E4;
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.4);;
+}
+
+.abd {
+    width:200px;
+    height:200px;
+
+}
+.abd p{
+    width:250px;
+    margin:auto
 }
 
 /* central team signature */
@@ -98,4 +174,3 @@ Button {
 
 /* font */
 * {font-family: "EB Garamond"}
-
