@@ -7,53 +7,22 @@
     <title>Welcome to Diabetes@Home</title>
     <link rel="stylesheet" href="../Stylesheet.css" type="text/css">
     <style>
-        h2 { 
-            position: absolute;
-            width: 511px;
-            height: 80px;
-            left: 193px;
-            top: 825px;
-
-            font-family: 'Quando';
-            font-style: normal;
-            font-weight: 400;
-            font-size: 64px;
-            line-height: 80px;
-            /* identical to box height */
-            text-align: center;
-            color: #2978C1;
-
-            border: #C4F0E4;
-
- 
-        }
-        .picture {
-            background-image: url('../WelcomePage/WelcomePage.jpeg');
-            position: absolute;
-            width: 1920px;
-            height: 698px;
-            left: 0px;
-            top: 80px;
+    .Welcome{
+        position: absolute;
+        left: 0%;
+        right: 28.59%;
+        top: 61.94%;
+        bottom: 35.19%;
+        font-family: 'Quando';
+        font-style: normal;
+        font-weight: 400;
+        font-size: 72px;
+        line-height: 90px;
+        text-align: center;
+        color: #000000;
+    }
     
-       
-        }
-        .picture h1{
-            position: absolute;
-            left: 0%;
-            right: 28.59%;
-            top: 61.94%;
-            bottom: 35.19%;
-
-            font-family: 'Quando';
-            font-style: normal;
-            font-weight: 400;
-            font-size: 72px;
-            line-height: 90px;
-            text-align: center;
-
-            color: #000000;
-
-        }
+        
         
     </style>
 </head>
@@ -62,17 +31,19 @@
         <ul>
         <lif><a href="..\WelcomePage\Welcome_Page.html">Diabetes@Home</a></lif>   
         <lir><a href="#"><b>Log in</b></a></lir>
-        <li><a href="#">EN</a></li>
         </ul>      
     </div>
-    <div class="picture">
-        <h1>Welcome Join Diabetes@Home
-        </h1>
+ 
+    <div class="picture" style="position:relative;">
+    <img src="..\WelcomePage\WelcomePage.jpeg" alt="Welcome Page"><br>
+    <div class="Welcome" style="position:absolute; z-index:10; left:10px; bottom:30px">Welcome Join Diabetes@Home</div>
     </div>
+
+
     <div class="button">
         <ul>
-            <lif><a href="../About Diabetes/AboutDiabetes.html">About Diabetes</a></li>
-            <lir><b href="#">About This Website</b></li>
+            <lif><a href="../About Diabetes/AboutDiabetes.html">About Diabetes</a></lif>
+            <lir><a href="#">About This Website</a></li>
         </ul>
     </div>
 
