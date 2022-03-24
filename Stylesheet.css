@@ -95,8 +95,8 @@ img{height: auto; width: auto\9; width:100%;}
 body {background-color:#E3F9EE} 
 
 .video_back {
-    width: 1020px ;
-    height: 720px;
+    width: 1080px;
+    height: 640px;
     
     position: relative;
 
@@ -117,19 +117,19 @@ body {background-color:#E3F9EE}
 }
 
 
-p.serif{font-family: 'EB Garamond'; serif;
+p.serif{font-family:  'Playfair Display', serif;
     font-style: normal;
-    font-weight: 500;
-    font-size: 14px;
-    line-height: 25px; 
+    font-weight: 700;
+    font-size: 18px;
+    line-height: 28px; 
     text-align:justify;
 }
 
-p.mid{font-family: 'EB Garamond'; serif;
+p.mid{font-family: 'EB Garamond', serif;
     font-style: normal;
-    font-weight: 500;
-    font-size: 14px;
-    line-height: 25px; 
+    font-weight: 600;
+    font-size: 18px;
+    line-height: 28px; 
     text-align:center;
 
 }
