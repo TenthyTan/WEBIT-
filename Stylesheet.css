@@ -137,5 +137,21 @@ body {background-color:#E3F9EE}
 }
 
 
+p.serif{font-family: 'EB Garamond'; serif;
+    font-style: normal;
+    font-weight: 500;
+    font-size: 14px;
+    line-height: 25px; 
+    text-align:justify;
+}
+
+p.mid{font-family: 'EB Garamond'; serif;
+    font-style: normal;
+    font-weight: 500;
+    font-size: 14px;
+    line-height: 25px; 
+    text-align:center;
+
+}
 
 
