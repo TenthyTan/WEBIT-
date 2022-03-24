@@ -133,29 +133,6 @@ p.mid{font-family: 'EB Garamond';
 
 }
 
-.button ul {
-    list-style-type:none;
-    position: absolute;
-width: 511px;
-height: 80px;
-left: 193px;
-top: 825px;
-
-font-family: 'Quando';
-font-style: normal;
-font-weight: 400;
-font-size: 64px;
-line-height: 80px;
-/* identical to box height */
-
-text-align: center;
-
-color: #2978C1;
-}
-.button ul a{
-    border-bottom: #C4F0E4;
-    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.4);;
-}
 
 .abd {
     width:200px;
@@ -174,3 +151,69 @@ color: #2978C1;
 
 /* font */
 * {font-family: "EB Garamond"}
+
+.button ul {
+    list-style-type:none;
+    position: absolute;
+    width: 100%;
+    height: 80px;
+    left: -3%;
+    top: 70%;
+
+    font-family: 'Quando';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 64px;
+    font-size: 60px;
+    line-height: 80px;
+    /* identical to box height */
+    color: #2978C1;
+}
+
+.button ul a{ 
+    text-decoration: none;
+    width: 20%;
+    text-decoration: none;
+    color:inherit;
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.4);
+    background-color: #c4f0e4;
+}
+
+
+
+.welcome {
+    position: absolute;
+    left: 0%;
+    color:black;
+
+}
+
+
+
+.pic{
+    position:absolute;
+    left: 0%;
+    right: 0%;
+    top: -10%;
+    bottom: 60%;
+}
+
+
+.welcome {
+    position: absolute;
+    left: 0%;
+    right: 0%;
+    top: 50.61%;
+    bottom: 24.91%;
+}
+
+.welcome p {
+    font-family: 'IBM Plex Serif';
+    font-style: italic;
+    font-weight: 600;
+    font-size: 96px;
+    line-height: 125px;
+    text-align: center;
+
+color: #000000;
+}
