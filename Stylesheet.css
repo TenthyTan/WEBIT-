@@ -137,21 +137,21 @@ p.mid{font-family: 'EB Garamond'; serif;
 .button ul {
     list-style-type:none;
     position: absolute;
-width: 511px;
-height: 80px;
-left: 193px;
-top: 825px;
+    width: 511px;
+    height: 80px;
+    left: 193px;
+    top: 825px;
 
-font-family: 'Quando';
-font-style: normal;
-font-weight: 400;
-font-size: 64px;
-line-height: 80px;
-/* identical to box height */
+    font-family: 'Quando';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 64px;
+    line-height: 80px;
+    /* identical to box height */
 
-text-align: center;
+    text-align: center;
 
-color: #2978C1;
+    color: #2978C1;
 }
 .button ul a{
     border-bottom: #C4F0E4;
