@@ -1,12 +1,13 @@
 
 .top{
     /* 设置宽度高度背景颜色 */
-    height: 10; /*高度改为自动高度*/
-    width:100%;
+    height: 80px; /*高度改为自动高度*/
+    width:1920px;
     margin-left: 0;
     background:#B2E2DC;
     position: fixed; /*fixed on the top*/
-    top: 0;/*离顶部的距离为0*/
+    left: 0px;
+    top: 0px;/*离顶部的距离为0*/
     margin-bottom: auto;
     z-index: 10;
 }
