@@ -122,10 +122,10 @@ p.serif{
     font-family: 'EB Garamond';
     font-style: normal;
     font-weight: 600;
-    font-size: 20px;
-    line-height: 25px;
+    font-size: 40px;
+    line-height: 45px;
     text-align:justify;
-    margin:50px;
+    margin:60px;
 }
 
 p.mid{font-family: 'EB Garamond';
@@ -222,4 +222,5 @@ p.mid{font-family: 'EB Garamond';
 color: #000000;
 }
 
-h1.cen{margin:40px}
+h1.cen{margin:40px;
+       font-size:70px}
