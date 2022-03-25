@@ -121,24 +121,20 @@ img {
 body {background-color:#E3F9EE} 
 
 .video_back {
-    width: 1080px;
-    height: 640px;
-    
+    width: 1200px;
+    height: 650px;
     position: relative;
-    left: 23%;
+    left: 20%;
     right: 50%;
     top: 17.6%;
     bottom: 71.32%;
-
     z-index: auto;
     text-align: center;
     object-fit: fill;
-
 }
 #parent{
     position:relative;
 }
-
 
 p.serif{ 
     font-family: 'EB Garamond';
@@ -150,7 +146,6 @@ p.serif{
     margin-left: 150px;
     margin-right: 150px;
     margin-top: 5px;
-
 }
 
 p.mid{font-family: 'EB Garamond';
