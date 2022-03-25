@@ -99,13 +99,15 @@ body {background-color:#E3F9EE}
 
 }
 
-img{height: auto; 
-    width:100%;
-    position:absolute;
+img {
+    height: max-content;
+    width: 100%;
+    position: inherit;
     left: 0%;
     right: 0%;
-    top:-5px;
-    bottom: 50px;} 
+    top: -1cm;
+    bottom: 50px;
+}
 
 .top lir :hover{
 /* 鼠标选中时背景变为浅绿色 */
