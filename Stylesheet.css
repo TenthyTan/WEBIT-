@@ -68,22 +68,14 @@
      background-color: #E3F9EE;
 }
 
-.topbutt {list-style-type:none;
-    position: absolute;
-    width: 100%;
-    height: 80px;
-    left: -3%;
-    top: 75%;
+.buttonf{background-color: #c8f4de;
+        height: fit-content;
+            
+}
 
-    font-family: 'Quando';
-    font-style: normal;
-    font-weight: 400;
-    font-size: 64px;
-    font-size: 60px;
-    line-height: 80px;
-    /* identical to box height */
-    color: #2978C1;
-
+.buttonr{background-color: #c8f4de;
+    height: fit-content;
+    float: right      
 }
 
 
