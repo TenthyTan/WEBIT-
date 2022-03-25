@@ -122,6 +122,7 @@ p.serif{
     font-size: 20px;
     line-height: 25px;
     text-align:justify;
+    margin:30px
 }
 
 p.mid{font-family: 'EB Garamond';
@@ -157,15 +158,7 @@ color: #2978C1;
     box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.4);;
 }
 
-.abd {
-    width:200px;
-    height:200px;
 
-}
-.abd p{
-    width:250px;
-    margin:auto
-}
 
 /* central team signature */
 #team {
