@@ -192,10 +192,10 @@ p.mid{font-family: 'EB Garamond';
 
 .pic{
     position:absolute;
-    left: 0%;
-    right: 0%;
-    top: -10%;
-    bottom: 60%;
+    left: 10%;
+    right: 10%;
+    top: 2%;
+    bottom: 70%;
 }
 
 
@@ -203,7 +203,7 @@ p.mid{font-family: 'EB Garamond';
     position: absolute;
     left: 0%;
     right: 0%;
-    top: 50.61%;
+    top: 60%;
     bottom: 24.91%;
 }
 
@@ -211,7 +211,7 @@ p.mid{font-family: 'EB Garamond';
     font-family: 'IBM Plex Serif';
     font-style: italic;
     font-weight: 600;
-    font-size: 96px;
+    font-size: 50px;
     line-height: 125px;
     text-align: center;
 
