@@ -1,7 +1,7 @@
 
 .top{
     /* 设置宽度高度背景颜色 */
-    height: 10; /*高度改为自动高度*/
+    height: 43; /*高度改为自动高度*/
     width:100%;
     margin-left: 0;
     background:#B2E2DC;
@@ -68,6 +68,11 @@
      background-color: #E3F9EE;
 }
 
+.topbutt {
+
+}
+
+
 body {background-color:#E3F9EE} 
 
 
@@ -123,6 +128,7 @@ p.serif{
     font-size: 20px;
     line-height: 25px;
     text-align:justify;
+    margin:50px
 }
 
 p.mid{font-family: 'EB Garamond';
@@ -218,3 +224,5 @@ p.mid{font-family: 'EB Garamond';
 
 color: #000000;
 }
+
+h1.cen{margin:40px}
