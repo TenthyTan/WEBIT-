@@ -99,7 +99,13 @@ body {background-color:#E3F9EE}
 
 }
 
-img{height: auto; width: auto\9; width:100%;} 
+img{height: auto; 
+    width:100%;
+    position:absolute;
+    left: 0%;
+    right: 0%;
+    top:-5px;
+    bottom: 50px;} 
 
 .top lir :hover{
 /* 鼠标选中时背景变为浅绿色 */
@@ -136,11 +142,11 @@ p.serif{
     font-family: 'EB Garamond';
     font-style: normal;
     font-weight: 600;
-    font-size: 40px;
+    font-size: 35px;
     line-height: 49px;
     text-align:justify;
-    margin-left: 60px;
-    margin-right: 60px;
+    margin-left: 150px;
+    margin-right: 150px;
     margin-top: 5px;
 
 }
@@ -200,17 +206,6 @@ p.mid{font-family: 'EB Garamond';
     background-color: #c4f0e4;
 }
 
-
-
-.welcome {
-    position: absolute;
-    left: 0%;
-    color:black;
-
-}
-
-
-
 .pic{
     position:absolute;
     left: 0%;
@@ -224,23 +219,25 @@ p.mid{font-family: 'EB Garamond';
     position: absolute;
     left: 0%;
     right: 0%;
-    top: 55%;
+    top: 60%;
     bottom: 24.91%;
+    color:black;
 }
 
 .welcome p {
     font-family: 'IBM Plex Serif';
     font-style: italic;
     font-weight: 600;
-    font-size: 80px;
+    font-size: 96px;
     line-height: 125px;
     text-align: center;
 
 color: #000000;
 }
 
-h1.cen{margin-left:40px;
-       margin-right:40px;
-       margin-top:9px;
-       margin-bottom: 9px;
-       font-size:70px}
+h1.cen{margin-left:150px;
+       margin-right:80px;
+       margin-top:30px;
+       margin-bottom: 15px;
+       font-size:50px;
+       font-weight: bold}
