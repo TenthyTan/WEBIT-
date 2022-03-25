@@ -68,6 +68,11 @@
      background-color: #E3F9EE;
 }
 
+.topbutt {
+
+}
+
+
 body {background-color:#E3F9EE} 
 
 
@@ -98,18 +103,15 @@ body {background-color:#E3F9EE}
     height: 640px;
     
     position: relative;
-
-    left: 9.07%;
-    right: 9.07%;
+    left: 23%;
+    right: 50%;
     top: 17.6%;
     bottom: 71.32%;
 
     z-index: auto;
- 
+    text-align: center;
     object-fit: fill;
 
-
-    background: url(1646979850(1).png);
 }
 #parent{
     position:relative;
@@ -123,6 +125,7 @@ p.serif{
     font-size: 20px;
     line-height: 25px;
     text-align:justify;
+    margin:50px;
 }
 
 p.mid{font-family: 'EB Garamond';
@@ -195,7 +198,7 @@ p.mid{font-family: 'EB Garamond';
     position:absolute;
     left: 0%;
     right: 0%;
-    top: -90px;
+    top: -60px;
     bottom: 70%;
 }
 
@@ -204,7 +207,7 @@ p.mid{font-family: 'EB Garamond';
     position: absolute;
     left: 0%;
     right: 0%;
-    top: 60%;
+    top: 55%;
     bottom: 24.91%;
 }
 
@@ -218,3 +221,5 @@ p.mid{font-family: 'EB Garamond';
 
 color: #000000;
 }
+
+h1.cen{margin:40px}
