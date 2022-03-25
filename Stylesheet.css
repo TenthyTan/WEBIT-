@@ -105,8 +105,8 @@ body {background-color:#E3F9EE}
 
     z-index: auto;
  
-    object-fit: fill;
-
+    object-fit: contain;
+    margin:20px;
 
     background: url(1646979850(1).png);
 }
@@ -122,7 +122,7 @@ p.serif{
     font-size: 20px;
     line-height: 25px;
     text-align:justify;
-    margin:30px
+    margin:50px
 }
 
 p.mid{font-family: 'EB Garamond';
@@ -133,6 +133,11 @@ p.mid{font-family: 'EB Garamond';
     text-align:center;
 
 }
+
+h1.cen{
+    margin: 40px
+}
+
 
 .button ul {
     list-style-type:none;
@@ -167,3 +172,8 @@ color: #2978C1;
 
 /* font */
 * {font-family: "EB Garamond"}
+
+.con{width:70%;
+    margin: 20px
+}
+
