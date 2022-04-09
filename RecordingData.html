@@ -5,8 +5,8 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Recording Data</title>
-    <link href="https://fonts.googleapis.com/css2?family=EB+Garamond&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="StylesheetPatient.css" type="text/css">
+    <link rel="stylesheetPatient" href="Stylesheet.css">
+  
 </head>
 <body>
     <nav class="nav">
@@ -28,31 +28,58 @@
 
     </div>
     <div class = 'insulin'>
-        <p>Insulin taken:                  doses</p>
-        <p>Recording Time : 6:00pm</p>
-        <p>Comment : </p>
-        <p>submit</p>
+        <label>Insulin taken:</label>
+        <select name="" id="">
+            <option>1</option>
+            <option>2</option>
+            <option>3</option>
+            <option>4</option>
+            <option>5</option>
+            <option>6</option>
+            <option>7</option>
+        </select>
+        <span>doses</span><br>
+        <label>Recording Time:</label> 
+        <input type="text" name="time" placeholder="Enter Recording Time"><br>
+        <label>Comment:</label>
+        <input type="text" name="comment" placeholder="Enter Comment"><br>
+        <input type="submit" name = "submit" value = "submit">
     </div>
+    <br>
     <div class = 'blood'>
-        <p>Blood glucose level:             nmol/L</p>
-        <p>Recording Time : 6:00pm</p>
-        <p>Comment : </p>
-        <p>submit</p>
+        <label>Blood glucose level:</label>
+        <input type="text" name="blood" placeholder="Enter Blood glucose level">
+        <span>nmol/L</span><br>
+        <label>Recording Time:</label> 
+        <input type="text" name="time" placeholder="Enter Recording Time"><br>
+        <label>Comment:</label>
+        <input type="text" name="comment" placeholder="Enter Comment"><br>
+        <input type="submit" name = "submit" value = "submit">
     </div>
-
+<br>
     <div class = 'weight'>
-        <p>Weight: 50 kg</p>
-        <p>Recording Time : 4:00pm</p>
-        <p>Comment : </p>
-        <p>submit</p>
+        <label>Weight:</label>
+        <input type="text" name="weight" placeholder="50">
+        <span>kg</span><br>
+        
+        <label>Recording Time:</label> 
+        <input type="text" name="time" placeholder="4:00pm"><br>
+        <label>Comment:</label>
+        <input type="text" name="comment" placeholder="lighter than yesterday!"><br>
+        <input type="submit" name = "submit" value = "view">
     </div>
+    <br>
     <div class = 'exercise'>
-        <p>Exercise:                 Steps</p>
-        <p>Recording Time :</p>
-        <p>Comment : </p>
-        <p>submit</p>
+        <label>Exercise</label>
+        <input type="text" name="excercise" placeholder=" ">
+        <span>Steps</span><br>
+        <label>Recording Time:</label> 
+        <input type="text" name="time" placeholder=" "><br>
+        <label>Comment:</label>
+        <input type="text" name="comment" placeholder=" "><br>
+        <input type="submit" name = "submit" value = "submit">
     </div>
-
+<br>
     <p>You don’t need to record if the data is grey</p>
     </body>
 </body>
