@@ -100,6 +100,9 @@ h1.cen{margin-left:150px;
 .nav {
     background-color: #b2e2dc;
     height: 90px;
+    width: 1920px;
+    left: 0;
+    top: 0;
     display: flex;
     justify-content: space-between;
     padding-left: 20px;
@@ -115,7 +118,8 @@ h1.cen{margin-left:150px;
     padding: 5px;
     border-radius: 5px;
     border: none;
-    z-index:10
+    z-index:10;
+    margin-top: 18px
 }
 
 .login-button {
@@ -126,7 +130,8 @@ h1.cen{margin-left:150px;
     padding: 5px;
     border-radius: 5px;
     border: none;
-    z-index:10
+    z-index:10;
+    margin-top: 18px
 }
 * {
     font-family: "EB Garamond";
@@ -136,7 +141,7 @@ h1.cen{margin-left:150px;
     font-size: 100%;
     font: inherit;
     vertical-align: baseline;
-    box-sizing: border-box;
+    box-sizing: inherit;
 }
 
 body {
