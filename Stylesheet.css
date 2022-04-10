@@ -144,6 +144,22 @@ h1.cen{margin-left:150px;
     box-sizing: inherit;
 }
 
+.encourage-messages {
+    background-color: #BDDDDB;
+    width: 1920px;
+    height: 70px;
+    box-sizing: inherit;
+    padding-left: 20px;
+    padding-right: 20px;
+}
+
+.encourage-messages p {
+    text-align: center;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    font-size: 3em;
+}
+
 body {
     width: 1920px;
     height: 1080px;
