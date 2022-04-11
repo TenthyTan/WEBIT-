@@ -294,6 +294,28 @@ table {
 }
 
 
+.view-button {
+    font-size: 35px;
+    font-weight: bold;
+    background-color: #ffffff;
+    height: 50px;
+    width:100px;
+    padding: 5px;
+    border-radius: 5px;
+    border: none;
+    z-index:10; 
+    margin-left: 930px;
+    margin-top: 120px;
+}
+
+.view-chart p{
+    font-size: 1.8em;
+    margin-left: 860px;
+    margin-top: 20px;
+    margin-bottom: 50px;
+}
+
+
 
 
 
