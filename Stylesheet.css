@@ -256,5 +256,45 @@ footer .team-member {
 }
 
 
+table {
+    width: 100%;
+    
+    background-color: #D9F9F4;
+    border-spacing: 0;
+}
+
+.health-data {
+    border: solid #000000 1px;
+}
+
+.health-data td, .health-data th {
+    border-right: solid rgb(0, 0, 0) 1px;
+    border-bottom: solid rgb(0, 0, 0) 1px;
+    padding: 10px;
+    text-align: center;
+}
+
+.health-data thead {
+    background-color: #9CD9DE;
+    height: 50px;
+    font-size: 1.3em;
+    font-weight: bold;
+}
+
+.health-data td:last-child, .health-data th:last-child {
+    border-right: none;
+}
+
+.health-data tr:last-child td {
+    border-bottom: none;
+}
+
+.health-data tr:hover{
+    background: #9CD9DE;
+}
+
+
+
+
 
 
