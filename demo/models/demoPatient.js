@@ -2,8 +2,8 @@ const demoPatient =[
 
     {
         id:1,
-        name:""
-        data:
+        name:"David Li"
+        
 
 
 
