@@ -1,10 +1,124 @@
 
+
 body {
     width: 1920px;
     height: 1080px;
     font-family: "EB Garamond";
     background-color:#E3F9EE
 }
+
+
+a{
+    text-decoration: none;
+}
+
+.encourage p {
+    text-align: center;
+    color: #000000;
+    background: #BDDEDB;
+    background-position: 20%;
+    background-size: 50% auto;
+    filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.25));
+    border-radius: 20px;
+    border-width: ;
+}
+
+.encourage  p {
+    position:absolute;
+    left: 4.8%;
+    right: 5.07%;
+    top: 15%;
+    bottom: 95%;
+
+
+}
+.profile img{
+    position: absolute;
+    margin: 0;
+    width: 200px;
+    left: 45%;
+    right: 22.13%;
+    top: 35%;
+    bottom: 62.56%;
+
+}
+
+p {
+
+    font-family: 'Quando';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 24px;
+    line-height: 30px;
+/* identical to box height */
+
+    text-align: center;
+    color: #000000;
+    background: #D3F3D8;
+    background-position: 20%;
+    background-size: 50% auto;
+    filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.25));
+    border-radius: 20px;
+
+
+
+
+}
+.Record{
+    position: absolute;
+left: 42.6%;
+right: 42.6%;
+top: 50%;
+bottom: 50.62%;
+
+
+}
+    
+.View {
+    position: absolute;
+    left: 42.6%;
+    right: 42.6%;
+    top: 60%;
+    bottom: 38.79%;
+}
+.Rank {
+    position: absolute;
+    left: 42.6%;
+    right: 42.6%;
+    top: 70%;
+    bottom: 38.79%;
+}
+.Profile {
+    position: absolute;
+    left: 42.6%;
+    right: 42.6%;
+    top: 80%;
+    bottom: 38.79%;
+}
+.profile p {
+    position: absolute;
+    left: 45%;
+    right: 45.07%;
+    top: 45%;
+    bottom: 58.25%;
+
+font-family: 'Quando';
+font-style: normal;
+font-weight: 400;
+font-size: 24px;
+line-height: 30px;
+/* identical to box height */
+
+text-align: center;
+
+color: #000000;
+
+
+}
+
+
+/*Recording Data*/
+
 .insulin img {
     position: absolute;
     left: 4.8%;
