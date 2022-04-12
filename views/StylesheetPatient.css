@@ -20,7 +20,7 @@ a{
     background-size: 50% auto;
     filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.25));
     border-radius: 20px;
-    border-width
+    border-width:100px;
 }
 
 .encourage  p {
@@ -29,7 +29,6 @@ a{
     right: 5.07%;
     top: 15%;
     bottom: 95%;
-
 
 }
 .profile img{
