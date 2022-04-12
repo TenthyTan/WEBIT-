@@ -46,7 +46,6 @@ body {
     font-size: 24px;
     line-height: 29px;
     text-align: center;
-    color: #000000;
 }
 .date {
     position: absolute;
@@ -61,6 +60,44 @@ body {
     font-size: 24px;
     line-height: 28px;
     text-align: center;
+}
+.label1 {
+    position: absolute;
+    left: 13.87%;
+    right: 15.2%;
+    top: 21.18%;
+    bottom: 73.28%;
 
-    color: #000000;
+    font-family: 'Roboto';
+    font-style: normal;
+    font-weight: 600;
+    font-size: 18px;
+    line-height: 21px;
+    text-indent: 1px;
+}
+.label2 {
+    position: absolute;
+    left: 16.53%;
+    right: 41.87%;
+    top: 28.08%;
+    bottom: 69.95%;
+
+    font-family: 'Roboto';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 16px;
+}
+.label3 {
+    position: absolute;
+    left: 16.53%;
+    right: 59.73%;
+    top: 31.28%;
+    bottom: 66.13%;
+
+    font-family: 'Roboto';
+    font-style: normal;
+    font-weight: 700;
+    font-size: 18px;
+    line-height: 21px;
 }
