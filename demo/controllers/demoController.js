@@ -1,5 +1,6 @@
 // import demo model
 const demoData = require('../models/demoModel')
+const demoPatient = require('../models/demoPatient')
 // handle request to get all demo data instances
 const getAllDemoData = (req, res) => {
     res.send(demoData) // send list to browser
@@ -23,6 +24,18 @@ const getDataById = (req, res) => {
             res.sendStatus(404)
     } 
 }
+
+
+const recordingData = (req, res) => {
+    
+    res.send()
+
+
+
+
+
+}
+
 
 
 
