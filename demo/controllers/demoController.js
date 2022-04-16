@@ -21,7 +21,10 @@ const getDataById = (req, res) => {
             // You can decide what to do if the data is not found.
             // Currently, a 404 response is sent.
             res.sendStatus(404)
-    } }
+    } 
+}
+
+
 
 module.exports = {
     getAllDemoData,
