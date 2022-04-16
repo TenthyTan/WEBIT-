@@ -17,3 +17,14 @@ app.get('/PatientHome', (req, res) => {
 const demoRouter = require('./routes/demoRouter')
 // the demo routes are added to the end of the '/demo-management' path
 app.use('/demo-management', demoRouter)
+
+app.use(express.static('public')) // define where static assets live
+
+const exphbs = require('express-handlebars') // include Handlebars module
+
+app.engine('hbs', exphbs.engine({      // configure Handlebars
+    defaultlayout: 'main',
+    extname: 'hbs'
+}))
+app.set('view engine', 'hbs')   // set Handlebars view engine
+
