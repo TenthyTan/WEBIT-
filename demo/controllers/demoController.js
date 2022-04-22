@@ -7,7 +7,7 @@ const Record = require("../models/record.js");
 
 
 function formatDate(date) {
-  var d = new Date(date),
+  var d = new Date(date), //creat a new data
     month = "" + (d.getMonth() + 1),
     day = "" + d.getDate(),
     year = d.getFullYear();
@@ -15,7 +15,7 @@ function formatDate(date) {
   if (month.length < 2) month = "0" + month;
   if (day.length < 2) day = "0" + day;
 
-  return [year, month, day].join("-");
+  return [year, month, day].join("-"); //return as 2002-06-09
 }
 
 async function initPatient() {
