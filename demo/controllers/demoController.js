@@ -1,9 +1,9 @@
 // import Model
 const data = require("../models/demoPatient.js");
 const records = require("../models/demoRecords.js");
-const { findOneAndUpdate } = require("../models/patient.js");
-const Patient = require("../models/patient.js");
-const Record = require("../models/record.js");
+const { findOneAndUpdate } = require("../models/demoPatient.js");
+const Patient = require("../models/demoPatient.js");
+const Record = require("../models/demoRecords.js");
 
 
 function formatDate(date) {
