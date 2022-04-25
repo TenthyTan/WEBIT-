@@ -6,7 +6,7 @@ const Patient = require("../models/patients.js");
 const Record = require("../models/records.js");
 const Doctor = require("../models/doctors.js");
 
-
+//写日期//
 function formatDate(date) {
   var d = new Date(date), //creat a new data
     month = "" + (d.getMonth() + 1),
@@ -19,6 +19,7 @@ function formatDate(date) {
   return [year, month, day].join("-"); //return as 2002-06-09
 }
 
+//如果patient不在database里面，则创建新patient。如果有则返回这个patient。//
 async function initPatient() {
   try {
     // find all document in Patient Collection to findout if it is empty
@@ -46,10 +47,10 @@ async function initPatient() {
       return patient.id;
     }
   } catch (err) {
-    console.log("error happens in patient initialisation: ", err);
+    console.log("Error", err);
   }
 }
-
+//如果病人今天没记录数据，则创建新数据。如果病人已经记录数据了，那返回已经记录的数据的id（当天的数据）//
 async function initRecord(patientId) {
   try {
     const result = await Record.findOne({
@@ -72,10 +73,12 @@ async function initRecord(patientId) {
   }
 }
 
+//在hbs中填充record的数据//
 const getAllPatients = (req, res) => {
   res.render('allData.hbs', {data: Record}) // send data to browser
 }
 
+//通过patient id 找patient的信息//
 const getOnePatient = (req, res) => {
   const patient = data.find((one) => one.id == req.params.id);
 
@@ -86,6 +89,7 @@ const getOnePatient = (req, res) => {
   }
 };
 
+////
 const addOnePatient = (req, res) => {
   // console.log(req.rawHeaders.toString());
   const newPatient = req.body;
@@ -98,6 +102,7 @@ const addOnePatient = (req, res) => {
   res.send(data);
 };
 
+////
 const renderRecordData = async (req, res) => {
   try {
     const patientId = await initPatient();
