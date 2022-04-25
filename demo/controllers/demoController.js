@@ -2,8 +2,9 @@
 const data = require("../models/demoPatient.js");
 const records = require("../models/demoRecords.js");
 const { findOneAndUpdate } = require("../models/demoPatient.js");
-const Patient = require("../models/patient.js");
+const Patient = require("../models/patients.js");
 const Record = require("../models/records.js");
+const Doctor = require("../models/doctors.js");
 
 
 function formatDate(date) {
@@ -33,7 +34,7 @@ async function initPatient() {
         supportMes: "You are the best",
       });
 
-      // save new patient Pat to database
+      // save new patient to database
       const patient = await newPatient.save();
       // console.log("-- id is: ", patient.id);
 
