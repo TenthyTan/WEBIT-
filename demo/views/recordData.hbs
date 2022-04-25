@@ -1,9 +1,10 @@
 <div>
   <h1>
-    Patient {{demoPatient.username}}'s Recorded Data in {{demoRecords.CreatedDate}}
+    Patient {{record.patientId.screenName}}'s Recorded Data in {{record.recordDate}}
   </h1>
   <p>*You don't need to record if the color is grey.</p>
   <table border="1">
+
     <tr>
       <th> Data Name </th>
       <th> Data Value </th>
@@ -11,7 +12,7 @@
       <th> Data Status </th>
       <th> Comment </th>
     </tr>
-    {{#each demoRecords.data}}  
+    {{#each record.data}}  
     <form action="/recordData" method="POST">
       <tr>
         <td> {{@key}} </td>
