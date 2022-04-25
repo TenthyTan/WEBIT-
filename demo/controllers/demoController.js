@@ -2,8 +2,8 @@
 const data = require("../models/demoPatient.js");
 const records = require("../models/demoRecords.js");
 const { findOneAndUpdate } = require("../models/demoPatient.js");
-const Patient = require("../models/demoPatient.js");
-const Record = require("../models/demoRecords.js");
+const Patient = require("../models/patient.js");
+const Record = require("../models/records.js");
 
 
 function formatDate(date) {
@@ -25,13 +25,12 @@ async function initPatient() {
     if (result.length == 0) {
       const newPatient = new Patient({
         firstName: "Pat",
-        lastName: "Tian",
-        screenName: "Pat",
+        lastName: "wu",
+        userName: "Pat",
         email: "pat@gmail.com",
         password: "12345678",
-        yearOfBirth: "1999",
-        textBio: "I'm handsome",
-        supportMessage: "ganbadie",
+        yearOfBirth: "1970",
+        supportMes: "You are the best",
       });
 
       // save new patient Pat to database
