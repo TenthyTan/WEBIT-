@@ -136,7 +136,7 @@ const updateRecord = async (req, res) => {
     findOneAndUpdate({}, {})
     record.save()
     console.log(record);
-    res.redirect("/general/recordData");
+    res.redirect("/recordData");
   } catch (err) {
     console.log("error happens in update record: ", err);
   }
