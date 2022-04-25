@@ -4,6 +4,10 @@ const express = require('express');
 // Set your app up as an express app
 const exphbs = require('express-handlebars'); // include Handlebars module
 
+// Connect to mongodb
+require('./models/database.js');
+Patient = require('./models/patients.js');
+
 const app = express();
 const port = 3000;
 
