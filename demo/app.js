@@ -19,13 +19,10 @@ app.engine('hbs', exphbs.engine({      // configure Handlebars
 app.set('view engine', 'hbs');   // set Handlebars view engine
 // Tells the app to send the string: "Our demo app is working!" when you hit the '/' endpoint.
 app.get('/', (req, res) => {
-    res.send('Our demo app is working!')});
+    res.render('PatientHome.hbs')});
 // Tells the app to listen on port 3000 and logs that information to the console.
 app.listen(port, () => {
     console.log('Demo app is listening on http:localhost:' + port)});
-
-app.get('/PatientHome', (req, res) => {
-    res.send('patienthome')});
 
 // link to our router
 const demoRouter = require('./routes/demoRouter');
