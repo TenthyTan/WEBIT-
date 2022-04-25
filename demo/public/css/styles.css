@@ -32,3 +32,61 @@ header nav p{
     z-index:10;
     margin: 1%;
 }
+* {
+    margin: 0;
+    padding: 0;
+}
+
+.content {
+    width: 100%;
+    height: calc(100vh - 60px);
+    background: rgb(227, 249, 238);
+    overflow: hidden;
+}
+
+
+.img_a {
+    width: 400px;
+    height: 400px;
+    background: rgb(164, 203, 206);
+    border-radius: 50%;
+    overflow: hidden;
+    margin: 40px auto 10px;
+}
+
+.img_a img {
+    width: 300px;
+    height: 300px;
+    display: block;
+    margin: 30px auto;
+}
+
+.cont_text {
+    text-align: center;
+    font-size: 30px;
+    font-weight: 500;
+}
+
+.cont_bb>div {
+    display: flex;
+    justify-content: space-around;
+}
+
+.cont_bb img {
+    width: 70px;
+    height: 50px;
+    margin: 0 20px;
+}
+
+.cont_bb>div>div {
+    display: flex;
+    align-items: center;
+    width: 530px;
+    height: 100px;
+    background: #C0E7D4;
+    border-radius: 45px;
+    filter: drop-shadow(0px 8px 4px rgba(0, 0, 0, 0.45));
+    font-weight: 600;
+    font-size: 40px;
+    line-height: 100px;
+}

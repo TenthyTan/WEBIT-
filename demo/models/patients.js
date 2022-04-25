@@ -11,6 +11,7 @@ const patientSchema = new mongoose.Schema({
     email: {type: String, required: true, unique: true},
     supportMes: {type: String, required: true},
     recordRate: {type: Number, min: 0, max: 1},
+    password: {type: String, required: true},
     records: [{
         recordIDs: {type: mongoose.Schema.Types.ObjectId, required: true, ref: "Record"}
     }],

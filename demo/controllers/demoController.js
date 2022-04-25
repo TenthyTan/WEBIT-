@@ -2,8 +2,9 @@
 const data = require("../models/demoPatient.js");
 const records = require("../models/demoRecords.js");
 const { findOneAndUpdate } = require("../models/demoPatient.js");
-const Patient = require("../models/demoPatient.js");
-const Record = require("../models/demoRecords.js");
+const Patient = require("../models/patients.js");
+const Record = require("../models/records.js");
+const Doctor = require("../models/doctors.js");
 
 
 function formatDate(date) {
@@ -25,16 +26,15 @@ async function initPatient() {
     if (result.length == 0) {
       const newPatient = new Patient({
         firstName: "Pat",
-        lastName: "Tian",
-        screenName: "Pat",
+        lastName: "wu",
+        userName: "Pat",
         email: "pat@gmail.com",
         password: "12345678",
-        yearOfBirth: "1999",
-        textBio: "I'm handsome",
-        supportMessage: "ganbadie",
+        yearOfBirth: "1970",
+        supportMes: "You are the best",
       });
 
-      // save new patient Pat to database
+      // save new patient to database
       const patient = await newPatient.save();
       // console.log("-- id is: ", patient.id);
 
@@ -73,7 +73,7 @@ async function initRecord(patientId) {
 }
 
 const getAllPatients = (req, res) => {
-  res.render('allData.hbs', {data: peopleData}) // send data to browser
+  res.render('allData.hbs', {data: Record}) // send data to browser
 }
 
 const getOnePatient = (req, res) => {
@@ -136,7 +136,7 @@ const updateRecord = async (req, res) => {
     findOneAndUpdate({}, {})
     record.save()
     console.log(record);
-    res.redirect("/general/recordData");
+    res.redirect("/recordData");
   } catch (err) {
     console.log("error happens in update record: ", err);
   }

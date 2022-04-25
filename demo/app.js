@@ -5,6 +5,10 @@ const express = require('express');
 const exphbs = require('express-handlebars'); // include Handlebars module
 //const res = require('express/lib/response');
 
+// Connect to mongodb
+require('./models/database.js');
+Patient = require('./models/patients.js');
+
 const app = express();
 const port = 3000;
 

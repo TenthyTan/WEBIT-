@@ -1,8 +1,8 @@
 <div>
   <h1>
-    Patient {{record.patientId.screenName}}'s Recorded Data in {{record.recordDate}}
+    Patient {{record.patientId.userName}}'s Recorded Data in {{record.recordDate}}
   </h1>
-  <p>*You don't need to record is the color is grey.</p>
+  <p>*You don't need to record if the color is grey.</p>
   <table border="1">
 
     <tr>
@@ -17,13 +17,13 @@
       <tr>
         <td> {{@key}} </td>
         <input type="hidden" name="key" value="{{@key}}">
-        <td> {{this.fullName}} </td>
+        <td> {{this.name}} </td>
         {{#ifUnrecorded this.status}}
         <td> <input type="text" name="value" placeholder="Enter your record here" required> </td>
         {{else}}
         <td> {{this.value}} </td>
         {{/ifUnrecorded}}
-        <td> {{this.createdAt}} </td>
+        <td> {{this.createdDate}} </td>
         <td style="background-color:
           {{#ifRecorded this.status}}
           green
