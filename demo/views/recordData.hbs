@@ -1,10 +1,9 @@
 <div>
   <h1>
-    Patient {{record.patientId.screenName}}'s Recorded Data in {{record.recordDate}}
+    Patient {{demoPatient.username}}'s Recorded Data in {{demoRecords.CreatedDate}}
   </h1>
-  <p>*You don't need to record is the color is grey.</p>
+  <p>*You don't need to record if the color is grey.</p>
   <table border="1">
-
     <tr>
       <th> Data Name </th>
       <th> Data Value </th>
@@ -12,8 +11,7 @@
       <th> Data Status </th>
       <th> Comment </th>
     </tr>
-    // 引用数据库 更改数据库名//
-    {{#each record.data}}  
+    {{#each demoRecords.data}}  
     <form action="/recordData" method="POST">
       <tr>
         <td> {{@key}} </td>
@@ -24,7 +22,7 @@
         {{else}}
         <td> {{this.value}} </td>
         {{/ifUnrecorded}}
-        <td> {{this.createdData}} </td>
+        <td> {{this.createdDate}} </td>
         <td style="background-color:
           {{#ifRecorded this.status}}
           green

@@ -13,7 +13,7 @@ const helpers = {
       return options.inverse(this);
     },
     ifNoneed: function (status, options) {
-        if (status == "No need") {
+        if (status == "Not Required") {
           return options.fn(this);
         }
         return options.inverse(this);

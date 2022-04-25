@@ -3,15 +3,14 @@
     <thead>
         <tr>
             <th> Date </th>
-            // 引用数据 records. 更改//
-            <th> {{records.data.bgl.category}} </th>
-            <th> {{records.data.doit.category}} </th>
-            <th> {{records.data.weight.category}}</th>
-            <th> {{records.data.exercise.category}} </th>
+            <th> {{demoRecords.data.bgl.category}} </th>
+            <th> {{demoRecords.data.doit.category}} </th>
+            <th> {{demoRecords.data.weight.category}}</th>
+            <th> {{demoRecords.data.exercise.category}} </th>
         </tr>
     </thead>
     <tbody>
-        {{#each records.data}}
+        {{#each demoRecords.data}}
         <form action="/viewData" method="SAVE">
             {{#each value}}
                 <tr>

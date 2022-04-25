@@ -15,7 +15,7 @@ const demoRecords =[
             },
             doit: {
                 name: "Doses of Insulin Taken (units)",
-                status: "Not Required",
+                status: "unrecorded",
                 value: 0,
                 comment: " ",
                 createdDate: null,
@@ -106,7 +106,7 @@ const demoRecords =[
             },
             weight: {
                 name: "Weight (kg)",
-                status: "No need",
+                status: "Not Required",
                 recordedAt: "",
                 value: 0,
                 comment: null,
