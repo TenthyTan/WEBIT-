@@ -73,8 +73,8 @@ async function initRecord(patientId) {
 }
 
 const getAllPatients = (req, res) => {
-  res.render();
-};
+  res.render('allData.hbs', {data: peopleData}) // send data to browser
+}
 
 const getOnePatient = (req, res) => {
   const patient = data.find((one) => one.id == req.params.id);
