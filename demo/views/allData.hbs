@@ -1,17 +1,4 @@
 <h1>Displaying all Patient {{record.patientId.screenName}}'s data in {{record.recordDate}} </h1>
-<script type = "text/x-handelbars-template" id = "tbody-tr">
-    {{#each records.data}}
-        <form action="/general/viewData" method="SAVE">
-            <tr>
-                <td>{{this.createdData}}</td>
-                <td>{{this.value}}</td>
-                <td>{{this.value}}</td>
-                <td>{{this.value}}</td>
-                <td>{{this.value}}</td>
-            </tr>
-        </form>
-    {{/each}}
-</script>
 <table border = "1">
     <thead>
         <tr>
@@ -23,6 +10,18 @@
         </tr>
     </thead>
     <tbody>
-        
+        {{#each records.data}}
+        <form action="/viewData" method="SAVE">
+            {{#each value}}
+                <tr>
+                    <td>{{../createdData}}</td>
+                    <td>{{this}}</td>
+                    <td>{{this}}</td>
+                    <td>{{this}}</td>
+                    <td>{{this}}</td>
+                </tr>
+            {{/each}}
+        </form>
+        {{/each}}
     </tbody>
 </table>
