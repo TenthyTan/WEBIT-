@@ -17,13 +17,13 @@
       <tr>
         <td> {{@key}} </td>
         <input type="hidden" name="key" value="{{@key}}">
-        <td> {{this.fullName}} </td>
+        <td> {{this.name}} </td>
         {{#ifUnrecorded this.status}}
         <td> <input type="text" name="value" placeholder="Enter your record here" required> </td>
         {{else}}
         <td> {{this.value}} </td>
         {{/ifUnrecorded}}
-        <td> {{this.createdAt}} </td>
+        <td> {{this.createdData}} </td>
         <td style="background-color:
           {{#ifRecorded this.status}}
           green
