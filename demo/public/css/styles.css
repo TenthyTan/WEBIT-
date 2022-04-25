@@ -1,0 +1,34 @@
+body{
+    padding: 0; margin: 0;
+}
+header{
+    top: 0; left: 0; position: fixed; background-color:#B2E2DC; width: 100%; height: 5%
+}
+main{
+    background-color: #E3F9EE; width: 100%; min-height: 980px;
+}
+footer{
+    bottom: 0; left: 0; background-color: #E3F9EE; position: fixed; width: 100%; height: 100px
+}
+header nav p{
+    left: 37.24%;
+    right: 37.24%;
+    top: 13.7%;
+    bottom: 26.03%;
+    font-family: 'Salsa';
+    font-style: normal;
+    font-size: 30px;
+    text-align: center;
+    margin: 1.5% 26%;
+}
+.nav-header-text {
+    background-color: #e3f9ee;
+    font-size: 35px;
+    font-style: italic;
+    height: fit-content;
+    padding: 5px;
+    border-radius: 5px;
+    border: none;
+    z-index:10;
+    margin: 1%;
+}

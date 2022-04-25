@@ -25,11 +25,11 @@ app.listen(port, () => {
     console.log('Demo app is listening on http:localhost:' + port)});
 
 // link to our router
-const demoRouter = require('./routes/demoRouter');
+//const demoRouter = require('./routes/demoRouter');
 // the demo routes are added to the end of the '/demo-management' path
-app.use('/demo-management', demoRouter);
+//app.use('/demo-management', demoRouter);
 
-app.use(express.static('public')) // define where static assets live
+//app.use(express.static('public')) // define where static assets live
 
 
 

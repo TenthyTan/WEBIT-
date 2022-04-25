@@ -1,0 +1,15 @@
+<h1>Displaying all Patient {{record.patientId.screenName}}'s data in {{record.recordDate}} </h1>
+<table border = "1">
+    <tr>
+        <th> Date </th>
+        <th> {{record.data.bgl.category}} </th>
+        <th> {{record.data.doit.category}} </th>
+        <th> {{record.data.weight.category}}</th>
+        <th> {{record.data.exercise.category}} </th>
+    </tr>
+    {{#each record.data}}
+    <form action="/general/viewData" method="SAVE">
+        <li> {{this.id}}, {{this.last_name}} </li>
+        {{/each}}
+    </form>
+</table>

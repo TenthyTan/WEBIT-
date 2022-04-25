@@ -2,19 +2,18 @@
   <h1>
     Patient {{record.patientId.screenName}}'s Recorded Data in {{record.recordDate}}
   </h1>
+  <p>*You don't need to record is the color is grey.</p>
   <table border="1">
 
     <tr>
-      <th> Data Abbr </th>
       <th> Data Name </th>
       <th> Data Value </th>
       <th> Data Recorded Time </th>
       <th> Data Status </th>
       <th> Comment </th>
     </tr>
-
     {{#each record.data}}  
-    <form action="/general/recordData" method="POST">
+    <form action="/recordData" method="POST">
       <tr>
         <td> {{@key}} </td>
         <input type="hidden" name="key" value="{{@key}}">
@@ -32,7 +31,7 @@
           {{#ifUnrecorded this.status}}
           red
           {{else}}
-          white
+          grey
           {{/ifUnrecorded}}
           {{/ifRecorded}}
           ;">
