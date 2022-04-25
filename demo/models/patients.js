@@ -17,8 +17,8 @@ const patientSchema = new mongoose.Schema({
 },
 {
     timestamps: {createdAt: "Create_Time", updatedAt: "Update_Time"}
-})
+});
 
 // Create patient model in mongodb
-const Patient = mongoose.model("Patients", patientSchema);
+const Patient = mongoose.model("Patient", patientSchema);
 module.exports = Patient;
