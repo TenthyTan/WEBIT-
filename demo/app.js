@@ -31,9 +31,9 @@ app.get('/', (req, res) => {
 //     console.log('Demo app is listening on http:localhost:' + port)});
 
 
-const generalRouter = require("../demo/routes/demoRouters.js");
+const patientRouter = require("./routes/patientRouters.js");
 
-app.use("/general", generalRouter);
+app.use("/patients", patientRouter);
 
 app.listen(port, () =>
   console.log("> Server is up and running on http://localhost:" + port)

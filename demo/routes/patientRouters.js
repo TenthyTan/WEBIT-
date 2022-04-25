@@ -11,7 +11,7 @@ demoRouter.post("/recordData", demoController.updateRecord);
 demoRouter.get('/:id', demoController.getDataById)
 
 // export the router
-module.exports = demoRouter
+module.exports = patientRouter
 
 
 // const express = require("express");
