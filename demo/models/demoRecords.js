@@ -23,7 +23,7 @@ const demoRecords =[
             exercise: {
                 name: "Exercise (steps)",
                 status: "Not Required",
-                value: null,
+                value: 0,
                 comment: " ",
                 createdDate: null,
             },
