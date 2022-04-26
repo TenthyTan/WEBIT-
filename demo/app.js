@@ -14,8 +14,8 @@ const port = 3000;
 
 Patient = require('../demo/models/patients.js')
 // To encode the res body
-// app.use(express.json());
-// app.use(urlencoded({exphbs : true}))
+app.use(express.json());
+app.use(urlencoded({exphbs : true}))
 
 app.engine('hbs', exphbs.engine({      // configure Handlebars
     defaultlayout: 'main',
