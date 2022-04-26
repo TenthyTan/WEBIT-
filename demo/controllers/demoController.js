@@ -146,7 +146,7 @@ const updateRecord = async (req, res) => {
 // handle request to get one data instance
 const getDataById = (req, res) => {
     // search the database by ID
-    const data = demoData.find(data => data.id === req.params.id)
+    const data = Record.find(data => data.id === req.params.id)
         // return data if this ID exists
         if (data) {
             res.send(data)
@@ -159,13 +159,14 @@ const getDataById = (req, res) => {
 
 
 const getAllRecords = (req, res) => {
-  const patientId = await initPatient();
-  const result = await Record.find({
+  try{
+    const patientId = await initPatient();
+    const result = await Record.find({
     patientId: patientId,
-  });
+    });
 
-  res.render('ViewData.hbs', {data: result, Patient: Patient}) // send data to browser
-  catch(err){
+  res.render('ViewData.hbs', {data: result, Patient: Patient}); // send data to browser
+  }catch(err){
     console.log("error happens ", err);
 
   }
@@ -178,7 +179,8 @@ module.exports = {
   addOnePatient,
   renderRecordData,
   updateRecord,
-  getDataById
+  getDataById,
+  getAllRecords
 };
 
 

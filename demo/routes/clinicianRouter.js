@@ -6,4 +6,7 @@ const demoController = require('../controllers/demoController.js')
 
 
 // clinicians dashboard
-//demoRouter.get('/dashboard', getAllPatients);
+clinicianRouter.get('/dashboard', demoController.getAllRecords);
+
+// export the router
+module.exports = clinicianRouter

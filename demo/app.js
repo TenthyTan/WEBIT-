@@ -14,7 +14,7 @@ const port = 3000;
 Patient = require('../demo/models/patients.js')
 // To encode the res body
 app.use(express.json());
-app.use(urlencoded({exphbs : true}))
+app.use(express.urlencoded({extended : true}))
 
 app.engine('hbs', exphbs.engine({      // configure Handlebars
     defaultlayout: 'main',
@@ -30,22 +30,22 @@ app.get('/', (req, res) => {
 //     console.log('Demo app is listening on http:localhost:' + port)});
 
 
-app.get('/record', (req, res) => {
-    res.render('recordData.hbs')});
+const patientRouter = require("../demo/routes/patientRouters.js");
+const clinicianRouter = require("../demo/routes/clinicianRouter.js");
+    
+    // http://localhost:3000/patients
+    // http://localhost:3000/clinicians
+app.use("/patients", patientRouter);
+app.use("/clinicians", clinicianRouter);
+
+app.get('/recordData', (req, res) => {
+    res.render('Patientrecorddata.hbs')});
 
 app.get('/viewdata', (req, res) => {
     res.render('allData.hbs')});
 
-const patientRouter = require("../demo/routes/patientRouters.js");
-const clinicianRouter = require("../demo/routes/clinicianRouter.js");
-    
-    // http://localjost:3000/patients
-    // http://localjost:3000/clinicians
-app.use("/patients", patientRouter);
-app.use("/clinicians", clinicianRouter);
 
-
-const generalRouter = require("../demo/routes/demoRouters.js");
+// const generalRouter = require("../demo/routes/demoRouters.js");
 
 // app.use("/general", generalRouter);
 
