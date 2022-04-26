@@ -5,11 +5,12 @@
     "mongoose": "^6.3.1"
   },
   "name": "webit-",
-  "description": "Group:\r ProjectGroup 23",
+  "description": "Group:/r ProjectGroup 23",
   "version": "1.0.0",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "start": "node app.js",
+    "prettier": "prettier --single-quote --no-semi --tab-width 4 --write**/*.js *.js"
   },
   "repository": {
     "type": "git",
@@ -22,6 +23,7 @@
   },
   "homepage": "https://github.com/TenthyTan/WEBIT-#readme",
   "devDependencies": {
-    "dotenv": "^16.0.0"
+    "dotenv": "^16.0.0",
+    "prettier": "^2.6.2"
   }
 }

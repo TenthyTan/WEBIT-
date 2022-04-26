@@ -36,22 +36,23 @@ app.get('/record', (req, res) => {
 app.get('/viewdata', (req, res) => {
     res.render('allData.hbs')});
 
-    // const patientRouter = require("../demo/routes/patientRouters.js");
-    // const clinicianRouter = require("../demo/routes/clinicianRouter.js");
+const patientRouter = require("../demo/routes/patientRouters.js");
+const clinicianRouter = require("../demo/routes/clinicianRouter.js");
     
-    // // http://localjost:3000/patients
-    // // http://localjost:3000/clinicians
-    // app.use("/patients", patientRouter);
-    // app.use("/clinicians", clinicianRouter);
+    // http://localjost:3000/patients
+    // http://localjost:3000/clinicians
+app.use("/patients", patientRouter);
+app.use("/clinicians", clinicianRouter);
 
 
 const generalRouter = require("../demo/routes/demoRouters.js");
 
-app.use("/general", generalRouter);
+// app.use("/general", generalRouter);
 
-app.listen(port, () =>
-  console.log("> Server is up and running on http://localhost:" + port)
-);
+app.listen(process.env.PORT || 3000, () => {
+    console.log("> Server is up and running on http://localhost:" + port)
+})
+
 
 // // link to our router
 // const demoRouter = require('../demo/routes/demoRouters.js');
