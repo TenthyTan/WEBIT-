@@ -20,5 +20,8 @@
   "bugs": {
     "url": "https://github.com/TenthyTan/WEBIT-/issues"
   },
-  "homepage": "https://github.com/TenthyTan/WEBIT-#readme"
+  "homepage": "https://github.com/TenthyTan/WEBIT-#readme",
+  "devDependencies": {
+    "dotenv": "^16.0.0"
+  }
 }
