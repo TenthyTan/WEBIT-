@@ -31,8 +31,11 @@ app.get('/', (req, res) => {
 
 
 app.get('/record', (req, res) => {
-    res.render('Patientrecord.hbs')})
-    
+    res.render('recordData.hbs')});
+
+app.get('/viewdata', (req, res) => {
+    res.render('allData.hbs')});
+
 const generalRouter = require("../demo/routes/demoRouters.js");
 
 app.use("/general", generalRouter);
