@@ -1,7 +1,7 @@
 // import Model
-const data = require("../models/demoPatient.js");
-const records = require("../models/demoRecords.js");
-const { findOneAndUpdate } = require("../models/demoPatient.js");
+//const data = require("../models/demoPatient.js");
+//const records = require("../models/demoRecords.js"); 不需要demo了
+const { findOneAndUpdate } = require("../models/patient.js");
 const Patient = require("../models/patients.js");
 const Record = require("../models/records.js");
 const Doctor = require("../models/doctors.js");
@@ -75,12 +75,12 @@ async function initRecord(patientId) {
 
 //在hbs中填充record的数据//
 const getAllPatients = (req, res) => {
-  res.render('allData.hbs', {data: Record}) // send data to browser
+  res.render('allData.hbs', {data: Record, patient: Patient}) // send data to browser
 }
 
 //通过patient id 找patient的信息//
 const getOnePatient = (req, res) => {
-  const patient = data.find((one) => one.id == req.params.id);
+  const patient = Record.find((one) => one.id == req.params.id);
 
   if (patient) {
     res.send(patient);
@@ -95,11 +95,11 @@ const addOnePatient = (req, res) => {
   const newPatient = req.body;
   if (JSON.stringify(newPatient) != "{}") {
     // console.log(data.find(d => d.id == newPatient.id));
-    if (!data.find((d) => d.id == newPatient.id)) {
-      data.push(newPatient);
+    if (!Record.find((d) => d.id == newPatient.id)) {
+      Record.push(newPatient);
     }
   }
-  res.send(data);
+  res.send(Record);
 };
 
 ////
@@ -117,7 +117,7 @@ const renderRecordData = async (req, res) => {
     console.log(record);
 
     // console.log("-- record info when display -- ", record);
-    res.render("recordData.hbs", { record: record });
+    res.render("recordData.hbs", { record: Record });
   } catch (err) {
     res.status(400);
     res.send("error happens when render record data");
@@ -150,7 +150,7 @@ const updateRecord = async (req, res) => {
 // handle request to get one data instance
 const getDataById = (req, res) => {
     // search the database by ID
-    const data = demoData.find(data => data.id === req.params.id)
+    const data = Record.find(data => data.id === req.params.id)
         // return data if this ID exists
         if (data) {
             res.send(data)

@@ -6,4 +6,4 @@ const demoController = require('../controllers/demoController.js')
 
 
 // clinicians dashboard
-//demoRouter.get('/clinicians')
+//demoRouter.get('/dashboard', getAllPatients);
