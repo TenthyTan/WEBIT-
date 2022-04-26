@@ -3,14 +3,14 @@
     <thead>
         <tr>
             <th> Date </th>
-            <th> {{demoRecords.data.bgl.category}} </th>
-            <th> {{demoRecords.data.doit.category}} </th>
-            <th> {{demoRecords.data.weight.category}}</th>
-            <th> {{demoRecords.data.exercise.category}} </th>
+            <th> {{record.data.bgl.category}} </th>
+            <th> {{record.data.doit.category}} </th>
+            <th> {{record.data.weight.category}}</th>
+            <th> {{record.data.exercise.category}} </th>
         </tr>
     </thead>
     <tbody>
-        {{#each demoRecords.data}}
+        {{#each record.data}}
         <form action="/viewData" method="SAVE">
             {{#each value}}
                 <tr>
