@@ -1,6 +1,5 @@
 // import Model
-const data = require("../models/demoPatient.js");
-const records = require("../models/demoRecords.js");
+const mongoose = require("mongoose");
 const { findOneAndUpdate } = require("../models/demoPatient.js");
 const Patient = require("../models/patients.js");
 const Record = require("../models/records.js");
@@ -73,8 +72,10 @@ async function initRecord(patientId) {
 }
 
 const getAllPatients = (req, res) => {
-  res.render('allData.hbs', {data: Record}) // send data to browser
+  res.render('Cliniciandashboard.hbs', {data: Record, Patient: Patient}) // send data to browser
 }
+
+
 
 const getOnePatient = (req, res) => {
   const patient = data.find((one) => one.id == req.params.id);
@@ -155,6 +156,21 @@ const getDataById = (req, res) => {
             res.sendStatus(404)
     } 
 }
+
+
+const getAllRecords = (req, res) => {
+  const patientId = await initPatient();
+  const result = await Record.find({
+    patientId: patientId,
+  });
+
+  res.render('ViewData.hbs', {data: result, Patient: Patient}) // send data to browser
+  catch(err){
+    console.log("error happens ", err);
+
+  }
+}
+
 
 module.exports = {
   getAllPatients,
