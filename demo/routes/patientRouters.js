@@ -3,9 +3,12 @@ const express = require('express')
 const demoRouter = express.Router()
 // import demo controller functions
 const demoController = require('../controllers/demoController.js')
+
 // add a route to handle the GET request for all demo data
+// http://localjost:3000/patients/recordData/1
 demoRouter.get('/', demoController.getAllPatients)
 // add a route to handle the GET request for one data instance
+
 demoRouter.get('/recordData',demoController.renderRecordData)
 demoRouter.post("/recordData", demoController.updateRecord);
 demoRouter.get('/:id', demoController.getDataById)

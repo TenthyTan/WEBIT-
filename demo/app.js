@@ -12,7 +12,6 @@ Patient = require('./models/patients.js');
 const app = express();
 const port = 3000;
 
-Patient = require('../demo/models/patients.js')
 // To encode the res body
 app.use(express.json());
 app.use(urlencoded({exphbs : true}))
@@ -24,16 +23,20 @@ app.engine('hbs', exphbs.engine({      // configure Handlebars
 }));
 app.set('view engine', 'hbs');   // set Handlebars view engine
 // Tells the app to send the string: "Our demo app is working!" when you hit the '/' endpoint.
+// http://localjost:3000/
 app.get('/', (req, res) => {
     res.render('PatientHome.hbs')});
 // Tells the app to listen on port 3000 and logs that information to the console.
 // app.listen(port, () => {
 //     console.log('Demo app is listening on http:localhost:' + port)});
 
-
 const patientRouter = require("./routes/patientRouters.js");
+const clinicianRouter = require("./routes/clinicianRouter");
 
+// http://localjost:3000/patients
+// http://localjost:3000/clinicians
 app.use("/patients", patientRouter);
+app.use("/clinicians", clinicianRouter);
 
 app.listen(port, () =>
   console.log("> Server is up and running on http://localhost:" + port)
