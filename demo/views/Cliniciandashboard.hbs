@@ -24,14 +24,36 @@
 
             <div class="tabBal">
                 <table border="2" style="border-collapse: collapse;">
-                    <tr class="tt_a">
-                        <td style="width:200px">Name</td>
-                        <td style="width:100px">Age</td>
-                        <td style="width:200px">Weight (kg)</td>
-                        <td style="width:200px">Blood Glucose Level(Nmol/L)</td>
-                        <td style="width:250px">Exercise(Step count)</td>
-                        <td style="width:250px">Insulin Taken(Times)</td>
-                    </tr>
+                    <thead>
+                        <tr class="tt_a">
+                            // database.balabala.balabala.name
+                            database.balabala.balabala.age
+                            database.balabala.weight.category
+                            balabalbadhiaodjioasdj//
+                            <th style="width:200px">Name</th>
+                            <th style="width:100px">Age</th>
+                            <th style="width:200px">Weight (kg)</th>
+                            <th style="width:200px">Blood Glucose Level(Nmol/L)</th>
+                            <th style="width:250px">Exercise(Step count)</th>
+                            <th style="width:250px">Insulin Taken(Times)</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        // database是Chris这个医生管理的所有病人的数据库//
+                        {{#each database.data}}
+                        <form action="/cliniciandashboard" method="GET">
+                            {{#each value}}
+                                <tr>
+                                    <td >{{../patientfullname}}</td>
+                                    <td>{{../patientage}}</td>
+                                    <td>{{this}}</td>
+                                    <td>{{this}}</td>
+                                    <td>{{this}}</td>
+                                    <td>{{this}}</td>
+                                </tr>
+                        </form>
+                    </tbody>
+                    
 
 
 </body>
