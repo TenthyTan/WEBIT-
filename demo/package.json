@@ -4,12 +4,14 @@
   "description": "1",
   "main": "index.js",
   "scripts": {
-    "start": "nodemon app.js"
+    "start": "node app.js"
   },
   "author": "",
   "license": "ISC",
   "dependencies": {
     "express": "^4.18.0",
+    "express-session": "^1.17.2",
+    "mongodb": "^4.5.0",
     "mongoose": "^6.3.1"
   },
   "devDependencies": {
