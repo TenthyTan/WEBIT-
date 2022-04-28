@@ -1,0 +1,98 @@
+body {
+    width: 1920px;
+    height: 1080px;
+    font-family: "EB Garamond";
+    background-color:#E3F9EE
+}
+.insulin img {
+    position: absolute;
+    left: 4.8%;
+    right: 86.13%;
+    top: 25.25%;
+    bottom: 70.32%;
+}
+.blood img {
+    position: absolute;
+    left: 3.47%;
+    right: 84.53%;
+    top: 42.12%;
+    bottom: 53.08%;
+}
+.weight img {
+    position: absolute;
+    left: 6.67%;
+    right: 85.87%;
+    top: 58.37%;
+    bottom: 38.18%;
+}
+.exercise img {
+    position: absolute;
+    width: 24px;
+    height: 24px;
+    left: 29px;
+    top: 615px;
+}
+.encourage {
+    position: fixed;
+    left: 4.8%;
+    right: 5.07%;
+    top: 10%;
+    bottom: 12.5%;
+    font-family: 'Salsa';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 24px;
+    line-height: 29px;
+    text-align: center;
+}
+.date {
+    position: absolute;
+    left: 26.13%;
+    right: 25.87%;
+    top: 14.16%;
+    bottom: 79.56%;
+
+    font-family: 'Roboto';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 24px;
+    line-height: 28px;
+    text-align: center;
+}
+.label1 {
+    position: absolute;
+    left: 315px;
+    right: 15.2%;
+    top: 24%;
+    bottom: 73.28%;
+    font-family: 'Roboto';
+    font-style: normal;
+    font-weight: 600;
+    font-size: 18px;
+    line-height: 21px;
+    text-indent: 1px;
+}
+.label2 {
+    position: absolute;
+    left: 315px;
+    right: 41.87%;
+    top: 28%;
+    bottom: 69.95%;
+    font-family: 'Roboto';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 16px;
+}
+.label3 {
+    position: absolute;
+    left: 315px;
+    right: 59.73%;
+    top: 32%;
+    bottom: 66.13%;
+    font-family: 'Roboto';
+    font-style: normal;
+    font-weight: 700;
+    font-size: 18px;
+    line-height: 16px;
+}
