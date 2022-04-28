@@ -5,13 +5,16 @@ const express = require('express');
 const exphbs = require('express-handlebars'); // include Handlebars module
 //const res = require('express/lib/response');
 
+require('./models')
 // Connect to mongodb
-require('./models/database.js');
+//require('../models/database.js');
+
+
 
 const app = express();
 const port = 3000;
 
-Patient = require('../demo/models/patients.js')
+Patient = require('./models/patients.js')
 // To encode the res body
 app.use(express.json());
 app.use(express.urlencoded({extended : true}))
@@ -29,8 +32,8 @@ app.set('view engine', 'hbs');   // set Handlebars view engine
 //     console.log('Demo app is listening on http:localhost:' + port)});
 
 
-const patientRouter = require("../demo/routes/patientRouters.js");
-const clinicianRouter = require("../demo/routes/clinicianRouter.js");
+const patientRouter = require("./routes/patientRouters.js");
+const clinicianRouter = require("./routes/clinicianRouter.js");
     
     // http://localhost:3000/patients
     // http://localhost:3000/clinicians
