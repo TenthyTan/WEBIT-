@@ -22,10 +22,6 @@
             <table border="2" style="border-collapse: collapse;">
                 <thead>
                     <tr class="tt_a">
-                        // database.balabala.balabala.name
-                        database.balabala.balabala.age
-                        database.balabala.weight.category
-                        balabalbadhiaodjioasdj//
                         <th style="width:200px">Name</th>
                         <th style="width:100px">Age</th>
                         <th style="width:200px">Weight (kg)</th>
@@ -36,7 +32,7 @@
                 </thead>
                 <tbody>
                     // database是Chris这个医生管理的所有病人的数据库//
-                    {{#each database.data}}
+                    {{#each record.data}}
                     <form action="/cliniciandashboard" method="GET">
                         {{#each value}}
                             <tr>

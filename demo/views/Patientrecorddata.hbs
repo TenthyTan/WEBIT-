@@ -19,7 +19,7 @@
         <input type="hidden" name="key" value="{{@key}}">
         <td> {{this.name}} </td>
         {{#ifUnrecorded this.status}}
-        <td> <input type="text" name="value" placeholder="Enter your record here" required> </td>
+        <td> <input type="digit" name="value" placeholder="Enter your data here" required> </td>
         {{else}}
         <td> {{this.value}} </td>
         {{/ifUnrecorded}}

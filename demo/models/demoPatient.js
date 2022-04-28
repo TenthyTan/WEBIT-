@@ -14,6 +14,10 @@ const demoPatient =[
             bgl: {
                 max: 7300000,
                 min: 7000000
+            },
+            doit: {
+                max: 4,
+                min: 2
             }
         }
 
@@ -35,7 +39,7 @@ const demoPatient =[
             },
             doit: {
                 max: 3,
-                min: 3
+                min: 0
             }
         }
     }
