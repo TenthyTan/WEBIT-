@@ -158,15 +158,15 @@ const getDataById = (req, res) => {
 }
 
 
-const getAllRecords = (req, res) => {
+async function getAllRecords()  {
   try{
     const patientId = await initPatient();
     const result = await Record.find({
-    patientId: patientId,
+      patientId: patientId,
     });
 
-  res.render('ViewData.hbs', {data: result, Patient: Patient}); // send data to browser
-  }catch(err){
+    res.render('ViewData.hbs', {data: result, Patient: Patient}); // send data to browser
+  } catch(err){
     console.log("error happens ", err);
 
   }
@@ -181,7 +181,7 @@ module.exports = {
   updateRecord,
   getDataById,
   getAllRecords
-};
+}
 
 
 
