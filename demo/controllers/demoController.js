@@ -158,7 +158,7 @@ const getDataById = (req, res) => {
 }
 
 
-const getAllRecords = (req, res) => {
+const getAllRecords = async(req, res) => {
   try{
     const patientId = await initPatient();
     const result = await Record.find({
