@@ -1,6 +1,6 @@
 // import Model
 const mongoose = require("mongoose");
-const { findOneAndUpdate } = require("../models/demoPatient.js");
+const { findOneAndUpdate } = require("../models/patients.js");
 const Patient = require("../models/patients.js");
 const Record = require("../models/records.js");
 const Doctor = require("../models/doctors.js");
@@ -29,8 +29,9 @@ async function initPatient() {
         userName: "Pat",
         email: "pat@gmail.com",
         password: "12345678",
-        yearOfBirth: "1970",
+        yearOfBirth: "1991",
         supportMes: "You are the best",
+        
       });
 
       // save new patient to database
@@ -52,12 +53,12 @@ async function initPatient() {
 async function initRecord(patientId) {
   try {
     const result = await Record.findOne({
-      patientId: patientId,
+      patientID: patientId,
       recordDate: formatDate(new Date()),
     });
     if (!result) {
       const newRecord = new Record({
-        patientId: patientId,
+        patientID: patientId,
         recordDate: formatDate(new Date()),
       });
 
@@ -106,14 +107,14 @@ const renderRecordData = async (req, res) => {
     // const patient = await Patient.findOne({ _id: patientId }).lean();
     const record = await Record.findOne({ _id: recordId })
       .populate({
-        path: "patientId",
+        path: "patientID",
         options: { lean: true },
       })
       .lean();
     console.log(record);
 
     // console.log("-- record info when display -- ", record);
-    res.render("recordData.hbs", { record: record });
+    res.render("Patientrecorddata.hbs", { record: record });
   } catch (err) {
     res.status(400);
     res.send("error happens when render record data");

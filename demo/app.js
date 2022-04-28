@@ -22,7 +22,7 @@ app.use(express.urlencoded({extended : true}))
 app.engine('hbs', exphbs.engine({      // configure Handlebars
     defaultlayout: 'main',
     extname: 'hbs',
-    // helpers: require("../demo/public/js/helpers.js").helpers,
+    helpers: require("../demo/public/js/helpers.js").helpers,
 }));
 app.set('view engine', 'hbs');   // set Handlebars view engine
 // Tells the app to send the string: "Our demo app is working!" when you hit the '/' endpoint.
