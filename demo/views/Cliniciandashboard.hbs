@@ -1,0 +1,58 @@
+<div class="box">
+    <div class="box_left_aaa">
+        <div>
+            <img src="./static/nav/1.png" alt="">
+        </div>
+        <div>
+            <img src="./static/nav/2.png" alt="">
+        </div>
+        <div>
+            <img src="./static/nav/3.png" alt="">
+        </div>
+        <div>
+            <img src="./static/nav/4.png" alt="">
+        </div>
+        <div>
+            <img src="./static/nav/5.png" alt="">
+        </div>
+    </div>
+    <div class="box_right_aaa">
+
+        <div class="tabBal">
+            <table border="2" style="border-collapse: collapse;">
+                <thead>
+                    <tr class="tt_a">
+                        // database.balabala.balabala.name
+                        database.balabala.balabala.age
+                        database.balabala.weight.category
+                        balabalbadhiaodjioasdj//
+                        <th style="width:200px">Name</th>
+                        <th style="width:100px">Age</th>
+                        <th style="width:200px">Weight (kg)</th>
+                        <th style="width:200px">Blood Glucose Level(Nmol/L)</th>
+                        <th style="width:250px">Exercise(Step count)</th>
+                        <th style="width:250px">Insulin Taken(Times)</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    // database是Chris这个医生管理的所有病人的数据库//
+                    {{#each database.data}}
+                    <form action="/cliniciandashboard" method="GET">
+                        {{#each value}}
+                            <tr>
+                                <td >{{../patientfullname}}</td>
+                                <td>{{../patientage}}</td>
+                                <td>{{this}}</td>
+                                <td>{{this}}</td>
+                                <td>{{this}}</td>
+                                <td>{{this}}</td>
+                            </tr>
+                    </form>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+
+            
+

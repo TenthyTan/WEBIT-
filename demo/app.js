@@ -5,19 +5,16 @@ const express = require('express');
 const exphbs = require('express-handlebars'); // include Handlebars module
 //const res = require('express/lib/response');
 
-require('./models')
 // Connect to mongodb
-//require('../models/database.js');
-
-
+require('./models/database.js');
 
 const app = express();
 const port = 3000;
 
-Patient = require('./models/patients.js')
+Patient = require('../demo/models/patients.js')
 // To encode the res body
 app.use(express.json());
-app.use(express.urlencoded({extended : true}))
+app.use(urlencoded({exphbs : true}))
 
 app.engine('hbs', exphbs.engine({      // configure Handlebars
     defaultlayout: 'main',
@@ -26,31 +23,29 @@ app.engine('hbs', exphbs.engine({      // configure Handlebars
 }));
 app.set('view engine', 'hbs');   // set Handlebars view engine
 // Tells the app to send the string: "Our demo app is working!" when you hit the '/' endpoint.
-
+app.get('/', (req, res) => {
+    res.render('PatientHome.hbs')});
 // /Tells the app to listen on port 3000 and logs that information to the console.
 // app.listen(port, () => {
 //     console.log('Demo app is listening on http:localhost:' + port)});
 
 
-const patientRouter = require("./routes/patientRouters.js");
-const clinicianRouter = require("./routes/clinicianRouter.js");
+app.get('/record', (req, res) => {
+    res.render('recordData.hbs')});
+
+app.get('/viewdata', (req, res) => {
+    res.render('allData.hbs')});
+
+const patientRouter = require("../demo/routes/patientRouters.js");
+const clinicianRouter = require("../demo/routes/clinicianRouter.js");
     
-    // http://localhost:3000/patients
-    // http://localhost:3000/clinicians
+    // http://localjost:3000/patients
+    // http://localjost:3000/clinicians
 app.use("/patients", patientRouter);
 app.use("/clinicians", clinicianRouter);
 
-app.get('/', (req, res) => {
-    res.render('PatientHome.hbs')});
 
-app.get('/recordData', (req, res) => {
-    res.render('Patientrecorddata.hbs')});
-
-app.get('/viewdata', (req, res) => {
-    res.render('Patientviewdata.hbs')});
-
-
-// const generalRouter = require("../demo/routes/demoRouters.js");
+const generalRouter = require("../demo/routes/demoRouters.js");
 
 // app.use("/general", generalRouter);
 
