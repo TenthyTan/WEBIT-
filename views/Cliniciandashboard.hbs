@@ -24,70 +24,39 @@
     <img src="/img/icons8-search-account-64.png" />
     <p>Profile</p >
   </div>
+
   <div class="main">
     <table border="2" style="border-collapse: collapse;">
-        <thead>
-            <th style="width:200px">Patient Name</th>
-            <th style="width:200px">Blood Glucose Level(/L)</th>
-            <th style="width:250px">Insulin Taken(Times)</th>
-            <th style="width:250px">Exercise(Step count)</th>
-            <th style="width:200px">Weight (kg)</th>
+        <thead style="width:200px; background-color:#9CD9DE">
+            <th>Patient Name</th>
+            <th>Blood Glucose Level(/L)</th>
+            <th>Insulin Taken(Times)</th>
+            <th>Weight (kg)</th>
+            <th>Exercise(Step count)</th>
         </thead>
         <tbody>
-           
-              <form action="/dashboard" method="GET">
+              <form action="/clinicians/dashboard" method="GET">             
                 <tr>
                   <td >{{record.patientID.userName}}</td>
-                  <td style="background-color:
-                    {{#ifUnrecorded record.data.bgl.status}}
-                    grey
-                    {{else}}
-                      {{#ifOutSideThresholds record.patientID.data.bgl.status record.patientID.data.bgl.value record.patientID.data.bgl.minThreshold record.patientID.data.bgl.maxThreshold}}
-                      red
-                      {{/ifOutSideThresholds}}
-                    {{/ifUnrecorded}}
-                    ;">
-                    {{record.patientID.data.bgl.value}}
-                  </td>
+                  {{#each record.data}} 
+                  {{#ifUnrecorded this.status}}
+                  <td style = "color: #bb1f1f">Missing</td>
+                  {{/ifUnrecorded}}
                   <td style="background-color:
                     {{#ifOutSideThresholds this.status this.value this.minThreshold this.maxThreshold}}
                     red
-                    {{#ifUnrecorded this.status}}
-                    yellow
                     {{else}}
+                    {{#ifNoneed this.status}}
                     grey
-                    {{/ifUnrecorded}}
+                    {{/ifNoneed}}
                     {{/ifOutSideThresholds}}
                     ;">
-                    {{this.doit.value}}
+                    {{this.value}}
+                  {{/each}}
                   </td>
-                  <td style="background-color:
-                    {{#ifOutSideThresholds this.status this.value this.minThreshold this.maxThreshold}}
-                    red
-                    {{#ifUnrecorded this.status}}
-                    yellow
-                    {{else}}
-                    grey
-                    {{/ifUnrecorded}}
-                    {{/ifOutSideThresholds}}
-                    ;">
-                    {{this.weight.value}}
-                  </td>
-                  <td style="background-color:
-                    {{#ifOutSideThresholds this.status this.value this.minThreshold this.maxThreshold}}
-                    red
-                    {{#ifUnrecorded this.status}}
-                    yellow
-                    {{else}}
-                    grey
-                    {{/ifUnrecorded}}
-                    {{/ifOutSideThresholds}}
-                    ;">
-                    {{this.exercise.value}}
-                  </td>
+                  
                 </tr>
               </form>
-           
         </tbody>
     </table>
   </div>

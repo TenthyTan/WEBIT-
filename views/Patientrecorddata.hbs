@@ -1,62 +1,74 @@
-
-<head>
-  <div class="header">
-    <p class="left lightgreen">Diabetes@Home (Clinicians)</p >
-  </div>
-</head>
-
-<body>
+<div class="header">
+  <p class="left lightgreen">Diabetes@Home</p>
+</div>
+<section>
   <div class="sidenav">
-    <img src="/img/Group-44.png" />
-    <p>Chris</p >
-
-    <img src="/img/icons8-dashboard-64.png" />
-    <p>Dashboard</p >
-
-    <img src="/img/list-dash-header.png" />
-    <p>Note</p >
-
-    <img src="/img/Comment-1.png" />
-    <p>Comment</p >
-
-    <img src="/img/icons8-add-user-male-96.png" />
-    <p>Create</p >
-
-    <img src="/img/icons8-search-account-64.png" />
-    <p>Profile</p >
+    <img src="../public/img/head.png" />
+    <p>Pat</p>
+    <img src="../public/img/recording.png" />
+    <p>Record</p>
+    <img src="../public/img/view.png" />
+    <p>View</p>
+    <img src="../public/img/ranking.png" />
+    <p>Rank</p>
+    <img src="../public/img/profile.png" />
+    <p>Profile</p>
+    <img src="../public/img/setting.png" />
+    <p>setting</p>
+    <img src="../public/img/warning.png" />
+    <p>urgency</p>
   </div>
 
-  <div class="main">
-    <table border="2" style="border-collapse: collapse;">
-        <thead style="width:200px; background-color:#9CD9DE">
-            <th>Patient Name</th>
-            <th>Blood Glucose Level(/L)</th>
-            <th>Insulin Taken(Times)</th>
-            <th>Exercise(Step count)</th>
-            <th>Weight (kg)</th>
-        </thead>
-        <tbody>
-            {{#each record.data}}
-              <form action="/dashboard" method="GET">
-                <tr>
-                  <td >{{record.patientID.userName}}</td>
-                  {{#ifUnrecorded}}
-                  <td style = "background-color: yellow">missing</td>
-                  {{else}}
-                  <td style="background-color:
-                    {{#ifOutofthreshould}}
-                    red
-                    {{else}}
-                    gray
-                    {{/ifOutofthreshold}}
-                    ;">
-                  {{/ifUnrecorded}}
-                  {{this.value}}
-                  </td>   
-                </tr>
-              </form>
-            {{/each}}
-        </tbody>
-    </table>
-  </div>
+    <div class="main">
+        <h3>Date: {{record.recordDate}}</h3>
+        <div class="hint">
+            <p> * You don't need to record if the color is grey.</p>
+        </div>
+        <table border="1">
+          <tr>
+             <th> Data </th>
+             <th> Data Name </th>
+             <th> Data Value </th>
+             <th> Data Recorded Time </th>
+             <th> Data Status </th>
+             <th> Comment </th>
+          </tr>
+    {{#each record.data}}  
+    <form action="/patients/recordData" method="POST">
+      <tr>
+        <td> {{@key}} </td>
+        <input type="hidden" name="key" value="{{@key}}">
+        <td> {{this.name}} </td>
+        {{#ifUnrecorded this.status}}
+        <td> <input type="digit" name="value" placeholder="Enter your record here" required> </td>
+        {{else}}
+        <td> {{this.value}} </td>
+        {{/ifUnrecorded}}
+        <td> {{this.createdDate}} </td>
+        <td style="background-color:
+          {{#ifRecorded this.status}}
+          green
+          {{else}}
+          {{#ifUnrecorded this.status}}
+          red
+          {{else}}
+          grey
+          {{/ifUnrecorded}}
+          {{/ifRecorded}}
+          ;">
+          {{this.status}}
+        </td>
+        {{#ifUnrecorded this.status}}
+        <td> <input type="text" name="comment" placeholder="Enter your comment here"> </td>
+        {{else}}
+        <td> {{this.comment}} </td>
+        {{/ifUnrecorded}}
+        {{#ifUnrecorded this.status}}
+        <td> <button type="submit"> submit </td>
+        {{/ifUnrecorded}}
+      </tr>
+    </form>
+    {{/each}}
+        </table>
+    </div>
 </section>

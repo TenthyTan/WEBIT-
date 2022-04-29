@@ -27,11 +27,12 @@ const helpers = {
       }
       return options.inverse(this);
   },
-  ifNoneed: function(status, options) {
-      if (status == "Not Required") {
-          return options.fn(this);
+
+  ifNoneed: function(status, options){
+      if (status == "Not required"){
+        return options.fn(this)
       }
-      return options.inverse(this);
+      return options.inverse(this)
   },
   ifOutSideThresholds: function(status,value,minThreshold,maxThreshold, options){
     if (status == "Recorded") {
@@ -45,11 +46,10 @@ const helpers = {
         return options.inverse(this);
       }
     }
-    return options.inverse(this);
   },
 }
 
   
-  module.exports.helpers = helpers;
+module.exports.helpers = helpers;
 
 // thresholds write here
