@@ -33,6 +33,17 @@ const helpers = {
       }
       return options.inverse(this);
   },
+  ifOutsidethresholds: function(status,value,minThreshold,maxThreshold, options){
+    if (status == "recorded") {
+      if (value < minThreshold){
+        return options.fn(this);
+      }
+      if (value > maxThreshold){
+        return options.fn(this);
+      }
+    }
+    return options.inverse(this);
+  },
 }
 
   

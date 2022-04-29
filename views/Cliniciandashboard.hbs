@@ -1,58 +1,100 @@
-<div class="box">
-    <div class="box_left_aaa">
-        <div>
-            <img src="./static/nav/1.png" alt="">
-        </div>
-        <div>
-            <img src="./static/nav/2.png" alt="">
-        </div>
-        <div>
-            <img src="./static/nav/3.png" alt="">
-        </div>
-        <div>
-            <img src="./static/nav/4.png" alt="">
-        </div>
-        <div>
-            <img src="./static/nav/5.png" alt="">
-        </div>
+<section>
+  <div class="sidenav">
+    <div>
+      < img src="/img/icons8-dashboard-64.png" />
+      <div class="text">Dashboard</div>
     </div>
-    <div class="box_right_aaa">
 
-        <div class="tabBal">
-            <table border="2" style="border-collapse: collapse;">
-                <thead>
-                    <tr class="tt_a">
-                        // database.balabala.balabala.name
-                        database.balabala.balabala.age
-                        database.balabala.weight.category
-                        balabalbadhiaodjioasdj//
-                        <th style="width:200px">Name</th>
-                        <th style="width:100px">Age</th>
-                        <th style="width:200px">Weight (kg)</th>
-                        <th style="width:200px">Blood Glucose Level(Nmol/L)</th>
-                        <th style="width:250px">Exercise(Step count)</th>
-                        <th style="width:250px">Insulin Taken(Times)</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    // database是Chris这个医生管理的所有病人的数据库//
-                    {{#each database.data}}
-                    <form action="/cliniciandashboard" method="GET">
-                        {{#each value}}
-                            <tr>
-                                <td >{{../patientfullname}}</td>
-                                <td>{{../patientage}}</td>
-                                <td>{{this}}</td>
-                                <td>{{this}}</td>
-                                <td>{{this}}</td>
-                                <td>{{this}}</td>
-                            </tr>
-                    </form>
-                </tbody>
-            </table>
-        </div>
+    <div>
+      < img src="/img/list-dash-header.png" />
+      <div class="text">Note</div>
     </div>
-</div>
+
+    <div>
+      < img src="/img/Comment-1.png" />
+      <div class="text">Comment</div>
+    </div>
+
+    <div>
+      < img src="/img/icons8-add-user-male-96.png" />
+      <div class="text">Create</div>
+    </div>
+
+    <div>
+      <img src="/img/icons8-search-account-64.png" />
+      <div class="text">Profile</div>
+    </div>
+
+  </div>
+  <div class="main">
+    <table border="2" style="border-collapse: collapse;">
+        <thead>
+            <th style="width:200px">Name</th>
+            <th style="width:200px">Blood Glucose Level(Nmol/L)</th>
+            <th style="width:250px">Insulin Taken(Times)</th>
+            <th style="width:250px">Exercise(Step count)</th>
+            <th style="width:200px">Weight (kg)</th>
+        </thead>
+        <tbody>
+            {{#each record.data}}
+            <form action="/dashboard" method="GET">
+                    <tr>
+                        <td >{{record.patientID.userName}}</td>
+                        <td style="background-color:
+                          {{#ifOutsidethresholds this.value}}
+                          red
+                          {{#ifUnrecorded this.status}}
+                          yellow
+                          {{else}}
+                          grey
+                          {{/ifUnrecorded}}
+                          {{/ifOutsidethresholds}}
+                          ;">
+                          {{#each this.bgl.value}}
+                        </td>
+                        <td style="background-color:
+                          {{#ifOutsidethresholds this.value}}
+                          red
+                          {{#ifUnrecorded this.status}}
+                          yellow
+                          {{else}}
+                          grey
+                          {{/ifUnrecorded}}
+                          {{/ifOutsidethresholds}}
+                          ;">
+                          {{#each this.doit.value}}
+                        </td>
+                        <td style="background-color:
+                          {{#ifOutsidethresholds this.value}}
+                          red
+                          {{#ifUnrecorded this.status}}
+                          yellow
+                          {{else}}
+                          grey
+                          {{/ifUnrecorded}}
+                          {{/ifOutsidethresholds}}
+                          ;">
+                          {{#each this.exercise.value}}
+                        </td>
+                        <td style="background-color:
+                          {{#ifOutsidethresholds this.value}}
+                          red
+                          {{#ifUnrecorded this.status}}
+                          yellow
+                          {{else}}
+                          grey
+                          {{/ifUnrecorded}}
+                          {{/ifOutsidethresholds}}
+                          ;">
+                          {{#each this.weight.value}}
+                        </td>
+                    </tr>
+            </form>
+        </tbody>
+    </table>
+  </div>
+</section>
+
 
             
 
