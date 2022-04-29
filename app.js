@@ -4,6 +4,7 @@ const express = require('express');
 // Set your app up as an express app
 const exphbs = require('express-handlebars'); // include Handlebars module
 //const res = require('express/lib/response');
+const bodyParser = require('body-parser')
 
 require('./models')
 // Connect to mongodb
@@ -56,6 +57,7 @@ app.get('/', (req, res) => {
 // const generalRouter = require("../demo/routes/demoRouters.js");
 
 // app.use("/general", generalRouter);
+app.use(bodyParser.urlencoded({extended:true}))
 
 app.listen(process.env.PORT || 3000, () => {
     console.log("> Server is up and running on http://localhost:" + port)

@@ -1,6 +1,6 @@
 // import Model
 const mongoose = require("mongoose");
-const { findOneAndUpdate } = require("../models/patients.js");
+const { findOneAndUpdate } = require("../models/records.js");
 const Patient = require("../models/patients.js");
 const Record = require("../models/records.js");
 const Doctor = require("../models/doctors.js");
@@ -129,16 +129,16 @@ const updateRecord = async (req, res) => {
     const record = await Record.findOne({ _id: recordId }).lean();
     const key = req.body.key
     record.data[key].value = req.body.value
-    // record.data[comment].comment = req.body.comment
+    record.data[key].comment = req.body.comment
     // data.value = req.body.value
     // data.comment = req.body.comment
-    // data.status = "recorded"
+    record.data[key].status = "Recorded"
     // data.createdAt = new Date().toString
     // await data.save();
-    findOneAndUpdate({}, {})
-    record.save()
+    Record.findOneAndUpdate({}, {});
+    await record.save();
     console.log(record);
-    res.redirect("/recordData");
+    res.redirect("/patients/recordData");
   } catch (err) {
     console.log("error happens in update record: ", err);
   }
@@ -163,10 +163,10 @@ const getAllRecords = async(req, res) => {
   try{
     const patientId = await initPatient();
     const result = await Record.find({
-    patientId: patientId,
+    patientID: patientId,
     });
 
-  res.render('Cliniciandashboard.hbs', {data: result, Patient: Patient}); // send data to browser
+  res.render('Cliniciandashboard.hbs', {record: result, Patient: Patient}); // send data to browser
   }catch(err){
     console.log("error happens ", err);
 

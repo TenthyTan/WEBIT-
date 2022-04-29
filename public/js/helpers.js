@@ -1,48 +1,50 @@
 const helpers = {
-  isString(str) {
+  isString: function(str) {
     if (typeof str === 'string' || str instanceof String)
         return true
     else
         return false
   },
-  age(birth) {
+  age: function(birth) {
       return (2022 - parseInt(birth))
   },
-  isInRange(max, min, number) {
+  isInRange: function(max, min, number) {
     if (number == null)
         return false;
 
     if (number <= max && number >= min)
         return true;
   },
-  ifRecorded(status, options) {
-      if (status == "recorded") {
+  ifRecorded: function(status, options) {
+      if (status == "Recorded") {
           return options.fn(this);
       }
       return options.inverse(this);
   },
-  ifUnrecorded(status, options) {
-      if (status == "unrecorded") {
+  ifUnrecorded: function(status, options) {
+      if (status == "Unrecorded") {
           return options.fn(this);
       }
       return options.inverse(this);
   },
-  ifNoneed(status, options) {
+  ifNoneed: function(status, options) {
       if (status == "Not Required") {
           return options.fn(this);
       }
       return options.inverse(this);
   },
-  ifOutsidethresholds: function(status,value,minThreshold,maxThreshold, options){
-    if (status == "recorded") {
+  ifOutSideThresholds: function(status,value,minThreshold,maxThreshold, options){
+    if (status == "Recorded") {
       if (value < minThreshold){
         return options.fn(this);
       }
       if (value > maxThreshold){
         return options.fn(this);
       }
+      else{
+        return options.inverse(this);
+      }
     }
-    return options.inverse(this);
   },
 }
 
