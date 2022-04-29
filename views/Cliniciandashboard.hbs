@@ -42,7 +42,7 @@
                         <tr>
                             <td >{{record.patientID.userName}}</td>
                             <td style="background-color:
-                            {{#ifOutsidethresholds this.bgl.value}}
+                            {{#ifOutsidethresholds this.bgl.status,this.bgl.value,this.bgl.minThreshold,this.bgl.maxthreshold}}
                             red
                             {{#ifUnrecorded this.bgl.status}}
                             yellow
@@ -54,7 +54,7 @@
                             {{#each this.bgl.value}}
                             </td>
                             <td style="background-color:
-                            {{#ifOutsidethresholds this.doit.value}}
+                            {{#ifOutsidethresholds this.doit.status,this.doit.value,this.doit.minThreshold,this.doit.maxthreshold}}
                             red
                             {{#ifUnrecorded this.doit.status}}
                             yellow
@@ -66,7 +66,7 @@
                             {{#each this.doit.value}}
                             </td>
                             <td style="background-color:
-                            {{#ifOutsidethresholds this.exercise.value}}
+                            {{#ifOutsidethresholds this.exercise.status,this.exercise.value,this.exercise.minThreshold,this.exercise.maxthreshold}}
                             red
                             {{#ifUnrecorded this.exercise.status}}
                             yellow
@@ -78,7 +78,7 @@
                             {{#each this.exercise.value}}
                             </td>
                             <td style="background-color:
-                            {{#ifOutsidethresholds this.weight.value}}
+                            {{#ifOutsidethresholds this.weight.status,this.weight.value,this.weight.minThreshold,this.weight.maxthreshold}}
                             red
                             {{#ifUnrecorded this.weight.status}}
                             yellow
