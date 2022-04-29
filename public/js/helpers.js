@@ -45,6 +45,7 @@ const helpers = {
         return options.inverse(this);
       }
     }
+    return options.inverse(this);
   },
 }
 

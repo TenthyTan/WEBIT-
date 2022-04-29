@@ -73,7 +73,9 @@ async function initRecord(patientId) {
 }
 
 const getAllPatients = (req, res) => {
-  res.render('Cliniciandashboard.hbs', {record: Record, Patient: Patient}) // send data to browser
+  
+  
+  //res.render('Cliniciandashboard.hbs', {record: Record.lean(), Patient: Patient.lean()}) // send data to browser
 }
 
 
@@ -126,16 +128,16 @@ const updateRecord = async (req, res) => {
   try {
     const patientId = await initPatient();
     const recordId = await initRecord(patientId);
-    const record = await Record.findOne({ _id: recordId }).lean();
+    const record = await Record.findOne({ _id: recordId })
     const key = req.body.key
     record.data[key].value = req.body.value
     record.data[key].comment = req.body.comment
     // data.value = req.body.value
     // data.comment = req.body.comment
     record.data[key].status = "Recorded"
-    // data.createdAt = new Date().toString
+    record.data[key].createdDate = new Date()
     // await data.save();
-    Record.findOneAndUpdate({}, {});
+    // Record.findOneAndUpdate({}, {});
     await record.save();
     console.log(record);
     res.redirect("/patients/recordData");
@@ -162,11 +164,16 @@ const getDataById = (req, res) => {
 const getAllRecords = async(req, res) => {
   try{
     const patientId = await initPatient();
-    const result = await Record.find({
-    patientID: patientId,
-    });
+    const recordId = await initRecord(patientId);
+    const record = await Record.findOne({ _id: recordId })
+      .populate({
+        path: "patientID",
+        options: { lean: true },
+      })
+      .lean();
+    
 
-  res.render('Cliniciandashboard.hbs', {record: result, Patient: Patient}); // send data to browser
+  res.render('Cliniciandashboard.hbs', {record: record}); // send data to browser
   }catch(err){
     console.log("error happens ", err);
 
