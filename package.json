@@ -1,0 +1,29 @@
+{
+  "dependencies": {
+    "express": "^4.17.3",
+    "express-handlebars": "^6.0.5",
+    "mongoose": "^6.3.1"
+  },
+  "name": "webit-",
+  "description": "Group:/r ProjectGroup 23",
+  "version": "1.0.0",
+  "main": "./models/index.js",
+  "scripts": {
+    "start": "node app.js",
+    "prettier": "prettier --single-quote --no-semi --tab-width 4 --write**/*.js *.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/TenthyTan/WEBIT-.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/TenthyTan/WEBIT-/issues"
+  },
+  "homepage": "https://github.com/TenthyTan/WEBIT-#readme",
+  "devDependencies": {
+    "dotenv": "^16.0.0",
+    "prettier": "^2.6.2"
+  }
+}
