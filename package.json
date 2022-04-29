@@ -7,9 +7,9 @@
   "name": "webit-",
   "description": "Group:/r ProjectGroup 23",
   "version": "1.0.0",
-  "main": "./demo/models/index.js",
+  "main": "./models/index.js",
   "scripts": {
-    "start": "node ./demo/app.js",
+    "start": "node app.js",
     "prettier": "prettier --single-quote --no-semi --tab-width 4 --write**/*.js *.js"
   },
   "repository": {
