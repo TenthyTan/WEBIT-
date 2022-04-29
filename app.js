@@ -8,7 +8,7 @@ const exphbs = require('express-handlebars'); // include Handlebars module
 require('./models')
 // Connect to mongodb
 //require('../models/database.js');
-
+const path = require('path')
 
 
 const app = express();
@@ -39,6 +39,9 @@ const clinicianRouter = require("./routes/clinicianRouter.js");
 // http://localhost:3000/clinicians
 app.use("/patients", patientRouter);
 app.use("/clinicians", clinicianRouter);
+
+app.use('/public', express.static(path.join(__dirname, 'public')))
+app.use(express.static('public'))
 
 app.get('/', (req, res) => {
     res.render('PatientHome.hbs')});
