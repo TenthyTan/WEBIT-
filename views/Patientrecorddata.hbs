@@ -1,313 +1,52 @@
-<section>
-  <div class="sidenav">
-    <img src="/img/people.png" />
-    <img src="/img/recording.png" />
-    <img src="/img/view.png" />
-    <img src="/img/ranking.png" />
-    <img src="/img/profile.png" />
-    <img src="/img/settings.png" />
-  </div>
+<div>
+  <h1>
+    Patient {{record.patientId.userName}}'s Recorded Data in {{record.recordDate}}
+  </h1>
+  <p>*You don't need to record if the color is grey.</p>
+  <table border="1">
 
-  <div class="main">
-    <h1>
-      Patient : {{record.patientID.userName}} 
-    </h1>
-    <h1>
-      Record Date : {{record.recordDate}}
-    </h1>
-    <p>*You don't need to record if the color is grey.</p>
-  </div>>
-    {{!-- 引用数据 #each record.dat
-    {{#ifRecorded this.status}} ：
-    代表如果status是recorded 就过一遍helper.js里面的function
-    并且显示记录时间，记录数据，和记录的comment
-  
-    {{#ifUnrecorded this.status}}：
-    就加等待记录数据的空格 数据的type就是digit
-    <input type="digit" name="value" placeholder="Enter your data here" required>
-    comment就不是required的
-    <input type="text" name="comment" placeholder="Enter your comment here">
-    也需要显示记录的时间
-    再加submit按键 +css
-    <button type="submit"> submit
-
-    {{#ifNoneed this.status}}：
-    可以直接不显示这个数据 也可以将这个数据的颜色变淡
-    
-
-    // this.recordedAt 代表输入数据的时间// --}}
-    <div class="flex-grid">
-      {{#each record.data}}
-      <form action="/patients/recordData" method="POST">
-        <div class="d-col-6 item-block">
-          <div class="flex-grid padding-10">
-            {{ifRecorded this.status}}
-              <div class="d-col-2">
-                <div class="d-col-2">
-                  <img src="/img/{{icon}}" alt={{icon}} />
-                </div>
-              </div>
-            {{#if (ifUnrecorded this.status)}}
-              <div class="d-col-2">
-                <div class="d-col-2">
-                  <img src="/img/{{icon}}" alt={{icon}} />
-                </div>
-              </div>
-            {{#if (ifNoneed this.status)}}
-              <div class="d-col-2 grey">
-                <div class="d-col-2">
-                  <img src="/img/{{icon}}" alt={{icon}} />
-                </div>
-              </div>
-            {{/if}}
-          
-            <div class="d-col-10">
-              <div class="flex-grid">
-               //each  this.name//
-                {{ ifRecorded }}
-                  <div class="d-col-4">
-                    <p class="left">{{title}}</p>
-                  </div>
-
-                  {{#if (isString select)}}
-                    <div>{{select}}</div>
-                  {{else}}
-                    <div class="d-col-4">
-                      <select class="lightgreen" name="" id="">
-                        {{#each select}}
-                          <option value="volvo">{{this}}</option>
-                        {{/each}}
-                      </select>
-                    </div>
-                  {{/if}}
-
-                  <div class="d-col-4">
-                    <p class="left">{{unit}}</p>
-                  </div>
-                {{else}}
-
-                  <div class="d-col-4 grey">
-                    <p class="left">{{title}}</p>
-                  </div>
-                  {{#if (isString select)}}
-                    <div class="grey">{{select}}</div>
-                  {{else}}
-                    <div class="d-col-4 grey">
-                      <select name="cars" id="cars" disabled>
-                        {{#each select}}
-                          <option value="volvo">{{this}}</option>
-                        {{/each}}
-                      </select>
-                    </div>
-                  {{/if}}
-
-                  <div class="d-col-4 grey">
-                    <p class="left">{{unit}}</p>
-                  </div>
-                {{/if}}
-
-              </div>
-              <div class="flex-grid">
-
-                {{#if isActivated}}
-                  <div class="d-col-5">
-                    <p class="left"></p>
-                  </div>
-                  <div class="d-col-7">
-                    <p class="left">{{time}}</p>
-                  </div>
-                {{else}}
-                  <div class="d-col-5 grey">
-                    <p class="left">Recording Time:</p>
-                  </div>
-                  <div class="d-col-7 grey">
-                    <p class="left">{{time}}</p>
-                  </div>
-                {{/if}}
-
-              </div>
-
-              {{#if isActivated}}
-                <div class="flex-grid">
-                  <div class="d-col-5">
-                    <p class="left">Comment:</p>
-                  </div>
-                  <div class="d-col-5">
-                    <input
-                      class="lightgreen"
-                      type="text"
-                      id="fname"
-                      name="fname"
-                      value={{comment}}
-                    />
-                  </div>
-                  <div class="d-col-2"></div>
-                </div>
-              {{else}}
-                <div class="flex-grid grey">
-                  <div class="d-col-5">
-                    <p class="left">Comment:</p>
-                  </div>
-                  <div class="d-col-5">
-                    <input
-                      class="lightgreen"
-                      type="text"
-                      id="fname"
-                      name="fname"
-                      disabled
-                    />
-                  </div>
-                  <div class="d-col-2"></div>
-                </div>
-              {{/if}}
-
-            </div>
-          </div>
-
-          {{#if isActivated}}
-            <div class="flex-grid">
-              <div class="d-col-12">
-                <button class="submit-button">{{btnTitle}}</button>
-              </div>
-            </div>
-          {{/if}}
-
-        </div>
-      {{/each}}
-    </div>
-
-    <div class="flex-grid">
-      {{#each data1}}
-        <div class="d-col-6 item-block">
-          <div class="flex-grid padding-10">
-            {{#if isActivated}}
-              <div class="d-col-2">
-                <div class="d-col-2">
-                  <img src="/img/{{icon}}" alt={{icon}} />
-                </div>
-              </div>
-            {{else}}
-              <div class="d-col-2 grey">
-                <div class="d-col-2">
-                  <img src="/img/{{icon}}" alt={{icon}} />
-                </div>
-              </div>
-            {{/if}}
-
-            <div class="d-col-10">
-              <div class="flex-grid">
-
-                {{#if isActivated}}
-                  <div class="d-col-4">
-                    <p class="left">{{title}}</p>
-                  </div>
-
-                  {{#if (isString select)}}
-                    <div>{{select}}</div>
-                  {{else}}
-                    <div class="d-col-4">
-                      <select class="lightgreen" name="" id="">
-                        {{#each select}}
-                          <option value="volvo">{{this}}</option>
-                        {{/each}}
-                      </select>
-                    </div>
-                  {{/if}}
-
-                  <div class="d-col-4">
-                    <p class="left">{{unit}}</p>
-                  </div>
-                {{else}}
-
-                  <div class="d-col-4 grey">
-                    <p class="left">{{title}}</p>
-                  </div>
-                  {{#if (isString select)}}
-                    <div class="grey">{{select}}</div>
-                  {{else}}
-                    <div class="d-col-4 grey">
-                      <select name="cars" id="cars" disabled>
-                        {{#each select}}
-                          <option value="volvo">{{this}}</option>
-                        {{/each}}
-                      </select>
-                    </div>
-                  {{/if}}
-
-                  <div class="d-col-4 grey">
-                    <p class="left">{{unit}}</p>
-                  </div>
-                {{/if}}
-
-              </div>
-              <div class="flex-grid">
-
-                {{#if isActivated}}
-                  <div class="d-col-5">
-                    <p class="left">Recording Time:</p>
-                  </div>
-                  <div class="d-col-7">
-                    <p class="left">{{time}}</p>
-                  </div>
-                {{else}}
-                  <div class="d-col-5 grey">
-                    <p class="left">Recording Time:</p>
-                  </div>
-                  <div class="d-col-7 grey">
-                    <p class="left">{{time}}</p>
-                  </div>
-                {{/if}}
-
-              </div>
-
-              {{#if isActivated}}
-                <div class="flex-grid">
-                  <div class="d-col-5">
-                    <p class="left">Comment:</p>
-                  </div>
-                  <div class="d-col-5">
-                    <input
-                      class="lightgreen"
-                      type="text"
-                      id="fname"
-                      name="fname"
-                      value={{comment}}
-                    />
-                  </div>
-                  <div class="d-col-2"></div>
-                </div>
-              {{else}}
-                <div class="flex-grid grey">
-                  <div class="d-col-5">
-                    <p class="left">Comment:</p>
-                  </div>
-                  <div class="d-col-5">
-                    <input
-                      class="lightgreen"
-                      type="text"
-                      id="fname"
-                      name="fname"
-                      disabled
-                    />
-                  </div>
-                  <div class="d-col-2"></div>
-                </div>
-              {{/if}}
-
-            </div>
-          </div>
-
-          {{#if isActivated}}
-            <div class="flex-grid">
-              <div class="d-col-12">
-                <button class="submit-button">{{btnTitle}}</button>
-              </div>
-            </div>
-          {{/if}}
-
-        </div>
-      {{/each}}
-    </div>
-  </div>
-
-</section>
+    <tr>
+      <th> Data Name </th>
+      <th> Data Value </th>
+      <th> Data Recorded Time </th>
+      <th> Data Status </th>
+      <th> Comment </th>
+    </tr>
+    {{#each record.data}}  
+    <form action="/pateints/recordData" method="POST">
+      <tr>
+        <td> {{@key}} </td>
+        <input type="hidden" name="key" value="{{@key}}">
+        <td> {{this.name}} </td>
+        {{#ifUnrecorded this.status}}
+        <td> <input type="text" name="value" placeholder="Enter your record here" required> </td>
+        {{else}}
+        <td> {{this.value}} </td>
+        {{/ifUnrecorded}}
+        <td> {{this.recordedAt}} </td>
+        <td style="background-color:
+          {{#ifRecorded this.status}}
+          green
+          {{else}}
+          {{#ifUnrecorded this.status}}
+          red
+          {{else}}
+          grey
+          {{/ifUnrecorded}}
+          {{/ifRecorded}}
+          ;">
+          {{this.status}}
+        </td>
+        {{#ifUnrecorded this.status}}
+        <td> <input type="text" name="comment" placeholder="Enter your comment here" required> </td>
+        {{else}}
+        <td> {{this.comment}} </td>
+        {{/ifUnrecorded}}
+        {{#ifUnrecorded this.status}}
+        <td> <button type="submit"> submit </td>
+        {{/ifUnrecorded}}
+      </tr>
+    </form>
+    {{/each}}
+  </table>
+</div>
