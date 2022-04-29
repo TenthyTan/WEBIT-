@@ -3,6 +3,7 @@ const demoRecords =[
     {
         id: 1,
         patientId: 1,
+        patientname: "Pat",
         CreatedDate: "2022-3-17",
         data: {
             bgl: {
@@ -40,6 +41,7 @@ const demoRecords =[
     {
         id: 2,
         patientId: 1,
+        patientname: "Pat",
         CreatedDate: "2022-3-18",
         data: {
             bgl: {
@@ -78,6 +80,7 @@ const demoRecords =[
     {
         id: 3,
         patientId: 2,
+        
         CreatedDate: "2022-3-17",
         data: {
             bgl: {
