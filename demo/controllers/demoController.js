@@ -73,7 +73,7 @@ async function initRecord(patientId) {
 }
 
 const getAllPatients = (req, res) => {
-  res.render('Cliniciandashboard.hbs', {data: Record, Patient: Patient}) // send data to browser
+//  res.render('Cliniciandashboard.hbs', {data: Record, Patient: Patient}) // send data to browser
 }
 
 
@@ -163,15 +163,29 @@ const getAllRecords = async(req, res) => {
   try{
     const patientId = await initPatient();
     const result = await Record.find({
-    patientId: patientId,
+    patientID: patientId,
     });
 
-  res.render('ViewData.hbs', {data: result, Patient: Patient}); // send data to browser
+  res.render('Cliniciandashboard.hbs', {data: result, Patient: Patient}); // send data to browser
   }catch(err){
     console.log("error happens ", err);
 
   }
 }
+
+/*const getAllRecords = async(req, res) => {
+  try{
+    const patientId = await initPatient();
+    const result = await Record.find({
+    patientId: patientId,
+    });
+
+  res.render('Cliniciandashboard.hbs', {data: result, Patient: Patient}); // send data to browser
+  }catch(err){
+    console.log("error happens ", err);
+
+  }
+}*/
 
 
 module.exports = {
