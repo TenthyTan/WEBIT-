@@ -24,7 +24,7 @@
         <td> <input type="digit" name="value" placeholder="Enter your record here" required> </td>
         {{else}}
         <td> {{this.value}} </td>
-        {{/ifUnrecorded}}
+        {{/ifRecorded}}
         <td> {{this.recordedAt}} </td>
         <td style="background-color:
           {{#ifRecorded this.status}}
