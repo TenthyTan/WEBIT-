@@ -24,25 +24,27 @@ body {
     background-color: #E3F9EE;
 }
 
-.header {
-    font-size: 20px;
-    display: flex;
-    background-color: #B2E2DC;
-    padding: 10px;
-    width: 100%;
-    height: 45px;
-    font-family: 'Ranga', cursive;
-    font-weight: 400;
-}
 
-.header .title {
+.title {
     margin: 10px;
     padding-left: 500px;
     position: fixed;
 }
-
+.headerbar{
+    background-color: #B2E2DC;
+    padding: 0px;
+    width: 100%;
+    height: 67px;
+    position: fixed;
+    margin-top: -88px;
+}
 .lightgreen {
-    padding: 10px;
+    margin: 4px 20px;
+    font-family: 'Ranga', cursive;
+    font-weight: 400;
+    font-size: 35px;
+    top: -1px;
+    padding: 5px;
     background-color: #E3F9EE;
     box-shadow: 0 5px 5px -5px black;
     position: fixed;
@@ -82,7 +84,7 @@ body {
 }
 
 .hint p {
-    text-align: left;
+    text-align: center;
     margin: 0;
     padding: 10;
     font-weight: 600;
@@ -94,10 +96,10 @@ body {
 .sidenav {
     height: 100%;
     z-index: 1;
-    top: 64px;
+    top: 68px;
     background: #eee;
     overflow-x: hidden;
-    padding: 8px 0;
+    padding: 10px 0;
     width: 84px;
     background-color: #B2E2DC;
     position: fixed;
@@ -125,6 +127,7 @@ table {
     font-family: arial, sans-serif;
     border-collapse: collapse;
     width: 100%;
+    margin-top: 90px;
 }
 
 table tr th,
@@ -145,25 +148,26 @@ th {
     font-size: 28px;
     /* Increased text to enable scrolling */
     padding: 0px 20px;
-}
-.main h3{
-    margin: 40px 10px;
+    margin: 0px 80px 30px;
     font-weight: 900;
     font-size: 40px;
     line-height: 47px;
 }
 
+.main h3{
+    margin-top: 90px;
+    text-align: center;
+}
 h2 {
     text-align: center;
 }
 
-.item-block {
+/*.item-block {
     font-size: 18px;
 }
 
 .submit-button {
     background-color: #66c6BA;
-    /* Green */
     border: none;
     color: black;
     padding: 5;
@@ -229,14 +233,14 @@ h2 {
     box-shadow: 0px 5px 5px #888888;
 }
 
-@media (min-width: 980px) {
+/* @media (min-width: 980px) {
     .flex-wrapper {
         padding-left: 0%;
         padding-right: 0%;
     }
 
     .flex-grid {
-        margin: 30px 20px 30px 5px;
+        margin: 0px 20px 30px 5px;
     }
 
     .flex-grid:first-child {
@@ -370,27 +374,28 @@ h2 {
         margin-top: 0;
     }
 }
-
+*/
 .grey {
     color: gray;
 }
-.left input{
-    margin:0 30px 0;
-}
-.d-col-4 p, .d-col-5 p{
-    margin:0 150px 0;
+
+.d-col-4{
+    margin:30px 450px 0;
     font-size: 25px;
     font-family: 'Roboto';
     font-style: normal;
     font-weight: 400;
-    line-height: 30px;
     text-indent: 1px;
 
 }
-.d-col-4 input, .d-col-5 input{
-    margin: 0 150px 0;
+.left input{
+    margin:0 25px 0;
     font-size: 23px;
     line-height: 30px;
+    font-size:20px;
+    background-color: #D4F4D9;
+    text-align: center;
+    width: 350px
 }
 .d-col-12 button{
     background-color: #A5E0D5;
@@ -400,5 +405,24 @@ h2 {
     font-size: 28px;
     line-height: 35px;
     text-indent: 1px;
-    margin: 0 250px 0;
+    margin: 40px 600px 0;
+}
+.d-col-2 img{
+    width: 82px;
+    height: 75px;
+    margin-top:40px;
+    margin-left: 420px;
+}
+.d-col-1 {
+    margin: 20px 30px 40px;
+}
+.d-col-1-grey{
+    color:grey;
+}
+.d-col-12 {
+    line-height: 20px;
+}
+.d-col-2{
+    width: 20px;
+    margin: 0 35px 0;
 }
