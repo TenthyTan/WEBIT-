@@ -18,8 +18,9 @@
 <section>
   <div class="main">
         <h3>Date: {{record.recordDate}}</h3>
+        <h4>Support Message: {{record.patientID.supportMes}}</h4>
         <div class="hint">
-            <p> * You don't need to record if the color is grey.</p >
+        <p> * You don't need to record if the color is grey.</p >
         </div>
         <div class="flex-grid">
         {{#each record.data}} 
@@ -30,16 +31,16 @@
                         <div class="d-col-1">
                             <div class="d-col-2">
                             {{#ifbgl this.name}}
-                            <img src="/img/glucose.png" alt="glucose.png" />
+                            <img class="img-1" src="/img/glucose.png" alt="glucose.png" />
                             {{/ifbgl}}
                             {{#ifdoit this.name}}
-                            <img src="/img/insulin.png" alt="insulin.png" />
+                            <img class="img-2" src="/img/insulin.png" alt="insulin.png" />
                             {{/ifdoit}}
                             {{#ifweight this.name}}
-                            <img src="/img/weight.png" alt="weight.png" />
+                            <img class="img-3" src="/img/weight.png" alt="weight.png" />
                             {{/ifweight}}
                             {{#ifexercise this.name}}
-                            <img src="/img/exercise.png" alt="exercise.png" />
+                            <img class="img-4" src="/img/exercise.png" alt="exercise.png" />
                             {{/ifexercise}}
                             </div>
                             <div class="d-col-4">
@@ -47,21 +48,21 @@
                             </div>
 
                             <div class="d-col-4">
-                            <p class="left">{{this.name}}: {{this.value}} </p >
+                            <p class="left">{{this.name}}:  {{this.value}} </p >
                             </div>
                           
                           
                             <div class="d-col-4">
-                            <p class="left">Recording time: {{this.createdDate}}</p >
+                            <p class="left">Recording time:  {{this.createdDate}}</p >
                             </div>
                           
                           
                             <div class="d-col-4">
-                            <p class="left">Data status: {{this.status}}</p >
+                            <p class="left">Data status:  {{this.status}}</p >
                             </div>
                         
                             <div class="d-col-4">
-                            <p class="left">Comment: {{this.comment}}</p >
+                            <p class="left">Comment:  {{this.comment}}</p >
                             </div>
                            
                         </div>
@@ -70,16 +71,16 @@
                         <div class="d-col-1">                         
                             <div class="d-col-2">
                             {{#ifbgl this.name}}
-                            <img src="/img/glucose.png" alt="glucose.png" />
+                            <img class="img-1" src="/img/glucose.png" alt="glucose.png" />
                             {{/ifbgl}}
                             {{#ifdoit this.name}}
-                            <img src="/img/insulin.png" alt="insulin.png" />
+                            <img class="img-2" src="/img/insulin.png" alt="insulin.png" />
                             {{/ifdoit}}
                             {{#ifweight this.name}}
-                            <img src="/img/weight.png" alt="weight.png" />
+                            <img class="img-3" src="/img/weight.png" alt="weight.png" />
                             {{/ifweight}}
                             {{#ifexercise this.name}}
-                            <img src="/img/exercise.png" alt="exercise.png" />
+                            <img class="img-4" src="/img/exercise.png" alt="exercise.png" />
                             {{/ifexercise}}
                             </div>
                             <div class="d-col-4">
@@ -92,11 +93,11 @@
                             </div>
                         
                             <div class="d-col-4">
-                            <p class="left">Data status: {{this.status}}</p >
+                            <p class="left">Data status:  {{this.status}}</p >
                             </div>
                         
                             <div class="d-col-4">
-                            <p class="left">Comment:<input type="text" name="comment" placeholder="Enter your comment here"></p >
+                            <p class="left">Comment: <input type="text" name="comment" placeholder="Enter your comment here"></p >
                             </div>
                         
                             <div class="d-col-12">
@@ -108,16 +109,16 @@
                         <div class="d-col-1-grey">
                             <div class="d-col-2">
                             {{#ifbgl this.name}}
-                            <img src="/img/glucose-grey.png" alt="glucose.png" />
+                            <img class="img-1" src="/img/glucose.png" alt="glucose.png" />
                             {{/ifbgl}}
                             {{#ifdoit this.name}}
-                            <img src="/img/insulin-grey.png" alt="insulin.png" />
+                            <img class="img-2" src="/img/insulin.png" alt="insulin.png" />
                             {{/ifdoit}}
                             {{#ifweight this.name}}
-                            <img src="/img/weight-grey.png" alt="weight.png" />
+                            <img class="img-3" src="/img/weight.png" alt="weight.png" />
                             {{/ifweight}}
                             {{#ifexercise this.name}}
-                            <img src="/img/exercise-grey.png" alt="exercise.png" />
+                            <img class="img-4" src="/img/exercise.png" alt="exercise.png" />
                             {{/ifexercise}}
                             </div>
                            
@@ -134,7 +135,7 @@
                             </div>
                           
                             <div class="d-col-4">
-                            <p class="left">Data status:{{this.status}}</p >
+                            <p class="left">Data status:  {{this.status}}</p >
                             </div>
                         
                             <div class="d-col-4">
