@@ -44,8 +44,30 @@ const helpers = {
       }
       
       return options.inverse(this);
-      
-    
+  },
+  ifbgl: function(name, options){
+      if (name == "Blood Glucose Level (nmol/L)"){
+        return options.fn(this);
+      }
+      return options.inverse(this);
+  },
+  ifdoit: function(name, options){
+    if (name == "Insulin Taken (units)"){
+      return options.fn(this);
+    }
+    return options.inverse(this);
+  },
+  ifweight: function(name, options){
+    if (name == "Weight (kg)"){
+      return options.fn(this);
+    }
+    return options.inverse(this);
+  },
+  ifexercise: function(name, options){
+    if (name == "Exercise (steps)"){
+      return options.fn(this);
+    }
+    return options.inverse(this);
   },
 }
 

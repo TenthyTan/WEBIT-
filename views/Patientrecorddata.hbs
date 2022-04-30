@@ -31,21 +31,41 @@
                 <div class="flex-grid padding-10">
                     {{#each record.data}} 
                     {{#ifRecorded this.status}}
+
                         <div class="d-col-2">
                             <div class="d-col-2">
+                            {{#ifbgl this.name}}
                             <img src="/img/glucose.png" alt="glucose.png" />
+                            {{/ifbgl}}
+                            {{#ifdoit}}
+                            <img src="/img/insulin.png" alt="insulin.png" />
+                            {{/igdoit}}
+                            {{#ifweight}}
+                            <img src="/img/weight.png" alt="weight.png" />
+                            {{/ifweight}}
+                            {{#ifexercise}}
+                            <img src="/img/exercise.png" alt="exercise.png" />
+                            {{/ifexercise}}
                             </div>
-                            <div class="d-col-4">
-                            <p class="left">{{this.name}}:{{this.value}} </p >
+                            <div class="flex-grid">
+                              <div class="d-col-4">
+                              <p class="left">{{this.name}}:{{this.value}} </p >
+                              </div>
                             </div>
-                            <div class="d-col-5">
-                            <p class="left">Recording time:{{this.createdDate}}</p >
+                            <div class="flex-grid">
+                              <div class="d-col-5">
+                              <p class="left">Recording time:{{this.createdDate}}</p >
+                              </div>
                             </div>
-                            <div class="d-col-5">
-                            <p class="left">Data status:{{this.status}}</p >
+                            <div class="flex-grid">
+                              <div class="d-col-5">
+                              <p class="left">Data status:{{this.status}}</p >
+                              </div>
                             </div>
-                            <div class="d-col-5">
-                            <p class="left">Comment:{{this.comment}}</p >
+                            <div class="flex-grid">
+                              <div class="d-col-5">
+                              <p class="left">Comment:{{this.comment}}</p >
+                              </div>
                             </div>
 
                             {{!-- <div class="d-col-2">
@@ -99,26 +119,41 @@
                     {{!-- {{/ifRecorded}} --}}
                     {{else}}
                     {{#ifUnrecorded this.status}}
-                        <div class="d-col-2">
+                        <div class="d-col-2">                         
                             <div class="d-col-2">
+                            {{#ifbgl this.name}}
                             <img src="/img/glucose.png" alt="glucose.png" />
+                            {{/ifbgl}}
+                            {{#ifdoit}}
+                            <img src="/img/insulin.png" alt="insulin.png" />
+                            {{/igdoit}}
+                            {{#ifweight}}
+                            <img src="/img/weight.png" alt="weight.png" />
+                            {{/ifweight}}
+                            {{#ifexercise}}
+                            <img src="/img/exercise.png" alt="exercise.png" />
+                            {{/ifexercise}}
                             </div>
-                            <div class="d-col-4">
-                            <p class="left">{{this.name}}:<input type="digit" name="value" placeholder="Enter your record here" required></p >
+                            <div class="flex-grid">
+                              <div class="d-col-4">
+                              <p class="left">{{this.name}}:<input type="digit" name="value" placeholder="Enter your record here" required></p >
+                              </div>
                             </div>
-                            <div class="d-col-5">
-                            <p class="left">Recording time:{{this.createdData}}</p >
+                            <div class="flex-grid">
+                              <div class="d-col-5">
+                              <p class="left">Recording time:{{this.createdDate}}</p >
+                              </div>
                             </div>
-                            <div class="d-col-5">
-                            <p class="left">Data status:{{this.status}}</p >
+                            <div class="flex-grid">
+                              <div class="d-col-5">
+                              <p class="left">Data status:{{this.status}}</p >
+                              </div>
                             </div>
-                            <div class="d-col-5">
-                            <p class="left">Comment:<input type="text" name="comment" placeholder="Enter your comment here"></p >
+                            <div class="flex-grid">
+                              <div class="d-col-5">
+                              <p class="left">Comment:<input type="text" name="comment" placeholder="Enter your comment here"></p >
+                              </div>
                             </div>
-                            <div class="d-col-12">
-                            <button type="submit"> submit </button>
-                            </div>
-
                             {{!-- <div class="d-col-2">
                             <img src="/img/insulin.png" alt="insulin.png" />
                             </div>
@@ -181,22 +216,41 @@
                     {{else}}
                     {{#ifNoneed this.status}}
                         <div class="d-col-2 grey">
-                            <div class="d-col-2">
-                            <img src="/img/glucose-grey.png" alt="glucose-grey.png" />
-                            </div>
-                            <div class="d-col-4">
-                            <p class="left">{{this.name}}:</p >
-                            </div>
-                            <div class="d-col-5">
-                            <p class="left">Recording time:</p >
-                            </div>
-                            <div class="d-col-5">
-                            <p class="left">Data status:{{this.status}}</p >
-                            </div>
-                            <div class="d-col-5">
-                            <p class="left">Comment:</p >
-                            </div>
 
+                            <div class="d-col-2">
+                            {{#ifbgl this.name}}
+                            <img src="/img/glucose-grey.png" alt="glucose.png" />
+                            {{/ifbgl}}
+                            {{#ifdoit}}
+                            <img src="/img/insulin-grey.png" alt="insulin.png" />
+                            {{/igdoit}}
+                            {{#ifweight}}
+                            <img src="/img/weight-grey.png" alt="weight.png" />
+                            {{/ifweight}}
+                            {{#ifexercise}}
+                            <img src="/img/exercise-grey.png" alt="exercise.png" />
+                            {{/ifexercise}}
+                            </div>
+                            <div class="flex-grid">
+                              <div class="d-col-4">
+                              <p class="left">{{this.name}}:</p >
+                              </div>
+                            </div>
+                            <div class="flex-grid">
+                              <div class="d-col-5">
+                              <p class="left">Recording time:</p >
+                              </div>
+                            </div>
+                            <div class="flex-grid">
+                              <div class="d-col-5">
+                              <p class="left">Data status:{{this.status}}</p >
+                              </div>
+                            </div>
+                            <div class="flex-grid">
+                              <div class="d-col-5">
+                              <p class="left">Comment:</p >
+                              </div>
+                            </div>
                             {{!-- <div class="d-col-2">
                             <img src="/img/insulin-grey.png" alt="insulin-grey.png" />
                             </div>
