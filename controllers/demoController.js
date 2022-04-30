@@ -28,6 +28,7 @@ async function initPatient() {
         lastName: "wu",
         userName: "Pat",
         email: "pat@gmail.com",
+        doctor: "Chirs",
         password: "12345678",
         yearOfBirth: "1991",
         supportMes: "You are the best",

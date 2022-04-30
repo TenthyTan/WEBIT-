@@ -8,7 +8,7 @@ const patientSchema = new mongoose.Schema({
     lastName: {type: String, required: true, lowercase: true, trim: true},
     userName: {type: String, required: true, trim: true, unique: true, maxLength: 15},
     yearOfBirth: {type: Number, required: true, min: 1990, max: 2022},
-    doctor: {type: String},
+    doctor: {type: String, required: true},
     email: {type: String, required: true, unique: true},
     supportMes: {type: String, required: true},
     recordRate: {type: Number, min: 0, max: 1},
