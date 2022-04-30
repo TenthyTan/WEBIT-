@@ -41,20 +41,24 @@
                   {{#each record.data}} 
                   {{#ifUnrecorded this.status}}
                   <td style = "color: #bb1f1f">Missing</td>
-                  {{/ifUnrecorded}}
+                  {{else}}
+                  
                   <td style="background-color:
-                    {{#ifOutSideThresholds this.status this.value this.minThreshold this.maxThreshold}}
-                    red
-                    {{else}}
                     {{#ifNoneed this.status}}
                     grey
-                    {{/ifNoneed}}
+                    {{else}}
+                    {{#ifRecorded this.status}}
+                    {{#ifOutSideThresholds this.value this.minThreshold this.maxThreshold}}
+                    red
                     {{/ifOutSideThresholds}}
+                    {{/ifRecorded}}
+                    {{/ifNoneed }}
                     ;">
                     {{this.value}}
-                  {{/each}}
                   </td>
-                  
+                  {{/ifUnrecorded}}
+                 {{/each}}
+
                 </tr>
               </form>
         </tbody>

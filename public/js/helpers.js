@@ -34,18 +34,18 @@ const helpers = {
       }
       return options.inverse(this)
   },
-  ifOutSideThresholds: function(status,value,minThreshold,maxThreshold, options){
-    if (status == "Recorded") {
+  ifOutSideThresholds: function(value,minThreshold,maxThreshold, options){
+    
       if (value < minThreshold){
         return options.fn(this);
       }
       if (value > maxThreshold){
         return options.fn(this);
       }
-      else{
-        return options.inverse(this);
-      }
-    }
+      
+      return options.inverse(this);
+      
+    
   },
 }
 
