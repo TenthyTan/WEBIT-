@@ -30,6 +30,7 @@ body {
     background-color: #B2E2DC;
     padding: 10px;
     width: 100%;
+    height: 45px;
     font-family: 'Ranga', cursive;
     font-weight: 400;
 }
@@ -37,12 +38,14 @@ body {
 .header .title {
     margin: 10px;
     padding-left: 500px;
+    position: fixed;
 }
 
 .lightgreen {
     padding: 10px;
     background-color: #E3F9EE;
     box-shadow: 0 5px 5px -5px black;
+    position: fixed;
 }
 
 .left {
@@ -97,7 +100,7 @@ body {
     padding: 8px 0;
     width: 84px;
     background-color: #B2E2DC;
-    position: absolute;
+    position: fixed;
     left: 0px;
 }
 .sidenav img {
@@ -177,9 +180,9 @@ h2 {
 }
 
 .flex-grid {
-    display: flex;
+    display: block;
     justify-content: space-between;
-    text-align: center;
+    
 }
 
 .flex-wrapper select {
@@ -233,7 +236,7 @@ h2 {
     }
 
     .flex-grid {
-        margin-top: 1rem;
+        margin: 30px 20px 30px 5px;
     }
 
     .flex-grid:first-child {
@@ -266,10 +269,7 @@ h2 {
         width: 40.85%;
     }
 
-    .d-col-6,
-    .d-col-halfs {
-        width: 49.3%;
-    }
+    
 
     .d-col-7 {
         width: 57.75%;
@@ -373,4 +373,32 @@ h2 {
 
 .grey {
     color: gray;
+}
+.left input{
+    margin:0 30px 0;
+}
+.d-col-4 p, .d-col-5 p{
+    margin:0 150px 0;
+    font-size: 25px;
+    font-family: 'Roboto';
+    font-style: normal;
+    font-weight: 400;
+    line-height: 30px;
+    text-indent: 1px;
+
+}
+.d-col-4 input, .d-col-5 input{
+    margin: 0 150px 0;
+    font-size: 23px;
+    line-height: 30px;
+}
+.d-col-12 button{
+    background-color: #A5E0D5;
+    font-family: 'Roboto';
+    font-style: normal;
+    font-weight: 600;
+    font-size: 28px;
+    line-height: 35px;
+    text-indent: 1px;
+    margin: 0 250px 0;
 }
