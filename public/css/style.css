@@ -30,6 +30,8 @@ body {
     background-color: #B2E2DC;
     padding: 10px;
     width: 100%;
+    font-family: 'Ranga', cursive;
+    font-weight: 400;
 }
 
 .header .title {
