@@ -1,0 +1,253 @@
+<div class="header">
+  <p class="left lightgreen">Diabetes@Home</p>
+  <link href="https://fonts.googleapis.com/css2?family=Ranga&display=swap" rel="stylesheet">
+</div>
+<section>
+  <div class="sidenav">
+    <img src="../public/img/head.png" />
+    <p>Pat</p>
+    <img src="../public/img/recording.png" />
+    <p>Record</p>
+    <img src="../public/img/view.png" />
+    <p>View</p>
+    <img src="../public/img/ranking.png" />
+    <p>Rank</p>
+    <img src="../public/img/profile.png" />
+    <p>Profile</p>
+    <img src="../public/img/setting.png" />
+    <p>setting</p>
+    <img src="../public/img/warning.png" />
+    <p>urgency</p>
+  </div>
+  <div class="main">
+        <h3>Date: {{record.recordDate}}</h3>
+        <div class="hint">
+            <p> * You don't need to record if the color is grey.</p>
+        </div>
+        <div class="flex-grid">
+        <form action="/recordData" method="POST">
+            <div class="d-col-6 item-block">
+                <div class="flex-grid padding-10">
+                    {{#each record.data}}
+                    {{#ifRecorded this.status}}
+                    <div class="d-col-2">
+                        <div class="d-col-2">
+                        <img src="/img/glucose.png" alt="glucose.png" />
+                        </div>
+                        <div class="d-col-4">
+                        <p class="left">{{this.name}}:{{thid.value}} </p>
+                        </div>
+                        <div class="d-col-5">
+                        <p class="left">Recording time:{{this.createdDate}}</p>
+                        </div>
+                        <div class="d-col-5">
+                        <p class="left">Data status:{{this.status}}</p>
+                        </div>
+                        <div class="d-col-5">
+                        <p class="left">Comment:{{this.comment}}</p>
+                        </div>
+
+                        <div class="d-col-2">
+                        <img src="/img/insulin.png" alt="insulin.png" />
+                        </div>
+                        <div class="d-col-4">
+                        <p class="left">{{this.name}}:{{thid.value}} </p>
+                        </div>
+                        <div class="d-col-5">
+                        <p class="left">Recording time:{{this.createdDate}}</p>
+                        </div>
+                        <div class="d-col-5">
+                        <p class="left">Data status:{{this.status}}</p>
+                        </div>
+                        <div class="d-col-5">
+                        <p class="left">Comment:{{this.comment}}</p>
+                        </div>
+
+                        <div class="d-col-2">
+                        <img src="/img/weight.png" alt="weight.png" />
+                        </div>
+                        <div class="d-col-4">
+                        <p class="left">{{this.name}}:{{thid.value}} </p>
+                        </div>
+                        <div class="d-col-5">
+                        <p class="left">Recording time:{{this.createdDate}}</p>
+                        </div>
+                        <div class="d-col-5">
+                        <p class="left">Data status:{{this.status}}</p>
+                        </div>
+                        <div class="d-col-5">
+                        <p class="left">Comment:{{this.comment}}</p>
+                        </div>
+
+                        <div class="d-col-2">
+                        <img src="/img/exercise.png" alt="exercise.png" />
+                        </div>
+                        <div class="d-col-4">
+                        <p class="left">{{this.name}}:{{thid.value}} </p>
+                        </div>
+                        <div class="d-col-5">
+                        <p class="left">Recording time:{{this.createdDate}}</p>
+                        </div>
+                        <div class="d-col-5">
+                        <p class="left">Data status:{{this.status}}</p>
+                        </div>
+                        <div class="d-col-5">
+                        <p class="left">Comment:{{this.comment}}</p>
+                        </div>
+                    </div>
+                    {{/ifRecorded}}
+                    {{#ifUnrecorded this.status}}
+                    <div class="d-col-2">
+                        <div class="d-col-2">
+                        <img src="/img/glucose.png" alt="glucose.png" />
+                        </div>
+                        <div class="d-col-4">
+                        <p class="left">{{this.name}}:<input type="digit" name="value" placeholder="Enter your record here" required></p>
+                        </div>
+                        <div class="d-col-5">
+                        <p class="left">Recording time:{{this.createdData}}</p>
+                        </div>
+                        <div class="d-col-5">
+                        <p class="left">Data status:{{this.status}}</p>
+                        </div>
+                        <div class="d-col-5">
+                        <p class="left">Comment:<input type="text" name="comment" placeholder="Enter your comment here"></p>
+                        </div>
+                        <div class="d-col-12">
+                        <button type="submit"> submit </button>
+                        </div>
+
+                        <div class="d-col-2">
+                        <img src="/img/insulin.png" alt="insulin.png" />
+                        </div>
+                        <div class="d-col-4">
+                        <p class="left">{{this.name}}:<input type="digit" name="value" placeholder="Enter your record here" required></p>
+                        </div>
+                        <div class="d-col-5">
+                        <p class="left">Recording time:{{this.createdData}}</p>
+                        </div>
+                        <div class="d-col-5">
+                        <p class="left">Data status:{{this.status}}</p>
+                        </div>
+                        <div class="d-col-5">
+                        <p class="left">Comment:<input type="text" name="comment" placeholder="Enter your comment here"></p>
+                        </div>
+                        <div class="d-col-12">
+                        <button type="submit"> submit </button>
+                        </div>
+
+                        <div class="d-col-2">
+                        <img src="/img/weight.png" alt="weight.png" />
+                        </div>
+                        <div class="d-col-4">
+                        <p class="left">{{this.name}}:<input type="digit" name="value" placeholder="Enter your record here" required></p>
+                        </div>
+                        <div class="d-col-5">
+                        <p class="left">Recording time:{{this.createdData}}</p>
+                        </div>
+                        <div class="d-col-5">
+                        <p class="left">Data status:{{this.status}}</p>
+                        </div>
+                        <div class="d-col-5">
+                        <p class="left">Comment:<input type="text" name="comment" placeholder="Enter your comment here"></p>
+                        </div>
+                        <div class="d-col-12">
+                        <button type="submit"> submit </button>
+                        </div>
+
+
+                        <div class="d-col-2">
+                        <img src="/img/exercise.png" alt="exercise.png" />
+                        </div>
+                        <div class="d-col-4">
+                        <p class="left">{{this.name}}:<input type="digit" name="value" placeholder="Enter your record here" required></p>
+                        </div>
+                        <div class="d-col-5">
+                        <p class="left">Recording time:{{this.createdData}}</p>
+                        </div>
+                        <div class="d-col-5">
+                        <p class="left">Data status:{{this.status}}</p>
+                        </div>
+                        <div class="d-col-5">
+                        <p class="left">Comment:<input type="text" name="comment" placeholder="Enter your comment here"></p>
+                        </div>
+                        <div class="d-col-12">
+                        <button type="submit"> submit </button>
+                        </div>
+                    </div>
+                    {{/ifUnrecorded}}
+                    {{else}}
+                    <div class="d-col-2 grey">
+                        <div class="d-col-2">
+                        <img src="/img/glucose-grey.png" alt="glucose-grey.png" />
+                        </div>
+                        <div class="d-col-4">
+                        <p class="left">{{this.name}}:</p>
+                        </div>
+                        <div class="d-col-5">
+                        <p class="left">Recording time:</p>
+                        </div>
+                        <div class="d-col-5">
+                        <p class="left">Data status:{{this.status}}</p>
+                        </div>
+                        <div class="d-col-5">
+                        <p class="left">Comment:</p>
+                        </div>
+
+                        <div class="d-col-2">
+                        <img src="/img/insulin-grey.png" alt="insulin-grey.png" />
+                        </div>
+                        <div class="d-col-4">
+                        <p class="left">{{this.name}}:</p>
+                        </div>
+                        <div class="d-col-5">
+                        <p class="left">Recording time:</p>
+                        </div>
+                        <div class="d-col-5">
+                        <p class="left">Data status:{{this.status}}</p>
+                        </div>
+                        <div class="d-col-5">
+                        <p class="left">Comment:</p>
+                        </div>
+
+                        <div class="d-col-2">
+                        <img src="/img/weight-grey.png" alt="weight-grey.png" />
+                        </div>
+                        <div class="d-col-4">
+                        <p class="left">{{this.name}}:</p>
+                        </div>
+                        <div class="d-col-5">
+                        <p class="left">Recording time:</p>
+                        </div>
+                        <div class="d-col-5">
+                        <p class="left">Data status:{{this.status}}</p>
+                        </div>
+                        <div class="d-col-5">
+                        <p class="left">Comment:</p>
+                        </div>
+
+                        <div class="d-col-2">
+                        <img src="/img/exercise-grey.png" alt="exercise-grey.png" />
+                        </div>
+                        <div class="d-col-4">
+                        <p class="left">{{this.name}}:</p>
+                        </div>
+                        <div class="d-col-5">
+                        <p class="left">Recording time:</p>
+                        </div>
+                        <div class="d-col-5">
+                        <p class="left">Data status:{{this.status}}</p>
+                        </div>
+                        <div class="d-col-5">
+                        <p class="left">Comment:</p>
+                        </div>
+                    </div>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</section>
+                
+
+
