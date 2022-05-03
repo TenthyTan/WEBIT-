@@ -1,5 +1,6 @@
-{{#each flash}}
-<p class="alert">{{this}}</p> {{/each}}
+{{#each record.data}}
+<p class="alert">{{this.username}}</p> 
+<p class="alert">{{this.passward}}</p> {{/each}}
 <form action="/patients/login" method="POST">
     <div class="login_box">
         <p class="title">Sign In</p>
