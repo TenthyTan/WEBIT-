@@ -1,13 +1,9 @@
-/* clinician用来传passward和username的数据库名 */
-{{#each 数据库名}}
-<p class="alert">{{this.username}}</p> 
-<p class="alert">{{this.passward}}</p> {{/each}}
 <form action="/clinicians/login" method="POST">
     <div class="login_box">
         <p class="title">Sign In</p>
         <link href="https://fonts.googleapis.com/css2?family=Quattrocento+Sans:wght@700&display=swap" rel="stylesheet">
-        <div class="Ipt"><label for="username">Username: <input type="text" name="name" placeholder="Enter username here" required></label></div> 
-        <div class="Ipt"><label for="password">Password: <input type="passward" name="passward" placeholder="Enter passward here" required></label></div>
+        <div class="Ipt"><label for="username">Username:<input type="text" name="name" placeholder="Enter username here" required></label></div> 
+        <div class="Ipt"><label for="password">Password:<input type="passward" name="passward" placeholder="Enter passward here" required></label></div>
         <div class="golog"><input type="submit" value="Submit" /></div>
     </div>
 </form>
