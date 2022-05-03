@@ -260,9 +260,10 @@ h2 {
 }
 
 .Ipt {
-    width: 80%;
+    width: 900px;
     height: 90px;
-    margin: 50px auto 0;
+    margin: 100px auto 0;
+    text-align: center;
 }
 
 .Ipt>input {
@@ -284,15 +285,15 @@ h2 {
 }
 
 .golog {
-    background-color: #A4E5D9;
-    width: 80%;
+    width: 900px;
     height: 90px;
     margin: 100px auto 0;
     text-align: center;
     font-family: 'Quattrocento Sans';
     font-style: normal;
-    font-weight: 700;
+    font-weight: 400;
     font-size: 45px;
     line-height: 90px;
-    text-align: center;
+    background: rgba(196, 237, 195, 0.5);
+    box-shadow: 0px 4px 4px rgb(0 0 0 / 40%);
 }
