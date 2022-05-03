@@ -1,4 +1,5 @@
-{{#each record.data}}
+/* patinet用来传passward和username的数据库名 */
+{{#each 数据库名}}
 <p class="alert">{{this.username}}</p> 
 <p class="alert">{{this.passward}}</p> {{/each}}
 <form action="/patients/login" method="POST">

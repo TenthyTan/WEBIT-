@@ -1,5 +1,7 @@
-{{#each flash}}
-<p class="alert">{{this}}</p> {{/each}}
+/* clinician用来传passward和username的数据库名 */
+{{#each 数据库名}}
+<p class="alert">{{this.username}}</p> 
+<p class="alert">{{this.passward}}</p> {{/each}}
 <form action="/clinicians/login" method="POST">
     <div class="login_box">
         <p class="title">Sign In</p>
