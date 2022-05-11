@@ -1,33 +1,105 @@
-const passport = require('passport')
+//const passport = require('passport')
 const LocalStrategy = require('passport-local').Strategy
-  // Hardcode user for now
-const USER = { id: 123, username: 'user', password: 'password', secret: 'info30005' }
-  // Serialize information to be stored in session/cookie
-  passport.serializeUser((user, done) => {
-      // Use id to serialize user
-done(undefined, user.id) })
-  // When a request comes in, deserialize/expand the serialized information
-  // back to what it was (expand from id to full user)
-  passport.deserializeUser((userId, done) => {
-// Run database query here to retrieve user information // For now, just return the hardcoded user
-if (userId === USER.id) {
-done(undefined, USER) } else {
-done(new Error('Bad User'), undefined) }
-})
-// Define local authentication strategy for Passport
-// http://www.passportjs.org/docs/downloads/html/#strategies
-// Define local authentication strategy for Passport
-// http://www.passportjs.org/docs/downloads/html/#strategies
-passport.use(
-    new LocalStrategy((username, password, done) => {
-    // Check if user exists and password matches the hash in the database // For now, just match the hardcoded user
-    if (username !== USER.username || password !== USER.password) {
-    return done(undefined, false, {
-                      message: 'Incorrect username/password',
-                  })
-    }
-              // If credentials match, return user in callback
-    return done(undefined, USER) })
-)
+const bcrypt = require("bcrypt");
 
-module.exports = passport
+// import patient and clinicians models
+const Doctor = require('./models/doctors')
+const Patient = require('./models/patients')
+const process = require('process')
+
+
+
+module.exports = (passport) => {
+
+  // Store user information
+  passport.serializeUser((user, done)=>{
+    done(null, {_id: user._id, role: user.role})
+  });
+
+  passport.deserializeUser((user, done) => {
+    if(user.role === "patient"){
+      Patient.findById(user._id, (err, patient)=>{
+        return done(err, patient)
+      })
+    }else if(user.role === "doctor"){
+      Doctor.findById(user._id, (err, doctor)=>{
+        return done(err, doctor)
+      })
+    }else{
+      return done("This user have no authority to log in", null)
+    }
+  })
+// For patient login
+  passport.use(
+    "patient_login",
+    new LocalStrategy({
+      usernameField: "userName",
+      passwordField: "password",
+      passReqToCallback: true
+    },
+    (req, userName, password, done) => {
+      process.nextTick(()=>{
+        Patient.findOne({'userName': userName}, async(err, patient)=>{
+          if(err){
+            return done(err)
+             
+          }else if(!patient){
+            return done(null, false, req.flash('loginMessage', 'Can not find a user.'))
+          }else if(!await bcrypt.compare(password, patient.password)){
+            return done(null, false,  req.flash('loginMessage', 'Incorrect Password'))
+          }else{
+            return done(null, patient, req.flash('loginMessage', 'Log In Successfully'))
+          }
+          // Check password
+          //patient.verifyPassword(password,(err, valid) =>{
+           // if(err){
+            //  return done(err)
+          //  }
+           // if(!valid){
+           //   return done(null, false,  req.flash('loginMessage', 'Incorrect Password'))
+          //  }
+            // If user and password all correct
+           // return done(null, patient, req.flash('loginMessage', 'Log In Successfully'))
+         // })
+          
+        })
+      })
+    })
+    
+  )
+// For doctor login
+  passport.use(
+    "doctor_login",
+    new LocalStrategy({
+      usernameField: "userName",
+      passwordField: "password",
+      passReqToCallback: true
+    },
+    (req, userName, password, done) => {
+      process.nextTick(()=>{
+        Doctor.findOne({'userName': userName}, async(err, doctor)=>{
+          if(err){
+            return done(err)
+          }
+          if(!doctor){
+            return done(null, false, req.flash('loginMessage', 'Can not find a user.'))
+          }
+          // Check password
+          doctor.verifyPassword(password,(err, valid) =>{
+            if(err){
+              return done(err)
+            }
+            if(!valid){
+              return done(null, false,  req.flash('loginMessage', 'Incorrect Password'))
+            }
+            // If user and password all correct
+            return done(null, doctor, req.flash('loginMessage', 'Log In Successfully'))
+          })
+          
+        })
+      })
+    })
+  )
+
+
+}

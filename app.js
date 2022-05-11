@@ -1,10 +1,21 @@
 //Import express//
+require("dotenv").config();
 const { urlencoded } = require('express');
 const express = require('express');
+const cookieParser = require('cookie-parser')
+const app = express();
+app.use(cookieParser())
 // Set your app up as an express app
 const exphbs = require('express-handlebars'); // include Handlebars module
 //const res = require('express/lib/response');
 const bodyParser = require('body-parser')
+const passport = require('passport')
+require('./passport')(passport)
+
+
+const session = require("express-session")
+const flash = require("express-flash")
+
 
 require('./models')
 // Connect to mongodb
@@ -12,10 +23,30 @@ require('./models')
 const path = require('path')
 
 
-const app = express();
-const port = 3000;
 
+const port = 3000;
+//app.use(passport.authenticate('session'))
 Patient = require('./models/patients.js')
+
+app.use(session({
+    secret: process.env.SESSION_SECRET || 'keyboard cat',
+    resave: false,
+    saveUninitialized: false,
+    cookie: {
+        sameSite: 'strict',
+        httpOnly: true,
+        secure: app.get('env') === 'production'
+    }
+}))
+app.use(passport.initialize())
+app.use(passport.session())
+app.use(flash())
+if (app.get('env') === 'production') {
+    app.set('trust proxy', 1); // Trust first proxy
+    }
+
+
+
 // To encode the res body
 app.use(express.json());
 app.use(express.urlencoded({extended : true}))
@@ -45,7 +76,7 @@ app.use('/public', express.static(path.join(__dirname, 'public')))
 app.use(express.static('public'))
 
 app.get('/', (req, res) => {
-    res.render('PatientHome.hbs')});
+   res.send('index page')});
 
 // app.get('/recordData', (req, res) => {
 //     res.render('Patientrecorddata.hbs')});

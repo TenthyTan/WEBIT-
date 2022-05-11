@@ -181,6 +181,18 @@ const getAllRecords = async(req, res) => {
   }
 }
 
+const renderHomePage = async (req, res) => {
+  
+  res.render("PatientHome.hbs");
+  
+};
+
+const renderLoginPage = async (req, res) => {
+  
+  res.render("Patientslogin.hbs", req.session.flash);
+  
+};
+
 
 module.exports = {
   getAllPatients,
@@ -189,7 +201,9 @@ module.exports = {
   renderRecordData,
   updateRecord,
   getDataById,
-  getAllRecords
+  getAllRecords,
+  renderHomePage,
+  renderLoginPage
 };
 
 
