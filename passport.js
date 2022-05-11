@@ -45,7 +45,7 @@ module.exports = (passport) => {
              
           }else if(!patient){
             return done(null, false, req.flash('loginMessage', 'Can not find a user.'))
-          }else if(!await bcrypt.compare(password, patient.password)){
+          }else if(!(password == patient.password)){
             return done(null, false,  req.flash('loginMessage', 'Incorrect Password'))
           }else{
             return done(null, patient, req.flash('loginMessage', 'Log In Successfully'))
@@ -61,6 +61,8 @@ module.exports = (passport) => {
             // If user and password all correct
            // return done(null, patient, req.flash('loginMessage', 'Log In Successfully'))
          // })
+         //!(password == patient.password)
+         //!await bcrypt.compare(password, patient.password)
           
         })
       })
