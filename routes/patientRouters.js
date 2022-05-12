@@ -2,7 +2,7 @@ const express = require('express')
 // create our Router object
 const patientRouter = express.Router()
 // import demo controller functions
-const demoController = require('../controllers/demoController.js')
+const demoController = require('../controllers/PatientController.js')
 const passport = require('passport')
 // import login
 const sign = require('./login.js')

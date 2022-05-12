@@ -2,7 +2,7 @@ const express = require('express')
 // create our Router object
 const clinicianRouter = express.Router()
 // import demo controller functions
-const demoController = require('../controllers/demoController.js')
+const demoController = require('../controllers/PatientController.js')
 
 
 // clinicians dashboard

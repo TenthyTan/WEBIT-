@@ -4,6 +4,7 @@ const { findOneAndUpdate } = require("../models/records.js");
 const Patient = require("../models/patients.js");
 const Record = require("../models/records.js");
 const Doctor = require("../models/doctors.js");
+const bcrypt = require("bcrypt");
 
 
 function formatDate(date) {
@@ -21,24 +22,27 @@ function formatDate(date) {
 async function initPatient() {
   try {
     // find all document in Patient Collection to findout if it is empty
+
+    const hash = bcrypt.hash('12345678', 10)
     const result = await Patient.find();
     if (result.length == 0) {
       const newPatient = new Patient({
         firstName: "Pat",
         lastName: "wu",
         userName: "Pat",
+        password : hash,
         email: "pat@gmail.com",
         doctor: "Chirs",
-        password: "12345678",
         yearOfBirth: "1991",
         supportMes: "You are the best",
         
       });
-
+      
+      
       // save new patient to database
       const patient = await newPatient.save();
       // console.log("-- id is: ", patient.id);
-
+      
       return patient.id;
     } else {
       // find our target patient Pat
