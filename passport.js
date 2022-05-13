@@ -45,22 +45,22 @@ module.exports = (passport) => {
              
           }else if(!patient){
             return done(null, false, req.flash('loginMessage', 'Can not find a user.'))
-          }else if(!await bcrypt.compare(password, patient.password)){
-            return done(null, false,  req.flash('loginMessage', 'Incorrect Password'))
-          }else{
-            return done(null, patient, req.flash('loginMessage', 'Log In Successfully'))
+          //}else if(!await bcrypt.compare(password, patient.password)){
+          //  return done(null, false,  req.flash('loginMessage', 'Incorrect Password'))
+         // }else{
+          //  return done(null, patient, req.flash('loginMessage', 'Log In Successfully'))
           }
           // Check password
-          //patient.verifyPassword(password,(err, valid) =>{
-           // if(err){
-            //  return done(err)
-          //  }
-           // if(!valid){
-           //   return done(null, false,  req.flash('loginMessage', 'Incorrect Password'))
-          //  }
+          patient.verifyPassword(password,(err, valid) =>{
+            if(err){
+              return done(err)
+            }
+            if(!valid){
+              return done(null, false,  req.flash('loginMessage', 'Incorrect Password'))
+            }
             // If user and password all correct
-           // return done(null, patient, req.flash('loginMessage', 'Log In Successfully'))
-         // })
+            return done(null, patient, req.flash('loginMessage', 'Log In Successfully'))
+          })
          //!(password == patient.password)
          //!await bcrypt.compare(password, patient.password)
           

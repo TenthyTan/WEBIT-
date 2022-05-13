@@ -1,9 +1,11 @@
+<h1>LogIn</h1>
+{{#if loginMessage}} <p>{{loginMessage}}</p > {{/if}}
 <form action="/clinicians/login" method="POST">
     <div class="login_box">
         <p class="title">Sign In</p>
         <link href="https://fonts.googleapis.com/css2?family=Quattrocento+Sans:wght@700&display=swap" rel="stylesheet">
-        <div class="Ipt"><label for="username">Username:<input type="text" name="name" placeholder="Enter username here" required></label></div> 
-        <div class="Ipt"><label for="password">Password:<input type="passward" name="passward" placeholder="Enter passward here" required></label></div>
+        <div class="Ipt"><label for="username">Username:<input type="text" name="userName" placeholder="Enter username here" required></label></div> 
+        <div class="Ipt"><label for="password">Password:<input type="password" name="password" placeholder="Enter password here" required></label></div>
         <div class="golog"><input type="submit" value="Submit" /></div>
     </div>
 </form>
