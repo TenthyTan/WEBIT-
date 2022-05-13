@@ -19,7 +19,7 @@ clinicianRouter.get('/login', sign.unLoginDoctor, clinicianController.renderLogi
 
 clinicianRouter.post('/login',
                     sign.unLoginDoctor,
-                    passport.authenticate('clinician_login',{
+                    passport.authenticate('doctor_login',{
                     successRedirect: "/clinicians/home",
                     failureRedirect: "/clinicians/login",
                     failureFlash: true

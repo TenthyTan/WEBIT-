@@ -13,6 +13,7 @@ module.exports = (passport) => {
 
   // Store user information
   passport.serializeUser((user, done)=>{
+   // patient.permission = "patient"
     done(null, {_id: user._id, role: user.role})
   });
 
@@ -20,7 +21,7 @@ module.exports = (passport) => {
     if(user.role === "patient"){
       Patient.findById(user._id, (err, patient)=>{
         return done(err, patient)
-      })
+    })
     }else if(user.role === "doctor"){
       Doctor.findById(user._id, (err, doctor)=>{
         return done(err, doctor)
@@ -29,6 +30,10 @@ module.exports = (passport) => {
       return done("This user have no authority to log in", null)
     }
   })
+
+
+
+
 // For patient login
   passport.use(
     "patient_login",
@@ -83,20 +88,26 @@ module.exports = (passport) => {
           if(err){
             return done(err)
           }
+          console.log(await bcrypt.hash(doctor.password,10))
           if(!doctor){
             return done(null, false, req.flash('loginMessage', 'Can not find a user.'))
+          }else if (!await bcrypt.compare(password, doctor.password)){
+            return done(null, false, req.flash('loginMessage', 'incorrect password.'))
+          }else{
+            return done(null, doctor, req.flash('loginMessage', 'Login successful'));
           }
           // Check password
-          doctor.verifyPassword(password,(err, valid) =>{
-            if(err){
-              return done(err)
-            }
-            if(!valid){
-              return done(null, false,  req.flash('loginMessage', 'Incorrect Password'))
-            }
+          //doctor.verifyPassword(password,(err, valid) =>{
+            
+          //  if(err){
+          //    return done(err)
+          //  }
+          //  if(!valid){
+          //    return done(null, false,  req.flash('loginMessage', 'Incorrect Password'))
+          //  }
             // If user and password all correct
-            return done(null, doctor, req.flash('loginMessage', 'Log In Successfully'))
-          })
+          //  return done(null, doctor, req.flash('loginMessage', 'Log In Successfully'))
+         // })
           
         })
       })
