@@ -25,6 +25,65 @@ body {
     padding-left: 500px;
     position: fixed;
 }
+.title-account {
+    width: 100%;
+    text-align: center;
+    font-size: 44px;
+}
+.center-form-box{
+    width: 50%;
+    margin: 0 auto;
+}
+.input-css{
+    width: 100%;
+    height: 60px;
+    font-size: 26px;
+    color: #000000 !important;
+    border: none;
+}
+.line-css{
+    margin-top: 20px;
+}
+.two-col-line{
+    display: flex;
+    flex-direction: row;
+    justify-content:space-between;
+    align-items:center;
+    margin-top: 20px;
+}
+.three-col-line{
+    display: flex;
+    justify-content:space-between;
+    margin-top: 20px;
+    font-size: 28px;
+    line-height: 60px;
+    height: 60px;
+}
+.submit-css{
+    width: 100%;
+    height: 90px;
+    margin: 40px auto 0;
+    text-align: center;
+    font-family: 'Quattrocento Sans';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 30px;
+    line-height: 90px;
+    background: rgba(196, 237, 195, 0.5);
+    box-shadow: 0px 4px 4px rgb(0 0 0 / 40%);
+    border: none;
+}
+.input-css1{
+    max-width: 150px;
+    height: 60px;
+    font-size: 30px;
+    color: #000000 !important;
+    border: none;
+    
+}
+.row-item{
+    width: 49%;
+}
 .headerbar{
     background-color: #B2E2DC;
     padding: 0px;
