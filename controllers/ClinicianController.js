@@ -9,11 +9,23 @@ function ChangeStatus() {
     
 }
 
+const renderHome = async (req, res) => {
+  
+    res.render("ClinicianHome.hbs", req.session.flash);
+    
+};
 
+const renderLoginPage = async (req, res) => {
+  
+    res.render("ClinicianHome.hbs", req.session.flash);
+    
+};
 
 
 module.exports = {
     ChangeStatus,
+    renderHome,
+    renderLoginPage,
 
 
 }
