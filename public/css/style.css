@@ -25,6 +25,65 @@ body {
     padding-left: 500px;
     position: fixed;
 }
+.title-account {
+    width: 100%;
+    text-align: center;
+    font-size: 44px;
+}
+.center-form-box{
+    width: 50%;
+    margin: 0 auto;
+}
+.input-css{
+    width: 100%;
+    height: 60px;
+    font-size: 26px;
+    color: #000000 !important;
+    border: none;
+}
+.line-css{
+    margin-top: 20px;
+}
+.two-col-line{
+    display: flex;
+    flex-direction: row;
+    justify-content:space-between;
+    align-items:center;
+    margin-top: 20px;
+}
+.three-col-line{
+    display: flex;
+    justify-content:space-between;
+    margin-top: 20px;
+    font-size: 28px;
+    line-height: 60px;
+    height: 60px;
+}
+.submit-css{
+    width: 100%;
+    height: 90px;
+    margin: 40px auto 0;
+    text-align: center;
+    font-family: 'Quattrocento Sans';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 30px;
+    line-height: 90px;
+    background: rgba(196, 237, 195, 0.5);
+    box-shadow: 0px 4px 4px rgb(0 0 0 / 40%);
+    border: none;
+}
+.input-css1{
+    max-width: 150px;
+    height: 60px;
+    font-size: 30px;
+    color: #000000 !important;
+    border: none;
+    
+}
+.row-item{
+    width: 49%;
+}
 .headerbar{
     background-color: #B2E2DC;
     padding: 0px;
@@ -297,3 +356,134 @@ h2 {
     background: rgba(196, 237, 195, 0.5);
     box-shadow: 0px 4px 4px rgb(0 0 0 / 40%);
 }
+
+/* Clinician and patient Prfile css */
+.box {
+    display: flex;
+    width: 100%;
+}
+
+.top_font {
+    font-weight: 700;
+    font-size: 60px;
+    line-height: 70px;
+    padding: 20px;
+}
+
+.box_foot {
+    display: flex;
+}
+
+.img {
+    width: 400px;
+    height: 400px;
+    border-radius: 50%;
+    background-color: rgb(165, 224, 212);
+    position: relative;
+    margin: 30px 150px 0px 150px;
+}
+
+.img img {
+    position: absolute;
+    top: -45px;
+    left: -20px;
+}
+
+.right_ipt {
+    display: flex;
+    align-items: center;
+    margin-top: 40px;
+}
+
+.right_ipt_a {
+    font-weight: 500;
+    font-size: 40px;
+    line-height: 47px;
+    text-align: right;
+    width: 350px;
+    margin-right: 30px;
+}
+
+.right_ipt_b {
+    width: 445px;
+    height: 68px;
+    font-weight: 500;
+    font-size: 40px;
+    line-height: 68px;
+    background: #FFFFFF;
+    text-align: center;
+}
+.right_ipt_bb{
+    width: 500px;
+    height: 150px;
+    font-weight: 500;
+    font-size: 40px;
+    line-height: 68px;
+    background: #FFFFFF;
+    text-align: center;
+}
+
+/* Clinician support message */
+.title {
+    padding: 20px;
+    font-weight: 700;
+    font-size: 40px;
+    line-height: 47px;
+}
+
+.pp_box {
+    text-align: center;
+    height: 50px;
+    width: 400px;
+    box-shadow: 0px 3px 3px 1px rgb(165, 164, 164);
+    background-color: rgb(213, 246, 230);
+    margin: 20px 50px;
+}
+
+.pn_box2 {
+    margin-left: 200px;
+    display: flex;
+    align-items: center;
+    font-weight: 600;
+    font-size: 36px;
+    line-height: 42px;
+}
+
+.textarea {
+    border: none;
+    resize: none;
+    cursor: pointer;
+    width: 1012px;
+    height: 316px;
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 19px;
+}
+
+.textarea {
+    width: 1012px;
+    margin: 100px auto 0;
+
+}
+
+.textarea_footer {
+    width: 1012px;
+    margin: 10px auto 0;
+    font-weight: 400;
+    font-size: 36px;
+    line-height: 47px;
+    text-align: right;
+}
+
+.send {
+    text-align: center;
+    height: 82px;
+    width: 212px;
+    box-shadow: 0px 3px 3px 1px rgb(165, 164, 164);
+    background-color: rgb(241, 252, 247);
+    margin: 20px auto;
+    font-weight: 700;
+    font-size: 36px;
+    line-height: 82px;
+}
+

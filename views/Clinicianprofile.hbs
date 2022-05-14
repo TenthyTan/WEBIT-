@@ -1,0 +1,49 @@
+<body>
+    {{#each doctor.data}} 
+    <form action="/clinicians/profile" method="GET"> 
+        <div class="sidenav">
+            <img src="/img/Group-44.png" />
+            <p>{{this.name}}</p >
+
+            <img src="/img/icons8-dashboard-64.png" />
+            <p>Dashboard</p >
+
+            <img src="/img/list-dash-header.png" />
+            <p>Note</p >
+
+            <img src="/img/Comment-1.png" />
+            <p>Comment</p >
+
+            <img src="/img/icons8-add-user-male-96.png" />
+            <p>Create</p >
+
+            <img src="/img/icons8-search-account-64.png" />
+            <p>Profile</p >
+        </div>
+
+        <div class="box_right_aaa">
+            <div class="top_font">Clinician Profile</div>
+            <div class="box_foot">
+                <div class="img"><img src="../img/Group-44.png" alt=""></div>
+                <div>
+                    <div class="right_ipt">
+                        <div class="right_ipt_a">Full Name :</div>
+                        <div class="right_ipt_b">{{this.username}}</div>
+                    </div>
+                    <div class="right_ipt">
+                        <div class="right_ipt_a">Phone Number : </div>
+                        <div class="right_ipt_b">{{this.phoneNumber}}</div>
+                    </div>
+                    <div class="right_ipt">
+                        <div class="right_ipt_a">Email Address : </div>
+                        <div class="right_ipt_b">{{this.email}}</div>
+                    </div>
+                    <div class="right_ipt">
+                        <div class="right_ipt_a">Hospital Address :</div>
+                        <div class="right_ipt_bb">{{this.address}}</div>
+                    </div>
+                </div>
+            </div> 
+        </div>
+    </form>
+</body>

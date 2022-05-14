@@ -1,6 +1,6 @@
 // Connect Mongoose
 const mongoose = require("mongoose");
-const bcrypt = require('bcryptjs');
+const bcrypt = require('bcrypt');
 
 // Structure of Doctor model
 const doctorSchema = new mongoose.Schema({
@@ -11,7 +11,7 @@ const doctorSchema = new mongoose.Schema({
     role: { type: String, default: "doctor" },
     email: {type: String, required: true, unique: true},
     patients: [{
-        patientIDs: {type: mongoose.Schema.Types.ObjectId, required: true, ref: "Patient"},
+        patientIDs: {type: mongoose.Schema.Types.ObjectId, ref: "Patient"},
     }],
 },
 {
@@ -51,4 +51,4 @@ doctorSchema.pre('save', function save(next){
 
 // Create doctor model in mongodb
 const Doctor = mongoose.model("Doctor", doctorSchema);
-module,exports = Doctor;
+module.exports = Doctor;

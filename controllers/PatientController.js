@@ -23,7 +23,7 @@ async function initPatient() {
   try {
     // find all document in Patient Collection to findout if it is empty
 
-    const hash = bcrypt.hash('12345678', 10)
+    const hash = await bcrypt.hash('12345678', 10)
     const result = await Patient.find();
     if (result.length == 0) {
       const newPatient = new Patient({
