@@ -33,13 +33,13 @@
         </tr>
     </thead>
     <tbody>
-        {{#each record.data.mock}}
+        {{#each record.data}}
                 <tr>
-                    <td>{{this.date}}</td>
-                    <td>{{this.bgl}}</td>
-                    <td>{{this.doit}}</td>
-                    <td>{{this.weight}}</td>
-                    <td>{{this.exercise}}</td>
+                    <td>{{this.recordDate}}</td>
+                    <td>{{this.bgl.value}}</td>
+                    <td>{{this.doit.value}}</td>
+                    <td>{{this.weight.value}}</td>
+                    <td>{{this.exercise.value}}</td>
                 </tr>
         {{/each}}
     </tbody>
