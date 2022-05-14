@@ -38,13 +38,13 @@ module.exports = (passport) => {
   passport.use(
     "patient_login",
     new LocalStrategy({
-      usernameField: "userName",
+      usernameField: "userID",
       passwordField: "password",
       passReqToCallback: true
     },
-    (req, userName, password, done) => {
+    (req, userID, password, done) => {
       process.nextTick(()=>{
-        Patient.findOne({'userName': userName}, async(err, patient)=>{
+        Patient.findOne({'email': userID}, async(err, patient)=>{
           if(err){
             return done(err)
              
@@ -64,7 +64,7 @@ module.exports = (passport) => {
               return done(null, false,  req.flash('loginMessage', 'Incorrect Password'))
             }
             // If user and password all correct
-            req.session.userName = userName
+            req.session.userID = userID
             return done(null, patient, req.flash('loginMessage', 'Log In Successfully'))
           })
          //!(password == patient.password)
@@ -79,13 +79,13 @@ module.exports = (passport) => {
   passport.use(
     "doctor_login",
     new LocalStrategy({
-      usernameField: "userName",
+      usernameField: "userID",
       passwordField: "password",
       passReqToCallback: true
     },
-    (req, userName, password, done) => {
+    (req, userID, password, done) => {
       process.nextTick(()=>{
-        Doctor.findOne({'userName': userName}, async(err, doctor)=>{
+        Doctor.findOne({'email': userID}, async(err, doctor)=>{
           if(err){
             return done(err)
           }
@@ -95,7 +95,7 @@ module.exports = (passport) => {
           }else if (!await bcrypt.compare(password, doctor.password)){
             return done(null, false, req.flash('loginMessage', 'incorrect password.'))
           }else{
-            req.session.userName = userName
+            req.session.userID = userID
             return done(null, doctor, req.flash('loginMessage', 'Login successful'));
           }
           // Check password

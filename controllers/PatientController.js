@@ -23,14 +23,14 @@ async function initPatient() {
   try {
     // find all document in Patient Collection to findout if it is empty
 
-    const hash = await bcrypt.hash('12345678', 10)
+    //const hash = await bcrypt.hash('12345678', 10)
     const result = await Patient.find();
     if (result.length == 0) {
       const newPatient = new Patient({
         firstName: "Pat",
         lastName: "wu",
         userName: "Pat",
-        password : hash,
+        password : "12345678",
         email: "pat@gmail.com",
         doctor: "Chirs",
         yearOfBirth: "1991",
@@ -199,7 +199,7 @@ const renderLoginPage = async (req, res) => {
 
 const renderProfile = async (req, res) => {
 
-  const patient = await Patient.findOne({"userName": req.session.userName}).lean()
+  const patient = await Patient.findOne({"email": req.session.userID}).lean()
   const d = new Date()
   const year = d.getFullYear()
   const age = String(year - patient.yearOfBirth)

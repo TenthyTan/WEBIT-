@@ -10,8 +10,9 @@ const bcrypt = require("bcrypt");
 
 const renderHome = async (req, res) => {
 
-    const doctorId = await initDoctor()
-    const doctor = Doctor.findOne({_id: doctorId})
+    //const doctorId = await initDoctor()
+    const doctor = await Doctor.findOne({"email": req.session.userID}).lean()
+
 
     res.render("ClinicianHome.hbs",{doctor: doctor});
     
@@ -38,6 +39,8 @@ async function initDoctor() {
   
       //const hash = await bcrypt.hash('12345678', 10)
       const result = await Doctor.find();
+      const doctor1 = await Doctor.findOne({ userName: "chris" });
+      const doctor2 = await Doctor.findOne({ userName: "tony" });
       if (result.length == 0) {
         const newDoctor = new Doctor({
           firstName: "Chris",
@@ -50,22 +53,29 @@ async function initDoctor() {
         const doctor = await newDoctor.save();
         // console.log("-- id is: ", patient.id);  
         return doctor.id;
-      } else {
-        // find our target patient Pat
-        const doctor = await Doctor.findOne({ userName: "chris" });
-        // console.log("-- id is: ", patient.id);
+      } else if (!doctor2){
+        const newDoctor2 = new Doctor({
+          firstName: "tony",
+          lastName: "chen",
+          userName: "tony",
+          password : "12345678",
+          email: "tony@gmail.com",         
+        });
+        // save new doctor to database
+        const doctor = await newDoctor2.save();
         return doctor.id;
+      }else{
+        return doctor1.id
       }
     } catch (err) {
       console.log("error happens in doctor initialization: ", err);
     }
-    res.render("Clinicianprofile.hbs",{doctor: doctor});
   }
 
   const createProfile = async (req, res) => {
     // check current doctor authority
-    console.log(req.session.userName)
-    const doctor = await Doctor.findOne({"userName": req.session.userName}).lean()
+    console.log(req.session.userID)
+    const doctor = await Doctor.findOne({"email": req.session.userID}).lean()
 
     if(!doctor){
         console.log("Do not have authority to create account")
@@ -117,7 +127,7 @@ async function initDoctor() {
     
     // Save the patient id to doctor database
     const clinician = await Doctor.findById(doctor._id)
-    clinician.patients.push({patientIDs: patient._id})
+    clinician.patients.push({patientIDs: patient._id, patientName: patient.userName})
     await clinician.save()   
     console.log("success!")
     return res.render("ClinicianHome.hbs",{message: "Create Successfully!"})
@@ -142,7 +152,7 @@ const checkbox = async (req, res) => {
 
 const renderProfile = async (req, res) => {
 
-  const doctor = await Doctor.findOne({"userName": req.session.userName}).lean()
+  const doctor = await Doctor.findOne({"email": req.session.userID}).lean()
 
   res.render("Clinicianprofile.hbs", { doctor: doctor });
   

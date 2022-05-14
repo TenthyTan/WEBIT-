@@ -12,6 +12,7 @@ const doctorSchema = new mongoose.Schema({
     email: {type: String, required: true, unique: true},
     patients: [{
         patientIDs: {type: mongoose.Schema.Types.ObjectId, ref: "Patient"},
+        patientName: {type: String}
     }],
 },
 {
