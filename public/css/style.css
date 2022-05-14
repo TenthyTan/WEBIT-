@@ -422,3 +422,68 @@ h2 {
     background: #FFFFFF;
     text-align: center;
 }
+
+/* Clinician support message */
+.title {
+    padding: 20px;
+    font-weight: 700;
+    font-size: 40px;
+    line-height: 47px;
+}
+
+.pp_box {
+    text-align: center;
+    height: 50px;
+    width: 400px;
+    box-shadow: 0px 3px 3px 1px rgb(165, 164, 164);
+    background-color: rgb(213, 246, 230);
+    margin: 20px 50px;
+}
+
+.pn_box2 {
+    margin-left: 200px;
+    display: flex;
+    align-items: center;
+    font-weight: 600;
+    font-size: 36px;
+    line-height: 42px;
+}
+
+.textarea {
+    border: none;
+    resize: none;
+    cursor: pointer;
+    width: 1012px;
+    height: 316px;
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 19px;
+}
+
+.textarea {
+    width: 1012px;
+    margin: 100px auto 0;
+
+}
+
+.textarea_footer {
+    width: 1012px;
+    margin: 10px auto 0;
+    font-weight: 400;
+    font-size: 36px;
+    line-height: 47px;
+    text-align: right;
+}
+
+.send {
+    text-align: center;
+    height: 82px;
+    width: 212px;
+    box-shadow: 0px 3px 3px 1px rgb(165, 164, 164);
+    background-color: rgb(241, 252, 247);
+    margin: 20px auto;
+    font-weight: 700;
+    font-size: 36px;
+    line-height: 82px;
+}
+

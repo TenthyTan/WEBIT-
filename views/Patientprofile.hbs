@@ -1,0 +1,51 @@
+<body>
+    {{#each record.data}} 
+    <form action="/patients/profile" method="GET"> 
+        <div class="sidenav">
+            <img src="../public/img/head.png" />
+            <p>{{record.patientID.name}}</p >
+            <img src="../public/img/recording.png" />
+            <p>Record</p >
+            <img src="../public/img/view.png" />
+            <p>View</p >
+            <img src="../public/img/ranking.png" />
+            <p>Rank</p >
+            <img src="../public/img/profile.png" />
+            <p>Profile</p >
+            <img src="../public/img/setting.png" />
+            <p>setting</p >
+            <img src="../public/img/warning.png" />
+            <p>urgency</p >
+        </div>
+
+        <div class="box_right_aaa">
+            <div class="top_font">Patient Profile</div>
+            <div class="box_foot">
+                <div class="img"><img src="../img/head.png" alt=""></div>
+                <div>
+                    <div class="right_ipt">
+                        <div class="right_ipt_a">Full Name :</div>
+                        <div class="right_ipt_b">{{this.username}}</div>
+                    </div>
+                    <div class="right_ipt">
+                        <div class="right_ipt_a">Doctor name :</div>
+                        <div class="right_ipt_b">{{this.doctor}}</div>
+                    </div>
+                    <div class="right_ipt">
+                        <div class="right_ipt_a">Phone Number : </div>
+                        <div class="right_ipt_b">{{this.phoneNumber}}</div>
+                    </div>
+                    <div class="right_ipt">
+                        <div class="right_ipt_a">Email Address : </div>
+                        <div class="right_ipt_b">{{this.email}}</div>
+                    </div>
+                    <div class="right_ipt">
+                        <div class="right_ipt_a">Hospital Address :</div>
+                        <div class="right_ipt_bb">{{this.address}}</div>
+                    </div>
+                </div>
+            </div> 
+        </div>
+    </form>
+</body>
+  

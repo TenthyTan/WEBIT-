@@ -1,35 +1,34 @@
 <body>
-    {{#each record.data}} 
-    <form action="/patients/recordData" method="GET"> 
+    {{#each doctor.data}} 
+    <form action="/clinicians/profile" method="GET"> 
         <div class="sidenav">
-            <img src="../public/img/head.png" />
-            <p>{{record.patientID.name}}</p >
-            <img src="../public/img/recording.png" />
-            <p>Record</p >
-            <img src="../public/img/view.png" />
-            <p>View</p >
-            <img src="../public/img/ranking.png" />
-            <p>Rank</p >
-            <img src="../public/img/profile.png" />
+            <img src="/img/Group-44.png" />
+            <p>{{this.name}}</p >
+
+            <img src="/img/icons8-dashboard-64.png" />
+            <p>Dashboard</p >
+
+            <img src="/img/list-dash-header.png" />
+            <p>Note</p >
+
+            <img src="/img/Comment-1.png" />
+            <p>Comment</p >
+
+            <img src="/img/icons8-add-user-male-96.png" />
+            <p>Create</p >
+
+            <img src="/img/icons8-search-account-64.png" />
             <p>Profile</p >
-            <img src="../public/img/setting.png" />
-            <p>setting</p >
-            <img src="../public/img/warning.png" />
-            <p>urgency</p >
         </div>
 
         <div class="box_right_aaa">
-            <div class="top_font">Patient Profile</div>
+            <div class="top_font">Clinician Profile</div>
             <div class="box_foot">
-                <div class="img"><img src="../img/head.png" alt=""></div>
+                <div class="img"><img src="../img/Group-44.png" alt=""></div>
                 <div>
                     <div class="right_ipt">
                         <div class="right_ipt_a">Full Name :</div>
                         <div class="right_ipt_b">{{this.username}}</div>
-                    </div>
-                    <div class="right_ipt">
-                        <div class="right_ipt_a">Doctor name :</div>
-                        <div class="right_ipt_b">{{this.doctor}}</div>
                     </div>
                     <div class="right_ipt">
                         <div class="right_ipt_a">Phone Number : </div>
@@ -48,4 +47,3 @@
         </div>
     </form>
 </body>
-  
