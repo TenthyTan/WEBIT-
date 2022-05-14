@@ -1,14 +1,12 @@
 // import Model
 const mongoose = require("mongoose");
-const { findOneAndUpdate } = require("../models/records.js");
+const { findOneAndUpdate, update } = require("../models/records.js");
 const Patient = require("../models/patients.js");
 const Record = require("../models/records.js");
 const Doctor = require("../models/doctors.js");
 const bcrypt = require("bcrypt");
 
-function ChangeStatus() {
-    
-}
+
 
 const renderHome = async (req, res) => {
 
@@ -119,24 +117,14 @@ const createProfile = async (req, res) => {
 
 
 const adddeletedata = async (req, res) => {
-  try {
-    const patientId = await initPatient();
-    const recordId = await initRecord(patientId);
-    // const patient = await Patient.findOne({ _id: patientId }).lean();
-    const record = await Record.findOne({ _id: recordId })
-      .populate({
-        path: "patientID",
-        options: { lean: true },
-      })
-      .lean();
-    console.log(record);
-
-    // console.log("-- record info when display -- ", record);
-    res.render("Patientrecorddata.hbs", { record: record });
-  } catch (err) {
-    res.status(400);
-    res.send("error happens when render record data");
+  const record = await Record.findOne({ _id: recordId });
+  if (delete_bgl){
+    Record.findOneAndUpdate({name: "Blood Glucose Level (nmol/L)"}, {status:"Not required"})
   }
+  if (add_bgl){
+    Record.findOneAndUpdate({name: "Blood Glucose Level (nmol/L)"}, {status:"Unrecorded"})
+  }
+  
 };
 
 
