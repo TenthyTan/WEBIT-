@@ -108,6 +108,8 @@ const createProfile = async (req, res) => {
         doctor: doctor.userName
 
     })
+    const patient = newPatient.save()
+    
 
     
 

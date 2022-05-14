@@ -16,8 +16,6 @@ clinicianRouter.get('/home', clinicianController.renderHome);
 
 clinicianRouter.get('/login', sign.unLoginDoctor, clinicianController.renderLoginPage)
 
-clinicianRouter.get('/account',sign.unLoginDoctor, clinicianController.renderAccount)
-
 clinicianRouter.post('/login',
                     sign.unLoginDoctor,
                     passport.authenticate('doctor_login',{
@@ -26,5 +24,7 @@ clinicianRouter.post('/login',
                     failureFlash: true
 }))
 
+clinicianRouter.get('/createProfile',sign.isLoginDoctor, clinicianController.renderCreateProfile)
+clinicianRouter.get('/createProfile',sign.isLoginDoctor, clinicianController.createProfile)
 // export the router
 module.exports = clinicianRouter
