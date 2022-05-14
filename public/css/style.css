@@ -356,3 +356,69 @@ h2 {
     background: rgba(196, 237, 195, 0.5);
     box-shadow: 0px 4px 4px rgb(0 0 0 / 40%);
 }
+
+/* Clinician and patient Prfile css */
+.box {
+    display: flex;
+    width: 100%;
+}
+
+.top_font {
+    font-weight: 700;
+    font-size: 60px;
+    line-height: 70px;
+    padding: 20px;
+}
+
+.box_foot {
+    display: flex;
+}
+
+.img {
+    width: 400px;
+    height: 400px;
+    border-radius: 50%;
+    background-color: rgb(165, 224, 212);
+    position: relative;
+    margin: 30px 150px 0px 150px;
+}
+
+.img img {
+    position: absolute;
+    top: -45px;
+    left: -20px;
+}
+
+.right_ipt {
+    display: flex;
+    align-items: center;
+    margin-top: 40px;
+}
+
+.right_ipt_a {
+    font-weight: 500;
+    font-size: 40px;
+    line-height: 47px;
+    text-align: right;
+    width: 350px;
+    margin-right: 30px;
+}
+
+.right_ipt_b {
+    width: 445px;
+    height: 68px;
+    font-weight: 500;
+    font-size: 40px;
+    line-height: 68px;
+    background: #FFFFFF;
+    text-align: center;
+}
+.right_ipt_bb{
+    width: 500px;
+    height: 150px;
+    font-weight: 500;
+    font-size: 40px;
+    line-height: 68px;
+    background: #FFFFFF;
+    text-align: center;
+}
