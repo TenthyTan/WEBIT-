@@ -1,0 +1,80 @@
+
+{{#each doctor.data}} 
+<div class="sidenav">
+    <img src="/img/Group-44.png" />
+    <p>{{this.name}}</p >
+
+    <img src="/img/icons8-dashboard-64.png" />
+    <p>Dashboard</p >
+
+    <img src="/img/list-dash-header.png" />
+    <p>Note</p >
+
+    <img src="/img/Comment-1.png" />
+    <p>Comment</p >
+
+    <img src="/img/icons8-add-user-male-96.png" />
+    <p>Create</p >
+
+    <img src="/img/icons8-search-account-64.png" />
+    <p>Profile</p >
+</div>
+<div class="box_right_aaa">
+    <form action="/clinicians/Safety Threshold" method="POST">
+    <div class="pat_title">
+
+        <div>Patient Name:</div>
+        <div class="pat_a" style="width: 400px;text-align: center;">{{this.patient}}</div>
+        <button class="pat_a" style="margin-left: 200px;width: 300px;" onclick="location.href='Cliniciansupportmessage.hbs'">Send Message</button>
+        <button class="pat_a" onclick="location.href='Clinicianclinicalnote.hbs'">Clinical Note </button>
+        <button class="pat_a" onclick="location.href='Clinicianviewdata.hbs'">View Data</button>
+    </div>
+
+        <table border="2" style="border-collapse: collapse;">
+            <tr>
+                <td>Data Status</td>
+                <td>Data Type</td>
+                <td>Safety Threshold</td>
+
+            </tr>
+            <tr>
+                <td><select>
+                    <option value ="Record">Need to record</option>
+                    <option value ="Not required">Not required</option>
+                </select> </td>
+                <td>Insulin taken (does)</td>
+                <td>Min: <input type="digit" name="value" placeholder="Enter min threshold" required>           Max: <input type="digit" name="value" placeholder="Enter max threshold" required></td>
+                <td class="tdd"><div class="pat_c">0</div>~<div class="pat_c">3</div>does every day <img src="../static/patient2/2.png" alt=""></td>
+
+            </tr>
+            <tr>
+                <td><select>
+                    <option value ="Record">Need to record</option>
+                    <option value ="Not required">Not required</option>
+                </select> </td>
+                <td>Weight (kg)</td>
+                <td>Min: <input type="digit" name="value" placeholder="Enter min threshold" required>           Max: <input type="digit" name="value" placeholder="Enter max threshold" required></td>
+                <td class="tdd"><div class="pat_c">65</div>~<div class="pat_c">85</div>kg<img src="../static/patient2/2.png" alt=""></td>
+
+            </tr>
+            <tr>
+                <td><select>
+                    <option value ="Record">Need to record</option>
+                    <option value ="Not required">Not required</option>
+                </select> </td>
+                <td> Blood Glucose Level (nmol)</td>
+                <td>Min: <input type="digit" name="value" placeholder="Enter min threshold" required>           Max: <input type="digit" name="value" placeholder="Enter max threshold" required></td>
+                <td class="tdd"><div class="pat_c">0</div>~<div class="pat_c">11100000</div>nmol/L<img src="../static/patient2/2.png" alt=""></td>
+            </tr>
+            <tr>
+                <td><select>
+                    <option value ="Record">Need to record</option>
+                    <option value ="Not required">Not required</option>
+                </select> </td>
+                <td> Exercise (steps)</td>
+                <td>Min: <input type="digit" name="value" placeholder="Enter min threshold" required>           Max: <input type="digit" name="value" placeholder="Enter max threshold" required></td>
+                <td class="tdd"><div class="pat_d"></div> kg<img src="../static/patient2/2.png" alt=""></td>
+
+            </tr>
+        </table>
+</div>
