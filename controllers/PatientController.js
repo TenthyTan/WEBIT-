@@ -199,8 +199,12 @@ const renderLoginPage = async (req, res) => {
 
 const renderProfile = async (req, res) => {
   
-  const patient = await Patient.findOne({"userName": req.session.useName})
-  res.render("Patientprofile.hbs", {patient: patient});
+const patient = await Patient.findOne({"userName": req.session.userName})
+
+  var d = new Date(),
+    year = d.getFullYear();
+  const age = year - patient.yearOfBirth
+  res.render("Patientprofile.hbs", {patient: patient, age: age});
  
 };
 

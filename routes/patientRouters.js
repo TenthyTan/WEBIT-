@@ -25,9 +25,8 @@ patientRouter.post('/login',
 );
 patientRouter.get('/recordData',demoController.renderRecordData)
 patientRouter.post("/recordData", demoController.updateRecord);
+patientRouter.get('/profile', sign.isLoginPatient, demoController.renderProfile);
 patientRouter.get('/:id', demoController.getDataById);
-patientRouter.get('/profile', sign.isLoginPatient, demoController.renderProfile)
-
 // 
 
 // export the router
