@@ -12,6 +12,7 @@ const sign = require('./login.js')
 // clinicians dashboard
 clinicianRouter.get('/dashboard', patientController.getAllRecords);
 
+
 clinicianRouter.get('/home', clinicianController.renderHome);
 
 clinicianRouter.get('/login', sign.unLoginDoctor, clinicianController.renderLoginPage)
@@ -23,8 +24,10 @@ clinicianRouter.post('/login',
                     failureRedirect: "/clinicians/login",
                     failureFlash: true
 }))
+clinicianRouter.get('/doctorProfile',sign.isLoginDoctor, clinicianController.initDoctor)
 
 clinicianRouter.get('/createProfile',sign.isLoginDoctor, clinicianController.renderCreateProfile)
+
 clinicianRouter.get('/createProfile',sign.isLoginDoctor, clinicianController.createProfile)
 // export the router
 module.exports = clinicianRouter

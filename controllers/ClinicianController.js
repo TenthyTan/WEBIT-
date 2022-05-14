@@ -59,6 +59,7 @@ async function initDoctor() {
     } catch (err) {
       console.log("error happens in doctor initialization: ", err);
     }
+    res.render("Clinicianprofile.hbs",{doctor: doctor});
   }
 
 const createProfile = async (req, res) => {
@@ -109,32 +110,35 @@ const createProfile = async (req, res) => {
     const patient = newPatient.save()
     
 
-    
-
    res.render("ClinicianHome.hbs",{doctor: doctor});
     
 };
 
 
-const adddeletedata = async (req, res) => {
+const checkbox = async (req, res) => {
+  const patientId = await initPatient();
+  const recordId = await initRecord(patientId);
   const record = await Record.findOne({ _id: recordId });
-  if (delete_bgl){
-    Record.findOneAndUpdate({name: "Blood Glucose Level (nmol/L)"}, {status:"Not required"})
+  const input = await Record.findOne({ _id: recordId });
+  if (input.type == 'checkbox' & input.name == 'bgl_checkbox'){
+    if(input.checked){
+      Record.findOneAndUpdate({name:""},{status:"Unrecorded"})
+    }
+    else{
+      Record.findOneAndUpdate({name:""},{status:"Not require"})
+    }
   }
-  if (add_bgl){
-    Record.findOneAndUpdate({name: "Blood Glucose Level (nmol/L)"}, {status:"Unrecorded"})
-  }
+  
   
 };
 
 
 
 module.exports = {
-    ChangeStatus,
     renderHome,
     renderLoginPage,
     initDoctor,
     renderCreateProfile,
     createProfile,
-    adddeletedata,
+    checkbox,
 }

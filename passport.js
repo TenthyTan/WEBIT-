@@ -88,7 +88,7 @@ module.exports = (passport) => {
           if(err){
             return done(err)
           }
-          console.log(await bcrypt.hash(doctor.password,10))
+          //console.log(await bcrypt.hash(doctor.password,10))
           if(!doctor){
             return done(null, false, req.flash('loginMessage', 'Can not find a user.'))
           }else if (!await bcrypt.compare(password, doctor.password)){
