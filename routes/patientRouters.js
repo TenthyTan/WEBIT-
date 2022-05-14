@@ -34,7 +34,7 @@ patientRouter.get('/recordData',demoController.renderRecordData)
 patientRouter.get('/patientData',demoController.renderPatientData)
 patientRouter.post("/recordData", demoController.updateRecord);
 patientRouter.get('/:id', demoController.getDataById);
-
+patientRouter.get('/profile', sign.isLoginPatient, demoController.renderProfile)
 
 // 
 

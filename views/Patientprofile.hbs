@@ -1,9 +1,8 @@
 <body>
-    {{#each record.data}} 
     <form action="/patients/profile" method="GET"> 
         <div class="sidenav">
             <img src="../public/img/head.png" />
-            <p>{{record.patientID.name}}</p >
+            <p>{{patient.userName}}</p >
             <img src="../public/img/recording.png" />
             <p>Record</p >
             <img src="../public/img/view.png" />
@@ -25,23 +24,19 @@
                 <div>
                     <div class="right_ipt">
                         <div class="right_ipt_a">Full Name :</div>
-                        <div class="right_ipt_b">{{this.username}}</div>
+                        <div class="right_ipt_b">{{patient.firstName}} {{patient.lastName}}</div>
                     </div>
                     <div class="right_ipt">
                         <div class="right_ipt_a">Doctor name :</div>
-                        <div class="right_ipt_b">{{this.doctor}}</div>
+                        <div class="right_ipt_b">{{patient.doctor}}</div>
                     </div>
                     <div class="right_ipt">
-                        <div class="right_ipt_a">Phone Number : </div>
-                        <div class="right_ipt_b">{{this.phoneNumber}}</div>
+                        <div class="right_ipt_a">Age : </div>
+                        <div class="right_ipt_b">{{age}}</div>
                     </div>
                     <div class="right_ipt">
                         <div class="right_ipt_a">Email Address : </div>
-                        <div class="right_ipt_b">{{this.email}}</div>
-                    </div>
-                    <div class="right_ipt">
-                        <div class="right_ipt_a">Hospital Address :</div>
-                        <div class="right_ipt_bb">{{this.address}}</div>
+                        <div class="right_ipt_b">{{patient.email}}</div>
                     </div>
                 </div>
             </div> 
