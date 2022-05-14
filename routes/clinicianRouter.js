@@ -13,7 +13,7 @@ const sign = require('./login.js')
 clinicianRouter.get('/dashboard', patientController.getAllRecords);
 
 
-clinicianRouter.get('/home', clinicianController.renderHome);
+clinicianRouter.get('/home', sign.isLoginDoctor, clinicianController.renderHome);
 
 clinicianRouter.get('/login', sign.unLoginDoctor, clinicianController.renderLoginPage)
 
@@ -28,6 +28,6 @@ clinicianRouter.get('/doctorProfile',sign.isLoginDoctor, clinicianController.ini
 
 clinicianRouter.get('/createProfile',sign.isLoginDoctor, clinicianController.renderCreateProfile)
 
-clinicianRouter.get('/createProfile',sign.isLoginDoctor, clinicianController.createProfile)
+clinicianRouter.post('/createProfile',sign.isLoginDoctor, clinicianController.createProfile)
 // export the router
 module.exports = clinicianRouter

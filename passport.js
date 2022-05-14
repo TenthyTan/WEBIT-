@@ -64,6 +64,7 @@ module.exports = (passport) => {
               return done(null, false,  req.flash('loginMessage', 'Incorrect Password'))
             }
             // If user and password all correct
+            req.session.userName = userName
             return done(null, patient, req.flash('loginMessage', 'Log In Successfully'))
           })
          //!(password == patient.password)
@@ -94,6 +95,7 @@ module.exports = (passport) => {
           }else if (!await bcrypt.compare(password, doctor.password)){
             return done(null, false, req.flash('loginMessage', 'incorrect password.'))
           }else{
+            req.session.userName = userName
             return done(null, doctor, req.flash('loginMessage', 'Login successful'));
           }
           // Check password

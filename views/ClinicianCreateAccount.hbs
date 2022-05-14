@@ -4,7 +4,7 @@
 </head>
 
 <body>
-  <form action="/clinicians/createProfile">
+  <form action="/clinicians/createProfile" method="POST">
     <div class="login_box">
       <p class="title-account">Create Patient's Account</p>
       <link
@@ -62,7 +62,7 @@
         <div class="line-css"><input
             class="input-css"
             type="text"
-            name="EmailAddress"
+            name="email"
             placeholder="Email Address"
             required
           /></div>
@@ -81,7 +81,7 @@
             class="input-css"
             type="text"
             name="supportMessage"
-            placeholder="Phone Number"
+            placeholder="Support Message"
             required
           /></div>
         <div class="two-col-line">

@@ -62,25 +62,29 @@ async function initDoctor() {
     res.render("Clinicianprofile.hbs",{doctor: doctor});
   }
 
-const createProfile = async (req, res) => {
+  const createProfile = async (req, res) => {
     // check current doctor authority
-    const doctor = await Doctor.findOne({"userName": req.session.userName})
+    console.log(req.session.userName)
+    const doctor = await Doctor.findOne({"userName": req.session.userName}).lean()
+
     if(!doctor){
         console.log("Do not have authority to create account")
         req.flash("Error","Do not have authority to create account")
         return res.redirect('/clinicians/login')
     }
     // Check if repeated patients
-    const userName = await Patient.findOne({"userName": req.body.userName})
-    const email = await Patient.findOne({"email": req.body})
+    const userName = await Patient.findOne({"userName": req.body.userName}).lean()
+    const email = await Patient.findOne({"email": req.body.email}).lean()
     
     if(userName){
+        console.log("exited")
         return res.render("ClinicianCreateAccount.hbs", {
             input: req.body,
             message: "The user name already exists, please try again",
           });
     }
     if(email){
+        console.log("exited")
         return res.render("ClinicianCreateAccount.hbs", {
             input: req.body,
             message: "The email address already exists, please try again",
@@ -88,6 +92,7 @@ const createProfile = async (req, res) => {
     }
     // Check passwords are same
     if (!(req.body.password === req.body.confirmPassword)){
+        console.log("not same password")
         return res.render("ClinicianCreateAccount.hbs", {
             input: req.body,
             message: "The password is not the same, please try again",
@@ -107,10 +112,15 @@ const createProfile = async (req, res) => {
         doctor: doctor.userName
 
     })
-    const patient = newPatient.save()
-    
 
-   res.render("ClinicianHome.hbs",{doctor: doctor});
+    const patient = await newPatient.save()
+    
+    // Save the patient id to doctor database
+    const clinician = await Doctor.findById(doctor._id)
+    clinician.patients.push({patientIDs: patient._id})
+    await clinician.save()   
+    console.log("success!")
+    return res.render("ClinicianHome.hbs",{message: "Create Successfully!"})
     
 };
 
