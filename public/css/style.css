@@ -25,6 +25,12 @@ body {
     padding-left: 500px;
     position: fixed;
 }
+.title-data{
+    margin-top: 100px;
+    height: 60px;
+    font-size: 36px;
+    
+}
 .title-account {
     width: 100%;
     text-align: center;
@@ -169,9 +175,14 @@ table {
     font-family: arial, sans-serif;
     border-collapse: collapse;
     width: 100%;
-    margin-top: 90px;
+    margin-top: 40px;
 }
-
+th{
+    background-color: #B2E2DC;
+}
+td{
+    background-color: #ddfaf5;
+}
 table tr th,
 table tr td {
     text-align: center;
@@ -356,134 +367,3 @@ h2 {
     background: rgba(196, 237, 195, 0.5);
     box-shadow: 0px 4px 4px rgb(0 0 0 / 40%);
 }
-
-/* Clinician and patient Prfile css */
-.box {
-    display: flex;
-    width: 100%;
-}
-
-.top_font {
-    font-weight: 700;
-    font-size: 60px;
-    line-height: 70px;
-    padding: 20px;
-}
-
-.box_foot {
-    display: flex;
-}
-
-.img {
-    width: 400px;
-    height: 400px;
-    border-radius: 50%;
-    background-color: rgb(165, 224, 212);
-    position: relative;
-    margin: 30px 150px 0px 150px;
-}
-
-.img img {
-    position: absolute;
-    top: -45px;
-    left: -20px;
-}
-
-.right_ipt {
-    display: flex;
-    align-items: center;
-    margin-top: 40px;
-}
-
-.right_ipt_a {
-    font-weight: 500;
-    font-size: 40px;
-    line-height: 47px;
-    text-align: right;
-    width: 350px;
-    margin-right: 30px;
-}
-
-.right_ipt_b {
-    width: 445px;
-    height: 68px;
-    font-weight: 500;
-    font-size: 40px;
-    line-height: 68px;
-    background: #FFFFFF;
-    text-align: center;
-}
-.right_ipt_bb{
-    width: 500px;
-    height: 150px;
-    font-weight: 500;
-    font-size: 40px;
-    line-height: 68px;
-    background: #FFFFFF;
-    text-align: center;
-}
-
-/* Clinician support message */
-.title {
-    padding: 20px;
-    font-weight: 700;
-    font-size: 40px;
-    line-height: 47px;
-}
-
-.pp_box {
-    text-align: center;
-    height: 50px;
-    width: 400px;
-    box-shadow: 0px 3px 3px 1px rgb(165, 164, 164);
-    background-color: rgb(213, 246, 230);
-    margin: 20px 50px;
-}
-
-.pn_box2 {
-    margin-left: 200px;
-    display: flex;
-    align-items: center;
-    font-weight: 600;
-    font-size: 36px;
-    line-height: 42px;
-}
-
-.textarea {
-    border: none;
-    resize: none;
-    cursor: pointer;
-    width: 1012px;
-    height: 316px;
-    font-weight: 400;
-    font-size: 16px;
-    line-height: 19px;
-}
-
-.textarea {
-    width: 1012px;
-    margin: 100px auto 0;
-
-}
-
-.textarea_footer {
-    width: 1012px;
-    margin: 10px auto 0;
-    font-weight: 400;
-    font-size: 36px;
-    line-height: 47px;
-    text-align: right;
-}
-
-.send {
-    text-align: center;
-    height: 82px;
-    width: 212px;
-    box-shadow: 0px 3px 3px 1px rgb(165, 164, 164);
-    background-color: rgb(241, 252, 247);
-    margin: 20px auto;
-    font-weight: 700;
-    font-size: 36px;
-    line-height: 82px;
-}
-
