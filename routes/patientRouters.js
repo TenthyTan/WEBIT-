@@ -1,3 +1,10 @@
+/*
+ * @Description: 
+ * @Author: wanglinhui
+ * @Date: 2022-05-13 20:48:30
+ * @LastEditTime: 2022-05-14 14:44:20
+ * @LastEditors: wanglinhui
+ */
 const express = require('express')
 // create our Router object
 const patientRouter = express.Router()
@@ -24,6 +31,7 @@ patientRouter.post('/login',
                     })
 );
 patientRouter.get('/recordData',demoController.renderRecordData)
+patientRouter.get('/patientData',demoController.renderPatientData)
 patientRouter.post("/recordData", demoController.updateRecord);
 patientRouter.get('/:id', demoController.getDataById);
 patientRouter.get('/profile', sign.isLoginPatient, demoController.renderProfile)
