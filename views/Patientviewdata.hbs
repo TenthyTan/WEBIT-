@@ -1,27 +1,206 @@
-<h1>Displaying all Patient {{record.patientId.screenName}}'s data in {{record.recordDate}} </h1>
-<table border = "1">
+<head>
+    <script src="https://cdn.bootcdn.net/ajax/libs/echarts/5.3.2/echarts.common.js"></script>
+</head>
+<body>
+<div class="sidenav">
+    <img src="../public/img/head.png" />
+    <p>Pat</p >
+    <img src="../public/img/recording.png" />
+    <p>Record</p >
+    <img src="../public/img/view.png" />
+    <p>View</p >
+    <img src="../public/img/ranking.png" />
+    <p>Rank</p >
+    <img src="../public/img/profile.png" />
+    <p>Profile</p >
+    <img src="../public/img/setting.png" />
+    <p>setting</p >
+    <img src="../public/img/warning.png" />
+    <p>urgency</p >
+</div>
+<section>
+ 
+  <div class="main">
+           <div class="title-data">Display all data</div>
+<table>
     <thead>
         <tr>
             <th> Date </th>
-            <th> {{record.data.bgl.category}} </th>
-            <th> {{record.data.doit.category}} </th>
-            <th> {{record.data.weight.category}}</th>
-            <th> {{record.data.exercise.category}} </th>
+            <th> {{record.data.bgl.name}} </th>
+            <th> {{record.data.doit.name}} </th>
+            <th> {{record.data.weight.name}}</th>
+            <th> {{record.data.exercise.name}} </th>
         </tr>
     </thead>
     <tbody>
         {{#each record.data}}
-        <form action="/viewData" method="GET">
-            {{#each value}}
                 <tr>
-                    <td>{{../createdData}}</td>
-                    <td>{{this}}</td>
-                    <td>{{this}}</td>
-                    <td>{{this}}</td>
-                    <td>{{this}}</td>
+                    <td>{{this.recordDate}}</td>
+                    <td>{{this.bgl.value}}</td>
+                    <td>{{this.doit.value}}</td>
+                    <td>{{this.weight.value}}</td>
+                    <td>{{this.exercise.value}}</td>
                 </tr>
-            {{/each}}
-        </form>
         {{/each}}
     </tbody>
 </table>
+
+<div id='Weight' style="width: 100%;height:400px;margin-top:20px"></div>
+<div id='Blood' style="width: 100%;height:400px;margin-top:20px"></div>
+<div id='Exercise' style="width: 100%;height:400px;margin-top:20px"></div>
+<div id='Insulin' style="width: 100%;height:400px;margin-top:20px"></div>
+
+<script type='text/javascript' >
+var myChart = echarts.init(document.getElementById('Weight'))
+var myChart1 = echarts.init(document.getElementById('Blood'))
+var myChart2 = echarts.init(document.getElementById('Insulin'))
+var myChart3 = echarts.init(document.getElementById('Exercise'))
+
+var option =  {
+    title: {
+    left: 'center',
+    text: 'Weight(kg)'
+  },
+  tooltip: {
+    trigger: 'axis',
+    axisPointer: {
+      type: 'cross',
+      label: {
+        backgroundColor: '#6a7985'
+      }
+    }
+  },
+  xAxis: {
+    type: 'category',
+    data: ['2022-03-11', '2022-03-12', '2022-03-13', '2022-03-14', '2022-03-15', '2022-03-16', '2022-03-17 ']
+  },
+  yAxis: {
+    type: 'value'
+  },
+  series: [
+    {
+      data: [155, 124, 152, 133, 165, 126, 155],
+      type: 'line'
+    }
+  ]
+};
+var option1 =  {
+    title: {
+    left: 'center',
+    text: 'Blood Glucose Level (nmol/L)'
+  },
+  tooltip: {
+    trigger: 'axis',
+    axisPointer: {
+      type: 'cross',
+      label: {
+        backgroundColor: '#6a7985'
+      }
+    }
+  },
+  xAxis: {
+    type: 'category',
+    data: ['2022-03-11', '2022-03-12', '2022-03-13', '2022-03-14', '2022-03-15', '2022-03-16', '2022-03-17 ']
+  },
+  yAxis: {
+    type: 'value'
+  },
+  series: [
+    {
+      data: [132, 123, 142, 166, 175, 136, 154],
+      type: 'line'
+    }
+  ]
+};
+var option1 =  {
+    title: {
+    left: 'center',
+    text: 'Blood Glucose Level (nmol/L)'
+  },
+  tooltip: {
+    trigger: 'axis',
+    axisPointer: {
+      type: 'cross',
+      label: {
+        backgroundColor: '#6a7985'
+      }
+    }
+  },
+  xAxis: {
+    type: 'category',
+    data: ['2022-03-11', '2022-03-12', '2022-03-13', '2022-03-14', '2022-03-15', '2022-03-16', '2022-03-17 ']
+  },
+  yAxis: {
+    type: 'value'
+  },
+  series: [
+    {
+      data: [132, 123, 142, 166, 175, 136, 154],
+      type: 'line'
+    }
+  ]
+};
+var option2 =  {
+    title: {
+    left: 'center',
+    text: 'Insulin Taken (units)'
+  },
+  tooltip: {
+    trigger: 'axis',
+    axisPointer: {
+      type: 'cross',
+      label: {
+        backgroundColor: '#6a7985'
+      }
+    }
+  },
+  xAxis: {
+    type: 'category',
+    data: ['2022-03-11', '2022-03-12', '2022-03-13', '2022-03-14', '2022-03-15', '2022-03-16', '2022-03-17 ']
+  },
+  yAxis: {
+    type: 'value'
+  },
+  series: [
+    {
+      data: [132, 123, 142, 166, 175, 136, 154],
+      type: 'line'
+    }
+  ]
+};
+var option3 =  {
+    title: {
+    left: 'center',
+    text: 'Exercise (steps)'
+  },
+  tooltip: {
+    trigger: 'axis',
+    axisPointer: {
+      type: 'cross',
+      label: {
+        backgroundColor: '#6a7985'
+      }
+    }
+  },
+  xAxis: {
+    type: 'category',
+    data: ['2022-03-11', '2022-03-12', '2022-03-13', '2022-03-14', '2022-03-15', '2022-03-16', '2022-03-17 ']
+  },
+  yAxis: {
+    type: 'value'
+  },
+  series: [
+    {
+      data: [132, 123, 142, 166, 175, 136, 154],
+      type: 'line'
+    }
+  ]
+};
+option && myChart.setOption(option);
+option1 && myChart1.setOption(option1);
+option2 && myChart2.setOption(option2);
+option3 && myChart3.setOption(option3);
+</script>
+
+</div>
+</body>
