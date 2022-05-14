@@ -4,7 +4,7 @@
 </head>
 
 <body>
-  <form action="/clinicians/account">
+  <form action="/clinicians/createProfile">
     <div class="login_box">
       <p class="title-account">Create Patient's Account</p>
       <link
@@ -24,7 +24,7 @@
             <input
               class="input-css"
               type="text"
-              name="Password"
+              name="password"
               placeholder="Password"
               required
             />
@@ -33,7 +33,7 @@
             <input
               class="input-css"
               type="text"
-              name="ConfirmPassword"
+              name="confirmPassword"
               placeholder="Confirm Password"
               required
             />
@@ -44,7 +44,7 @@
             <input
               class="input-css"
               type="text"
-              name="Firstname"
+              name="firstName"
               placeholder="First name"
               required
             />
@@ -53,7 +53,7 @@
             <input
               class="input-css"
               type="text"
-              name="Lastname"
+              name="lastName"
               placeholder="Last name"
               required
             />
@@ -73,14 +73,14 @@
           <div>Day</div>
           <input class="input-css1" />
           <div>Month</div>
-          <input class="input-css1" />
+          <input class="input-css1" name="year"/>
           <div>Year</div>
 
         </div>
         <div class="line-css"><input
             class="input-css"
             type="text"
-            name="PhoneNumber"
+            name="supportMessage"
             placeholder="Phone Number"
             required
           /></div>
