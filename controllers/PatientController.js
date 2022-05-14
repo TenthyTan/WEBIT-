@@ -197,6 +197,13 @@ const renderLoginPage = async (req, res) => {
   
 };
 
+const renderProfile = async (req, res) => {
+  
+  const patient = await Patient.findOne({"userName": req.session.useName})
+  res.render("Patientprofile.hbs", {patient: patient});
+ 
+};
+
 
 module.exports = {
   getAllPatients,
@@ -207,7 +214,8 @@ module.exports = {
   getDataById,
   getAllRecords,
   renderHomePage,
-  renderLoginPage
+  renderLoginPage,
+  renderProfile
 };
 
 
