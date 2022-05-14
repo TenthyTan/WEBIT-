@@ -138,7 +138,13 @@ const checkbox = async (req, res) => {
       Record.findOneAndUpdate({name:""},{status:"Not require"})
     }
   }
-  
+};
+
+const renderProfile = async (req, res) => {
+
+  const doctor = await Doctor.findOne({"userName": req.session.userName}).lean()
+
+  res.render("Clinicianprofile.hbs", { doctor: doctor });
   
 };
 
@@ -151,4 +157,5 @@ module.exports = {
     renderCreateProfile,
     createProfile,
     checkbox,
+    renderProfile
 }
