@@ -1,13 +1,32 @@
 <body>
     <div class="box_right_aaa">
         <form action="clinicians/messages" method="POST">
+        <div class="sidenav">
+            <img src="/img/Group-44.png" />
+            <p>{{doctor.firstName}}</p >
+
+            <img src="/img/icons8-dashboard-64.png" />
+            <p>Dashboard</p >
+
+            <img src="/img/list-dash-header.png" />
+            <p>Note</p >
+
+            <img src="/img/Comment-1.png" />
+            <p>Comment</p >
+
+            <img src="/img/icons8-add-user-male-96.png" />
+            <p>Create</p >
+
+            <img src="/img/icons8-search-account-64.png" />
+            <p>Profile</p >
+        </div>
         <div class="title"> 
             Support Message
         </div>
         <div class="pn_box2">
             <div >Patient Name: </div>
-            <div class="pp_box">{{doctor.patient}}</div>
-            <div ><img src="../public/img/face1.png" alt=""> </div>
+            <div class="pp_box">{{doctor.patients.patientName}}</div>
+        
         </div>
 
         <div class="textarea">
