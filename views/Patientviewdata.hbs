@@ -1,4 +1,4 @@
-<head>
+{{!-- <head>
     <script src="https://cdn.bootcdn.net/ajax/libs/echarts/5.3.2/echarts.common.js"></script>
 </head>
 <body>
@@ -37,7 +37,7 @@
             {{#each data.mock}}
                     <tr>
                         {{!-- <td>{{this.date}}</td> --}}
-                        <td>{{this.bgl}}</td>
+                        {{!-- <td>{{this.bgl}}</td>
                         <td>{{this.doit}}</td>
                         <td>{{this.weight}}</td>
                         <td>{{this.exercise}}</td>
@@ -46,13 +46,23 @@
         </tbody>
     </table>
     <div >
-    {{> blood date=date data=data}}
-    {{> excercise date=date data=data}}
-    {{> insulin date=date data=data}}
-    {{> weight date=date data=data}}
+    {{> data.bgl date=date data=data}}
+    {{> data.excercise date=date data=data}}
+    {{> data.doit date=date data=data}}
+    {{> data.weight date=date data=data}}
     </div>
 
     </div>
     </section>
     </form>
-</body>
+</body> --}} 
+
+<h1 style="text-align: center;"> View Last 15 Days History Data </h1>
+<form action="/patients/viewData" method="GET">
+<div style="width: 100%; display: flex; flex-wrap: wrap; justify-content: space-around; align-content: space-between">
+  {{> bgl dates=dates datas=datas}}
+  {{> weight dates=dates datas=datas}}
+  {{> doit dates=dates datas=datas}}
+  {{> exercise dates=dates datas=datas}}
+</div>
+</form>
