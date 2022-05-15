@@ -243,9 +243,9 @@ const renderViewData = async (req, res) => {
         }
       }
     }
-    res.render("viewData.hbs", {
-      dates: JSON.stringify(dList),
-      datas: JSON.stringify(dataList),
+    res.render("Patientviewdata.hbs", {
+      date: JSON.stringify(dList),
+      data: JSON.stringify(dataList),
     });
   } catch (err) {
     console.log(err);

@@ -2,54 +2,57 @@
     <script src="https://cdn.bootcdn.net/ajax/libs/echarts/5.3.2/echarts.common.js"></script>
 </head>
 <body>
-<div class="sidenav">
-    <img src="../public/img/head.png" />
-    <p>Pat</p >
-    <img src="../public/img/recording.png" />
-    <p>Record</p >
-    <img src="../public/img/view.png" />
-    <p>View</p >
-    <img src="../public/img/ranking.png" />
-    <p>Rank</p >
-    <img src="../public/img/profile.png" />
-    <p>Profile</p >
-    <img src="../public/img/setting.png" />
-    <p>setting</p >
-    <img src="../public/img/warning.png" />
-    <p>urgency</p >
-</div>
-<section>
- 
-  <div class="main">
-           <div class="title-data"><h6>Patient Name: David Li&nbsp;&nbsp;&nbsp;&nbsp;Age:63 &nbsp;&nbsp;&nbsp;&nbsp;Gender:Male</h6></div>
-<table>
-    <thead>
-        <tr>
-            <th> Date </th>
-            <th> {{record.data.bgl.name}} </th>
-            <th> {{record.data.doit.name}} </th>
-            <th> {{record.data.weight.name}}</th>
-            <th> {{record.data.exercise.name}} </th>
-        </tr>
-    </thead>
-    <tbody>
-        {{#each record.data.mock}}
-                <tr>
-                    <td>{{this.date}}</td>
-                    <td>{{this.bgl}}</td>
-                    <td>{{this.doit}}</td>
-                    <td>{{this.weight}}</td>
-                    <td>{{this.exercise}}</td>
-                </tr>
-        {{/each}}
-    </tbody>
-</table>
-<div >
-  {{> blood dates=dates datas=datas}}
-  {{> excercise dates=dates datas=datas}}
-  {{> insulin dates=dates datas=datas}}
-  {{> weight dates=dates datas=datas}}
-</div>
+    <form action="/patients/viewData" method="GET">
+    <div class="sidenav">
+        <img src="../public/img/head.png" />
+        <p>Pat</p >
+        <img src="../public/img/recording.png" />
+        <p>Record</p >
+        <img src="../public/img/view.png" />
+        <p>View</p >
+        <img src="../public/img/ranking.png" />
+        <p>Rank</p >
+        <img src="../public/img/profile.png" />
+        <p>Profile</p >
+        <img src="../public/img/setting.png" />
+        <p>setting</p >
+        <img src="../public/img/warning.png" />
+        <p>urgency</p >
+    </div>
+    <section>
+    
+    <div class="main">
+            <div class="title-data"><h6>Patient Name: David Li&nbsp;&nbsp;&nbsp;&nbsp;Age:63 &nbsp;&nbsp;&nbsp;&nbsp;Gender:Male</h6></div>
+    <table>
+        <thead>
+            <tr>
+                <th> Date </th>
+                <th> {{data.bgl.name}} </th>
+                <th> {{data.doit.name}} </th>
+                <th> {{data.weight.name}}</th>
+                <th> {{data.exercise.name}} </th>
+            </tr>
+        </thead>
+        <tbody>
+            {{#each data.mock}}
+                    <tr>
+                        {{!-- <td>{{this.date}}</td> --}}
+                        <td>{{this.bgl}}</td>
+                        <td>{{this.doit}}</td>
+                        <td>{{this.weight}}</td>
+                        <td>{{this.exercise}}</td>
+                    </tr>
+            {{/each}}
+        </tbody>
+    </table>
+    <div >
+    {{> blood date=date data=data}}
+    {{> excercise date=date data=data}}
+    {{> insulin date=date data=data}}
+    {{> weight date=date data=data}}
+    </div>
 
-</div>
+    </div>
+    </section>
+    </form>
 </body>
