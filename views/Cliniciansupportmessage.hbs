@@ -1,21 +1,20 @@
 <body>
-    {{#each doctor.data}}
     <div class="box_right_aaa">
-        <form action="/messages" method="POST">
+        <form action="clinicians/messages" method="POST">
         <div class="title"> 
             Support Message
         </div>
         <div class="pn_box2">
             <div >Patient Name: </div>
-            <div class="pp_box">{{this.patient}}</div>
-            <div ><img src="../static/Message/face1.png" alt=""> </div>
+            <div class="pp_box">{{doctor.patient}}</div>
+            <div ><img src="../public/img/face1.png" alt=""> </div>
         </div>
 
         <div class="textarea">
             <textarea type="text" name="message" placeholder="Enter Support Message"></textarea>
         </div>
         <div class="textarea_footer">less than 50 words.</div>
-        <input type="submit" />
+        <button type="submit"> submit </button>
         </form>
     </div>
 </body>
