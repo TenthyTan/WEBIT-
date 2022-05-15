@@ -32,8 +32,9 @@
         </tr>
     </thead>
     <tbody>
-    
-            <td >{{#each record.recordDate}}</td>{{/each}}
+            {{#each record}}
+            <td >{{this.recordDate}}</td>
+            {{/each}}
                 {{#each record.data}} 
                 {{#ifUnrecorded this.status}}
                 <td style = "color: #bb1f1f">Missing</td>
