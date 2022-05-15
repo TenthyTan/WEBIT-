@@ -23,14 +23,14 @@ async function initPatient() {
   try {
     // find all document in Patient Collection to findout if it is empty
 
-    //const hash = await bcrypt.hash('12345678', 10)
+    const hash = await bcrypt.hash('12345678', 10)
     const result = await Patient.find();
     if (result.length == 0) {
       const newPatient = new Patient({
         firstName: "Pat",
         lastName: "wu",
         userName: "Pat",
-        password : "12345678",
+        password : hash,
         email: "pat@gmail.com",
         doctor: "Chirs",
         yearOfBirth: "1991",
@@ -210,6 +210,48 @@ const renderProfile = async (req, res) => {
   
 };
 
+function getDateList(timespan) {
+  const aDay = 86400000;
+  const today = Date.now();
+  const dList = [];
+  for (let i = 0; i < timespan; i++) {
+    dList.unshift(formatDate(today - i * aDay));
+  }
+  return dList;
+}
+
+const renderViewData = async (req, res) => {
+  try {
+    const patient = await Patient.findOne({"email": req.session.userID}).lean()
+    const records = await Record.find({ patientId: patient._id }).lean();
+    const dList = getDateList(10);
+
+    const dataList = { bgl: [], weight: [], doit: [], exercise: [] };
+    for (date of dList) {
+      // find is javscript Array.prototype function
+      let record = records.find((record) => {
+        return record.recordDate == date;
+      });
+      if (record) {
+        for (key in dataList) {
+          dataList[key].push(record.data[key].value);
+        }
+      } else {
+        for (key in dataList) {
+          dataList[key].push(0);
+        }
+      }
+    }
+    res.render("viewData.hbs", {
+      dates: JSON.stringify(dList),
+      datas: JSON.stringify(dataList),
+    });
+  } catch (err) {
+    console.log(err);
+    res.send("error happens in viewing history data");
+  }
+};
+
 
 
 module.exports = {
@@ -222,7 +264,8 @@ module.exports = {
   getAllRecords,
   renderHomePage,
   renderLoginPage,
-  renderProfile
+  renderProfile,
+  renderViewData
 };
 
 
