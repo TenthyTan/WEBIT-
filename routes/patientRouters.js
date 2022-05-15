@@ -27,6 +27,7 @@ patientRouter.post('/login',
 patientRouter.get('/recordData',demoController.renderRecordData)
 patientRouter.post("/recordData", demoController.updateRecord);
 patientRouter.get('/profile', sign.isLoginPatient, demoController.renderProfile);
+patientRouter.get('/viewData', sign.isLoginPatient, demoController.renderViewData);
 patientRouter.get('/:id', demoController.getDataById);
 // 
 
