@@ -158,6 +158,35 @@ const renderProfile = async (req, res) => {
   
 };
 
+const renderDashboard = async(req, res) => {
+  try{
+    // find current doctor
+    const doctor = await Doctor.findOne({"email": req.session.userID}).lean()
+    // find all the patients belongs to this doctor
+    const patients = await Patient.find({"doctor" : doctor.userName}).lean()
+    console.log(patients)
+    const records = await Record.find({patientID: {"$in" : patients}, recordDate: formatDate(new Date())}).lean()
+   
+    console.log(JSON.stringify(records))
+   res.render('Cliniciandashboard.hbs', {record: JSON.stringify(records), doctor: doctor}); // send data to browser
+  }catch(err){
+    console.log("error happens ", err);
+
+  }
+}
+
+function formatDate(date) {
+  var d = new Date(date), //creat a new data
+    month = "" + (d.getMonth() + 1),
+    day = "" + d.getDate(),
+    year = d.getFullYear();
+
+  if (month.length < 2) month = "0" + month;
+  if (day.length < 2) day = "0" + day;
+
+  return [year, month, day].join("-"); //return as 2002-06-09
+}
+
 
 
 module.exports = {
@@ -167,5 +196,7 @@ module.exports = {
     renderCreateProfile,
     createProfile,
     checkbox,
-    renderProfile
+    renderProfile,
+    formatDate,
+    renderDashboard,
 }

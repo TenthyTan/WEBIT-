@@ -10,7 +10,7 @@ const sign = require('./login.js')
 
 
 // clinicians dashboard
-clinicianRouter.get('/dashboard', patientController.getAllRecords);
+clinicianRouter.get('/dashboard', sign.isLoginDoctor, clinicianController.renderDashboard);
 
 
 clinicianRouter.get('/home', sign.isLoginDoctor, clinicianController.renderHome);
