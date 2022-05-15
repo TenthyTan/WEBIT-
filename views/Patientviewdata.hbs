@@ -32,10 +32,10 @@
         </tr>
     </thead>
     <tbody>
-        {{#each record}} 
-            <td >{{this.recordDate}}</td>
-                
-                {{#ifUnrecorded this.data.status}}
+    
+            <td >{{#each record.recordDate}}</td>{{/each}}
+                {{#each record.data}} 
+                {{#ifUnrecorded this.status}}
                 <td style = "color: #bb1f1f">Missing</td>
                 {{else}}
                 
@@ -44,7 +44,7 @@
                 grey
                 {{/ifNoneed }}
                 ;">
-                {{this.data.value}}
+                {{this.value}}
                 </td>
                 {{/ifUnrecorded}}
         {{/each}}
