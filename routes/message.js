@@ -9,4 +9,10 @@ messageRouter.post('/messages', (req, res) => {
     messages.push(message)
     return res.redirect('back')
 })
-module.exports = messageRouter;
+
+router.post('/api/messages', (req, res) => { 
+    const { message } = req.body 
+    messages.push(message)
+    return res.send(messages)
+})
+module.exports = messageRouter
