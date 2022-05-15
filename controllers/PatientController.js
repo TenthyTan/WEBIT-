@@ -262,12 +262,11 @@ const renderViewData = async (req, res) => {
   }
 };
 
-const viewData = async (req, res) => {
-  const patient = await Patient.findOne({"email": req.session.userID}).lean()
-  const records = await Record.find({ patientID: patient._id }).lean();
+const viewTable = async (req, res) => {
 
-  res.render("Patientviewdata.hbs", { patient : patient,
-    record: records})
+  const patient = await Patient.findOne({"email": req.session.userID}).lean()
+  const records = await Record.find({ "patientID": patient._id }).lean();
+  res.render("Patientviewdata.hbs", { patient : patient, record: records})
 }
 
 module.exports = {
@@ -282,7 +281,7 @@ module.exports = {
   renderLoginPage,
   renderProfile,
   renderViewData,
-  viewData
+  viewTable
 };
 
 
