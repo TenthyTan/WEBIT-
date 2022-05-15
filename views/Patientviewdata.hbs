@@ -1,4 +1,4 @@
-{{!-- <head>
+<head>
     <script src="https://cdn.bootcdn.net/ajax/libs/echarts/5.3.2/echarts.common.js"></script>
 </head>
 <body>
@@ -22,47 +22,42 @@
     <section>
     
     <div class="main">
-            <div class="title-data"><h6>Patient Name: David Li&nbsp;&nbsp;&nbsp;&nbsp;Age:63 &nbsp;&nbsp;&nbsp;&nbsp;Gender:Male</h6></div>
+            <div class="title-data"><h6>Patient Name: {{patient.userName}}&nbsp;&nbsp;&nbsp;&nbsp;Age: {{age.age}} &nbsp;&nbsp;&nbsp;&nbsp;Gender:Male</h6></div>
     <table>
         <thead>
             <tr>
                 <th> Date </th>
-                <th> {{data.bgl.name}} </th>
-                <th> {{data.doit.name}} </th>
-                <th> {{data.weight.name}}</th>
-                <th> {{data.exercise.name}} </th>
+                <th>Blood Glucose Level(/L)</th>
+                <th>Insulin Taken(Times)</th>
+                <th>Weight (kg)</th>
+                <th>Exercise(Step count)</th>
+
             </tr>
         </thead>
         <tbody>
-            {{#each data.mock}}
+            {{#each dates}}
+                {{#each datas}}
                     <tr>
-                        {{!-- <td>{{this.date}}</td> --}}
-                        {{!-- <td>{{this.bgl}}</td>
-                        <td>{{this.doit}}</td>
-                        <td>{{this.weight}}</td>
-                        <td>{{this.exercise}}</td>
+                        {{!-- <td>{{this.dates}}</td> --}}
+                        <td>{{> blood datas=datas}}</td>
+                        <td>{{> insulin dates=dates}}</td>
+                        <td>{{> weight dates=dates}}</td>
+                        <td>{{> exercise dates=dates}}</td>
                     </tr>
+                {{/each}}
             {{/each}}
         </tbody>
     </table>
-    <div >
-    {{> data.bgl date=date data=data}}
-    {{> data.excercise date=date data=data}}
-    {{> data.doit date=date data=data}}
-    {{> data.weight date=date data=data}}
-    </div>
-
-    </div>
     </section>
     </form>
-</body> --}} 
+</body> 
 
-<h1 style="text-align: center;"> View Last 15 Days History Data </h1>
+{{!-- <h1 style="text-align: center;"> View Last 15 Days History Data </h1>
 <form action="/patients/viewData" method="GET">
 <div style="width: 100%; display: flex; flex-wrap: wrap; justify-content: space-around; align-content: space-between">
-  {{> bgl dates=dates datas=datas}}
+  {{> blood dates=dates datas=datas}}
   {{> weight dates=dates datas=datas}}
-  {{> doit dates=dates datas=datas}}
+  {{> insulin dates=dates datas=datas}}
   {{> exercise dates=dates datas=datas}}
 </div>
-</form>
+</form> --}}

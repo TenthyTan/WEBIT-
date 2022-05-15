@@ -198,15 +198,21 @@ const renderLoginPage = async (req, res) => {
   
 };
 
-const renderProfile = async (req, res) => {
+function age(birth) {
 
-  const patient = await Patient.findOne({"email": req.session.userID}).lean()
   const d = new Date()
   const year = d.getFullYear()
-  const age = String(year - patient.yearOfBirth)
+  const age = String(year - birth)
   const data = {
     "age": age
   }
+  return data
+}
+
+const renderProfile = async (req, res) => {
+
+  const patient = await Patient.findOne({"email": req.session.userID}).lean()
+  const data = age(patient.yearOfBirth)
   res.render("Patientprofile.hbs", { patient: patient, data: data });
   
 };
@@ -224,7 +230,7 @@ function getDateList(timespan) {
 const renderViewData = async (req, res) => {
   try {
     const patient = await Patient.findOne({"email": req.session.userID}).lean()
-    const records = await Record.find({ patientId: patient._id }).lean();
+    const records = await Record.find({ patientID: patient._id }).lean();
     const dList = getDateList(10);
 
     const dataList = { bgl: [], weight: [], doit: [], exercise: [] };
@@ -243,9 +249,12 @@ const renderViewData = async (req, res) => {
         }
       }
     }
-    res.render("Patientviewdata.hbs", {
+    const pAge = age(patient.yearOfBirth)
+    res.render("Patientviewdatachart.hbs", {
       dates: JSON.stringify(dList),
       datas: JSON.stringify(dataList),
+      patient: patient,
+      age: pAge
     });
   } catch (err) {
     console.log(err);
@@ -253,7 +262,13 @@ const renderViewData = async (req, res) => {
   }
 };
 
+const viewData = async (req, res) => {
+  const patient = await Patient.findOne({"email": req.session.userID}).lean()
+  const records = await Record.find({ patientID: patient._id }).lean();
 
+  res.render("Patientviewdata.hbs", { patient : patient,
+    record: records})
+}
 
 module.exports = {
   getAllPatients,
@@ -266,7 +281,8 @@ module.exports = {
   renderHomePage,
   renderLoginPage,
   renderProfile,
-  renderViewData
+  renderViewData,
+  viewData
 };
 
 
