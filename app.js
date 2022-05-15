@@ -66,7 +66,7 @@ app.set('view engine', 'hbs');   // set Handlebars view engine
 
 const patientRouter = require("./routes/patientRouters.js");
 const clinicianRouter = require("./routes/clinicianRouter.js");
-const messageRouter = require('./routes/message.js')
+// const messageRouter = require('./routes/message.js')
     
 // http://localhost:3000/patients
 // http://localhost:3000/clinicians

@@ -31,7 +31,7 @@ clinicianRouter.post('/createProfile',sign.isLoginDoctor, clinicianController.cr
 
 clinicianRouter.get('/profile',sign.isLoginDoctor, clinicianController.renderProfile)
 
-clinicianRouter.get('/messages', clinicianController.messageRouter)
+// clinicianRouter.get('/messages', clinicianController.messageRouter)
 
 
 // export the router
