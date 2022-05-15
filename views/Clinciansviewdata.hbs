@@ -21,7 +21,7 @@
 <section>
  
   <div class="main">
-           <div class="title-data"><h6>Patient Name: David Li&nbsp;&nbsp;&nbsp;&nbsp;Age:63 &nbsp;&nbsp;&nbsp;&nbsp;Gender:Male</h6></div>
+           <div class="title-data">Display all data</div>
 <table>
     <thead>
         <tr>
@@ -44,12 +44,12 @@
         {{/each}}
     </tbody>
 </table>
-<div >
-  {{> blood dates=dates datas=datas}}
-  {{> excercise dates=dates datas=datas}}
-  {{> insulin dates=dates datas=datas}}
-  {{> weight dates=dates datas=datas}}
-</div>
+
+<div id='Weight' style="width: 100%;height:400px;margin-top:20px"></div>
+<div id='Blood' style="width: 100%;height:400px;margin-top:20px"></div>
+<div id='Exercise' style="width: 100%;height:400px;margin-top:20px"></div>
+<div id='Insulin' style="width: 100%;height:400px;margin-top:20px"></div>
+
 
 </div>
 </body>
