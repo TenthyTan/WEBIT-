@@ -23,16 +23,16 @@ async function initPatient() {
   try {
     // find all document in Patient Collection to findout if it is empty
 
-    const hash = await bcrypt.hash('12345678', 10)
+    //const hash = await bcrypt.hash('12345678', 10)
     const result = await Patient.find();
     if (result.length == 0) {
       const newPatient = new Patient({
-        firstName: "Pat",
+        firstName: "pat",
         lastName: "wu",
         userName: "Pat",
-        password : hash,
+        password : "12345678",
         email: "pat@gmail.com",
-        doctor: "Chirs",
+        doctor: "chirs",
         yearOfBirth: "1991",
         supportMes: "You are the best",
         
@@ -46,7 +46,7 @@ async function initPatient() {
       return patient.id;
     } else {
       // find our target patient Pat
-      const patient = await Patient.findOne({ firstName: "Pat" });
+      const patient = await Patient.findOne({ firstName: "pat" });
       // console.log("-- id is: ", patient.id);
       return patient.id;
     }
