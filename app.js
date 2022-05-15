@@ -73,7 +73,6 @@ const messageRouter = require('./routes/message.js')
 app.use("/patients", patientRouter);
 app.use("/clinicians", clinicianRouter);
 
-app.use('/messages', messageRouter);
 
 app.use('/public', express.static(path.join(__dirname, 'public')))
 app.use(express.static('public'))

@@ -25,12 +25,14 @@ clinicianRouter.post('/login',
                     failureFlash: true
 }))
 
-clinicianRouter.get('/doctorProfile',sign.isLoginDoctor, clinicianController.initDoctor)
-
 clinicianRouter.get('/createProfile',sign.isLoginDoctor, clinicianController.renderCreateProfile)
 
 clinicianRouter.post('/createProfile',sign.isLoginDoctor, clinicianController.createProfile)
 
 clinicianRouter.get('/profile',sign.isLoginDoctor, clinicianController.renderProfile)
+
+clinicianRouter.get('/messages', clinicianController.messageRouter)
+
+
 // export the router
 module.exports = clinicianRouter
