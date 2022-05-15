@@ -1,9 +1,28 @@
-
-<div >
-    {{> blood dates=dates datas=datas}}
-    {{> weight dates=dates datas=datas}}
-    {{> insulin dates=dates datas=datas}}
-    {{> exercise dates=dates datas=datas}}
+<head>
+    <script src="https://cdn.bootcdn.net/ajax/libs/echarts/5.3.2/echarts.common.js"></script>
+</head>
+<body>
+    <form action="/patients/View Data On Chart" method="GET">
+    <div class="sidenav">
+        <img src="../public/img/head.png" />
+        <p>{{patient.userName}}</p>
+        <img src="../public/img/recording.png" />
+        <p>Record</p >
+        <img src="../public/img/view.png" />
+        <p>View</p >
+        <img src="../public/img/ranking.png" />
+        <p>Rank</p >
+        <img src="../public/img/profile.png" />
+        <p>Profile</p >
+        <img src="../public/img/setting.png" />
+        <p>setting</p >
+        <img src="../public/img/warning.png" />
+        <p>urgency</p >
     </div>
-
+    <h1 style="text-align: center;"> View all data display on chart. </h1>
+    <div style="width: 100%; display: flex; flex-wrap: wrap; justify-content: space-around; align-content: space-between">
+        {{> blood dates=dates datas=datas}}
+        {{> weight dates=dates datas=datas}}
+        {{> insulin dates=dates datas=datas}}
+        {{> exercise dates=dates datas=datas}}
     </div>
