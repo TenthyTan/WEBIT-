@@ -2,7 +2,7 @@
 <form action="/patients/viewTable" method="GET">
 <div class="sidenav">
     <img src="../public/img/head.png" />
-    <p>{{patient.userName}}</p>
+    <p>{{patient.userName}}</p >
     <img src="../public/img/recording.png" />
     <p>Record</p >
     <img src="../public/img/view.png" />
@@ -21,40 +21,35 @@
 <div class="main">
         <div class="title-data"><h6>Patient Name: {{patient.userName}}&nbsp;&nbsp;&nbsp;&nbsp;Age: {{age.age}} &nbsp;&nbsp;&nbsp;&nbsp;Gender:Male</h6></div>
 <table>
+    <thead>
         <tr>
-            <thead>
-                <th> Date </th>
-                <th>Blood Glucose Level(/L)</th>
-                <th>Insulin Taken(Times)</th>
-                <th>Weight (kg)</th>
-                <th>Exercise(Step count)</th>
-            </thead>
-            <tbody>
-                {{#each record}}
-                <td >{{this.recordDate}}</td>
-                
-                {{#each this.data}} 
-                    {{#ifUnrecorded this.status}}
-                    <td style = "color: #bb1f1f">Missing</td>
-                    {{else}}
-                    
-                    <td style="background-color:
-                    {{#ifNoneed this.status}}
-                    grey
-                    {{/ifNoneed }}
-                    ;">
-                    {{this.value}}
-                    </td>
-                    {{/ifUnrecorded}}
-                {{/each}}
-                {{/each}}
-            </tbody>
+            <th> Date </th>
+            <th>Blood Glucose Level(/L)</th>
+            <th>Insulin Taken(Times)</th>
+            <th>Weight (kg)</th>
+            <th>Exercise(Step count)</th>
         </tr>
+    </thead>
+    {{#each record}}
+    <tbody>
+            <td >{{this.recordDate}}</td>
+            {{#each this.data}}
+            {{#ifUnrecorded this.status}}
+            <td style = "color: #bb1f1f">Missing</td>
+            {{else}}
+            <td style="background-color:
+            {{#ifNoneed this.status}}
+            grey
+            {{/ifNoneed }}
+            ;">{{this.value}}</td>
+            {{/ifUnrecorded}}
+            {{/each}}
+    </tbody>
+    {{/each}}
 </table>
 <button class="viewdatabotton" href="/patients/viewChart">View</button>
-<p class="annotationofbotton">View Data On Chart</p>
-</section>
-</form>
+<p class="annotationofbotton">View Data On Chart</p >
+
 
 
 {{!-- <h1 style="text-align: center;"> View Last 15 Days History Data </h1>
