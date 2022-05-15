@@ -1,56 +1,59 @@
-<head>
-    <script src="https://cdn.bootcdn.net/ajax/libs/echarts/5.3.2/echarts.common.js"></script>
-</head>
-<body>
-    
-<div class="sidenav">
-    <img src="../public/img/head.png" />
-    <p>Pat</p >
-    <img src="../public/img/recording.png" />
-    <p>Record</p >
-    <img src="../public/img/view.png" />
-    <p>View</p >
-    <img src="../public/img/ranking.png" />
-    <p>Rank</p >
-    <img src="../public/img/profile.png" />
-    <p>Profile</p >
-    <img src="../public/img/setting.png" />
-    <p>setting</p >
-    <img src="../public/img/warning.png" />
-    <p>urgency</p >
-</div>
+<form action="/clinicians/viewData" method="GET">
+    <div class="sidenav">
+                <img src="/img/Group-44.png" />
+                <p>{{doctor.firstName}}</p >
+
+                <img src="/img/icons8-dashboard-64.png" />
+                <p>Dashboard</p >
+
+                <img src="/img/list-dash-header.png" />
+                <p>Note</p >
+
+                <img src="/img/Comment-1.png" />
+                <p>Comment</p >
+
+                <img src="/img/icons8-add-user-male-96.png" />
+                <p>Create</p >
+
+                <img src="/img/icons8-search-account-64.png" />
+                <p>Profile</p >
+            </div>
+    </div>
 <section>
- 
-  <div class="main">
-           <div class="title-data">Display all data</div>
+
+<div class="main">
+        <div class="title-data"><h6>Patient Name: {{patient.userName}}&nbsp;&nbsp;&nbsp;&nbsp;Age: {{age.age}} &nbsp;&nbsp;&nbsp;&nbsp;Gender:Male</h6></div>
 <table>
     <thead>
         <tr>
             <th> Date </th>
-            <th> {{record.data.bgl.name}} </th>
-            <th> {{record.data.doit.name}} </th>
-            <th> {{record.data.weight.name}}</th>
-            <th> {{record.data.exercise.name}} </th>
+            <th>Blood Glucose Level(/L)</th>
+            <th>Insulin Taken(Times)</th>
+            <th>Weight (kg)</th>
+            <th>Exercise(Step count)</th>
+
         </tr>
     </thead>
     <tbody>
-        {{#each record.data.mock}}
-                <tr>
-                    <td><a href="/clinicians/Safety Threshold">{{this.date}}</a></td>
-                    <td><a href="/clinicians/Safety Threshold">{{this.bgl}}</a></td>
-                    <td><a href="/clinicians/Safety Threshold">{{this.doit}}</a></td>
-                    <td><a href="/clinicians/Safety Threshold">{{this.weight}}</a></td>
-                    <td><a href="/clinicians/Safety Threshold">{{this.exercise}}</a></td>
-                </tr>
+        {{#each record}} 
+            <td >{{this.recordDate}}</td>
+                
+                {{#ifUnrecorded this.data.status}}
+                <td style = "color: #bb1f1f">Missing</td>
+                {{else}}
+                
+                <td style="background-color:
+                {{#ifNoneed this.status}}
+                grey
+                {{/ifNoneed }}
+                ;">
+                {{this.data.value}}
+                </td>
+                {{/ifUnrecorded}}
         {{/each}}
     </tbody>
 </table>
-
-<div id='Weight' style="width: 100%;height:400px;margin-top:20px"></div>
-<div id='Blood' style="width: 100%;height:400px;margin-top:20px"></div>
-<div id='Exercise' style="width: 100%;height:400px;margin-top:20px"></div>
-<div id='Insulin' style="width: 100%;height:400px;margin-top:20px"></div>
-
-
-</div>
-</body>
+<button class="viewdatabotton">View</button>
+<p class="annotationofbotton">View Data On Chart</p>
+</section>
+</form>
