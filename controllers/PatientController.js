@@ -27,12 +27,12 @@ async function initPatient() {
     const result = await Patient.find();
     if (result.length == 0) {
       const newPatient = new Patient({
-        firstName: "Pat",
+        firstName: "pat",
         lastName: "wu",
         userName: "Pat",
         password : "12345678",
         email: "pat@gmail.com",
-        doctor: "Chirs",
+        doctor: "chirs",
         yearOfBirth: "1991",
         supportMes: "You are the best",
         
@@ -46,7 +46,7 @@ async function initPatient() {
       return patient.id;
     } else {
       // find our target patient Pat
-      const patient = await Patient.findOne({ firstName: "Pat" });
+      const patient = await Patient.findOne({ firstName: "pat" });
       // console.log("-- id is: ", patient.id);
       return patient.id;
     }
@@ -109,8 +109,9 @@ const addOnePatient = (req, res) => {
 
 const renderRecordData = async (req, res) => {
   try {
-    const patientId = await initPatient();
-    const recordId = await initRecord(patientId);
+    //const patientId = await initPatient();
+    const patient = await Patient.findOne({"email": req.session.userID}).lean()
+    const recordId = await initRecord(patient._id);
     // const patient = await Patient.findOne({ _id: patientId }).lean();
     const record = await Record.findOne({ _id: recordId })
       .populate({
@@ -131,8 +132,8 @@ const renderRecordData = async (req, res) => {
 const updateRecord = async (req, res) => {
   console.log("-- req form to update record -- ", req.body);
   try {
-    const patientId = await initPatient();
-    const recordId = await initRecord(patientId);
+    const patient = await Patient.findOne({"email": req.session.userID}).lean()
+    const recordId = await initRecord(patient._id);
     const record = await Record.findOne({ _id: recordId })
     const key = req.body.key
     record.data[key].value = req.body.value
@@ -210,6 +211,48 @@ const renderProfile = async (req, res) => {
   
 };
 
+function getDateList(timespan) {
+  const aDay = 86400000;
+  const today = Date.now();
+  const dList = [];
+  for (let i = 0; i < timespan; i++) {
+    dList.unshift(formatDate(today - i * aDay));
+  }
+  return dList;
+}
+
+const renderViewData = async (req, res) => {
+  try {
+    const patient = await Patient.findOne({"email": req.session.userID}).lean()
+    const records = await Record.find({ patientId: patient._id }).lean();
+    const dList = getDateList(10);
+
+    const dataList = { bgl: [], weight: [], doit: [], exercise: [] };
+    for (date of dList) {
+      // find is javscript Array.prototype function
+      let record = records.find((record) => {
+        return record.recordDate == date;
+      });
+      if (record) {
+        for (key in dataList) {
+          dataList[key].push(record.data[key].value);
+        }
+      } else {
+        for (key in dataList) {
+          dataList[key].push(0);
+        }
+      }
+    }
+    res.render("viewData.hbs", {
+      dates: JSON.stringify(dList),
+      datas: JSON.stringify(dataList),
+    });
+  } catch (err) {
+    console.log(err);
+    res.send("error happens in viewing history data");
+  }
+};
+
 
 
 module.exports = {
@@ -222,7 +265,8 @@ module.exports = {
   getAllRecords,
   renderHomePage,
   renderLoginPage,
-  renderProfile
+  renderProfile,
+  renderViewData
 };
 
 
