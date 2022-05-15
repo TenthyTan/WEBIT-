@@ -187,6 +187,43 @@ function formatDate(date) {
   return [year, month, day].join("-"); //return as 2002-06-09
 }
 
+const changePassword = async(req, res) => {
+  try{
+    // find current doctor
+    const doctor = await Doctor.findOne({"email": req.session.userID}).lean()
+  
+    if (!await bcrypt.compare(oldPassword, doctor.password)){
+      console.log("The old password is not correct")
+      return res.render("ClinicianCreateAccount.hbs", {
+          input: req.body,
+          message: "The old password is incorrect, please try again",
+      });
+    }else if (!(req.body.newPassword === req.body.confirmPassword)){
+      console.log("not same password")
+      return res.render("ClinicianCreateAccount.hbs", {
+          input: req.body,
+          message: "The password is not the same, please try again",
+      });
+    } else if ((req.body.oldPassword === req.body.newPassword)){
+      console.log("the old psd is same as new password")
+      return res.render("ClinicianCreateAccount.hbs", {
+          input: req.body,
+          message: "The old password is the same as the new password, please try again",
+      });
+    }
+    
+      doctor.password = req.body.newPassword
+      await doctor.save()
+      
+   
+  }catch(err){
+    console.log("error happens ", err);
+
+  }
+}
+
+
+
 
 
 module.exports = {
@@ -199,4 +236,5 @@ module.exports = {
     renderProfile,
     formatDate,
     renderDashboard,
+    changePassword,
 }
