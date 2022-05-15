@@ -29,9 +29,10 @@
             <th>Exercise(Step count)</th>
         </thead>
         <tbody>
-              <form action="/clinicians/dashboard" method="GET">             
+              <form action="/clinicians/dashboard" method="GET">  
+              {{#each record}}           
                 <tr>
-                  <td >{{record.patientID.userName}}</td>
+                  <td >{{this.patientID.userName}}</td>
                   {{#each record.data}} 
                   {{#ifUnrecorded this.status}}
                   <td style = "color: #bb1f1f">Missing</td>
@@ -54,6 +55,7 @@
                  {{/each}}
 
                 </tr>
+                {{/each}}
               </form>
         </tbody>
     </table>
