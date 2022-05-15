@@ -109,8 +109,9 @@ const addOnePatient = (req, res) => {
 
 const renderRecordData = async (req, res) => {
   try {
-    const patientId = await initPatient();
-    const recordId = await initRecord(patientId);
+    //const patientId = await initPatient();
+    const patient = await Patient.findOne({"email": req.session.userID}).lean()
+    const recordId = await initRecord(patient._id);
     // const patient = await Patient.findOne({ _id: patientId }).lean();
     const record = await Record.findOne({ _id: recordId })
       .populate({
@@ -131,8 +132,8 @@ const renderRecordData = async (req, res) => {
 const updateRecord = async (req, res) => {
   console.log("-- req form to update record -- ", req.body);
   try {
-    const patientId = await initPatient();
-    const recordId = await initRecord(patientId);
+    const patient = await Patient.findOne({"email": req.session.userID}).lean()
+    const recordId = await initRecord(patient._id);
     const record = await Record.findOne({ _id: recordId })
     const key = req.body.key
     record.data[key].value = req.body.value

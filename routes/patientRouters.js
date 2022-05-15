@@ -24,8 +24,8 @@ patientRouter.post('/login',
                     failureFlash: true
                     })
 );
-patientRouter.get('/recordData',demoController.renderRecordData)
-patientRouter.post("/recordData", demoController.updateRecord);
+patientRouter.get('/recordData',sign.isLoginPatient, demoController.renderRecordData)
+patientRouter.post("/recordData", sign.isLoginPatient, demoController.updateRecord);
 patientRouter.get('/profile', sign.isLoginPatient, demoController.renderProfile);
 patientRouter.get('/viewData', sign.isLoginPatient, demoController.renderViewData);
 patientRouter.get('/:id', demoController.getDataById);
