@@ -21,6 +21,7 @@
 <div class="main">
         <div class="title-data"><h6>Patient Name: {{patient.userName}}&nbsp;&nbsp;&nbsp;&nbsp;Age: {{age.age}} &nbsp;&nbsp;&nbsp;&nbsp;Gender:Male</h6></div>
 <table>
+    {{#each record}}
     <thead>
         <tr>
             <th> Date </th>
@@ -32,10 +33,9 @@
         </tr>
     </thead>
     <tbody>
-            {{#each record}}
             <td >{{this.recordDate}}</td>
-            {{/each}}
-                {{#each record.data}} 
+        
+            {{#each this.data}} 
                 {{#ifUnrecorded this.status}}
                 <td style = "color: #bb1f1f">Missing</td>
                 {{else}}
@@ -48,8 +48,10 @@
                 {{this.value}}
                 </td>
                 {{/ifUnrecorded}}
-        {{/each}}
+            {{/each}}
+            
     </tbody>
+    {{/each}}
 </table>
 <button class="viewdatabotton" href="/patients/viewChart">View</button>
 <p class="annotationofbotton">View Data On Chart</p>
