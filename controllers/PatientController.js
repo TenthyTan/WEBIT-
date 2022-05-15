@@ -211,56 +211,6 @@ const renderProfile = async (req, res) => {
 };
 
 
-function getDateList(timespan) {
-  // 一天86400000毫秒
-  const oneDay = 86400000;
-  const today = Date.now();
-  const dateList = [];
-  for (let i = 0; i < timespan; i++) {
-    // 往dateList的开头加一个element
-    dateList.unshift(formatDate(today - i * oneDay));
-  }
-  return dateList;
-}
-
-
-
-
-const viewData = async (req, res) => {
-  try {
-    const records = await Record.find({ patientId: req.user._id }).lean();
-    const dateList = getDateList(15);
-
-    const dataList = { bgl: [], weight: [], doit: [], exercise: [] };
-    for (date of dateList) {
-      // find is javscript Array.prototype function
-      let record = records.find((record) => {
-        return record.recordDate == date;
-      });
-      // 有数据加数据, 没数据加0
-      if (record) {
-        for (key in dataList) {
-          dataList[key].push(record.data[key].value);
-        }
-      } else {
-        for (key in dataList) {
-          dataList[key].push(0);
-        }
-      }
-    }
-    res.render("viewData.hbs", {
-      // stringify: 把javascript object转换成string
-      dates: JSON.stringify(dateList),
-      datas: JSON.stringify(dataList),
-    });
-  } catch (err) {
-    console.log(err);
-    res.send("error happens in viewing history data");
-  }
-};
-
-
-
 
 module.exports = {
   getAllPatients,
@@ -272,9 +222,7 @@ module.exports = {
   getAllRecords,
   renderHomePage,
   renderLoginPage,
-  renderProfile,
-  getDateList,
-  viewData,
+  renderProfile
 };
 
 

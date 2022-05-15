@@ -158,22 +158,6 @@ const renderProfile = async (req, res) => {
   
 };
 
-const renderSupportMes = async (req, res) => {
-
-
-  res.render("ClinicianSupportMessage.hbs");
-  
-};
-
-const renderClinicalNote = async (req, res) => {
-
-
-  res.render("ClinicianClinicalNote.hbs");
-  
-};
-
-
-
 
 
 module.exports = {
@@ -183,7 +167,5 @@ module.exports = {
     renderCreateProfile,
     createProfile,
     checkbox,
-    renderProfile,
-    renderSupportMes,
-    renderClinicalNote,
+    renderProfile
 }
