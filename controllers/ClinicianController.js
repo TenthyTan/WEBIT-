@@ -269,8 +269,8 @@ const updateSupportMessages = async (req, res) => {
     const doctor = await Doctor.findOne({"email": req.session.userID }).lean()
     // find all the patients belongs to this doctor
     const patient = await Patient.find({"doctor" : doctor.userName}).lean()
-    patient.supportMessage = req.body.supportMessage;
-    await patient.save();
+    patient.supportMes = req.body.supportMessage;
+    await patient.save(); ///patient Id 要改
     // res.redirect("/clinician/messages" + req.body.patientId);
   } catch (err) {
     console.log(err);
@@ -340,18 +340,21 @@ const UpdateThreshold = async (req, res) => {
 const renderClinicalNotes = async (req, res) => {
   try {
     const doctor = await Doctor.findOne({"email": req.session.userID }).lean()
-    const patient = await Patient.findById(req.params._id).lean();  //修改成patientID
+    const patient = await Patient.findById('627fe7d1962aaf5cf96aae67').lean();  //修改成patientID
     const notes = await Note.find({ //还没建数据库
-      patient: patient._id,
-      clinician: "chris",
+      Patient: '627fe7d1962aaf5cf96aae67',
+      Doctor: '627fe50e18c02895c2b82325',
     }).lean();
-    const date = formatedate(new date())
-    res.render("CLinicianclinicalnote.hbs", { notes: notes, patient: patient, doctor: doctor });
+    const 
+    const date = formatDate(notes.createTime)
+    console.log(date)
+    res.render("CLinicianclinicalnote.hbs", {notes: notes, patient: patient, doctor: doctor, date: date});
   } catch (err) {
     console.log(err);
     res.send("error happens when viewing clinicial notes");
   }
 };
+
 
 const addNote = async (req, res) => {
   try {

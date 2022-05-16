@@ -23,14 +23,13 @@
 </div>
 <div class="clinical_box2">
     <div >Patient Name: </div>
-    <div class="clinical_box">David Li</div>
+    <div class="clinical_box">{{patient.firstName}}</div>
     <div > </div>
 </div>
 <ul>
-{{#each notes}} //更改clinical 的数据库名字//
+{{#each notes}}
 <div class="two_a">
-    <div class="two_aa">{{this.timestamps.createdAt}}</div>
-        <li class="list_of_notes">{{this.text}}</li>
+    <li class="list_of_notes">{{date}}{{this.text}}</li>
 </div>        
 {{/each}}
 </ul>
