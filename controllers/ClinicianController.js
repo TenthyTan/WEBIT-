@@ -4,6 +4,7 @@ const { findOneAndUpdate, update } = require("../models/records.js");
 const Patient = require("../models/patients.js");
 const Record = require("../models/records.js");
 const Doctor = require("../models/doctors.js");
+const Note = require("../models/note.js");
 const bcrypt = require("bcrypt");
 
 
@@ -318,6 +319,7 @@ const renderUpdate = async(req, res) => {
 
 
 
+
 const UpdateThreshold = async (req, res) => {
   try {
     console.log("-- req body when update threshold", req.body);
@@ -341,10 +343,10 @@ const renderClinicalNotes = async (req, res) => {
     const patient = await Patient.findById(req.params._id).lean();  //修改成patientID
     const notes = await Note.find({ //还没建数据库
       patient: patient._id,
-      clinician: doctor._id,
+      clinician: "chris",
     }).lean();
     const date = formatedate(new date())
-    res.render("CLinicianclinicalnote.hbs", { notes: notes, patient: patient });
+    res.render("CLinicianclinicalnote.hbs", { notes: notes, patient: patient, doctor: doctor });
   } catch (err) {
     console.log(err);
     res.send("error happens when viewing clinicial notes");
@@ -365,6 +367,38 @@ const addNote = async (req, res) => {
     res.send("error happens when add clinicial note");
   }
 };
+
+const viewComments = async (req, res) => {
+  try {
+    const doctor = await Doctor.findOne({"email": req.session.userID }).lean()
+    const patients = await Patient.find({ doctor: doctor }).lean();
+    const commentList = []
+    for (patient in patients) {
+      let data = await Record.findOne(
+        { patientId: patient._id, recordDate: formatDate(new Date()) },
+        { data: true }
+      ).lean();
+      if (data) {
+        for (key in data.data) {
+          if (data.data[key].status == "recorded") {
+            if(data.data[key].comment == " "){
+              commentList.push({
+              patientId: pat._id,
+              comment: data.data[key].comment,
+            })
+          }
+        }
+      }
+    }
+    res.render("viewComments.hbs", {cl: commentList})  //改hbs文件名//
+  }}catch (err) {
+    console.log(err);
+    res.send("error happens when viewing comments");
+  }
+}
+
+
+
 
 
 module.exports = {
@@ -387,5 +421,6 @@ module.exports = {
     renderUpdate,
     renderClinicalNotes,
     addNote,
+    viewComments,
 
 }

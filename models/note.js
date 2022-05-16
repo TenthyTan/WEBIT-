@@ -11,12 +11,14 @@ const noteSchema = new mongoose.Schema(
       type: mongoose.Schema.Types.ObjectId,
       ref: "Doctor",
       required: true,
+
     },
     text: { type: String },
   },
   {
     timestamps: { createdAt: "createTime", updatedAt: "updateTime" },
   }
+
 );
 
 // create collection notes in mongodb

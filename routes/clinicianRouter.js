@@ -46,9 +46,11 @@ clinicianRouter.get('/safetyThreshold', sign.isLoginDoctor, clinicianController.
 
 clinicianRouter.post('/safetyThreshold', sign.isLoginDoctor, clinicianController.UpdateThreshold)
 
-clinicianRouter.get('/viewNote', sign.isLoginDoctor, clinicianController.renderClinicalNotes)
+clinicianRouter.get('/listClinicalNotes', sign.isLoginDoctor, clinicianController.renderClinicalNotes)
 
-clinicianRouter.post('/viewNote', sign.isLoginDoctor, clinicianController.addNote)
+clinicianRouter.post('/listClinicalNotes', sign.isLoginDoctor, clinicianController.addNote)
+
+clinicianRouter.get('/viewComments', sign.isLoginDoctor, clinicianController.viewComments)
 
 
 

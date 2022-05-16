@@ -27,10 +27,10 @@
     <div > </div>
 </div>
 <ul>
-{{#each clinical}} //更改clinical 的数据库名字//
+{{#each notes}} //更改clinical 的数据库名字//
 <div class="two_a">
-    <div class="two_aa">{{this.recordedDate}}</div>
-        <li class="list_of_notes">{{this}}</li>
+    <div class="two_aa">{{this.timestamps.createdAt}}</div>
+        <li class="list_of_notes">{{this.text}}</li>
 </div>        
 {{/each}}
 </ul>
