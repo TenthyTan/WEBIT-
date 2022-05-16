@@ -437,12 +437,6 @@ h2 {
 }
 
 /* support message css */
-.title {
-    padding: 20px;
-    font-weight: 700;
-    font-size: 40px;
-    line-height: 47px;
-}
 
 .pp_box {
     text-align: center;
@@ -588,4 +582,65 @@ table {
     font-weight: 600;
     box-shadow: 0px 3px 3px 1px rgb(165, 164, 164);
     background-color: rgb(213,246,230);
+}
+/* list of clinical notes */
+.ClinicalNote {
+    margin-top: 34px;
+    text-align: center;
+    font-weight: 700;
+    font-size: 50px;
+    line-height: 59px;
+}
+
+.clinical_box2 {
+    margin-top: 20px;
+    margin-left: 100px;
+    display: flex;
+    align-items: center;
+    font-weight: 600;
+    font-size: 36px;
+    line-height: 42px;
+}
+.clinical_box {
+    text-align: center;
+    height: 50px;
+    width: 400px;
+    background: #D5F7E6;
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.4);
+    margin: 20px 50px;
+}
+.list_of_notes {
+    border: none;
+    resize: none;
+    cursor: pointer;
+    width: 952px;
+    height: 146px;
+    font-weight: 600;
+    font-size: 30px;
+    line-height: 35px;
+    margin-left: 100px;
+}
+.two_a{
+    display: flex;
+    align-items: center;
+    margin-top: 50px;
+    margin-left: 100px;
+}
+.two_aa {
+    font-weight: 600;
+    font-size: 30px;
+    line-height: 35px;
+    
+}
+
+.send {
+    text-align: center;
+    height: 82px;
+    width: 212px;
+    box-shadow: 0px 3px 3px 1px rgb(165, 164, 164);
+    background-color: rgb(241, 252, 247);
+    margin: 100px auto 0;
+    font-weight: 700;
+    font-size: 36px;
+    line-height: 82px;
 }
