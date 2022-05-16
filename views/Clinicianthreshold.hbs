@@ -41,14 +41,14 @@
                     <input type="hidden" name="key" value="{{this.bgl}}">
                     {{this.bgl}}: 
                     {{#if this}}
-                        <input type="checkbox" id="{{this.bgl}}_yes" name="{{this.bgl}}" value ="Record" required="required" checked>
+                        <input type="radio" id="{{this.bgl}}_yes" name="{{this.bgl}}" value ="Record" required="required" checked>
                         <label for="{{this.bgl}}_yes"> Need to record </label>
-                        <input type="checkbox" id="{{this.bgl}}_no" name="{{this.bgl}}" value ="Not required" >
+                        <input type="radio" id="{{this.bgl}}_no" name="{{this.bgl}}" value ="Not required" >
                         <label for="{{this.bgl}}_no"> Not required</label>
                     {{else}}
-                        <input type="checkbox" id="{{this.bgl}}_yes" name="{{this.bgl}}" value ="Record" required="required">
+                        <input type="radio" id="{{this.bgl}}_yes" name="{{this.bgl}}" value ="Record" required="required">
                         <label for="{{this.bgl}}_yes"> Need to record </label>
-                        <input type="checkbox" id="{{this.bgl}}_no" name="{{this.bgl}}" value ="Not required" checked>
+                        <input type="radio" id="{{this.bgl}}_no" name="{{this.bgl}}" value ="Not required" checked>
                         <label for="{{this.bgl}}_no"> Not required </label>
                     {{/if}}
                 {{/each}}

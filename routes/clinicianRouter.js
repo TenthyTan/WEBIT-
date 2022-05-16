@@ -46,5 +46,14 @@ clinicianRouter.get('/safetyThreshold', sign.isLoginDoctor, clinicianController.
 
 clinicianRouter.post('/safetyThreshold', sign.isLoginDoctor, clinicianController.UpdateThreshold)
 
+clinicianRouter.get('/viewNote', sign.isLoginDoctor, clinicianController.renderClinicalNotes)
+
+clinicianRouter.post('/viewNote', sign.isLoginDoctor, clinicianController.addNote)
+
+
+
+
+
+
 // export the router
 module.exports = clinicianRouter
