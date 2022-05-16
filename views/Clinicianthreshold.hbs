@@ -36,19 +36,19 @@
             </tr>
             <tr>
                 <td>
-                {{#each patients.timeseries}} //each 循环的docotr里面的记录timeseries还是 病人自己的timeseries？//
+                {{#each record.data}} //each 循环的docotr里面的记录timeseries还是 病人自己的timeseries？//
                     <input type="hidden" name="patientID" value="{{../patients.patientIDs}}">
                     <input type="hidden" name="key" value="{{this.bgl}}">
                     {{this.bgl}}: 
                     {{#if this}}
-                        <input type="checkbox" id="{{this.bgl}}_yes" name="{{this.bgl}}" value ="Record" required="required" checked>
+                        <input type="checkbox" id="{{this.bgl}}_yes" name="{{this.bgl}}" value="true" required="required" checked>
                         <label for="{{this.bgl}}_yes"> Need to record </label>
-                        <input type="checkbox" id="{{this.bgl}}_no" name="{{this.bgl}}" value ="Not required" >
+                        <input type="checkbox" id="{{this.bgl}}_no" name="{{this.bgl}}" value="false" >
                         <label for="{{this.bgl}}_no"> Not required</label>
                     {{else}}
-                        <input type="checkbox" id="{{this.bgl}}_yes" name="{{this.bgl}}" value ="Record" required="required">
+                        <input type="checkbox" id="{{this.bgl}}_yes" name="{{this.bgl}}" value="true" required="required">
                         <label for="{{this.bgl}}_yes"> Need to record </label>
-                        <input type="checkbox" id="{{this.bgl}}_no" name="{{this.bgl}}" value ="Not required" checked>
+                        <input type="checkbox" id="{{this.bgl}}_no" name="{{this.bgl}}" value="false" checked>
                         <label for="{{this.bgl}}_no"> Not required </label>
                     {{/if}}
                 {{/each}}
@@ -59,19 +59,19 @@
             </tr>
             <tr>
                 <td>
-                {{#each doctor.timeseries}} 
-                    <input type="hidden" name="patientID" value="{{../patients.patientIDs}}">
+                {{#each record.data}} 
+                    <input type="hidden" name="patientID" value="{{../patientID}}">
                     <input type="hidden" name="key" value="{{this.doit}}">
                     {{this.doit}}: 
                     {{#if this}}
-                        <input type="checkbox" id="{{this.doit}}_yes" name="{{this.doit}}" value ="Record" required="required" checked>
+                        <input type="checkbox" id="{{this.doit}}_yes" name="{{this.doit}}" value="true" required="required" checked>
                         <label for="{{this.doit}}_yes"> Need to record </label>
-                        <input type="checkbox" id="{{this.doit}}_no" name="{{this.doit}}" value ="Not required" >
+                        <input type="checkbox" id="{{this.doit}}_no" name="{{this.doit}}" value="false" >
                         <label for="{{this.doit}}_no"> Not required</label>
                     {{else}}
-                        <input type="checkbox" id="{{this.doit}}_yes" name="{{this.doit}}" value ="Record" required="required">
+                        <input type="checkbox" id="{{this.doit}}_yes" name="{{this.doit}}" value="true" required="required">
                         <label for="{{this.doit}}_yes"> Need to record </label>
-                        <input type="checkbox" id="{{this.doit}}_no" name="{{this.doit}}" value ="Not required" checked>
+                        <input type="checkbox" id="{{this.doit}}_no" name="{{this.doit}}" value="false" checked>
                         <label for="{{this.doit}}_no"> Not required </label>
                     {{/if}}
                 {{/each}}
@@ -83,19 +83,19 @@
             </tr>
             <tr>
                 <td>
-                {{#each doctor.timeseries}} 
+                {{#each record.data}} 
                     <input type="hidden" name="patientID" value="{{../patients.patientIDs}}">
                     <input type="hidden" name="key" value="{{this.weight}}">
                     {{this.weight}}: 
                     {{#if this}}
-                        <input type="checkbox" id="{{this.weight}}_yes" name="{{this.weight}}" value ="Record" required="required" checked>
+                        <input type="checkbox" id="{{this.weight}}_yes" name="{{this.weight}}" value="true" required="required" checked>
                         <label for="{{this.weight}}_yes"> Need to record </label>
-                        <input type="checkbox" id="{{this.weight}}_no" name="{{this.weight}}" value ="Not required" >
+                        <input type="checkbox" id="{{this.weight}}_no" name="{{this.weight}}" value="false" >
                         <label for="{{this.weight}}_no"> Not required</label>
                     {{else}}
-                        <input type="checkbox" id="{{this.weight}}_yes" name="{{this.weight}}" value ="Record" required="required">
+                        <input type="checkbox" id="{{this.weight}}_yes" name="{{this.weight}}" value="true" required="required">
                         <label for="{{this.weight}}_yes"> Need to record </label>
-                        <input type="checkbox" id="{{this.weight}}_no" name="{{this.weight}}" value ="Not required" checked>
+                        <input type="checkbox" id="{{this.weight}}_no" name="{{this.weight}}" value="false" checked>
                         <label for="{{this.weight}}_no"> Not required </label>
                     {{/if}}
                 {{/each}}
@@ -107,19 +107,19 @@
             </tr>
             <tr>
                 <td>
-                {{#each doctor.timeseries}} 
+                {{#each record.data}} 
                     <input type="hidden" name="patientID" value="{{../patients.patientIDs}}">
                     <input type="hidden" name="key" value="{{this.exercise}}">
                     {{this.exercise}}: 
                     {{#if this}}
-                        <input type="checkbox" id="{{this.exercise}}_yes" name="{{this.exercise}}" value ="Record" required="required" checked>
+                        <input type="checkbox" id="{{this.exercise}}_yes" name="{{this.exercise}}" value="true" required="required" checked>
                         <label for="{{this.exercise}}_yes"> Need to record </label>
-                        <input type="checkbox" id="{{this.exercise}}_no" name="{{this.exercise}}" value ="Not required" >
+                        <input type="checkbox" id="{{this.exercise}}_no" name="{{this.exercise}}" value="false" >
                         <label for="{{this.exercise}}_no"> Not required</label>
                     {{else}}
-                        <input type="checkbox" id="{{this.exercise}}_yes" name="{{this.exercise}}" value ="Record" required="required">
+                        <input type="checkbox" id="{{this.exercise}}_yes" name="{{this.exercise}}" value="true" required="required">
                         <label for="{{this.exercise}}_yes"> Need to record </label>
-                        <input type="checkbox" id="{{this.exercise}}_no" name="{{this.exercise}}" value ="Not required" checked>
+                        <input type="checkbox" id="{{this.exercise}}_no" name="{{this.exercise}}" value="false" checked>
                         <label for="{{this.exercise}}_no"> Not required </label>
                     {{/if}}
                 {{/each}}
