@@ -1,5 +1,4 @@
-<h2>List of clinical notes.</h2>
-<form action="/clinicians/list of clinical notes" method="GET"></form>
+<form action="/clinicians/listClinicalNotes" method="GET"></form>
 <div class="sidenav">
     <img src="/img/Group-44.png" />
     <p >{{doctor.firstName}}</p >
@@ -19,8 +18,20 @@
     <img src="/img/icons8-search-account-64.png" />
     <p><a href="/clinicians/profile">Profile</a></p >
 </div>
+<div class="ClinicalNote"> 
+    Clinical Notes
+</div>
+<div class="clinical_box2">
+    <div >Patient Name: </div>
+    <div class="clinical_box">David Li</div>
+    <div > </div>
+</div>
 <ul>
-{{#each clinical}}
-<li>{{this}}</li>
+{{#each clinical}} //更改clinical 的数据库名字//
+<div class="two_a">
+    <div class="two_aa">{{this.recordedDate}}</div>
+        <li class="list_of_notes">{{this}}</li>
+</div>        
 {{/each}}
 </ul>
+<button class="send">Add New</button>
