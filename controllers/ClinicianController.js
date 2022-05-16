@@ -194,28 +194,35 @@ const changePassword = async(req, res) => {
     // find current doctor
     const doctor = await Doctor.findOne({"email": req.session.userID}).lean()
   
-    if (!await bcrypt.compare(oldPassword, doctor.password)){
+    if (!await bcrypt.compare(req.body.oldPassword, doctor.password)){
       console.log("The old password is not correct")
-      return res.render("ClinicianCreateAccount.hbs", {
+      return res.render("clinicianChangePassword.hbs", {
           input: req.body,
           message: "The old password is incorrect, please try again",
       });
     }else if (!(req.body.newPassword === req.body.confirmPassword)){
       console.log("not same password")
-      return res.render("ClinicianCreateAccount.hbs", {
+      return res.render("clinicianChangePassword.hbs", {
           input: req.body,
           message: "The password is not the same, please try again",
       });
     } else if ((req.body.oldPassword === req.body.newPassword)){
       console.log("the old psd is same as new password")
-      return res.render("ClinicianCreateAccount.hbs", {
+      return res.render("clinicianChangePassword.hbs", {
           input: req.body,
           message: "The old password is the same as the new password, please try again",
       });
     }
-    
-      doctor.password = req.body.newPassword
-      await doctor.save()
+      const clinician = await Doctor.findById(doctor._id)
+      clinician.password = req.body.newPassword
+      await clinician.save()
+      //Doctor.findOneAndUpdate({email: req.session.userID},{password: req.body.newPassword})
+      return res.render("clinicianChangePassword.hbs", {
+        input: req.body,
+        message: "Update successfully!",
+    });
+      //doctor.password = req.body.newPassword
+      
       
    
   }catch(err){
@@ -304,6 +311,16 @@ const UpdateThreshold = async (req, res) => {
   }
 };
 
+const renderUpdate = async(req, res) => {
+  try{
+    
+   res.render('ClinicianChangePassword.hbs',req.session.flash); // send data to browser
+  }catch(err){
+    console.log("error happens ", err);
+
+  }
+}
+
 
 module.exports = {
     age,
@@ -320,6 +337,7 @@ module.exports = {
     ClinicianViewTable,
     SupportMessage,
     UpdateThreshold,
-    renderThreshold
+    renderThreshold,
+    renderUpdate,
 
 }
