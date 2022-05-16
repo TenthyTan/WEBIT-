@@ -31,6 +31,9 @@ clinicianRouter.post('/createProfile',sign.isLoginDoctor, clinicianController.cr
 
 clinicianRouter.get('/profile',sign.isLoginDoctor, clinicianController.renderProfile)
 
+clinicianRouter.get('/updatePassword',sign.isLoginDoctor, clinicianController.renderUpdate)
+clinicianRouter.post('/updatePassword',sign.isLoginDoctor, clinicianController.changePassword)
+
 // clinicianRouter.get('/messages', clinicianController.messageRouter)
 
 clinicianRouter.get('/viewTable', sign.isLoginDoctor, clinicianController.ClinicianViewTable)
