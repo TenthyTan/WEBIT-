@@ -30,11 +30,11 @@
         </thead>
         {{#each record}} 
         <tbody>          
-                <tr>
+                <tr onClick="location.href='/clinicians/manage{{this._id}}'">
                   <td >{{this.patientID.userName}}</td>
                   {{#each this.data}} 
                   {{#ifUnrecorded this.status}}
-                  <td style = "color: #bb1f1f"><a href="/clinicians/manage">Missing</a></td>
+                  <td style = "color: #bb1f1f">Missing</td>
                   {{else}}
                   <td style="background-color:
                     {{#ifNoneed this.status}}
@@ -46,7 +46,7 @@
                     {{/ifOutSideThresholds}}
                     {{/ifRecorded}}
                     {{/ifNoneed }}
-                    ;"><a href="/clinicians/manage">{{this.value}}</a></td>
+                    ;">{{this.value}}</td>
                   {{/ifUnrecorded}}
                   {{/each}}
                 </tr>
