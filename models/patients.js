@@ -15,6 +15,12 @@ const patientSchema = new mongoose.Schema({
     supportMes: {type: String, required: true},
     recordRate: {type: Number, min: 0, max: 1},
     role: { type: String, default: "patient" },
+    timeseries: {
+        bgl: { type: Boolean, required: true },
+        weight: { type: Boolean, required: true },
+        doit: { type: Boolean, required: true },
+        exercise: { type: Boolean, required: true },
+    },
     records: [{
         recordIDs: {type: mongoose.Schema.Types.ObjectId,  ref: "Record"}
     }],
