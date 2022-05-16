@@ -1,3 +1,4 @@
+<script> src="https://cdnjs.cloudflare.com/ajax/libs/emojionearea/3.4.2/emojionearea.min.js"</script>
 <div class="box_right_aaa">
     <form action="clinicians/messages" method="POST">
     <div class="sidenav">
@@ -19,12 +20,10 @@
         <img src="/img/icons8-search-account-64.png" />
         <p><a href="/clinicians/profile">Profile</a></p >
     </div>
-    <div class="title"> 
-        Support Message
-    </div>
     <div class="pn_box2">
-        <div >Patient Name: </div>
-        <div class="pp_box">{{doctor.patients.patientIDs.patientName}}</div>
+        <div>Support Message : {{record.supportMessage}}</div>
+        <div >Patient Name: {{record.patientIDs.patientName}}</div>
+        <div class="pp_box">{{record.patientIDs.patientName}}</div>
     
     </div>
 
@@ -40,35 +39,3 @@
     </form>
 </div>
 
-<script>
-// Recreates the unordered list with new messages
-//function recreate_list(messages) {
-//    const list = document.querySelector('ul')
-//    const newList = document.createElement('ul')
-//    for (const message of messages) {
-//    const li = document.createElement('li')
-//    li.innerHTML = message
-//    newList.appendChild(li)
-//    }
-//    list.replaceWith(newList)
-//}
-// Send new message and handle response
-function new_message() {
-    const text = document.querySelector('input[name="message"]')
-    // Create POST payload
-    const formData = new URLSearchParams()
-    formData.append('message', text.value)
-    fetch('clinicians/messages', {
-    method: 'POST',
-    body: formData,
-    })
-    .then(res => res.json())
-    .then(data => recreate_list(data))
-    return false
-}
-document.onreadystatechange = function () {
-    if (document.readyState === 'interactive') {
-    document.querySelector('form').onsubmit = new_message
-    }
-}
-</script>

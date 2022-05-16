@@ -528,4 +528,63 @@ h2 {
     text-align: center;
     color: #000000;
 }
-/* biniui */
+/* safety threshold */
+.pat_title {
+    display: flex;
+    font-size: 29px;
+    align-items: center;
+    margin: 20px;  
+    height: 170px;
+    box-sizing: border-box; 
+}
+
+.pat_a {
+    font-weight: 600;
+    padding: 20px;
+    box-shadow: 0px 3px 3px 1px rgb(165, 164, 164);
+    margin-left: 20px;
+    background-color: rgb(213,246,230);
+}
+
+table {
+    width: 100%;
+    text-align: center;
+    font-weight: 600;
+    font-size: 20px;
+    line-height: 60px;
+    height: calc(100% - 210px);
+}
+.pat_b{
+    width: 200px;
+    margin: auto;
+    font-weight: 600;
+    box-shadow: 0px 3px 3px 1px rgb(165, 164, 164);
+    background-color: rgb(213,246,230);
+    
+}
+.pat_c{
+    padding: 0 30px;
+    margin: auto;
+    font-weight: 600;
+    box-shadow: 0px 3px 3px 1px rgb(165, 164, 164);
+    background-color: rgb(213,246,230);
+}
+.tdd{
+    height: 100%;
+    display: flex;
+    align-items: center;
+    padding-right: 30px;
+    font-size: 30px;
+    font-weight: 600;
+}
+.tdd img{
+    margin-left: 20px;
+}
+.pat_d{
+    height: 50px;
+    width: 300px;
+    margin: auto;
+    font-weight: 600;
+    box-shadow: 0px 3px 3px 1px rgb(165, 164, 164);
+    background-color: rgb(213,246,230);
+}
