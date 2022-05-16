@@ -27,7 +27,7 @@
         </thead>
         {{#each record}} 
         <tbody>          
-                <tr onClick="location.href='/clinicians/viewTable{{this.patientID}}'">
+                <tr onClick="location.href='/clinicians/dashboard/{{this.patientID._id}}'">
                   <td >{{this.patientID.userName}}</td>
                   {{#each this.data}} 
                   {{#ifUnrecorded this.status}}

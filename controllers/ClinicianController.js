@@ -245,36 +245,53 @@ function age(birth) {
 
 const ClinicianViewTable = async (req, res) => {
   // find current doctor
+  const patient =  await Patient.findOne({"_id": req.params._id}).lean()
+  //find all patients record (for patients who belong to the doctor )//
+  const record = await Record.find({"patientID":  patient._id}).lean()
+  //const pAge = age(patient.yearOfBirth);
+  res.render("Clinicianviewdatachart.hbs", { patient : patient, record: record});
+};
+
+const renderPatientData = async (req, res) => {
+  // find current doctor
+  // dashboard/:id
+  const patient =  await Patient.findOne({"_id": req.params._id}).lean()
   const doctor = await Doctor.findOne({"email": req.session.userID }).lean()
-  // find all the patients belongs to this doctor
-  const patient = await Patient.find({"doctor" : doctor.userName}).lean()
-  // find all patients record (for patients who belong to the doctor )//
-  const record = await Record.find({patientID: {"$in" : patient}}).lean()
+  const record = await Record.find({ "patientID":  patient._id}).lean()
   const pAge = age(patient.yearOfBirth);
-  res.render("Cliniciansviewdata.hbs", { patient : patient, record: record, age: pAge, dotor: doctor});
+
+  
+  res.render("Cliniciansviewdata.hbs", { patient : patient, record: record, age: pAge, doctor: doctor});
 };
 
 
 const renderSupportMessage = async (req, res) => {
   // find current doctor
+  const patient =  await Patient.findOne({"_id": req.params._id}).lean()
   const doctor = await Doctor.findOne({"email": req.session.userID }).lean()
-  // find all the patients belongs to this doctor
-  const patient = await Patient.find({"doctor" : doctor.userName}).lean()
+  
   // find all patients record (for patients who belong to the doctor )//
   res.render("Cliniciansupportmessage.hbs", { patient : patient, doctor: doctor});
 };
 
 const updateSupportMessages = async (req, res) => {
   try {
+
     const doctor = await Doctor.findOne({"email": req.session.userID }).lean()
     // find all the patients belongs to this doctor
-    const patient = await Patient.find({"doctor" : doctor.userName}).lean()
+    const patient =  await Patient.findById(req.params.id).lean()
     patient.supportMes = req.body.supportMessage;
     await patient.save(); ///patient Id 要改
     // res.redirect("/clinician/messages" + req.body.patientId);
+    return res.render("Cliniciansupportmessage.hbs", {
+      input: req.body,
+      message: "Send support successfully!",
+  });
   } catch (err) {
     console.log(err);
+    
     res.send("error happens when update support message");
+
   }
 };
 
@@ -345,7 +362,7 @@ const renderClinicalNotes = async (req, res) => {
       Patient: '627fe7d1962aaf5cf96aae67',
       Doctor: '627fe50e18c02895c2b82325',
     }).lean();
-    const 
+    
     const date = formatDate(notes.createTime)
     console.log(date)
     res.render("CLinicianclinicalnote.hbs", {notes: notes, patient: patient, doctor: doctor, date: date});
@@ -416,7 +433,6 @@ module.exports = {
     formatDate,
     renderDashboard,
     changePassword,
-    ClinicianViewTable,
     renderSupportMessage,
     updateSupportMessages,
     UpdateThreshold,
@@ -425,5 +441,7 @@ module.exports = {
     renderClinicalNotes,
     addNote,
     viewComments,
+    renderPatientData,
+    ClinicianViewTable,
 
 }

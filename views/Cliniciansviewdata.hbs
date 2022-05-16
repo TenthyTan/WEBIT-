@@ -1,10 +1,14 @@
-<form action="/clinicians/viewTable" method="GET">
+<form action="/clinicians/dashboard/{{patient._id}}" method="GET">
+    
     <div class="sidenav">
         <img src="/img/Group-44.png" />
         <p >{{doctor.firstName}}</p >
 
         <img src="/img/icons8-dashboard-64.png" />
         <p><a href="/clinicians/dashboard">Dashboard</a></p >
+
+        <img src="/img/list-dash-header.png" />
+        <p><a href="/clinicians/list of clinical notes">Note</a></p >
 
         <img src="/img/Comment-1.png" />
         <p><a href="clinicians/checkComment">Comment</a></p >
@@ -18,7 +22,7 @@
 <section>
 
 <div class="main">
-        <div class="title-data"><h6>Patient Name: {{doctor.patients.patientName}}&nbsp;&nbsp;&nbsp;&nbsp;Age: {{age.age}} &nbsp;&nbsp;&nbsp;&nbsp;Gender:Male</h6></div>
+        <div class="title-data"><h6>Patient Name: {{patient.firstName}}&nbsp;&nbsp;&nbsp;&nbsp;Age: {{age.age}} &nbsp;&nbsp;&nbsp;&nbsp;Gender:Male</h6></div>
 <table>
     <thead>
         <tr>
@@ -47,7 +51,7 @@
     </tbody>
     {{/each}}
 </table>
-<button class="viewdatabotton"><a href="/clinicians/viewChart">View</a></button>
+<button class="viewdatabotton"><a href="/clinicians/dashboard/{{patient._id}}/viewChart">View</a></button>
 <p class="annotationofbotton">View Data On Chart</p>
 </section>
 </form>

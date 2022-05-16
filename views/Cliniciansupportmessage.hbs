@@ -1,6 +1,6 @@
 <script> src="https://cdnjs.cloudflare.com/ajax/libs/emojionearea/3.4.2/emojionearea.min.js"</script>
 <div class="box_right_aaa">
-    <form action="/clinicians/messages" method="POST">
+    <form action="/clinicians/dashboard/{{patient._id}}/messages" method="POST">
     <div class="sidenav">
         <img src="/img/Group-44.png" />
         <p >{{doctor.firstName}}</p >
@@ -26,7 +26,14 @@
 
     <div class="textarea" style="width: 30%;">
         <input type="hidden" name="patientId" value="{{doctor.patients.patientID}}">
-        <textarea name="supportMessage" id="supportMessage" form="messageForm" placeholder="Enter Support Message"></textarea>
+        <textarea name="sup" id="supportMessage" form="messageForm" placeholder=""></textarea>
+        <input
+            
+            type="text"
+            name="supportMessage"
+            placeholder="Enter Support Message"
+            
+          /></div>
         <script>
             $("#supportMessage").emojioneArea()
         </script>

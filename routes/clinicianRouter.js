@@ -10,7 +10,7 @@ const sign = require('./login.js')
 
 
 // clinicians dashboard
-clinicianRouter.get('/dashboard', sign.isLoginDoctor, clinicianController.renderDashboard);
+
 
 
 clinicianRouter.get('/home', sign.isLoginDoctor, clinicianController.renderHome);
@@ -34,13 +34,15 @@ clinicianRouter.get('/profile',sign.isLoginDoctor, clinicianController.renderPro
 clinicianRouter.get('/updatePassword',sign.isLoginDoctor, clinicianController.renderUpdate)
 clinicianRouter.post('/updatePassword',sign.isLoginDoctor, clinicianController.changePassword)
 
-// clinicianRouter.get('/messages', clinicianController.messageRouter)
 
-clinicianRouter.get('/viewTable', sign.isLoginDoctor, clinicianController.ClinicianViewTable)
+clinicianRouter.get('/dashboard', sign.isLoginDoctor, clinicianController.renderDashboard);
+clinicianRouter.get('/dashboard/:_id', sign.isLoginDoctor, clinicianController.renderPatientData);
 
-clinicianRouter.get('/messages', sign.isLoginDoctor, clinicianController.renderSupportMessage)
+clinicianRouter.get('/dashboard/:_id/viewChart', sign.isLoginDoctor, clinicianController.ClinicianViewTable)
 
-clinicianRouter.post('/messages', sign.isLoginDoctor, clinicianController.updateSupportMessages)
+clinicianRouter.get('/dashboard/:_id/messages', sign.isLoginDoctor, clinicianController.renderSupportMessage)
+
+clinicianRouter.post('/dashboard/:_id/messages', sign.isLoginDoctor, clinicianController.updateSupportMessages)
 
 clinicianRouter.get('/safetyThreshold', sign.isLoginDoctor, clinicianController.renderThreshold)
 

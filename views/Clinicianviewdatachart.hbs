@@ -2,7 +2,7 @@
     <script src="https://cdn.bootcdn.net/ajax/libs/echarts/5.3.2/echarts.common.js"></script>
 </head>
 <body>
-    <form action="/clinicians/viewChart" method="GET">
+    <form action="/clinicians/dashboard/{{patient._id}}/viewChart" method="GET">
     <div class="sidenav">
         <img src="/img/Group-44.png" />
         <p >{{doctor.firstName}}</p >
