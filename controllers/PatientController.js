@@ -231,7 +231,7 @@ const viewChart = async (req, res) => {
   try {
     const patient = await Patient.findOne({"email": req.session.userID}).lean()
     const records = await Record.find({ patientID: patient._id }).lean();
-    const dList = getDateList(10);
+    const dList = getDateList(30);
 
     const dataList = { bgl: [], weight: [], doit: [], exercise: [] };
     for (date of dList) {
