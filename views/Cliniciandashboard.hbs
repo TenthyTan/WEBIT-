@@ -34,7 +34,7 @@
                   <td >{{this.patientID.userName}}</td>
                   {{#each this.data}} 
                   {{#ifUnrecorded this.status}}
-                  <td style = "color: #bb1f1f"><a href="/clinicians/safetythreshold">Missing</a></td>
+                  <td style = "color: #bb1f1f"><a href="/clinicians/manage">Missing</a></td>
                   {{else}}
                   <td style="background-color:
                     {{#ifNoneed this.status}}
@@ -46,7 +46,7 @@
                     {{/ifOutSideThresholds}}
                     {{/ifRecorded}}
                     {{/ifNoneed }}
-                    ;"><a href="/clinicians/safetythreshold">{{this.value}}</a></td>
+                    ;"><a href="/clinicians/manage">{{this.value}}</a></td>
                   {{/ifUnrecorded}}
                   {{/each}}
                 </tr>
