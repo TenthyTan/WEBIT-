@@ -39,5 +39,6 @@ clinicianRouter.get('/messages', sign.isLoginDoctor, clinicianController.Support
 
 clinicianRouter.get('/manage', sign.isLoginDoctor, clinicianController.renderThreshold)
 
+clinicianRouter.post('/manage', sign.isLoginDoctor, clinicianController.UpdateThreshold)
 // export the router
 module.exports = clinicianRouter
