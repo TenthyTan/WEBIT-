@@ -256,6 +256,11 @@ const SupportMessage = async (req, res) => {
   res.render("Cliniciansupportmessage.hbs", { patient : patient, dotor: doctor});
 };
 
+const renderThreshold = async (req, res) => {
+  
+  res.render("Clinicianthreshold.hbs");
+};
+
 module.exports = {
     age,
     renderHome,
@@ -269,5 +274,6 @@ module.exports = {
     renderDashboard,
     changePassword,
     ClinicianViewTable,
-    SupportMessage
+    SupportMessage,
+    renderThreshold,
 }
