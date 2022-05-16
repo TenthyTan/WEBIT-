@@ -24,9 +24,7 @@
 
         <div>Patient Name:</div>                                     
         <div class="pat_a" style="width: 400px;text-align: center;">{{doctor.patients.patientName}}</div> //可能会有error 返回的是clinician点击时病人的名字 //
-        <button class="pat_a" style="margin-left: 200px;width: 300px;" href="clinicians/messages">Send Message</button>
-        <button class="pat_a" href="/clinicians/list of clinical notes">Clinical Note </button>
-        <button class="pat_a" href="/clinicians/viewData">View Data</button>
+        <button class="pat_a" style="margin-left: 200px;width: 300px;">Update</button>
     </div>
 
         <table border="2" style="border-collapse: collapse;">
@@ -72,8 +70,6 @@
                 </select> </td>
                 <td> Exercise (steps)</td>
                 <td>Min: <input type="digit" name="min_value" placeholder="Enter min threshold" required>           Max: <input type="digit" name="max_value" placeholder="Enter max threshold" required></td>
-
-
             </tr>
         </table>
     </form>   
