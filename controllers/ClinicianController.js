@@ -165,10 +165,12 @@ const renderDashboard = async(req, res) => {
     // find all the patients belongs to this doctor
     const patients = await Patient.find({"doctor" : doctor.userName}).lean()
     console.log(patients)
-    const records = await Record.find({patientID: {"$in" : patients}, recordDate: formatDate(new Date())}).lean()
-   
+    const records = await Record.find({patientID: {"$in" : patients}, recordDate: formatDate(new Date())}).populate({
+      path: "patientID",
+      options: { lean: true },
+    }).lean();    
     console.log(JSON.stringify(records))
-   res.render('Cliniciandashboard.hbs', {record: JSON.stringify(records), doctor: doctor}); // send data to browser
+   res.render('Cliniciandashboard.hbs', {record: records, doctor: doctor}); // send data to browser
   }catch(err){
     console.log("error happens ", err);
 
@@ -245,6 +247,20 @@ const ClinicianViewTable = async (req, res) => {
 };
 
 
+const SupportMessage = async (req, res) => {
+  // find current doctor
+  const doctor = await Doctor.findOne({"email": req.session.userID }).lean()
+  // find all the patients belongs to this doctor
+  const patient = await Patient.find({"doctor" : doctor.userName}).lean()
+  // find all patients record (for patients who belong to the doctor )//
+  res.render("Cliniciansupportmessage.hbs", { patient : patient, dotor: doctor});
+};
+
+const renderThreshold = async (req, res) => {
+  
+  res.render("Clinicianthreshold.hbs");
+};
+
 module.exports = {
     age,
     renderHome,
@@ -257,5 +273,7 @@ module.exports = {
     formatDate,
     renderDashboard,
     changePassword,
-    ClinicianViewTable
+    ClinicianViewTable,
+    SupportMessage,
+    renderThreshold,
 }

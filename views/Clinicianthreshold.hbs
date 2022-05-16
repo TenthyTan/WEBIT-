@@ -19,7 +19,7 @@
         <p><a href="/clinicians/profile">Profile</a></p >
     </div>
     <div class="box_right_aaa">
-    <form action="/clinicians/Safety Threshold" method="POST">
+    <form action="/clinicians/manage" method="POST">
     <div class="pat_title">
 
         <div>Patient Name:</div>                                     
@@ -41,6 +41,15 @@
                     <option value ="Record">Need to record</option>
                     <option value ="Not required">Not required</option>
                 </select> </td>
+                <td> Blood Glucose Level (nmol)</td>
+                <td>Min: <input type="digit" name="value" placeholder="Enter min threshold" required>           Max: <input type="digit" name="value" placeholder="Enter max threshold" required></td>
+                <td class="tdd"><div class="pat_c">0</div>~<div class="pat_c">11100000</div>nmol/L<img src="../static/patient2/2.png" alt=""></td>
+            </tr>
+            <tr>
+                <td><select>
+                    <option value ="Record">Need to record</option>
+                    <option value ="Not required">Not required</option>
+                </select> </td>
                 <td>Insulin taken (does)</td>
                 <td>Min: <input type="digit" name="value" placeholder="Enter min threshold" required>           Max: <input type="digit" name="value" placeholder="Enter max threshold" required></td>
                 <td class="tdd"><div class="pat_c">0</div>~<div class="pat_c">3</div>does every day <img src="../static/patient2/2.png" alt=""></td>
@@ -55,15 +64,6 @@
                 <td>Min: <input type="digit" name="value" placeholder="Enter min threshold" required>           Max: <input type="digit" name="value" placeholder="Enter max threshold" required></td>
                 <td class="tdd"><div class="pat_c">65</div>~<div class="pat_c">85</div>kg<img src="../static/patient2/2.png" alt=""></td>
 
-            </tr>
-            <tr>
-                <td><select>
-                    <option value ="Record">Need to record</option>
-                    <option value ="Not required">Not required</option>
-                </select> </td>
-                <td> Blood Glucose Level (nmol)</td>
-                <td>Min: <input type="digit" name="value" placeholder="Enter min threshold" required>           Max: <input type="digit" name="value" placeholder="Enter max threshold" required></td>
-                <td class="tdd"><div class="pat_c">0</div>~<div class="pat_c">11100000</div>nmol/L<img src="../static/patient2/2.png" alt=""></td>
             </tr>
             <tr>
                 <td><select>
