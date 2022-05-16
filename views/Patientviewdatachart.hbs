@@ -5,15 +5,15 @@
     <form action="/patients/viewChart" method="GET">
     <div class="sidenav">
         <img src="../public/img/head.png" />
-        <p>{{patient.userName}}</p>
+        <p>{{patient.userName}}</p >
         <img src="../public/img/recording.png" />
-        <p>Record</p >
+        <p href="/patients/recordData">Record</p >
         <img src="../public/img/view.png" />
-        <p>View</p >
+        <p href="/patients/viewTable">View</p >
         <img src="../public/img/ranking.png" />
-        <p>Rank</p >
+        <p href="/patients/recordRank">Rank</p >
         <img src="../public/img/profile.png" />
-        <p>Profile</p >
+        <p href="/patients/profile">Profile</p >
         <img src="../public/img/setting.png" />
         <p>setting</p >
         <img src="../public/img/warning.png" />
@@ -26,3 +26,5 @@
         {{> insulin dates=dates datas=datas}}
         {{> exercise dates=dates datas=datas}}
     </div>
+    </form>
+</body>

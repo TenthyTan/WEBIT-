@@ -1,0 +1,33 @@
+<head>
+    <script src="https://cdn.bootcdn.net/ajax/libs/echarts/5.3.2/echarts.common.js"></script>
+</head>
+<body>
+    <form action="/clinicians/viewChart" method="GET">
+    <div class="sidenav">
+        <img src="/img/Group-44.png" />
+        <p >{{doctor.firstName}}</p >
+
+        <img src="/img/icons8-dashboard-64.png" />
+        <p href="/clinicians/dashboard">Dashboard</p >
+
+        <img src="/img/list-dash-header.png" />
+        <p href="/clinicians/list of clinical notes">Note</p >
+
+        <img src="/img/Comment-1.png" />
+        <p href="clinicians/checkComment">Comment</p >
+
+        <img src="/img/icons8-add-user-male-96.png" />
+        <p href="/clinicians/createProfile">Create</p >
+
+        <img src="/img/icons8-search-account-64.png" />
+        <p href="/clinicians/profile">Profile</p >
+    </div>
+    <h1 style="text-align: center;"> View all data display on chart. </h1>
+    <div style="width: 100%; display: flex; flex-wrap: wrap; justify-content: space-around; align-content: space-between">
+        {{> blood dates=dates datas=datas}}
+        {{> weight dates=dates datas=datas}}
+        {{> insulin dates=dates datas=datas}}
+        {{> exercise dates=dates datas=datas}}
+    </div>
+    </form>
+</body>

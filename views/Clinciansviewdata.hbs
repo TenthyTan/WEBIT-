@@ -1,23 +1,22 @@
-<form action="/clinicians/viewData" method="GET">
+<form action="/clinicians/viewTable" method="GET">
     <div class="sidenav">
-                <img src="/img/Group-44.png" />
-                <p>{{doctor.firstName}}</p >
+        <img src="/img/Group-44.png" />
+        <p >{{doctor.firstName}}</p >
 
-                <img src="/img/icons8-dashboard-64.png" />
-                <p>Dashboard</p >
+        <img src="/img/icons8-dashboard-64.png" />
+        <p href="/clinicians/dashboard">Dashboard</p >
 
-                <img src="/img/list-dash-header.png" />
-                <p>Note</p >
+        <img src="/img/list-dash-header.png" />
+        <p href="/clinicians/list of clinical notes">Note</p >
 
-                <img src="/img/Comment-1.png" />
-                <p>Comment</p >
+        <img src="/img/Comment-1.png" />
+        <p href="clinicians/checkComment">Comment</p >
 
-                <img src="/img/icons8-add-user-male-96.png" />
-                <p>Create</p >
+        <img src="/img/icons8-add-user-male-96.png" />
+        <p href="/clinicians/createProfile">Create</p >
 
-                <img src="/img/icons8-search-account-64.png" />
-                <p>Profile</p >
-            </div>
+        <img src="/img/icons8-search-account-64.png" />
+        <p href="/clinicians/profile">Profile</p >
     </div>
 <section>
 
@@ -34,26 +33,24 @@
 
         </tr>
     </thead>
+    {{#each record}}
     <tbody>
-        {{#each record}} 
             <td >{{this.recordDate}}</td>
-                
-                {{#ifUnrecorded this.data.status}}
-                <td style = "color: #bb1f1f">Missing</td>
-                {{else}}
-                
-                <td style="background-color:
-                {{#ifNoneed this.status}}
-                grey
-                {{/ifNoneed }}
-                ;">
-                {{this.data.value}}
-                </td>
-                {{/ifUnrecorded}}
-        {{/each}}
+            {{#each this.data}}
+            {{#ifUnrecorded this.status}}
+            <td style = "color: #bb1f1f">Missing</td>
+            {{else}}
+            <td style="background-color:
+            {{#ifNoneed this.status}}
+            grey
+            {{/ifNoneed }}
+            ;">{{this.value}}</td>
+            {{/ifUnrecorded}}
+            {{/each}}
     </tbody>
+    {{/each}}
 </table>
-<button class="viewdatabotton">View</button>
+<button class="viewdatabotton" href="/clinicians/viewChart">View</button>
 <p class="annotationofbotton">View Data On Chart</p>
 </section>
 </form>
