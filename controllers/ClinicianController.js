@@ -165,10 +165,12 @@ const renderDashboard = async(req, res) => {
     // find all the patients belongs to this doctor
     const patients = await Patient.find({"doctor" : doctor.userName}).lean()
     console.log(patients)
-    const records = await Record.find({patientID: {"$in" : patients}, recordDate: formatDate(new Date())}).lean()
-   
+    const records = await Record.find({patientID: {"$in" : patients}, recordDate: formatDate(new Date())}).populate({
+      path: "patientID",
+      options: { lean: true },
+    }).lean();    
     console.log(JSON.stringify(records))
-   res.render('Cliniciandashboard.hbs', {record: JSON.stringify(records), doctor: doctor}); // send data to browser
+   res.render('Cliniciandashboard.hbs', {record: records, doctor: doctor}); // send data to browser
   }catch(err){
     console.log("error happens ", err);
 
