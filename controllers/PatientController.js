@@ -271,6 +271,44 @@ const viewTable = async (req, res) => {
   res.render("Patientviewdata.hbs", { patient : patient, record: records, age: pAge});
 }
 
+function checkRecorded(record) {
+  var flag = false;
+  for (key in record.data) {
+    // console.log(record.data[key]);
+    if (record.data[key].status == "recorded") {
+      flag = true;
+    }
+  }
+  // console.log(flag);
+  return flag;
+}
+
+async function engageRate(patientID) {
+  const records = (await Record.find({ "patientID": patientID }).lean()).filter(
+    (record) => checkRecorded(record)
+  );
+  const patient = await Patient.findById(patientID);
+  const start = new Date(formatDate(patient.createdTime)).getTime();
+  const today = new Date(formatDate(Date.now())).getTime();
+  const period = (today - start) / (24 * 60 * 60 * 1000) + 1;
+  patient.eRate = (records.length / period).toFixed(3);
+  await patient.save();
+}
+
+const rankBoard = async (req, res) => {
+  const patients = await Patient.find({}, {});
+  for (patient of patients) {
+    await engageRate(patient._id);
+  }
+  var pList = await Patient.find({}, {}).lean();
+  pList = pList
+    .sort((a, b) => {
+      return b.eRate - a.eRate;
+    })
+    .slice(0, 5);
+  res.render("Patientsrank.hbs", { rank: pList });
+};
+
 module.exports = {
   getAllPatients,
   getOnePatient,
@@ -283,7 +321,8 @@ module.exports = {
   renderLoginPage,
   renderProfile,
   viewChart,
-  viewTable
+  viewTable,
+  rankBoard
 };
 
 

@@ -29,6 +29,7 @@ patientRouter.post("/recordData", sign.isLoginPatient, demoController.updateReco
 patientRouter.get('/profile', sign.isLoginPatient, demoController.renderProfile);
 patientRouter.get('/viewTable', sign.isLoginPatient, demoController.viewTable);
 patientRouter.get('/viewChart', sign.isLoginPatient, demoController.viewChart);
+patientRouter.get('/rank', sign.isLoginPatient, demoController.rankBoard);
 patientRouter.get('/:id', demoController.getDataById);
 // 
 

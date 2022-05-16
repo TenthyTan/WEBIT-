@@ -1,0 +1,28 @@
+<form action="/patients/rank" method="GET">
+<div class="sidenav">
+    <img src="../public/img/head.png" />
+    <p>{{patient.userName}}</p >
+    <img src="../public/img/recording.png" />
+    <p><a href="/patients/recordData">Record</a></p >
+    <img src="../public/img/view.png" />
+    <p><a href="/patients/viewTable">View</a></p >
+    <img src="../public/img/ranking.png" />
+    <p><a href="/patients/recordRank">Rank</a></p >
+    <img src="../public/img/profile.png" />
+    <p><a href="/patients/profile">Profile</a></p >
+    <img src="../public/img/setting.png" />
+    <p>setting</p >
+    <img src="../public/img/warning.png" />
+    <p>urgency</p >
+</div>
+<section>
+<div>
+  <h1> Leaderboard </h1>
+  <ul>
+    {{#each rank}}
+      <li> {{this.userName}}: {{this.eRate}} </li>
+    {{/each}}
+  </ul>
+</div>
+</section>
+</form>
