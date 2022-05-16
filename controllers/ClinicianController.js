@@ -260,7 +260,7 @@ const renderSupportMessage = async (req, res) => {
   // find all the patients belongs to this doctor
   const patient = await Patient.find({"doctor" : doctor.userName}).lean()
   // find all patients record (for patients who belong to the doctor )//
-  res.render("Cliniciansupportmessage.hbs", { patient : patient, dotor: doctor});
+  res.render("Cliniciansupportmessage.hbs", { patient : patient, doctor: doctor});
 };
 
 const updateSupportMessages = async (req, res) => {
@@ -270,7 +270,7 @@ const updateSupportMessages = async (req, res) => {
     const patient = await Patient.find({"doctor" : doctor.userName}).lean()
     patient.supportMessage = req.body.supportMessage;
     await patient.save();
-    res.redirect("/clinician/messages" + req.body.patientId);
+    // res.redirect("/clinician/messages" + req.body.patientId);
   } catch (err) {
     console.log(err);
     res.send("error happens when update support message");
@@ -335,6 +335,38 @@ const UpdateThreshold = async (req, res) => {
 };
 
 
+const renderClinicalNotes = async (req, res) => {
+  try {
+    const doctor = await Doctor.findOne({"email": req.session.userID }).lean()
+    const patient = await Patient.findById(req.params._id).lean();  //修改成patientID
+    const notes = await Note.find({ //还没建数据库
+      patient: patient._id,
+      clinician: doctor._id,
+    }).lean();
+    const date = formatedate(new date())
+    res.render("CLinicianclinicalnote.hbs", { notes: notes, patient: patient });
+  } catch (err) {
+    console.log(err);
+    res.send("error happens when viewing clinicial notes");
+  }
+};
+
+const addNote = async (req, res) => {
+  try {
+      const newNote = new Note({
+      atient: req.body.patientId,
+      clinician: "6264c6a35501bb6d35a7c4f2",
+      text: req.body.note,
+    });
+    await newNote.save();
+    res.redirect("/clinician/viewNotes" + req.body.patientId);
+  } catch (err) {
+    console.log(err);
+    res.send("error happens when add clinicial note");
+  }
+};
+
+
 module.exports = {
     age,
     renderHome,
@@ -352,6 +384,8 @@ module.exports = {
     updateSupportMessages,
     UpdateThreshold,
     renderThreshold,
-    renderUpdate
+    renderUpdate,
+    renderClinicalNotes,
+    addNote,
 
 }
