@@ -1,4 +1,4 @@
-<form action="/clinicians/checkComment" method="GET"></form>
+<form action="/clinicians/clinicalNotes" method="POST"></form>
 <div class="sidenav">
     <img src="/img/Group-44.png" />
     <p >{{doctor.firstName}}</p >
@@ -14,4 +14,22 @@
 
     <img src="/img/icons8-search-account-64.png" />
     <p><a href="/clinicians/profile">Profile</a></p >
+</div>
+<div class="ClinicalNote"> 
+    Clinical Notes
+</div>
+<div class="clinical_box2">
+    <div >Patient Name: </div>
+    <div class="clinical_box">{{record.firstName}}</div>
+</div>
+<div class="box_right_aaa">
+    <div class="textarea">
+        <textarea placeholder="Enter Clinical Notes" name="clinical notes"></textarea>
+    </div>
+    <button class="back">
+        Back
+    </button>
+    <button class="send">
+        Send
+    </button>
 </div>
