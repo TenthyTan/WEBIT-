@@ -553,6 +553,7 @@ table {
     font-size: 20px;
     line-height: 60px;
     height: calc(100% - 210px);
+    margin-left: 80px;
 }
 .pat_b{
     width: 200px;
