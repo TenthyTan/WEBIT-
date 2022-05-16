@@ -187,8 +187,31 @@ const getAllRecords = async(req, res) => {
 }
 
 const renderHomePage = async (req, res) => {
-  
-  res.render("PatientHome.hbs");
+  // try {
+  //   const patient = await Patient.findOne({"email": req.session.userID}).lean()
+  //   console.log(patient);
+  //   // engageRate(req.user._id)
+    
+  //   const patientID = req.user._id;
+  //   const recordId = await initRecord(patientID);
+
+  //   const record = await Record.findOne({ _id: recordId })
+  //     .populate({
+  //       path: "patientID",
+  //       options: { lean: true },
+  //     })
+  //     .lean();
+
+  //   // // console.log("-- record info when display -- ", record);
+  //   if (req.query.submitted === "true") {
+  //     return res.render("PatientHome.hbs", { record: record, submitted: true });
+  //   }
+  //   res.render("PatientHome.hbs", { record: record });
+  // } catch (err) {
+  //   console.log(err);
+  //   res.send("error happens when render record data");
+  // }
+  res.render("PatientHome.hbs")
   
 };
 
@@ -275,7 +298,7 @@ function checkRecorded(record) {
   var flag = false;
   for (key in record.data) {
     // console.log(record.data[key]);
-    if (record.data[key].status == "recorded") {
+    if (record.data[key].status == "Recorded") {
       flag = true;
     }
   }
@@ -288,22 +311,23 @@ async function engageRate(patientID) {
     (record) => checkRecorded(record)
   );
   const patient = await Patient.findById(patientID);
-  const start = new Date(formatDate(patient.createdTime)).getTime();
+  const start = new Date(formatDate(patient.Create_Time)).getTime();
   const today = new Date(formatDate(Date.now())).getTime();
   const period = (today - start) / (24 * 60 * 60 * 1000) + 1;
-  patient.eRate = (records.length / period).toFixed(3);
+  patient.recordRate = (records.length / period).toFixed(3);
   await patient.save();
 }
 
 const rankBoard = async (req, res) => {
   const patients = await Patient.find({}, {});
+  // console.log(patients)
   for (patient of patients) {
     await engageRate(patient._id);
   }
   var pList = await Patient.find({}, {}).lean();
   pList = pList
     .sort((a, b) => {
-      return b.eRate - a.eRate;
+      return b.recordRate - a.recordRate;
     })
     .slice(0, 5);
   res.render("Patientsrank.hbs", { rank: pList });
