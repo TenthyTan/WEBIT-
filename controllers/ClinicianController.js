@@ -245,6 +245,15 @@ const ClinicianViewTable = async (req, res) => {
 };
 
 
+const SupportMessage = async (req, res) => {
+  // find current doctor
+  const doctor = await Doctor.findOne({"email": req.session.userID }).lean()
+  // find all the patients belongs to this doctor
+  const patient = await Patient.find({"doctor" : doctor.userName}).lean()
+  // find all patients record (for patients who belong to the doctor )//
+  res.render("Cliniciansupportmessage.hbs", { patient : patient, dotor: doctor});
+};
+
 module.exports = {
     age,
     renderHome,
@@ -257,5 +266,6 @@ module.exports = {
     formatDate,
     renderDashboard,
     changePassword,
-    ClinicianViewTable
+    ClinicianViewTable,
+    SupportMessage
 }
