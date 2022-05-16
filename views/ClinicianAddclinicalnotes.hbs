@@ -1,4 +1,4 @@
-<form action="/clinicians/listClinicalNotes" method="GET"></form>
+<form action="/clinicians/clinicalNotes" method="POST"></form>
 <div class="sidenav">
     <img src="/img/Group-44.png" />
     <p >{{doctor.firstName}}</p >
@@ -25,13 +25,14 @@
     <div >Patient Name: </div>
     <div class="clinical_box">{{record.firstName}}</div>
 </div>
-<ul>
-{{#each notes}}
-<div class="two_a">
-    <div class="two_aa">{{this.timestamps.createdAt}}</div>
-        <li class="list_of_notes">{{this.text}}</li>
-</div>        
-{{/each}}
-</ul>
-<button class="back">Back</button>
-<button class="send">Add New</button>
+<div class="box_right_aaa">
+    <div class="textarea">
+        <textarea placeholder="Enter Clinical Notes" name="clinical notes"></textarea>
+    </div>
+    <button class="back">
+        Back
+    </button>
+    <button class="send">
+        Send
+    </button>
+</div>
