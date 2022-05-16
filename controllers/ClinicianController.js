@@ -194,35 +194,28 @@ const changePassword = async(req, res) => {
     // find current doctor
     const doctor = await Doctor.findOne({"email": req.session.userID}).lean()
   
-    if (!await bcrypt.compare(req.body.oldPassword, doctor.password)){
+    if (!await bcrypt.compare(oldPassword, doctor.password)){
       console.log("The old password is not correct")
-      return res.render("clinicianChangePassword.hbs", {
+      return res.render("ClinicianCreateAccount.hbs", {
           input: req.body,
           message: "The old password is incorrect, please try again",
       });
     }else if (!(req.body.newPassword === req.body.confirmPassword)){
       console.log("not same password")
-      return res.render("clinicianChangePassword.hbs", {
+      return res.render("ClinicianCreateAccount.hbs", {
           input: req.body,
           message: "The password is not the same, please try again",
       });
     } else if ((req.body.oldPassword === req.body.newPassword)){
       console.log("the old psd is same as new password")
-      return res.render("clinicianChangePassword.hbs", {
+      return res.render("ClinicianCreateAccount.hbs", {
           input: req.body,
           message: "The old password is the same as the new password, please try again",
       });
     }
-      const clinician = await Doctor.findById(doctor._id)
-      clinician.password = req.body.newPassword
-      await clinician.save()
-      //Doctor.findOneAndUpdate({email: req.session.userID},{password: req.body.newPassword})
-      return res.render("clinicianChangePassword.hbs", {
-        input: req.body,
-        message: "Update successfully!",
-    });
-      //doctor.password = req.body.newPassword
-      
+    
+      doctor.password = req.body.newPassword
+      await doctor.save()
       
    
   }catch(err){
@@ -254,13 +247,27 @@ const ClinicianViewTable = async (req, res) => {
 };
 
 
-const SupportMessage = async (req, res) => {
+const renderSupportMessage = async (req, res) => {
   // find current doctor
   const doctor = await Doctor.findOne({"email": req.session.userID }).lean()
   // find all the patients belongs to this doctor
   const patient = await Patient.find({"doctor" : doctor.userName}).lean()
   // find all patients record (for patients who belong to the doctor )//
   res.render("Cliniciansupportmessage.hbs", { patient : patient, dotor: doctor});
+};
+
+const updateSupportMessages = async (req, res) => {
+  try {
+    const doctor = await Doctor.findOne({"email": req.session.userID }).lean()
+    // find all the patients belongs to this doctor
+    const patient = await Patient.find({"doctor" : doctor.userName}).lean()
+    patient.supportMessage = req.body.supportMessage;
+    await patient.save();
+    res.redirect("/clinician/messages" + req.body.patientId);
+  } catch (err) {
+    console.log(err);
+    res.send("error happens when update support message");
+  }
 };
 
 
@@ -292,25 +299,6 @@ const renderThreshold = async (req, res) => {
   }
 };
 
-
-
-
-
-const UpdateThreshold = async (req, res) => {
-  try {
-    console.log("-- req body when update threshold", req.body);
-    const patient = await Patient.findById(req.body.patientId);
-    const record = await Record.find({patientID: {"$in" : patient}});
-    const key = req.body.key
-    record.data[key].minThreshold = req.body.value_bgl_min
-    await patient.save();
-    res.redirect("/clinicians/manage" + req.body.patientId);
-  } catch (err) {
-    console.log(err);
-    res.send("error happens when update timeseries");
-  }
-};
-
 const renderUpdate = async(req, res) => {
   try{
     
@@ -320,6 +308,24 @@ const renderUpdate = async(req, res) => {
 
   }
 }
+
+
+
+const UpdateThreshold = async (req, res) => {
+  try {
+    console.log("-- req body when update threshold", req.body);
+    const patient = await Patient.findById(req.body.patientId);
+    const record = await Record.find({patientID: {"$in" : patient}});
+    const key = req.body.key
+    record.data[key].minThreshold = req.body.min_value
+    record.data[key].maxThreshold = req.body.max_value
+    await patient.save();
+    res.redirect("/clinicians/manage" + req.body.patientId);
+  } catch (err) {
+    console.log(err);
+    res.send("error happens when update timeseries");
+  }
+};
 
 
 module.exports = {
@@ -335,9 +341,10 @@ module.exports = {
     renderDashboard,
     changePassword,
     ClinicianViewTable,
-    SupportMessage,
+    renderSupportMessage,
+    updateSupportMessages,
     UpdateThreshold,
     renderThreshold,
-    renderUpdate,
+    renderUpdate
 
 }
