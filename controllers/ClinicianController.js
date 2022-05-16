@@ -189,33 +189,50 @@ function formatDate(date) {
   return [year, month, day].join("-"); //return as 2002-06-09
 }
 
+const renderUpdate = async(req, res) => {
+  try{
+    
+   res.render('ClinicianChangePassword.hbs',req.session.flash); // send data to browser
+  }catch(err){
+    console.log("error happens ", err);
+
+  }
+}
+
 const changePassword = async(req, res) => {
   try{
     // find current doctor
     const doctor = await Doctor.findOne({"email": req.session.userID}).lean()
   
-    if (!await bcrypt.compare(oldPassword, doctor.password)){
+    if (!await bcrypt.compare(req.body.oldPassword, doctor.password)){
       console.log("The old password is not correct")
-      return res.render("ClinicianCreateAccount.hbs", {
+      return res.render("ClinicianChangePassword.hbs", {
           input: req.body,
           message: "The old password is incorrect, please try again",
       });
     }else if (!(req.body.newPassword === req.body.confirmPassword)){
       console.log("not same password")
-      return res.render("ClinicianCreateAccount.hbs", {
+      return res.render("ClinicianChangePassword.hbs", {
           input: req.body,
           message: "The password is not the same, please try again",
       });
     } else if ((req.body.oldPassword === req.body.newPassword)){
       console.log("the old psd is same as new password")
-      return res.render("ClinicianCreateAccount.hbs", {
+      return res.render("ClinicianChangePassword.hbs", {
           input: req.body,
           message: "The old password is the same as the new password, please try again",
       });
     }
     
       doctor.password = req.body.newPassword
+
+
       await doctor.save()
+
+      return res.render("ClinicianChangePassword.hbs", {
+        input: req.body,
+        message: "Update Successfully!",
+    });
       
    
   }catch(err){
@@ -276,4 +293,5 @@ module.exports = {
     ClinicianViewTable,
     SupportMessage,
     renderThreshold,
+    renderUpdate,
 }
