@@ -36,7 +36,7 @@
             </tr>
             <tr>
                 <td>
-                {{#each record.timeseries}} //each 循环的docotr里面的记录timeseries还是 病人自己的timeseries？//
+                {{#each patients.timeseries}} //each 循环的docotr里面的记录timeseries还是 病人自己的timeseries？//
                     <input type="hidden" name="patientID" value="{{../patients.patientIDs}}">
                     <input type="hidden" name="key" value="{{this.bgl}}">
                     {{this.bgl}}: 
