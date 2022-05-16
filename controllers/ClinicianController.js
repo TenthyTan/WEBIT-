@@ -222,11 +222,31 @@ const changePassword = async(req, res) => {
   }
 }
 
+function age(birth) {
 
+  const d = new Date()
+  const year = d.getFullYear()
+  const age = String(year - birth)
+  const data = {
+    "age": age
+  }
+  return data
+};
 
+const ClinicianViewTable = async (req, res) => {
+  // find current doctor
+  const doctor = await Doctor.findOne({"email": req.session.userID }).lean()
+  // find all the patients belongs to this doctor
+  const patient = await Patient.find({"doctor" : doctor.userName}).lean()
+  // find all patients record (for patients who belong to the doctor )//
+  const record = await Record.find({patientID: {"$in" : patient}}).lean()
+  const pAge = age(patient.yearOfBirth);
+  res.render("Cliniciansviewdata.hbs", { patient : patient, record: record, age: pAge, dotor: doctor});
+};
 
 
 module.exports = {
+    age,
     renderHome,
     renderLoginPage,
     initDoctor,
@@ -237,4 +257,5 @@ module.exports = {
     formatDate,
     renderDashboard,
     changePassword,
+    ClinicianViewTable
 }

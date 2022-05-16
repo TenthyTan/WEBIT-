@@ -266,8 +266,9 @@ const viewTable = async (req, res) => {
 
   const patient = await Patient.findOne({"email": req.session.userID}).lean()
   const records = await Record.find({ "patientID": patient._id }).lean();
-  const pAge = age(patient.yearOfBirth)
-  res.render("Patientviewdata.hbs", { patient : patient, record: records, age: pAge})
+  const pAge = age(patient.yearOfBirth);
+  console.log({records});
+  res.render("Patientviewdata.hbs", { patient : patient, record: records, age: pAge});
 }
 
 module.exports = {
