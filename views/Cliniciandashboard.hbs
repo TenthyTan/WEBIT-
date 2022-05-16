@@ -33,7 +33,7 @@
               <form action="/clinicians/dashboard" method="GET">           
                 <tr>
                   <td >{{this.patientID.userName}}</td>
-                  {{#each record.data}} 
+                  {{#each this.data}} 
                   {{#ifUnrecorded this.status}}
                   <td style = "color: #bb1f1f"><a href="/clinicians/safetythreshold">Missing</a></td>
                   {{else}}
