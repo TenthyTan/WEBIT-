@@ -247,13 +247,27 @@ const ClinicianViewTable = async (req, res) => {
 };
 
 
-const SupportMessage = async (req, res) => {
+const renderSupportMessage = async (req, res) => {
   // find current doctor
   const doctor = await Doctor.findOne({"email": req.session.userID }).lean()
   // find all the patients belongs to this doctor
   const patient = await Patient.find({"doctor" : doctor.userName}).lean()
   // find all patients record (for patients who belong to the doctor )//
   res.render("Cliniciansupportmessage.hbs", { patient : patient, dotor: doctor});
+};
+
+const updateSupportMessages = async (req, res) => {
+  try {
+    const doctor = await Doctor.findOne({"email": req.session.userID }).lean()
+    // find all the patients belongs to this doctor
+    const patient = await Patient.find({"doctor" : doctor.userName}).lean()
+    patient.supportMessage = req.body.supportMessage;
+    await patient.save();
+    res.redirect("/clinician/messages" + req.body.patientId);
+  } catch (err) {
+    console.log(err);
+    res.send("error happens when update support message");
+  }
 };
 
 
@@ -285,7 +299,15 @@ const renderThreshold = async (req, res) => {
   }
 };
 
+const renderUpdate = async(req, res) => {
+  try{
+    
+   res.render('ClinicianChangePassword.hbs',req.session.flash); // send data to browser
+  }catch(err){
+    console.log("error happens ", err);
 
+  }
+}
 
 
 
@@ -295,7 +317,8 @@ const UpdateThreshold = async (req, res) => {
     const patient = await Patient.findById(req.body.patientId);
     const record = await Record.find({patientID: {"$in" : patient}});
     const key = req.body.key
-    record.data[key].minThreshold = req.body.value_bgl_min
+    record.data[key].minThreshold = req.body.min_value
+    record.data[key].maxThreshold = req.body.max_value
     await patient.save();
     res.redirect("/clinicians/manage" + req.body.patientId);
   } catch (err) {
@@ -318,8 +341,10 @@ module.exports = {
     renderDashboard,
     changePassword,
     ClinicianViewTable,
-    SupportMessage,
+    renderSupportMessage,
+    updateSupportMessages,
     UpdateThreshold,
-    renderThreshold
+    renderThreshold,
+    renderUpdate
 
 }

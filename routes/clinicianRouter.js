@@ -38,10 +38,13 @@ clinicianRouter.post('/updatePassword',sign.isLoginDoctor, clinicianController.c
 
 clinicianRouter.get('/viewTable', sign.isLoginDoctor, clinicianController.ClinicianViewTable)
 
-clinicianRouter.get('/messages', sign.isLoginDoctor, clinicianController.SupportMessage)
+clinicianRouter.get('/messages', sign.isLoginDoctor, clinicianController.renderSupportMessage)
 
-clinicianRouter.get('/manage', sign.isLoginDoctor, clinicianController.renderThreshold)
+clinicianRouter.post('/messages', sign.isLoginDoctor, clinicianController.updateSupportMessages)
 
-clinicianRouter.post('/manage', sign.isLoginDoctor, clinicianController.UpdateThreshold)
+clinicianRouter.get('/safetyThreshold', sign.isLoginDoctor, clinicianController.renderThreshold)
+
+clinicianRouter.post('/safetyThreshold', sign.isLoginDoctor, clinicianController.UpdateThreshold)
+
 // export the router
 module.exports = clinicianRouter
