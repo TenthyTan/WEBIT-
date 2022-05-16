@@ -189,50 +189,33 @@ function formatDate(date) {
   return [year, month, day].join("-"); //return as 2002-06-09
 }
 
-const renderUpdate = async(req, res) => {
-  try{
-    
-   res.render('ClinicianChangePassword.hbs',req.session.flash); // send data to browser
-  }catch(err){
-    console.log("error happens ", err);
-
-  }
-}
-
 const changePassword = async(req, res) => {
   try{
     // find current doctor
     const doctor = await Doctor.findOne({"email": req.session.userID}).lean()
   
-    if (!await bcrypt.compare(req.body.oldPassword, doctor.password)){
+    if (!await bcrypt.compare(oldPassword, doctor.password)){
       console.log("The old password is not correct")
-      return res.render("ClinicianChangePassword.hbs", {
+      return res.render("ClinicianCreateAccount.hbs", {
           input: req.body,
           message: "The old password is incorrect, please try again",
       });
     }else if (!(req.body.newPassword === req.body.confirmPassword)){
       console.log("not same password")
-      return res.render("ClinicianChangePassword.hbs", {
+      return res.render("ClinicianCreateAccount.hbs", {
           input: req.body,
           message: "The password is not the same, please try again",
       });
     } else if ((req.body.oldPassword === req.body.newPassword)){
       console.log("the old psd is same as new password")
-      return res.render("ClinicianChangePassword.hbs", {
+      return res.render("ClinicianCreateAccount.hbs", {
           input: req.body,
           message: "The old password is the same as the new password, please try again",
       });
     }
     
       doctor.password = req.body.newPassword
-
-
       await doctor.save()
-
-      return res.render("ClinicianChangePassword.hbs", {
-        input: req.body,
-        message: "Update Successfully!",
-    });
       
    
   }catch(err){
@@ -273,10 +256,54 @@ const SupportMessage = async (req, res) => {
   res.render("Cliniciansupportmessage.hbs", { patient : patient, dotor: doctor});
 };
 
-const renderThreshold = async (req, res) => {
+
+
+
+// const renderThreshold = async (req, res) => {
+//   const doctor = await Doctor.findOne({"email": req.session.userID }).lean()
+//   // find all the patients belongs to this doctor
+//   const patient = await Patient.find({"doctor" : doctor.userName}).lean()
+//   const record = await Record.find({patientID: {"$in" : patient}}).lean()
+//   console.log(req)
+//   var MinThreshold_bgl = $('input[name="value_bgl_min"]').val();
+//   var MaxThreshold_bgl = $('input[name="value_bgl_max"]').val();
+//   record.findOneAndUpdate({"name":"Blood Glucose Level (nmol/L)"}, {"minThreshold":MinThreshold_bgl});
+//   record.findOneAndUpdate({"name":"Blood Glucose Level (nmol/L)"}, {"maxThreshold":MaxThreshold_bgl});
   
-  res.render("Clinicianthreshold.hbs");
+//   res.render("Clinicianthreshold.hbs");
+// };
+const renderThreshold = async (req, res) => {
+  try {
+    const doctor = await Doctor.findOne({"email": req.session.userID }).lean()
+    //const patientId = await initPatient();
+    const patient = await Patient.find({"doctor" : doctor.userName}).lean()
+    const record = await Record.find({patientID: {"$in" : patient}}).lean()
+    res.render("Clinicianthreshold.hbs", { doctor: doctor, patient: patient, record: record });
+  } catch (err) {
+    res.status(400);
+    res.send("error happens when render Threshold");
+  }
 };
+
+
+
+
+
+const UpdateThreshold = async (req, res) => {
+  try {
+    console.log("-- req body when update threshold", req.body);
+    const patient = await Patient.findById(req.body.patientId);
+    const record = await Record.find({patientID: {"$in" : patient}});
+    const key = req.body.key
+    record.data[key].minThreshold = req.body.value_bgl_min
+    await patient.save();
+    res.redirect("/clinicians/manage" + req.body.patientId);
+  } catch (err) {
+    console.log(err);
+    res.send("error happens when update timeseries");
+  }
+};
+
 
 module.exports = {
     age,
@@ -292,6 +319,7 @@ module.exports = {
     changePassword,
     ClinicianViewTable,
     SupportMessage,
-    renderThreshold,
-    renderUpdate,
+    UpdateThreshold,
+    renderThreshold
+
 }
