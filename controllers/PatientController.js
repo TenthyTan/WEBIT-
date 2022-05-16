@@ -227,7 +227,7 @@ function getDateList(timespan) {
   return dList;
 }
 
-const renderViewData = async (req, res) => {
+const viewChart = async (req, res) => {
   try {
     const patient = await Patient.findOne({"email": req.session.userID}).lean()
     const records = await Record.find({ patientID: patient._id }).lean();
@@ -281,7 +281,7 @@ module.exports = {
   renderHomePage,
   renderLoginPage,
   renderProfile,
-  renderViewData,
+  viewChart,
   viewTable
 };
 
