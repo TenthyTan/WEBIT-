@@ -24,16 +24,19 @@
     </div>
     <div class="pn_box2">
         <div >Patient Name: </div>
-        <div class="pp_box">{{doctor.patients.patientName}}</div>
+        <div class="pp_box">{{doctor.patients.patientID.patientName}}</div>
     
     </div>
 
-    <div class="textarea">
-        <input type="text" name="message" placeholder="Enter Support Message"/>
-    
+    <div class="textarea" style="width: 30%;">
+        <input type="hidden" name="patientId" value="{{doctor.patients.patientID}}">
+        <textarea name="supportMessage" id="supportMessage" form="messageForm" placeholder="Enter Support Message"></textarea>
+        <script>
+            $("#supportMessage").emojioneArea()
+        </script>
     </div>
     <div class="textarea_footer">less than 50 words.</div>
-    <input type="submit" />
+    <button type="submit"> Send </button>
     </form>
 </div>
 
