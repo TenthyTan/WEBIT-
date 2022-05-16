@@ -28,7 +28,7 @@ patientRouter.get('/recordData',sign.isLoginPatient, demoController.renderRecord
 patientRouter.post("/recordData", sign.isLoginPatient, demoController.updateRecord);
 patientRouter.get('/profile', sign.isLoginPatient, demoController.renderProfile);
 patientRouter.get('/viewTable', sign.isLoginPatient, demoController.viewTable);
-patientRouter.get('/viewChart', sign.isLoginPatient, demoController.renderViewData);
+patientRouter.get('/viewChart', sign.isLoginPatient, demoController.viewChart);
 patientRouter.get('/:id', demoController.getDataById);
 // 
 
