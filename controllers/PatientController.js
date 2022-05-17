@@ -313,16 +313,20 @@ async function engageRate(patientID) {
   const patient = await Patient.findById(patientID);
   const start = new Date(formatDate(patient.Create_Time)).getTime();
   const today = new Date(formatDate(Date.now())).getTime();
+  const day = today - start
   const period = (today - start) / (24 * 60 * 60 * 1000) + 1;
   patient.recordRate = (records.length / period).toFixed(3);
   await patient.save();
+  return day
 }
 
 const rankBoard = async (req, res) => {
+  const p = await Patient.findOne({"email": req.session.userID}).lean()
   const patients = await Patient.find({}, {});
   // console.log(patients)
+  const dayList = [];
   for (patient of patients) {
-    await engageRate(patient._id);
+    dayList.push(await engageRate(patient._id));
   }
   var pList = await Patient.find({}, {}).lean();
   pList = pList
@@ -330,7 +334,14 @@ const rankBoard = async (req, res) => {
       return b.recordRate - a.recordRate;
     })
     .slice(0, 5);
-  res.render("PatientRank.hbs", { rank: pList });
+  var dList = await dayList;
+  dList = dList
+    .sort((a, b) => {
+      return b - a;
+    })
+    .slice(0, 5);
+  console.log(dList)
+  res.render("PatientRank.hbs", { rank: pList, patient: p, day: dList});
 };
 
 module.exports = {
