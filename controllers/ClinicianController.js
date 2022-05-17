@@ -435,9 +435,8 @@ const renderAddNote = async (req, res) => {
   // find current doctor
   const patient =  await Patient.findOne({"_id": req.params._id}).lean()
   const doctor = await Doctor.findOne({"email": req.session.userID }).lean()
-  const note = await Note.findOne({patientId: patient._id }).lean()
   // find all patients record (for patients who belong to the doctor )//
-  res.render("ClinicianAddclinicalnotes.hbs", { patient : patient, doctor: doctor, notes: note});
+  res.render("ClinicianAddclinicalnotes.hbs", { patient : patient, doctor: doctor});
 };
 
 const updateNote = async (req, res) => {
