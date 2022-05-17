@@ -1,70 +1,70 @@
 <form action="/patients/rank" method="GET">
 <div class="sidenav">
     <img src="../public/img/head.png" />
-    <p>{{patient.userName}}</p>
+    <p>{{patient.userName}}</p >
     <img src="../public/img/recording.png" />
-    <p><a href="/patients/recordData">Record</a></p >
+    <p>< a href=" ">Record</ a></p >
     <img src="../public/img/view.png" />
-    <p><a href="/patients/viewTable">View</a></p >
+    <p>< a href="/patients/viewTable">View</ a></p >
     <img src="../public/img/ranking.png" />
-    <p><a href="/patients/recordRank">Rank</a></p >
+    <p>< a href="/patients/recordRank">Rank</ a></p >
     <img src="../public/img/profile.png" />
-    <p><a href="/patients/profile">Profile</a></p >
+    <p>< a href="/patients/profile">Profile</ a></p >
     <img src="../public/img/setting.png" />
     <p>setting</p >
     <img src="../public/img/warning.png" />
     <p>urgency</p >
 </div>
 <section>
-		<div class="ranking-box">
-			<div class="box-title">Top 5 Badge Ranking</div>
-			<div class="box-tip">You Have Been Here For <span class="red">{{day}}</span> Days</div>
-			<div class="rank">
-				<div class="rank-table">
-					<div class="rank-thead">
-						<div>Rank</div>
-						<div>Name</div>
-						<div>Rate</div>
-						<div>Badge</div>
-					</div>
-					<div class="rank-tbody">
-						<div class="col-1">
-							<div>1</div>
-							<div>2</div>
-							<div>3</div>
-							<div>4</div>
-							<div>5</div>
-						</div>
-						<div class="col-1 col-2">
-							<div class="rank-userpic">
-								<div><img src="../public/img/icons8-older-person-medium-light-skin-tone.png" alt=""></div>
-								<div><img src="../public/img/icons8-man-curly-hair-medium-skin-tone.png" alt=""></div>
-								<div><img src="../public/img/icons8-man-curly-hair-light-skin-tone.png" alt=""></div>
-								<div><img src="../public/img/icons8-man-curly-hair-medium-dark-skin-tone.png" alt=""></div>
-								<div><img src="../public/img/icons8-man-curly-hair-medium-light-skin-tone.png" alt=""></div>
-							</div>
-							{{#each rank}}
-							<div class="rank-username">
-								<div>{{this.userName}}</div>
-							</div>
-							<div class="col-1">
-								<div>{{this.recordRate}}</div>
-							</div>
-							{{/each}}
-						</div>
-						<div class="col-1 rank-levelpic">
-							<div><img src="../public/img/icons8-number-60-1.png" name="" alt=""></div>
-							<div><img src="../public/img/icons8-number-60-2.png" name="" alt=""></div>
-							<div><img src="../public/img/icons8-number-60-3.png" name="" alt=""></div>
-							<div><img src="../public/img/icons8-badge-60-4.png" name="" alt=""></div>
-							<div><img src="../public/img/icons8-badge-60-4.png" name="" alt=""></div>
-						</div>
-					</div>
-				</div>
-			</div>
-		</div>
+  <div class="ranking-box">
+   <div class="box-title">Top 5 Badge Ranking</div>
+   <div class="box-tip">You Have Been Here For <span class="red">{{day}}</span> Days</div>
+   <div class="rank">
+    <div class="rank-table">
+     <div class="rank-thead">
+      <div>Rank</div>
+      <div>Name</div>
+      <div>Rate</div>
+      <div>Badge</div>
+     </div>
+     <div class="rank-tbody">
+      <div class="col-1">
+       <div>1</div>
+       <div>2</div>
+       <div>3</div>
+       <div>4</div>
+       <div>5</div>
+      </div>
+      <div class="col-1 col-2">
+       <div class="rank-userpic">
+        <div><img src="../public/img/icons8-older-person-medium-light-skin-tone.png" alt=""></div>
+        <div><img src="../public/img/icons8-man-curly-hair-medium-skin-tone.png" alt=""></div>
+        <div><img src="../public/img/icons8-man-curly-hair-light-skin-tone.png" alt=""></div>
+        <div><img src="../public/img/icons8-man-curly-hair-medium-dark-skin-tone.png" alt=""></div>
+        <div><img src="../public/img/icons8-man-curly-hair-medium-light-skin-tone.png" alt=""></div>
+       </div>
+       {{#each rank}}
+       <div class="rank-username">
+        <div>{{this.userName}}</div>
+       </div>
+       <div class="col-1">
+        <div>{{this.recordRate}}</div>
+       </div>
+       {{/each}}
+      </div>
+      <div class="col-1 rank-levelpic">
+       <div><img src="../public/img/icons8-number-60-1.png" name="" alt=""></div>
+       <div><img src="../public/img/icons8-number-60-2.png" name="" alt=""></div>
+       <div><img src="../public/img/icons8-number-60-3.png" name="" alt=""></div>
+       <div><img src="../public/img/icons8-badge-60-4.png" name="" alt=""></div>
+       <div><img src="../public/img/icons8-badge-60-4.png" name="" alt=""></div>
+      </div>
+     </div>
+    </div>
+   </div>
+  </div>
 </section>
 <footer>
-     Doctor {{record.patientID.doctor}} : {{record.patientID.supportMes}}
+     Doctor {{patient.doctor}} : {{patient.supportMes}}
 </footer>
 </form>
