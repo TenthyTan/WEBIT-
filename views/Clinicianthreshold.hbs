@@ -51,7 +51,7 @@
                 </td>
                 {{/if}}
                 <td>{{this.name}}</td>
-                <td>Min: <input type="digit" name="min_value" placeholder="{{this.min}}" required>           Max: <input type="digit" name="max_value" placeholder="{{this.max}}" required></td>
+                <td>Min: <input type="digit" name="{{@key}}_min_value" placeholder="{{this.min}}" required>           Max: <input type="digit" name="{{@key}}_max_value" placeholder="{{this.max}}" required></td>
             </tr>    
             {{/each}}
         </table>

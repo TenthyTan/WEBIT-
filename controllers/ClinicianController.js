@@ -340,24 +340,39 @@ const UpdateThreshold = async (req, res) => {
     console.log("-- req body when update threshold", req.body);
     const patient = await Patient.findById(req.params._id);
     const record = await Record.findOne({patientID: patient._id});
-    //console.log(req.body.parent.timesries.bgl)
-    for(key in req.body){
-      if (req.body[req.body.key] === "Record"){
-        patient.timeseries[req.body.key].check = "true"
-      }else if(req.body[req.body.key] === "Not required"){
-        patient.timeseries[req.body.key].check = "false"
-      }
+    console.log(req.body.bgl)
+    if (req.body.bgl === "Record"){
+      patient.timeseries.bgl.check = "true"
+      patient.timeseries.bgl.min = req.body.bgl_min_value
+      patient.timeseries.bgl.max = req.body.bgl_max_value
+    }else{
+      patient.timeseries.bgl.check = "false"
     }
-    for(key in req.body){
-      if (key === "bgl"){
 
-      }
+    if (req.body.weight === "Record"){
+      patient.timeseries.weight.check = "true"
+      patient.timeseries.weight.min = req.body.weight_min_value
+      patient.timeseries.weight.max = req.body.weight_max_value
+    }else{
+      patient.timeseries.weight.check = "false"
     }
-    //if (req.body.parent.timesries.bgl === "Record"){
-    //  patient.timesries.bgl = "true"
-   // }else{
-     // patient.timesries.bgl = "false"
-    //}
+
+    if (req.body.doit === "Record"){
+      patient.timeseries.doit.check = "true"
+      patient.timeseries.doit.min = req.body.doit_min_value
+      patient.timeseries.doit.max = req.body.doit_max_value
+    }else{
+      patient.timeseries.doit.check = "false"
+    }
+
+    if (req.body.exercise === "Record"){
+      patient.timeseries.exercise.check = "true"
+      patient.timeseries.exercise.min = req.body.exercise_min_value
+      patient.timeseries.exercise.max = req.body.exercise_max_value
+    }else{
+      patient.timeseries.exercise.check = "false"
+    }
+
     //record.data[key].minThreshold = req.body.min_value
     //record.data[key].maxThreshold = req.body.max_value
     await patient.save();
@@ -367,6 +382,8 @@ const UpdateThreshold = async (req, res) => {
     res.send("error happens when update timeseries");
   }
 };
+
+
 
 
 
