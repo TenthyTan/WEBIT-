@@ -348,6 +348,11 @@ const UpdateThreshold = async (req, res) => {
         patient.timeseries[req.body.key].check = "false"
       }
     }
+    for(key in req.body){
+      if (key === "bgl"){
+        
+      }
+    }
     //if (req.body.parent.timesries.bgl === "Record"){
     //  patient.timesries.bgl = "true"
    // }else{
@@ -373,7 +378,7 @@ const renderClinicalNotes = async (req, res) => {
       "Patient": patient._id,
       "Doctor": doctor._id,
     }).lean();
-    
+
     res.render("Clinicianclinicalnote.hbs", {notes: notes, patient: patient, doctor: doctor});
   } catch (err) {
     console.log(err);
