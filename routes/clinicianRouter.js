@@ -50,7 +50,7 @@ clinicianRouter.post('/dashboard/:_id/safetyThreshold', sign.isLoginDoctor, clin
 
 clinicianRouter.get('/dashboard/:_id/listClinicalNotes', sign.isLoginDoctor, clinicianController.renderClinicalNotes)
 
-clinicianRouter.post('/dashboard/:_id/listClinicalNotes', sign.isLoginDoctor, clinicianController.addNote)
+//clinicianRouter.post('/dashboard/:_id/listClinicalNotes', sign.isLoginDoctor, clinicianController.addNote)
 
 clinicianRouter.get('/viewComments', sign.isLoginDoctor, clinicianController.viewComments)
 

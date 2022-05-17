@@ -390,7 +390,8 @@ const addNote = async (req, res) => {
       const newNote = new Note({
       Patient: req.params._id,
       Clinician: doctor._id,
-      text: req.body.note,
+      recordDate: formatDate(new Date()),
+      text: req.body.clinicalnotes,
     });
     await newNote.save();
     res.redirect("/clinician/dashboard/" + req.params._id + "/listClinicalNotes");
