@@ -1,4 +1,3 @@
-<script> src="https://cdnjs.cloudflare.com/ajax/libs/emojionearea/3.4.2/emojionearea.min.js"</script>
 <div class="box_right_aaa">
     <form action="/clinicians/dashboard/{{patient._id}}/messages" method="POST">
     <div class="sidenav">
@@ -27,13 +26,10 @@
     <div class="textarea" style="width: 30%;">
         <input type="hidden" name="patientId" value="{{doctor.patients.patientIDs}}">
         <textarea name="supportMessage" id="supportMessage"  placeholder="Enter Support Message"></textarea>
-        <script>
-            $("#supportMessage").emojioneArea()
-        </script>
     </div>
     <div class="textarea_footer">less than 50 words.</div>
     <button class="back"><a href="/clinicians/dashboard/{{patient._id}}">Back</a></button>
-    <button class="send"><a href="/clinicians/dashboard/{{patient._id}}/messages">Send</a></button>
+    <button class="send">Send</button>
     </form>
 </div>
 
