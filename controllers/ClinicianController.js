@@ -285,11 +285,8 @@ const updateSupportMessages = async (req, res) => {
     patient.supportMes = req.body.supportMessage;
 
     await patient.save(); ///patient Id 要改
-    // res.redirect("/clinician/messages" + req.body.patientId);
-    return res.render("Cliniciansupportmessage.hbs", {
-      input: req.body,
-      message: "Send support successfully!",
-  });
+    res.redirect("/clinicians/dashboard/" + req.params._id + "/messages");
+   
   } catch (err) {
     console.log(err);
     
