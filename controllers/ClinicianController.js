@@ -392,7 +392,7 @@ const addNote = async (req, res) => {
       text: req.body.note,
     });
     await newNote.save();
-    res.redirect("/clinician/viewNotes" + req.body.patientId);
+    res.redirect("/clinician/dashboard/" + req.body.patientId + "/viewNotes");
   } catch (err) {
     console.log(err);
     res.send("error happens when add clinicial note");
