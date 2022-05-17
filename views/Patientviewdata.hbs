@@ -12,19 +12,11 @@
     <img src="../public/img/profile.png" />
     <p><a href="/patients/profile">Profile</a></p >
     <img src="../public/img/setting.png" />
-    <p>setting</p >
+    <p><a href="../patients/changepassword">setting</a></p >
     <img src="../public/img/warning.png" />
     <p>urgency</p >
 </div>
 <section>
-
-<div class="pviewdata-left">
-	<div><a href="">Safty Thresholds</a></div>
-	<div><a href="">Clinical Notes</a></div>
-	<div><a href="">Support Message</a></div>
-	<div><a href="">Line Charts</a></div>
-</div>
-
 <div class="main">
         <div class="title-data"><h6>Patient Name: {{patient.userName}}&nbsp;&nbsp;&nbsp;&nbsp;Age: {{age.age}} &nbsp;&nbsp;&nbsp;&nbsp;Gender:Male</h6></div>
 <table>
@@ -58,7 +50,7 @@
 <p class="annotationofbotton">View Data On Chart</p >
 </section>
 <footer>
-    {{patient.supportMes}}
+     Doctor {{record.patientID.doctor}} : {{record.patientID.supportMes}}
 </footer>
 </form>
 
