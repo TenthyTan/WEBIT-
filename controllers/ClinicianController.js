@@ -418,7 +418,7 @@ const viewComments = async (req, res) => {
 }
 
 
-const renderAddSupportMessage = async (req, res) => {
+const renderAddNote = async (req, res) => {
   // find current doctor
   const patient =  await Patient.findOne({"_id": req.params._id}).lean()
   const doctor = await Doctor.findOne({"email": req.session.userID }).lean()
@@ -430,20 +430,20 @@ const renderAddSupportMessage = async (req, res) => {
 const updateNote = async (req, res) => {
   try {
 
-    const doctor = await Doctor.findOne({"email": req.session.userID }).lean()
+    // const doctor = await Doctor.findOne({"email": req.session.userID }).lean()
     // find all the patients belongs to this doctor
-   
     const patient =  await Patient.findById(req.params._id)
-    console.log(req.body.supportMessage)
-    patient.supportMes = req.body.supportMessage;
+    const note = await Note.findOne({patientId: patient._id }).lean()
+    console.log(req.body.clinicalnotes)
+    note.text = req.body.clinicalnotes;
 
-    await patient.save(); ///patient Id 要改
-    res.redirect("/clinicians/dashboard/" + req.params._id + "/messages");
+    await patient.save();
+    res.redirect("/clinicians/dashboard/" + req.params._id + "/clinicalNotes");
    
   } catch (err) {
     console.log(err);
     
-    res.send("error happens when update support message");
+    res.send("error happens when update note");
 
   }
 };
@@ -473,7 +473,7 @@ module.exports = {
     viewComments,
     renderPatientData,
     ClinicianViewTable,
-    renderAddSupportMessage,
+    renderAddNote,
     updateNote
 
 
