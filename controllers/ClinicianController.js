@@ -374,7 +374,6 @@ const renderClinicalNotes = async (req, res) => {
       "Doctor": doctor._id,
     }).lean();
     
-    console.log(notes.recordDate)
     res.render("Clinicianclinicalnote.hbs", {notes: notes, patient: patient, doctor: doctor});
   } catch (err) {
     console.log(err);
