@@ -330,7 +330,7 @@ const rankBoard = async (req, res) => {
       return b.recordRate - a.recordRate;
     })
     .slice(0, 5);
-  res.render("Patientsrank.hbs", { rank: pList });
+  res.render("PatientRank.hbs", { rank: pList });
 };
 
 module.exports = {
