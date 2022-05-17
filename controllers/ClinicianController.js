@@ -375,7 +375,7 @@ const renderClinicalNotes = async (req, res) => {
     }).lean();
     
     console.log(notes.recordDate)
-    res.render("CLinicianclinicalnote.hbs", {notes: notes, patient: patient, doctor: doctor});
+    res.render("Clinicianclinicalnote.hbs", {notes: notes, patient: patient, doctor: doctor});
   } catch (err) {
     console.log(err);
     res.send("error happens when viewing clinicial notes");
