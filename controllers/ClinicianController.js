@@ -350,7 +350,7 @@ const UpdateThreshold = async (req, res) => {
     }
     for(key in req.body){
       if (key === "bgl"){
-        
+
       }
     }
     //if (req.body.parent.timesries.bgl === "Record"){
@@ -504,6 +504,21 @@ const viewChart = async (req, res) => {
 };
 
 
+const renderCheckComment = async (req, res) => {
+  try {
+    const doctor = await Doctor.findOne({"email": req.session.userID }).lean()
+    //const patientId = await initPatient();
+    //const record = await Record.findOne({patientID: }).lean()
+    const patient = await Patient.findOne({"_id": req.params._id}).lean()
+    const records = await Record.find({ patientID: patient._id }).lean();
+    res.render("ClinicianCheckComment.hbs", { doctor: doctor, patient: patient, record: records});
+  } catch (err) {
+    res.status(400);
+    res.send("error happens when render check comments");
+  }
+};
+
+
 
 
 module.exports = {
@@ -531,5 +546,6 @@ module.exports = {
     renderAddNote,
     updateNote,
     viewChart,
+    renderCheckComment,
 
 }
