@@ -311,18 +311,6 @@ const updateSupportMessages = async (req, res) => {
   
 //   res.render("Clinicianthreshold.hbs");
 // };
-const renderThreshold = async (req, res) => {
-  try {
-    const doctor = await Doctor.findOne({"email": req.session.userID }).lean()
-    //const patientId = await initPatient();
-    const patient = await Patient.find({"doctor" : doctor.userName}).lean()
-    const record = await Record.find({patientID: {"$in" : patient}}).lean()
-    res.render("Clinicianthreshold.hbs", { doctor: doctor, patient: patient, record: record });
-  } catch (err) {
-    res.status(400);
-    res.send("error happens when render Threshold");
-  }
-};
 
 const renderUpdate = async(req, res) => {
   try{
@@ -334,17 +322,32 @@ const renderUpdate = async(req, res) => {
   }
 }
 
-
-
+const renderThreshold = async (req, res) => {
+  try {
+    const doctor = await Doctor.findOne({"email": req.session.userID }).lean()
+    //const patientId = await initPatient();
+    //const record = await Record.findOne({patientID: }).lean()
+    const patient = await Patient.findOne({"_id": req.params._id}).lean()
+    res.render("Clinicianthreshold.hbs", { doctor: doctor, patient: patient});
+  } catch (err) {
+    res.status(400);
+    res.send("error happens when render Threshold");
+  }
+};
 
 const UpdateThreshold = async (req, res) => {
   try {
     console.log("-- req body when update threshold", req.body);
-    const patient = await Patient.findById(req.body.patientId);
-    const record = await Record.find({patientID: {"$in" : patient}});
-    const key = req.body.key
-    record.data[key].minThreshold = req.body.min_value
-    record.data[key].maxThreshold = req.body.max_value
+    const patient = await Patient.findById(req.params._id);
+    const record = await Record.findOne({patientID: patient._id});
+    console.log(req.body.parent.timesries.bgl)
+    if (req.body.parent.timesries.bgl === "Record"){
+      patient.timesries.bgl = "true"
+    }else{
+      patient.timesries.bgl = "false"
+    }
+    //record.data[key].minThreshold = req.body.min_value
+    //record.data[key].maxThreshold = req.body.max_value
     await patient.save();
     res.redirect("/clinicians/manage" + req.body.patientId);
   } catch (err) {
@@ -352,6 +355,7 @@ const UpdateThreshold = async (req, res) => {
     res.send("error happens when update timeseries");
   }
 };
+
 
 
 const renderClinicalNotes = async (req, res) => {

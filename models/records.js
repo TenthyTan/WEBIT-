@@ -37,7 +37,7 @@ const recordSchema = new mongoose.Schema({
         exercise: {
             name: {type: String, default: "Exercise (steps)", immutable: true},
             value: {type: Number},
-            status: {type: String, enum: ["Recorded", "Unrecorded", "Not required"], default: "Not required"},
+            status: {type: String, enum: ["Recorded", "Unrecorded", "Not required"], default: "Unrecorded"},
             comment: {type: String, default: " "},
             createdDate: {type: Date},
             minThreshold: {type: Number, default: 500},
