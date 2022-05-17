@@ -54,6 +54,9 @@ clinicianRouter.post('/listClinicalNotes', sign.isLoginDoctor, clinicianControll
 
 clinicianRouter.get('/viewComments', sign.isLoginDoctor, clinicianController.viewComments)
 
+clinicianRouter.get('/dashboard/:_id/clinicalNotes', sign.isLoginDoctor, clinicianController.renderAddNote)
+
+clinicianRouter.post('/dashboard/:_id/clinicalNotes', sign.isLoginDoctor, clinicianController.updateNote)
 
 
 
