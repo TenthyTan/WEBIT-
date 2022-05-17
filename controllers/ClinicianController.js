@@ -279,17 +279,14 @@ const updateSupportMessages = async (req, res) => {
 
     const doctor = await Doctor.findOne({"email": req.session.userID }).lean()
     // find all the patients belongs to this doctor
-    const thePatient = await Patient.findOne({"_id": req.params._id}).lean()
-    const patient =  await Patient.findById(thePatient._id).lean()
+   
+    const patient =  await Patient.findById(req.params._id)
     console.log(req.body.supportMessage)
     patient.supportMes = req.body.supportMessage;
 
     await patient.save(); ///patient Id 要改
-    // res.redirect("/clinician/messages" + req.body.patientId);
-    return res.render("Cliniciansupportmessage.hbs", {
-      input: req.body,
-      message: "Send support successfully!",
-  });
+    res.redirect("/clinicians/dashboard/" + req.params._id + "/messages");
+   
   } catch (err) {
     console.log(err);
     
