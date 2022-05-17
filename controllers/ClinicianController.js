@@ -418,6 +418,36 @@ const viewComments = async (req, res) => {
 }
 
 
+const renderAddSupportMessage = async (req, res) => {
+  // find current doctor
+  const patient =  await Patient.findOne({"_id": req.params._id}).lean()
+  const doctor = await Doctor.findOne({"email": req.session.userID }).lean()
+  
+  // find all patients record (for patients who belong to the doctor )//
+  res.render("ClinicianAddclinicalnotes.hbs", { patient : patient, doctor: doctor});
+};
+
+const updateNote = async (req, res) => {
+  try {
+
+    const doctor = await Doctor.findOne({"email": req.session.userID }).lean()
+    // find all the patients belongs to this doctor
+   
+    const patient =  await Patient.findById(req.params._id)
+    console.log(req.body.supportMessage)
+    patient.supportMes = req.body.supportMessage;
+
+    await patient.save(); ///patient Id 要改
+    res.redirect("/clinicians/dashboard/" + req.params._id + "/messages");
+   
+  } catch (err) {
+    console.log(err);
+    
+    res.send("error happens when update support message");
+
+  }
+};
+
 
 
 
@@ -443,5 +473,8 @@ module.exports = {
     viewComments,
     renderPatientData,
     ClinicianViewTable,
+    renderAddSupportMessage,
+    updateNote
+
 
 }
