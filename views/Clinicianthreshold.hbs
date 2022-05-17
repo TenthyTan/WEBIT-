@@ -19,8 +19,8 @@
     <form action="/clinicians/dashboard/{{patient._id}}/safetyThreshold" method="POST">
         <div class="pat_title">
 
-            <div>Patient Name:</div>                                     //是否应该用record.patientID来寻找名字 ？//
-            <div class="pat_a" style="width: 400px;text-align: center;">{{doctor.patients.patientIDs.patientName}}</div> //可能会有error 返回的是clinician点击时病人的名字 //
+            <div>Patient Name:</div>                                  
+            <div class="pat_a" style="width: 400px;text-align: center;">{{patient.firstName}}</div> 
             <button class="pat_a" style="margin-left: 200px;width: 300px;">Update</button>
         </div>
 
@@ -33,8 +33,8 @@
             </tr>
             <tr>
                 <td>
-                {{#each patients.timeseries}} //each 循环的docotr里面的记录timeseries还是 病人自己的timeseries？//
-                    <input type="hidden" name="patientID" value="{{../patients.patientIDs}}">
+                {{#each patient.timeseries}} 
+                    <input type="hidden" name="patientID" value="{{doctor.patients.patientIDs}}">
                     <input type="hidden" name="key" value="{{this.bgl}}">
                     {{this.bgl}}: 
                     {{#if this}}
@@ -56,8 +56,8 @@
             </tr>
             <tr>
                 <td>
-                {{#each doctor.timeseries}} 
-                    <input type="hidden" name="patientID" value="{{../patients.patientIDs}}">
+                {{#each patient.timeseries}} 
+                    <input type="hidden" name="patientID" value="{{doctor.patients.patientIDs}}">
                     <input type="hidden" name="key" value="{{this.doit}}">
                     {{this.doit}}: 
                     {{#if this}}
@@ -80,8 +80,8 @@
             </tr>
             <tr>
                 <td>
-                {{#each doctor.timeseries}} 
-                    <input type="hidden" name="patientID" value="{{../patients.patientIDs}}">
+                {{#each patient.timeseries}} 
+                    <input type="hidden" name="patientID" value="{{doctor.patients.patientIDs}}">
                     <input type="hidden" name="key" value="{{this.weight}}">
                     {{this.weight}}: 
                     {{#if this}}
@@ -104,8 +104,8 @@
             </tr>
             <tr>
                 <td>
-                {{#each doctor.timeseries}} 
-                    <input type="hidden" name="patientID" value="{{../patients.patientIDs}}">
+                {{#each patient.timeseries}} 
+                    <input type="hidden" name="patientID" value="{{doctor.patients.patientIDs}}">
                     <input type="hidden" name="key" value="{{this.exercise}}">
                     {{this.exercise}}: 
                     {{#if this}}
