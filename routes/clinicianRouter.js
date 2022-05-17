@@ -58,6 +58,8 @@ clinicianRouter.get('/dashboard/:_id/clinicalNotes', sign.isLoginDoctor, clinici
 
 clinicianRouter.post('/dashboard/:_id/clinicalNotes', sign.isLoginDoctor, clinicianController.addNote)
 
+clinicianRouter.get('/dashboard/:_id/viewChart', sign.isLoginDoctor, clinicianController.viewChart)
+
 
 
 

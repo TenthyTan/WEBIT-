@@ -375,7 +375,7 @@ const renderClinicalNotes = async (req, res) => {
     }).lean();
     
     console.log(notes.recordDate)
-    res.render("CLinicianclinicalnote.hbs", {notes: notes, patient: patient, doctor: doctor});
+    res.render("Clinicianclinicalnote.hbs", {notes: notes, patient: patient, doctor: doctor});
   } catch (err) {
     console.log(err);
     res.send("error happens when viewing clinicial notes");
@@ -386,15 +386,16 @@ const renderClinicalNotes = async (req, res) => {
 const addNote = async (req, res) => {
   try {
       const patient = await Patient.findById(req.params._id)
-      const doctor = await Doctor.findOne({"email": req.session.userID }).lean()
+      const doctor = await Doctor.findOne({"email": req.session.userID })
       const newNote = new Note({
       Patient: req.params._id,
-      Clinician: doctor._id,
+      Doctor: doctor._id,
       recordDate: formatDate(new Date()),
-      text: req.body.clinicalnotes,
+      text: req.body.notes,
     });
+    console.log("addNO" + req.body.notes)
     await newNote.save();
-    res.redirect("/clinician/dashboard/" + req.params._id + "/listClinicalNotes");
+    res.redirect("/clinicians/dashboard/" + req.params._id + "/listClinicalNotes");
   } catch (err) {
     console.log(err);
     res.send("error happens when add clinicial note");
@@ -435,9 +436,8 @@ const renderAddNote = async (req, res) => {
   // find current doctor
   const patient =  await Patient.findOne({"_id": req.params._id}).lean()
   const doctor = await Doctor.findOne({"email": req.session.userID }).lean()
-  const note = await Note.findOne({patientId: patient._id }).lean()
   // find all patients record (for patients who belong to the doctor )//
-  res.render("ClinicianAddclinicalnotes.hbs", { patient : patient, doctor: doctor, notes: note});
+  res.render("ClinicianAddclinicalnotes.hbs", { patient : patient, doctor: doctor});
 };
 
 const updateNote = async (req, res) => {
@@ -458,6 +458,44 @@ const updateNote = async (req, res) => {
     
     res.send("error happens when update note");
 
+  }
+};
+
+
+
+const viewChart = async (req, res) => {
+  try {
+    const doctor = await Doctor.findOne({"email": req.session.userID }).lean()
+    const patient = await Patient.findById(req.params._id).lean()
+    const records = await Record.find({ patientID: patient._id }).lean();
+    const dList = getDateList(30);
+    const dataList = { bgl: [], weight: [], doit: [], exercise: [] };
+    for (date of dList) {
+      // find is javscript Array.prototype function
+      let record = records.find((record) => {
+        return record.recordDate == date;
+      });
+      if (record) {
+        for (key in dataList) {
+          dataList[key].push(record.data[key].value);
+        }
+      } else {
+        for (key in dataList) {
+          dataList[key].push(0);
+        }
+      }
+    }
+    const pAge = age(patient.yearOfBirth)
+    res.render("Clinicianviewdatachart.hbs", {
+      dates: JSON.stringify(dList),
+      datas: JSON.stringify(dataList),
+      doctor: doctor,
+      patient: patient,
+      age: pAge
+    });
+  } catch (err) {
+    console.log(err);
+    res.send("error happens in viewing history data (clinician)");
   }
 };
 
@@ -487,7 +525,7 @@ module.exports = {
     renderPatientData,
     ClinicianViewTable,
     renderAddNote,
-    updateNote
-
+    updateNote,
+    viewChart,
 
 }
