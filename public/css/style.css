@@ -670,4 +670,19 @@ a{
 	flex: 1;
 }
 
-/* Add New Clinical notes */
+/* Monitoring comment */
+.tabBal {
+    width: 100%;
+    max-height: 800px;
+    overflow: auto;
+}
+table .tt_a {
+    font-weight: 600;
+    font-size: 36px;
+    line-height: 42px;
+}
+.comment {
+    font-weight: 400;
+    font-size: 30px;
+    line-height: 38px;
+}

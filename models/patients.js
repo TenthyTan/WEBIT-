@@ -21,15 +21,15 @@ const patientSchema = new mongoose.Schema({
             check: {type: Boolean, required: true, default: 'true'}
         },
         weight: { 
-            name :{type: String, default:"Blood Glucose Level (nmol/L)" },
+            name :{type: String, default:"Insulin Taken (units)" },
             check: {type: Boolean, required: true, default: 'true'}
         },
         doit: { 
-            name :{type: String, default:"Blood Glucose Level (nmol/L)" },
+            name :{type: String, default:"Weight (kg)" },
             check: {type: Boolean, required: true, default: 'true'}
         },
         exercise: { 
-            name :{type: String, default:"Blood Glucose Level (nmol/L)" },
+            name :{type: String, default:"Exercise (steps)" },
             check: {type: Boolean, required: true, default: 'true'}
          },
     },
