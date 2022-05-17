@@ -44,9 +44,9 @@ clinicianRouter.get('/dashboard/:_id/messages', sign.isLoginDoctor, clinicianCon
 
 clinicianRouter.post('/dashboard/:_id/messages', sign.isLoginDoctor, clinicianController.updateSupportMessages)
 
-clinicianRouter.get('/safetyThreshold', sign.isLoginDoctor, clinicianController.renderThreshold)
+clinicianRouter.get('/dashboard/:_id/safetyThreshold', sign.isLoginDoctor, clinicianController.renderThreshold)
 
-clinicianRouter.post('/safetyThreshold', sign.isLoginDoctor, clinicianController.UpdateThreshold)
+clinicianRouter.post('/dashboard/:_id/safetyThreshold', sign.isLoginDoctor, clinicianController.UpdateThreshold)
 
 clinicianRouter.get('/listClinicalNotes', sign.isLoginDoctor, clinicianController.renderClinicalNotes)
 
