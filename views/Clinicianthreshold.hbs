@@ -36,7 +36,6 @@
             <tr>
                 <td>
                 <input type="hidden" name="patientID" value="{{doctor.patients.patientIDs}}">
-                <input type="hidden" name="key" value="{{@key}}">
                 {{#if this.check}}
                 <input type="radio" id="{{@key.check}}_yes" name="{{@key}}" value ="Record" required="required" checked>
                 <label for="{{@key.check}}_yes"> Need to record </label>
