@@ -668,4 +668,28 @@ a{
 	flex: 1;
 }
 
+/* patient rank css */
+
+.ul_das {
+    font-size: 20px;
+    color: rgb(52, 79, 111);
+    display: flex;
+    justify-content: space-between;
+  }
+
+  .ul_dasa {
+    margin-top: 30px;
+    font-size: 20px;
+    /* color: rgb(52, 79, 111); */
+    display: flex;
+    justify-content: space-between;
+  }
+
+  .ul_dasa img{
+ 
+    width: 35px;
+    height: 35px;
+  }
+
+
 /* Add New Clinical notes */

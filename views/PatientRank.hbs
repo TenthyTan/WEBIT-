@@ -1,82 +1,146 @@
 <form action="/patients/rank" method="GET">
-<div class="sidenav">
+  <div class="sidenav">
     <img src="../public/img/head.png" />
-    <p>{{patient.userName}}</p >
+    <p>{{patient.userName}}</p>
     <img src="../public/img/recording.png" />
-    <p><a href="/patients/recordData">Record</a></p >
+    <p><a href="/patients/recordData">Record</a></p>
     <img src="../public/img/view.png" />
-    <p><a href="/patients/viewTable">View</a></p >
+    <p><a href="/patients/viewTable">View</a></p>
     <img src="../public/img/ranking.png" />
-    <p><a href="/patients/recordRank">Rank</a></p >
+    <p><a href="/patients/recordRank">Rank</a></p>
     <img src="../public/img/profile.png" />
-    <p><a href="/patients/profile">Profile</a></p >
+    <p><a href="/patients/profile">Profile</a></p>
     <img src="../public/img/setting.png" />
-    <p>setting</p >
+    <p>setting</p>
     <img src="../public/img/warning.png" />
-    <p>urgency</p >
-</div>
-<section>
-<!-- 容器 -->
-		<div class="ranking-box">
-			<!-- 标题 -->
-			<div class="box-title">Top 5 Badge Ranking</div>
+    <p>urgency</p>
+  </div>
+  <section>
+    <div>
+      {{!-- <h1> Leaderboard </h1> --}}
+      {{!-- <div>
+        {{rankData}}
+      </div> --}}
 
-			<!-- 天数 -->
-			<div class="box-tip">You Have Been Here For <span class="red">{{day}}</span> Days</div>
 
-			<!-- 排名 -->
-			<div class="rank">
-				
-				<!-- 表格 -->
-				<div class="rank-table">
-					<!-- 表头 -->
-					<div class="rank-thead">
-						<div>Rank</div>
-						<div>Name</div>
-						<div>Rate</div>
-						<div>Badge</div>
-					</div>
+      <div style="margin: 100px;">
+        <div style="text-align: center;fontSize:20px;font-weight: 600;">
+          Top 5 Badge Ranking
+        </div>
 
-					<!-- 表格内容 -->
-					<div class="rank-tbody">
-						<div class="col-1">
-							<div>1</div>
-							<div>2</div>
-							<div>3</div>
-							<div>4</div>
-							<div>5</div>
-						</div>
-						<div class="col-1 col-2">
-							<div class="rank-userpic">
-								<div><img src="../public/img/icons8-older-person-medium-light-skin-tone.png" alt=""></div>
-								<div><img src="../public/img/icons8-man-curly-hair-medium-skin-tone.png" alt=""></div>
-								<div><img src="../public/img/icons8-man-curly-hair-light-skin-tone.png" alt=""></div>
-								<div><img src="../public/img/icons8-man-curly-hair-medium-dark-skin-tone.png" alt=""></div>
-								<div><img src="../public/img/icons8-man-curly-hair-medium-light-skin-tone.png" alt=""></div>
-							</div>
-							<div class="rank-username">
-							{{#each rank}}
-								<div>{{this.userName}}</div>
-							{{/each}}
-							</div>
-						</div>
-						<div class="col-1">
-						{{#each rank}}
-							<div>{{this.eRate}}</div>
-						{{/each}}
-						</div>
-						<div class="col-1 rank-levelpic">
-							<div><img src="../public/img/icons8-number-60-1.png" name="" alt=""></div>
-							<div><img src="../public/img/icons8-number-60-2.png" name="" alt=""></div>
-							<div><img src="../public/img/icons8-number-60-3.png" name="" alt=""></div>
-							<div><img src="../public/img/icons8-badge-60-4.png" name="" alt=""></div>
-							<div><img src="../public/img/icons8-badge-60-4.png" name="" alt=""></div>
-						</div>
-					</div>
-				</div>
-				<div class="rank-infill"></div>
-			</div>
-		</div>
+        <div style="margin-left: 250px ;margin-top: 60px;">
+          <div style=" font-size: 26px; font-weight: 400;">You Have Been Here For <span style="color:red ;">109</span>
+            Days</div>
 
-		</section>
+          <div class="ulTable" style="width: 800px;
+          height: 400px;
+          border: 8px solid rgb(188,225,218);border-radius: 20px;padding:10px 40px">
+
+            <div class="ul_das">
+
+              <div>
+                Rank
+              </div>
+              <div>
+                Name
+              </div>
+              <div>
+                Rate
+              </div>
+
+              <div>
+                Badge
+              </div>
+
+            </div>
+            <div class="ul_dasa">
+              <div>
+                No.1
+              </div>
+              <div>
+                <img src="../public/img/head.png" alt="">
+              </div>
+              <div>
+                99%
+              </div>
+              <div>
+                <img src="../public/img/head.png" alt="">
+              </div>
+            </div>
+            <div class="ul_dasa">
+              <div>
+                No.1
+              </div>
+              <div>
+                <img src="../public/img/head.png" alt="">
+              </div>
+              <div>
+                99%
+              </div>
+              <div>
+                <img src="../public/img/head.png" alt="">
+              </div>
+            </div>
+            <div class="ul_dasa">
+              <div>
+                No.2
+              </div>
+              <div>
+                <img src="../public/img/head.png" alt="">
+              </div>
+              <div>
+                99%
+              </div>
+              <div>
+                <img src="../public/img/head.png" alt="">
+              </div>
+            </div>
+            <div class="ul_dasa">
+              <div>
+                No.3
+              </div>
+              <div>
+                <img src="../public/img/head.png" alt="">
+              </div>
+              <div>
+                99%
+              </div>
+              <div>
+                <img src="../public/img/head.png" alt="">
+              </div>
+            </div>
+            <div class="ul_dasa">
+              <div>
+                No.4
+              </div>
+              <div>
+                <img src="../public/img/head.png" alt="">
+              </div>
+              <div>
+                99%
+              </div>
+              <div>
+                <img src="../public/img/head.png" alt="">
+              </div>
+            </div>
+
+
+            {{!-- <ul>
+              {{#each rankData}}
+              <li> {{this}}: {{this}} </li>
+              {{/each}}
+
+            </ul> --}}
+
+
+          </div>
+        </div>
+
+
+
+
+      </div>
+
+    </div>
+  </section>
 </form>
