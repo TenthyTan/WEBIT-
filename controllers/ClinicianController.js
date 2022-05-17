@@ -340,16 +340,23 @@ const UpdateThreshold = async (req, res) => {
     console.log("-- req body when update threshold", req.body);
     const patient = await Patient.findById(req.params._id);
     const record = await Record.findOne({patientID: patient._id});
-    console.log(req.body.parent.timesries.bgl)
-    if (req.body.parent.timesries.bgl === "Record"){
-      patient.timesries.bgl = "true"
-    }else{
-      patient.timesries.bgl = "false"
+    //console.log(req.body.parent.timesries.bgl)
+    for(key in req.body){
+      if (req.body[req.body.key] === "Record"){
+        patient.timeseries[req.body.key].check = "true"
+      }else if(req.body[req.body.key] === "Not required"){
+        patient.timeseries[req.body.key].check = "false"
+      }
     }
+    //if (req.body.parent.timesries.bgl === "Record"){
+    //  patient.timesries.bgl = "true"
+   // }else{
+     // patient.timesries.bgl = "false"
+    //}
     //record.data[key].minThreshold = req.body.min_value
     //record.data[key].maxThreshold = req.body.max_value
     await patient.save();
-    res.redirect("/clinicians/manage" + req.body.patientId);
+    res.redirect("/clinicians/dashboard/" + req.params._id + "/safetyThreshold");
   } catch (err) {
     console.log(err);
     res.send("error happens when update timeseries");
