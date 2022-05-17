@@ -368,15 +368,14 @@ const UpdateThreshold = async (req, res) => {
 const renderClinicalNotes = async (req, res) => {
   try {
     const doctor = await Doctor.findOne({"email": req.session.userID }).lean()
-    const patient = await Patient.findById('627fe7d1962aaf5cf96aae67').lean();  //修改成patientID
+    const patient = await Patient.findOne({"_id": req.params._id}).lean();  //修改成patientID
     const notes = await Note.find({ //还没建数据库
-      Patient: '627fe7d1962aaf5cf96aae67',
-      Doctor: '627fe50e18c02895c2b82325',
+      "Patient": patient._id,
+      "Doctor": doctor._id,
     }).lean();
     
-    const date = formatDate(notes.createTime)
-    console.log(date)
-    res.render("CLinicianclinicalnote.hbs", {notes: notes, patient: patient, doctor: doctor, date: date});
+    console.log(notes.recordDate)
+    res.render("CLinicianclinicalnote.hbs", {notes: notes, patient: patient, doctor: doctor});
   } catch (err) {
     console.log(err);
     res.send("error happens when viewing clinicial notes");
@@ -386,13 +385,16 @@ const renderClinicalNotes = async (req, res) => {
 
 const addNote = async (req, res) => {
   try {
+      const patient = await Patient.findById(req.params._id)
+      const doctor = await Doctor.findOne({"email": req.session.userID }).lean()
       const newNote = new Note({
-      atient: req.body.patientId,
-      clinician: "6264c6a35501bb6d35a7c4f2",
-      text: req.body.note,
+      Patient: req.params._id,
+      Clinician: doctor._id,
+      recordDate: formatDate(new Date()),
+      text: req.body.clinicalnotes,
     });
     await newNote.save();
-    res.redirect("/clinician/dashboard/" + req.body.patientId + "/viewNotes");
+    res.redirect("/clinician/dashboard/" + req.params._id + "/listClinicalNotes");
   } catch (err) {
     console.log(err);
     res.send("error happens when add clinicial note");
@@ -433,9 +435,9 @@ const renderAddNote = async (req, res) => {
   // find current doctor
   const patient =  await Patient.findOne({"_id": req.params._id}).lean()
   const doctor = await Doctor.findOne({"email": req.session.userID }).lean()
-  
+  const note = await Note.findOne({patientId: patient._id }).lean()
   // find all patients record (for patients who belong to the doctor )//
-  res.render("ClinicianAddclinicalnotes.hbs", { patient : patient, doctor: doctor});
+  res.render("ClinicianAddclinicalnotes.hbs", { patient : patient, doctor: doctor, notes: note});
 };
 
 const updateNote = async (req, res) => {

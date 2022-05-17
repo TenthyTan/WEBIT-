@@ -7,7 +7,9 @@ main {grid-area: main;}
 nav {grid-area: nav;}
 footer {grid-area: footer;}
 
-
+footer{
+    margin-left: 200px;
+}
 
 body {
     background-color: #E3F9EE;
