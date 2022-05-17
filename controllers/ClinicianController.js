@@ -386,15 +386,16 @@ const renderClinicalNotes = async (req, res) => {
 const addNote = async (req, res) => {
   try {
       const patient = await Patient.findById(req.params._id)
-      const doctor = await Doctor.findOne({"email": req.session.userID }).lean()
+      const doctor = await Doctor.findOne({"email": req.session.userID })
       const newNote = new Note({
       Patient: req.params._id,
-      Clinician: doctor._id,
+      Doctor: doctor._id,
       recordDate: formatDate(new Date()),
-      text: req.body.clinicalnotes,
+      text: req.body.notes,
     });
+    console.log("addNO" + req.body.notes)
     await newNote.save();
-    res.redirect("/clinician/dashboard/" + req.params._id + "/listClinicalNotes");
+    res.redirect("/clinicians/dashboard/" + req.params._id + "/listClinicalNotes");
   } catch (err) {
     console.log(err);
     res.send("error happens when add clinicial note");
