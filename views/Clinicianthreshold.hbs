@@ -32,99 +32,27 @@
                 <td>Safety Threshold</td>
 
             </tr>
+             {{#each patient.timeseries}} 
             <tr>
                 <td>
-            
-                    <input type="hidden" name="patientID" value="{{doctor.patients.patientIDs}}">
-                    <input type="hidden" name="key" value="{{patient.timeseries.bgl}}">
-                    {{patient.timeseries.bgl}}: 
-                    {{#if this}}
-                        <input type="radio" id="{{this.bgl}}_yes" name="{{this.bgl}}" value ="Record" required="required" checked>
-                        <label for="{{this.bgl}}_yes"> Need to record </label>
-                        <input type="radio" id="{{this.bgl}}_no" name="{{this.bgl}}" value ="Not required" >
-                        <label for="{{this.bgl}}_no"> Not required</label>
-                    {{else}}
-                        <input type="radio" id="{{this.bgl}}_yes" name="{{this.bgl}}" value ="Record" required="required">
-                        <label for="{{this.bgl}}_yes"> Need to record </label>
-                        <input type="radio" id="{{this.bgl}}_no" name="{{this.bgl}}" value ="Not required" checked>
-                        <label for="{{this.bgl}}_no"> Not required </label>
-                    {{/if}}
-        
+                <input type="hidden" name="patientID" value="{{doctor.patients.patientIDs}}">
+                <input type="hidden" name="key" value="{{@key}}">
+                {{#if this.check}}
+                <input type="radio" id="{{@key.check}}_yes" name="{{@key}}" value ="Record" required="required" checked>
+                <label for="{{@key.check}}_yes"> Need to record </label>
+                <input type="radio" id="{{@key.check}}_no" name="{{@key}}" value ="Not required" >
+                <label for="{{@key}}_no"> Not required  </label>
+                {{else}}
+                <input type="radio" id="{{@key.check}}_yes" name="{{@key}}" value ="Record" required="required">
+                <label for="{{@keys.check}}_yes"> Need to record </label>
+                <input type="radio" id="{{@key.check}}_no" name="{{@key}}" value ="Not required" checked>
+                <label for="{{@key.check}}_no"> Not required  </label>
                 </td>
-                <td> Blood Glucose Level (nmol)</td>
+                {{/if}}
+                <td>{{@keys.name}}</td>
                 <td>Min: <input type="digit" name="min_value" placeholder="Enter min threshold" required>           Max: <input type="digit" name="max_value" placeholder="Enter max threshold" required></td>
-            
-            </tr>
-            <tr>
-                <td>
-        
-                    <input type="hidden" name="patientID" value="{{doctor.patients.patientIDs}}">
-                    <input type="hidden" name="key" value="{{patient.timeseries.doit}}">
-                    {{patient.timeseries.doit}}: 
-                    {{#if this}}
-                        <input type="checkbox" id="{{this.doit}}_yes" name="{{this.doit}}" value ="Record" required="required" checked>
-                        <label for="{{this.doit}}_yes"> Need to record </label>
-                        <input type="checkbox" id="{{this.doit}}_no" name="{{this.doit}}" value ="Not required" >
-                        <label for="{{this.doit}}_no"> Not required</label>
-                    {{else}}
-                        <input type="checkbox" id="{{this.doit}}_yes" name="{{this.doit}}" value ="Record" required="required">
-                        <label for="{{this.doit}}_yes"> Need to record </label>
-                        <input type="checkbox" id="{{this.doit}}_no" name="{{this.doit}}" value ="Not required" checked>
-                        <label for="{{this.doit}}_no"> Not required </label>
-                    {{/if}}
-       
-                </td>
-                <td>Insulin taken (does)</td>
-                <td>Min: <input type="digit" name="min_value" placeholder="Enter min threshold" required>           Max: <input type="digit" name="max_value" placeholder="Enter max threshold" required></td>
-        
-
-            </tr>
-            <tr>
-                <td>
-        
-                    <input type="hidden" name="patientID" value="{{doctor.patients.patientIDs}}">
-                    <input type="hidden" name="key" value="{{patient.timeseries.weight}}">
-                    {{patient.timeseries.weight}}: 
-                    {{#if this}}
-                        <input type="checkbox" id="{{this.weight}}_yes" name="{{this.weight}}" value ="Record" required="required" checked>
-                        <label for="{{this.weight}}_yes"> Need to record </label>
-                        <input type="checkbox" id="{{this.weight}}_no" name="{{this.weight}}" value ="Not required" >
-                        <label for="{{this.weight}}_no"> Not required</label>
-                    {{else}}
-                        <input type="checkbox" id="{{this.weight}}_yes" name="{{this.weight}}" value ="Record" required="required">
-                        <label for="{{this.weight}}_yes"> Need to record </label>
-                        <input type="checkbox" id="{{this.weight}}_no" name="{{this.weight}}" value ="Not required" checked>
-                        <label for="{{this.weight}}_no"> Not required </label>
-                    {{/if}}
-          
-                </td>
-                <td>Weight (kg)</td>
-                <td>Min: <input type="min_digit" name="value" placeholder="Enter min threshold" required>           Max: <input type="digit" name="max_value" placeholder="Enter max threshold" required></td>
-        
-
-            </tr>
-            <tr>
-                <td>
-        
-                    <input type="hidden" name="patientID" value="{{doctor.patients.patientIDs}}">
-                    <input type="hidden" name="key" value="{{patient.timeseries.exercise}}">
-                    {{patient.timeseries.exercise}}: 
-                    {{#if this}}
-                        <input type="checkbox" id="{{this.exercise}}_yes" name="{{this.exercise}}" value ="Record" required="required" checked>
-                        <label for="{{this.exercise}}_yes"> Need to record </label>
-                        <input type="checkbox" id="{{this.exercise}}_no" name="{{this.exercise}}" value ="Not required" >
-                        <label for="{{this.exercise}}_no"> Not required</label>
-                    {{else}}
-                        <input type="checkbox" id="{{this.exercise}}_yes" name="{{this.exercise}}" value ="Record" required="required">
-                        <label for="{{this.exercise}}_yes"> Need to record </label>
-                        <input type="checkbox" id="{{this.exercise}}_no" name="{{this.exercise}}" value ="Not required" checked>
-                        <label for="{{this.exercise}}_no"> Not required </label>
-                    {{/if}}
-    
-                </td>
-                <td> Exercise (steps)</td>
-                <td>Min: <input type="digit" name="min_value" placeholder="Enter min threshold" required>           Max: <input type="digit" name="max_value" placeholder="Enter max threshold" required></td>
-            </tr>
+            </tr>    
+            {{/each}}
         </table>
     </form>   
 </div>
