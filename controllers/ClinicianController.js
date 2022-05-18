@@ -131,7 +131,7 @@ async function initDoctor() {
     clinician.patients.push({patientIDs: patient._id, patientName: patient.userName})
     await clinician.save()   
     console.log("success!")
-    return res.render("ClinicianHome.hbs",{message: "Create Successfully!"})
+    return res.redirect("/clinicians/dashboard/" + patient._id + "/safetyThreshold")
     
 };
 
@@ -311,18 +311,6 @@ const updateSupportMessages = async (req, res) => {
   
 //   res.render("Clinicianthreshold.hbs");
 // };
-const renderThreshold = async (req, res) => {
-  try {
-    const doctor = await Doctor.findOne({"email": req.session.userID }).lean()
-    //const patientId = await initPatient();
-    const patient = await Patient.find({"doctor" : doctor.userName}).lean()
-    const record = await Record.find({patientID: {"$in" : patient}}).lean()
-    res.render("Clinicianthreshold.hbs", { doctor: doctor, patient: patient, record: record });
-  } catch (err) {
-    res.status(400);
-    res.send("error happens when render Threshold");
-  }
-};
 
 const renderUpdate = async(req, res) => {
   try{
@@ -334,19 +322,61 @@ const renderUpdate = async(req, res) => {
   }
 }
 
-
-
+const renderThreshold = async (req, res) => {
+  try {
+    const doctor = await Doctor.findOne({"email": req.session.userID }).lean()
+    //const patientId = await initPatient();
+    //const record = await Record.findOne({patientID: }).lean()
+    const patient = await Patient.findOne({"_id": req.params._id}).lean()
+    res.render("Clinicianthreshold.hbs", { doctor: doctor, patient: patient});
+  } catch (err) {
+    res.status(400);
+    res.send("error happens when render Threshold");
+  }
+};
 
 const UpdateThreshold = async (req, res) => {
   try {
     console.log("-- req body when update threshold", req.body);
-    const patient = await Patient.findById(req.body.patientId);
-    const record = await Record.find({patientID: {"$in" : patient}});
-    const key = req.body.key
-    record.data[key].minThreshold = req.body.min_value
-    record.data[key].maxThreshold = req.body.max_value
+    const patient = await Patient.findById(req.params._id);
+    const record = await Record.findOne({patientID: patient._id});
+    console.log(req.body.bgl)
+    if (req.body.bgl === "Record"){
+      patient.timeseries.bgl.check = "true"
+      patient.timeseries.bgl.min = req.body.bgl_min_value
+      patient.timeseries.bgl.max = req.body.bgl_max_value
+    }else{
+      patient.timeseries.bgl.check = "false"
+    }
+
+    if (req.body.weight === "Record"){
+      patient.timeseries.weight.check = "true"
+      patient.timeseries.weight.min = req.body.weight_min_value
+      patient.timeseries.weight.max = req.body.weight_max_value
+    }else{
+      patient.timeseries.weight.check = "false"
+    }
+
+    if (req.body.doit === "Record"){
+      patient.timeseries.doit.check = "true"
+      patient.timeseries.doit.min = req.body.doit_min_value
+      patient.timeseries.doit.max = req.body.doit_max_value
+    }else{
+      patient.timeseries.doit.check = "false"
+    }
+
+    if (req.body.exercise === "Record"){
+      patient.timeseries.exercise.check = "true"
+      patient.timeseries.exercise.min = req.body.exercise_min_value
+      patient.timeseries.exercise.max = req.body.exercise_max_value
+    }else{
+      patient.timeseries.exercise.check = "false"
+    }
+
+    //record.data[key].minThreshold = req.body.min_value
+    //record.data[key].maxThreshold = req.body.max_value
     await patient.save();
-    res.redirect("/clinicians/manage" + req.body.patientId);
+    res.redirect("/clinicians/dashboard/" + req.params._id + "/safetyThreshold");
   } catch (err) {
     console.log(err);
     res.send("error happens when update timeseries");
@@ -354,18 +384,19 @@ const UpdateThreshold = async (req, res) => {
 };
 
 
+
+
+
 const renderClinicalNotes = async (req, res) => {
   try {
     const doctor = await Doctor.findOne({"email": req.session.userID }).lean()
-    const patient = await Patient.findById('627fe7d1962aaf5cf96aae67').lean();  //修改成patientID
+    const patient = await Patient.findOne({"_id": req.params._id}).lean();  //修改成patientID
     const notes = await Note.find({ //还没建数据库
-      Patient: '627fe7d1962aaf5cf96aae67',
-      Doctor: '627fe50e18c02895c2b82325',
+      "Patient": patient._id,
+      "Doctor": doctor._id,
     }).lean();
-    
-    const date = formatDate(notes.createTime)
-    console.log(date)
-    res.render("CLinicianclinicalnote.hbs", {notes: notes, patient: patient, doctor: doctor, date: date});
+
+    res.render("Clinicianclinicalnote.hbs", {notes: notes, patient: patient, doctor: doctor});
   } catch (err) {
     console.log(err);
     res.send("error happens when viewing clinicial notes");
@@ -375,13 +406,17 @@ const renderClinicalNotes = async (req, res) => {
 
 const addNote = async (req, res) => {
   try {
+      const patient = await Patient.findById(req.params._id)
+      const doctor = await Doctor.findOne({"email": req.session.userID })
       const newNote = new Note({
-      atient: req.body.patientId,
-      clinician: "6264c6a35501bb6d35a7c4f2",
-      text: req.body.note,
+      Patient: req.params._id,
+      Doctor: doctor._id,
+      recordDate: formatDate(new Date()),
+      text: req.body.notes,
     });
+    console.log("addNO" + req.body.notes)
     await newNote.save();
-    res.redirect("/clinician/viewNotes" + req.body.patientId);
+    res.redirect("/clinicians/dashboard/" + req.params._id + "/listClinicalNotes");
   } catch (err) {
     console.log(err);
     res.send("error happens when add clinicial note");
@@ -418,6 +453,113 @@ const viewComments = async (req, res) => {
 }
 
 
+const renderAddNote = async (req, res) => {
+  // find current doctor
+  const patient =  await Patient.findOne({"_id": req.params._id}).lean()
+  const doctor = await Doctor.findOne({"email": req.session.userID }).lean()
+  // find all patients record (for patients who belong to the doctor )//
+  res.render("ClinicianAddclinicalnotes.hbs", { patient : patient, doctor: doctor});
+};
+
+const updateNote = async (req, res) => {
+  try {
+
+    // const doctor = await Doctor.findOne({"email": req.session.userID }).lean()
+    // find all the patients belongs to this doctor
+    const patient =  await Patient.findById(req.params._id)
+    const note = await Note.findOne({patientId: patient._id }).lean()
+    console.log(req.body.clinicalnotes)
+    note.text = req.body.clinicalnotes;
+
+    await patient.save();
+    res.redirect("/clinicians/dashboard/" + req.params._id + "/clinicalNotes");
+   
+  } catch (err) {
+    console.log(err);
+    
+    res.send("error happens when update note");
+
+  }
+};
+
+
+
+const viewChart = async (req, res) => {
+  try {
+    const doctor = await Doctor.findOne({"email": req.session.userID }).lean()
+    const patient = await Patient.findById(req.params._id).lean()
+    const records = await Record.find({ patientID: patient._id }).lean();
+    const dList = getDateList(30);
+    const dataList = { bgl: [], weight: [], doit: [], exercise: [] };
+    for (date of dList) {
+      // find is javscript Array.prototype function
+      let record = records.find((record) => {
+        return record.recordDate == date;
+      });
+      if (record) {
+        for (key in dataList) {
+          dataList[key].push(record.data[key].value);
+        }
+      } else {
+        for (key in dataList) {
+          dataList[key].push(0);
+        }
+      }
+    }
+    const pAge = age(patient.yearOfBirth)
+    res.render("Clinicianviewdatachart.hbs", {
+      dates: JSON.stringify(dList),
+      datas: JSON.stringify(dataList),
+      doctor: doctor,
+      patient: patient,
+      age: pAge
+    });
+  } catch (err) {
+    console.log(err);
+    res.send("error happens in viewing history data (clinician)");
+  }
+};
+
+
+
+const renderCheckComment = async (req, res) => {
+  try {
+    const doctor = await Doctor.findOne({"email": req.session.userID }).lean();
+    const patients = await Patient.find({ doctor: doctor.userName }).lean();
+    const commentList = []
+    for (patient of patients) {
+      let data = await Record.findOne(
+        { patientID: patient._id },
+        { data: true }
+
+      ).lean();
+
+      if (data) {
+        for (key in data.data) {
+          if (data.data[key].status == "Recorded"){
+            if (formatDate(data.data[key].createdDate) == formatDate(new Date())){
+              console.log(data.data[key].comment)
+              if(data.data[key].comment != "") {
+                commentList.push({
+                  patient: patient,
+                  comment: data.data[key].comment,
+                  recordDate: formatDate(new Date()),
+                  data:data.data[key].name
+                })
+              }
+            }
+          }
+        }
+      }
+    }
+    res.render("ClinicianCheckComment.hbs", {cl: commentList, doctor:doctor})
+  } catch (err) {
+    console.log(err);
+    res.send("error happens when viewing comments");
+  }
+}
+
+
 
 
 
@@ -443,5 +585,9 @@ module.exports = {
     viewComments,
     renderPatientData,
     ClinicianViewTable,
+    renderAddNote,
+    updateNote,
+    viewChart,
+    renderCheckComment,
 
 }

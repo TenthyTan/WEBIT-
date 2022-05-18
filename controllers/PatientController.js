@@ -57,14 +57,71 @@ async function initPatient() {
 
 async function initRecord(patientId) {
   try {
+    const patient = await Patient.findOne({"_id": patientId})
     const result = await Record.findOne({
       patientID: patientId,
       recordDate: formatDate(new Date()),
     });
+     
+    if(patient.timeseries.bgl.check === 'true'){
+      var bglStatus = "Unrecorded"
+      var bglMin = patient.timeseries.bgl.min
+      var bglMax = patient.timeseries.bgl.max
+    }else if(patient.timeseries.bgl.check === 'false'){
+      var bglStatus = "Not required"
+    }
+
+    if(patient.timeseries.doit.check === 'true'){
+      var doitStatus = "Unrecorded"
+      var doitMin = patient.timeseries.doit.min
+      var doitMax = patient.timeseries.doit.max
+    }else if(patient.timeseries.doit.check === 'false'){
+      var doitStatus = "Not required"
+    }
+
+    if(patient.timeseries.weight.check === 'true'){
+      var weightStatus = "Unrecorded"
+      var weightMin = patient.timeseries.weight.min
+      var weightMax = patient.timeseries.weight.max
+    }else if(patient.timeseries.weight.check === 'false'){
+      var weightStatus = "Not required"
+    }
+
+    if(patient.timeseries.exercise.check === 'true'){
+      var exerciseStatus = "Unrecorded"
+      var exerciseMin = patient.timeseries.exercise.min
+      var exerciseMax = patient.timeseries.exercise.max
+    }else if(patient.timeseries.exercise.check === 'false'){
+      var exerciseStatus = "Not required"
+    }
+
+    
     if (!result) {
       const newRecord = new Record({
         patientID: patientId,
         recordDate: formatDate(new Date()),
+        data:{
+          bgl:{
+            status: bglStatus,
+            minThreshold: bglMin,
+            maxThreshold: bglMax
+          },
+          weight: {
+            status: weightStatus,
+            minThreshold: weightMin,
+            maxThreshold: weightMax
+          },
+          doit: {
+            status: doitStatus,
+            minThreshold: doitMin,
+            maxThreshold: doitMax
+          },
+          exercise: {
+            status: exerciseStatus,
+            minThreshold: exerciseMin,
+            maxThreshold: exerciseMax
+          },
+        }
       });
 
       const record = await newRecord.save();
@@ -319,8 +376,13 @@ async function engageRate(patientID) {
 }
 
 const rankBoard = async (req, res) => {
+  const p = await Patient.findOne({"email": req.session.userID}).lean()
+  const start = new Date(formatDate(p.Create_Time)).getTime();
+  const today = new Date(formatDate(Date.now())).getTime();
+  const day = today - start;
   const patients = await Patient.find({}, {});
   // console.log(patients)
+
   for (patient of patients) {
     await engageRate(patient._id);
   }
@@ -330,7 +392,7 @@ const rankBoard = async (req, res) => {
       return b.recordRate - a.recordRate;
     })
     .slice(0, 5);
-  res.render("PatientRank.hbs", { rank: pList });
+  res.render("PatientRank.hbs", { rank: pList, patient: p, day: day});
 };
 
 module.exports = {

@@ -1,13 +1,10 @@
-<form action="/clinicians/listClinicalNotes" method="GET"></form>
+<form action="/clinicians/dashboard/{{patient._id}}/listClinicalNotes" method="GET">
 <div class="sidenav">
     <img src="/img/Group-44.png" />
     <p >{{doctor.firstName}}</p >
 
     <img src="/img/icons8-dashboard-64.png" />
     <p><a href="/clinicians/dashboard">Dashboard</a></p >
-
-    <img src="/img/list-dash-header.png" />
-    <p><a href="/clinicians/list of clinical notes">Note</a></p >
 
     <img src="/img/Comment-1.png" />
     <p><a href="clinicians/checkComment">Comment</a></p >
@@ -29,8 +26,10 @@
 <ul>
 {{#each notes}}
 <div class="two_a">
-    <li class="list_of_notes">{{date}}{{this.text}}</li>
+    <li class="list_of_notes">{{recordDate}}{{this.text}}</li>
 </div>        
 {{/each}}
 </ul>
-<button class="send">Add New</button>
+<button class="back">Back</button>
+<button class="send"><a href="/clinicians/dashboard/{{patient._id}}/clinicalNotes">Add New</a></button>
+</form>

@@ -7,9 +7,7 @@ main {grid-area: main;}
 nav {grid-area: nav;}
 footer {grid-area: footer;}
 
-footer{
-    margin-left: 200px;
-}
+
 
 body {
     background-color: #E3F9EE;
@@ -646,8 +644,69 @@ table {
     font-size: 36px;
     line-height: 82px;
 }
+/* Add New Clinical notes */
 
-/* clinician view data css */
+
+
+/* view data css */
+/* 表格样式 --表格外面套个div类名叫table-without-border就能用*/
+.table-without-border table {
+	width: 800px;
+	text-align: center;
+	border: 0px solid black;
+	border-collapse: collapse;
+}
+
+/* 表格内容滚动表头不滚动 */
+.table-without-border table tbody {
+	display: block;
+	height: 150px;
+	/* 超出范围显示滚动条 */
+	overflow-y: scroll;
+	/* 滚动流畅 */
+	-webkit-overflow-scrolling: touch;
+}
+
+/* 有滚动条会影响表格内容，隐藏滚动条 */
+.table-without-border table tbody::-webkit-scrollbar {
+	display: none;
+}
+
+/* 固定表格布局 */
+.table-without-border table thead,
+.table-without-border tbody tr {
+	display: table;
+	width: 100%;
+	table-layout: fixed;
+}
+
+.table-without-border table thead th {
+	background: #aad7dd;
+	border-left: 1px solid black;
+	border-top: 1px solid transparent;
+}
+
+.table-without-border table thead th:first-child {
+	border-left: 1px solid transparent;
+}
+
+.table-without-border table thead th:last-child {
+	border-right: 1px solid transparent;
+}
+
+.table-without-border table tr td {
+	border: 1px solid black;
+	border-top: 0;
+	border-right: 1px solid black;
+	border-bottom: 1px solid black;
+	border-left: 0;
+	background-color: #e7f8ee;
+}
+
+
+
+
+/* 病人医生左边四个选项样式 */
 a{
 	text-decoration: none;
 }
@@ -669,29 +728,3 @@ a{
 .pviewdata-section .main{
 	flex: 1;
 }
-
-/* patient rank css */
-
-.ul_das {
-    font-size: 20px;
-    color: rgb(52, 79, 111);
-    display: flex;
-    justify-content: space-between;
-  }
-
-  .ul_dasa {
-    margin-top: 30px;
-    font-size: 20px;
-    /* color: rgb(52, 79, 111); */
-    display: flex;
-    justify-content: space-between;
-  }
-
-  .ul_dasa img{
- 
-    width: 35px;
-    height: 35px;
-  }
-
-
-/* Add New Clinical notes */

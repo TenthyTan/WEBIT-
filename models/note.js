@@ -2,6 +2,7 @@ const mongoose = require("mongoose");
 
 const noteSchema = new mongoose.Schema(
   {
+    recordDate: {type: String, required: true},
     Patient: {
       type: mongoose.Schema.Types.ObjectId,
       ref: "Patient",

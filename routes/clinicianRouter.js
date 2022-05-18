@@ -44,16 +44,21 @@ clinicianRouter.get('/dashboard/:_id/messages', sign.isLoginDoctor, clinicianCon
 
 clinicianRouter.post('/dashboard/:_id/messages', sign.isLoginDoctor, clinicianController.updateSupportMessages)
 
-clinicianRouter.get('/safetyThreshold', sign.isLoginDoctor, clinicianController.renderThreshold)
+clinicianRouter.get('/dashboard/:_id/safetyThreshold', sign.isLoginDoctor, clinicianController.renderThreshold)
 
-clinicianRouter.post('/safetyThreshold', sign.isLoginDoctor, clinicianController.UpdateThreshold)
+clinicianRouter.post('/dashboard/:_id/safetyThreshold', sign.isLoginDoctor, clinicianController.UpdateThreshold)
 
-clinicianRouter.get('/listClinicalNotes', sign.isLoginDoctor, clinicianController.renderClinicalNotes)
+clinicianRouter.get('/dashboard/:_id/listClinicalNotes', sign.isLoginDoctor, clinicianController.renderClinicalNotes)
 
-clinicianRouter.post('/listClinicalNotes', sign.isLoginDoctor, clinicianController.addNote)
+//clinicianRouter.post('/dashboard/:_id/listClinicalNotes', sign.isLoginDoctor, clinicianController.addNote)
 
 clinicianRouter.get('/viewComments', sign.isLoginDoctor, clinicianController.viewComments)
 
+clinicianRouter.get('/dashboard/:_id/clinicalNotes', sign.isLoginDoctor, clinicianController.renderAddNote)
+
+clinicianRouter.post('/dashboard/:_id/clinicalNotes', sign.isLoginDoctor, clinicianController.addNote)
+
+clinicianRouter.get('/checkComment', sign.isLoginDoctor, clinicianController.renderCheckComment)
 
 
 

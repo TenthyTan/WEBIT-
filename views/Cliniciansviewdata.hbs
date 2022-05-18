@@ -7,9 +7,6 @@
         <img src="/img/icons8-dashboard-64.png" />
         <p><a href="/clinicians/dashboard">Dashboard</a></p >
 
-        <img src="/img/list-dash-header.png" />
-        <p><a href="/clinicians/list of clinical notes">Note</a></p >
-
         <img src="/img/Comment-1.png" />
         <p><a href="clinicians/checkComment">Comment</a></p >
 
@@ -27,6 +24,12 @@
 	<div><a href="">Line Charts</a></div>
 </div>
 <div class="main">
+        <div class="pviewdata-left">
+            <div><a href="/clinicians/dashboard/{{patient._id}}/safetyThreshold">Safty Thresholds</a></div>
+            <div><a href="/clinicians/dashboard/{{patient._id}}/listClinicalNotes">Clinical Notes</a></div>
+            <div><a href="/clinicians/dashboard/{{patient._id}}/messages">Support Message</a></div>
+            <div><a href="/clinicians/dashboard/{{patient._id}}/viewChart">Line Charts</a></div>
+        </div>
         <div class="title-data"><h6>Patient Name: {{patient.firstName}}&nbsp;&nbsp;&nbsp;&nbsp;Age: {{age.age}} &nbsp;&nbsp;&nbsp;&nbsp;Gender:Male</h6></div>
 <table class="table-without-border">
     <thead>
@@ -56,7 +59,5 @@
     </tbody>
     {{/each}}
 </table>
-<button class="viewdatabotton"><a href="/clinicians/dashboard/{{patient._id}}/viewChart">View</a></button>
-<p class="annotationofbotton">View Data On Chart</p>
 </section>
 </form>

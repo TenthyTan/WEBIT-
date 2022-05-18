@@ -9,18 +9,38 @@ const patientSchema = new mongoose.Schema({
     lastName: {type: String, required: true, lowercase: true, trim: true},
     userName: {type: String, required: true, unique: true},
     password: {type: String, required: true},
-    yearOfBirth: {type: Number, required: true, min: 1990, max: 2022},
+    yearOfBirth: {type: Number, required: true, min: 1920, max: 2023},
     doctor: {type: String, required: true},
     email: {type: String, required: true, unique: true},
     supportMes: {type: String, required: true},
     recordRate: {type: Number, min: 0, max: 1},
     role: { type: String, default: "patient" },
-    //timeseries: {
-    //    bgl: { type: Boolean, required: true },
-      //  weight: { type: Boolean, required: true },
-       // doit: { type: Boolean, required: true },
-      //  exercise: { type: Boolean, required: true },
-    //},
+    timeseries: {
+        bgl: { 
+            name :{type: String, default:"Blood Glucose Level (nmol/L)" },
+            check: {type: Boolean, required: true, default: 'true'},
+            min: {type: Number, required: true, default: '1'},
+            max: {type: Number, required: true, default: '10'}
+        },
+        weight: { 
+            name :{type: String, default:"Insulin Taken (units)" },
+            check: {type: Boolean, required: true, default: 'true'},
+            min: {type: Number, required: true, default: '30'},
+            max: {type: Number, required: true, default: '200'}
+        },
+        doit: { 
+            name :{type: String, default:"Weight (kg)" },
+            check: {type: Boolean, required: true, default: 'true'},
+            min: {type: Number, required: true, default: '1'},
+            max: {type: Number, required: true, default: '10'}
+        },
+        exercise: { 
+            name :{type: String, default:"Exercise (steps)" },
+            check: {type: Boolean, required: true, default: 'true'},
+            min: {type: Number, required: true, default: '1'},
+            max: {type: Number, required: true, default: '2000'}
+         },
+    },
     records: [{
         recordIDs: {type: mongoose.Schema.Types.ObjectId,  ref: "Record"}
     }],

@@ -38,7 +38,7 @@
                     grey
                     {{else}}
                     {{#ifRecorded this.status}}
-                    {{#ifOutSideThresholds this.value this.minThreshold this.maxThreshold}}
+                    {{#ifOutSideThresholds this.value record.minThreshold record.maxThreshold}}
                     red
                     {{/ifOutSideThresholds}}
                     {{/ifRecorded}}
