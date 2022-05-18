@@ -9,7 +9,7 @@ const patientSchema = new mongoose.Schema({
     lastName: {type: String, required: true, lowercase: true, trim: true},
     userName: {type: String, required: true, unique: true},
     password: {type: String, required: true},
-    yearOfBirth: {type: Number, required: true, min: 1900, max: 2023},
+    yearOfBirth: {type: Number, required: true, min: 1920, max: 2023},
     doctor: {type: String, required: true},
     email: {type: String, required: true, unique: true},
     supportMes: {type: String, required: true},
