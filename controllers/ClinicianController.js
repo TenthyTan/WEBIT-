@@ -313,7 +313,7 @@ const updateSupportMessages = async (req, res) => {
 const renderUpdate = async(req, res) => {
   try{
     const doctor = await Doctor.findOne({"email": req.session.userID }).lean()
-    res.render('ClinicianChangePassword.hbs',req.session.flash); // send data to browser
+    res.render('ClinicianChangePassword.hbs',{doctor: doctor}); // send data to browser
   }catch(err){
     console.log("error happens ", err);
 

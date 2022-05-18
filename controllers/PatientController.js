@@ -438,8 +438,8 @@ const changePassword = async(req, res) => {
 
 const renderUpdate = async(req, res) => {
   try{
-    
-   res.render('patientChangePassword.hbs',req.session.flash); // send data to browser
+   const patient = await Patient.findOne({"email": req.session.userID}).lean()
+   res.render('patientChangePassword.hbs', {patient: patient}); // send data to browser
   }catch(err){
     console.log("error happens ", err);
 
