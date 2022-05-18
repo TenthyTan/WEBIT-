@@ -57,88 +57,48 @@ async function initPatient() {
 
 async function initRecord(patientId) {
   try {
-    const patient = await Patient.findOne({"_id": patientId})
-    const result = await Record.findOne({
+    const patient = await Patient.findById(patientId);
+    const oldResult = await Record.findOne({
       patientID: patientId,
       recordDate: formatDate(new Date()),
     });
-     
-    var bglStatus;
-    var bglMin;
-    var bglMax;
-    var doitStatus
-    var doitMin 
-    var doitMax
-
-    if(patient.timeseries.bgl.check === 'true'){
-       bglStatus = "Unrecorded"
-       bglMin = patient.timeseries.bgl.min
-       bglMax = patient.timeseries.bgl.max
-    }else if(patient.timeseries.bgl.check === 'false'){
-       bglStatus = "Not required"
-    }
-
-    if(patient.timeseries.doit.check === 'true'){
-       doitStatus = "Unrecorded"
-       doitMin = patient.timeseries.doit.min
-       doitMax = patient.timeseries.doit.max
-    }else if(patient.timeseries.doit.check === 'false'){
-       doitStatus = "Not required"
-    }
-
-    if(patient.timeseries.weight.check === 'true'){
-       weightStatus = "Unrecorded"
-       weightMin = patient.timeseries.weight.min
-       weightMax = patient.timeseries.weight.max
-    }else if(patient.timeseries.weight.check === 'false'){
-       weightStatus = "Not required"
-    }
-
-    if(patient.timeseries.exercise.check === 'true'){
-       exerciseStatus = "Unrecorded"
-       exerciseMin = patient.timeseries.exercise.min
-       exerciseMax = patient.timeseries.exercise.max
-    }else if(patient.timeseries.exercise.check === 'false'){
-       exerciseStatus = "Not required"
-    }
-
     
-    if (!result) {
+    if (!oldResult) {
       const newRecord = new Record({
         patientID: patientId,
         recordDate: formatDate(new Date()),
-        data:{
-          bgl:{
-            status: bglStatus,
-            minThreshold: bglMin,
-            maxThreshold: bglMax
-          },
-          weight: {
-            status: weightStatus,
-            minThreshold: weightMin,
-            maxThreshold: weightMax
-          },
-          doit: {
-            status: doitStatus,
-            minThreshold: doitMin,
-            maxThreshold: doitMax
-          },
-          exercise: {
-            status: exerciseStatus,
-            minThreshold: exerciseMin,
-            maxThreshold: exerciseMax
-          },
-        }
+        data: await checkStatus(patientId)        
       });
-
       const record = await newRecord.save();
+      // Insert record to patient record list
+      console.log("new: " + record)
+      patient.records.push({recordIDs: record._id})
       return record.id;
     } else {
-      return result.id;
+      return oldResult.id;
     }
   } catch (err) {
     console.log("error happens in record initialisation: ", err);
   }
+}
+
+async function checkStatus(patientId) {
+  //copy timeseries
+  const timeseries = (await Patient.findById(patientId).lean()).timeseries;
+  const data = {};
+  for (key in timeseries) {
+    data[key] = {};
+    if (timeseries[key] == false ) {
+      data[key].status = "Not required";
+      data[key].minThreshold = 0;
+      data[key].maxThreshold = 0;
+    } else {
+      data[key].status = "Unrecorded";
+      data[key].minThreshold = timeseries[key].min;
+      data[key].maxThreshold = timeseries[key].max;
+    }
+  }
+  return data;
 }
 
 const getAllPatients = (req, res) => {
