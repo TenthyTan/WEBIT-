@@ -19,26 +19,26 @@ const patientSchema = new mongoose.Schema({
         bgl: { 
             name :{type: String, default:"Blood Glucose Level (nmol/L)" },
             check: {type: Boolean, required: true, default: 'true'},
-            min: {type: Number, required: true, default: '1'},
-            max: {type: Number, required: true, default: '10'}
+            min: {type: Number, default: '1'},
+            max: {type: Number,  default: '10'}
         },
         weight: { 
             name :{type: String, default:"Insulin Taken (units)" },
             check: {type: Boolean, required: true, default: 'true'},
-            min: {type: Number, required: true, default: '30'},
-            max: {type: Number, required: true, default: '200'}
+            min: {type: Number,  default: '30'},
+            max: {type: Number,  default: '200'}
         },
         doit: { 
             name :{type: String, default:"Weight (kg)" },
             check: {type: Boolean, required: true, default: 'true'},
-            min: {type: Number, required: true, default: '1'},
-            max: {type: Number, required: true, default: '10'}
+            min: {type: Number,  default: '1'},
+            max: {type: Number,  default: '10'}
         },
         exercise: { 
             name :{type: String, default:"Exercise (steps)" },
             check: {type: Boolean, required: true, default: 'true'},
-            min: {type: Number, required: true, default: '1'},
-            max: {type: Number, required: true, default: '2000'}
+            min: {type: Number,  default: '1'},
+            max: {type: Number,  default: '2000'}
          },
     },
     records: [{
