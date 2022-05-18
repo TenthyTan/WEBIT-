@@ -5,18 +5,18 @@
                     <img src="../image/icpix1.png" alt="">
                 </div>
                 <div class="cont_text">
-                    Pat
+                {{patient.userName}}  
                 </div>
             </div>
             <div class="cont_bb">
                 <div>
                     <div>
-                        <img src="../image/icon1.png" alt="">
+                        <img src="../img/icon1.png" alt="">
 
                         <div><a href="/patients/recordData">Record Data</a></div>
                     </div>
                     <div>
-                        <img src="../image/icon2.png" alt="">
+                        <img src="../img/icon2.png" alt="">
 
                         <div><a href="/patients/viewTable">VIEW DATA</a></div>
                     </div>
@@ -24,12 +24,12 @@
 
                 <div class="" style="margin-top: 50px;">
                     <div>
-                        <img src="../image/icon3.png" alt="">
+                        <img src="../img/icon3.png" alt="">
 
                         <div><a href="/patients/recordRank">RECORD RANK</a></div>
                     </div>
                     <div>
-                        <img src="../image/icon4.png" alt="">
+                        <img src="../img/icon4.png" alt="">
 
                         <div><a href="/patients/profile">PROFILE</a></div>
                     </div>
@@ -39,5 +39,5 @@
         </div>
 </div>
 <footer>
-     Doctor {{record.patientID.doctor}} : {{record.patientID.supportMes}}
+     Doctor {{patient.doctor}} : {{patient.supportMes}}
 </footer>
