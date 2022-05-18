@@ -5,7 +5,6 @@ const Patient = require("../models/patients.js");
 const Record = require("../models/records.js");
 const Doctor = require("../models/doctors.js");
 const bcrypt = require("bcrypt");
-const Patient = require("../models/patients.js");
 
 
 function formatDate(date) {

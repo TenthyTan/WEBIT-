@@ -533,22 +533,25 @@ const renderCheckComment = async (req, res) => {
         { data: true }
 
       ).lean();
-      console.log(data)
+
       if (data) {
         for (key in data.data) {
           if (data.data[key].status == "Recorded"){
-            if (data.data[key].createdDate == formatDate(new Date())){
-              commentList.push({
-                patientID: patient._id,
-                comment: data.data[key].comment,
-                recordDate: formatDate(new Date()),
-            })
+            if (formatDate(data.data[key].createdDate) == formatDate(new Date())){
+              console.log(data.data[key].comment)
+              if(data.data[key].comment != "") {
+                commentList.push({
+                  patient: patient,
+                  comment: data.data[key].comment,
+                  recordDate: formatDate(new Date()),
+                  data:data.data[key].name
+                })
+              }
+            }
           }
         }
       }
-    }}
-    console.log(patients);
-    console.log(commentList);
+    }
     res.render("ClinicianCheckComment.hbs", {cl: commentList, doctor:doctor})
   } catch (err) {
     console.log(err);
