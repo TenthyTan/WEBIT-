@@ -63,36 +63,43 @@ async function initRecord(patientId) {
       recordDate: formatDate(new Date()),
     });
      
+    var bglStatus;
+    var bglMin;
+    var bglMax;
+    var doitStatus
+    var doitMin 
+    var doitMax
+
     if(patient.timeseries.bgl.check === 'true'){
-      var bglStatus = "Unrecorded"
-      var bglMin = patient.timeseries.bgl.min
-      var bglMax = patient.timeseries.bgl.max
+       bglStatus = "Unrecorded"
+       bglMin = patient.timeseries.bgl.min
+       bglMax = patient.timeseries.bgl.max
     }else if(patient.timeseries.bgl.check === 'false'){
-      var bglStatus = "Not required"
+       bglStatus = "Not required"
     }
 
     if(patient.timeseries.doit.check === 'true'){
-      var doitStatus = "Unrecorded"
-      var doitMin = patient.timeseries.doit.min
-      var doitMax = patient.timeseries.doit.max
+       doitStatus = "Unrecorded"
+       doitMin = patient.timeseries.doit.min
+       doitMax = patient.timeseries.doit.max
     }else if(patient.timeseries.doit.check === 'false'){
-      var doitStatus = "Not required"
+       doitStatus = "Not required"
     }
 
     if(patient.timeseries.weight.check === 'true'){
-      var weightStatus = "Unrecorded"
-      var weightMin = patient.timeseries.weight.min
-      var weightMax = patient.timeseries.weight.max
+       weightStatus = "Unrecorded"
+       weightMin = patient.timeseries.weight.min
+       weightMax = patient.timeseries.weight.max
     }else if(patient.timeseries.weight.check === 'false'){
-      var weightStatus = "Not required"
+       weightStatus = "Not required"
     }
 
     if(patient.timeseries.exercise.check === 'true'){
-      var exerciseStatus = "Unrecorded"
-      var exerciseMin = patient.timeseries.exercise.min
-      var exerciseMax = patient.timeseries.exercise.max
+       exerciseStatus = "Unrecorded"
+       exerciseMin = patient.timeseries.exercise.min
+       exerciseMax = patient.timeseries.exercise.max
     }else if(patient.timeseries.exercise.check === 'false'){
-      var exerciseStatus = "Not required"
+       exerciseStatus = "Not required"
     }
 
     
