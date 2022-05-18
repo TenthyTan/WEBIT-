@@ -8,7 +8,6 @@ const Note = require("../models/note.js");
 const bcrypt = require("bcrypt");
 
 
-
 const renderHome = async (req, res) => {
 
     //const doctorId = await initDoctor()
@@ -25,6 +24,9 @@ const renderCreateProfile = async (req, res) => {
     res.render("ClinicianCreateAccount.hbs", req.session.flash);
     
 };
+
+
+
 
 const renderLoginPage = async (req, res) => {
     
@@ -313,7 +315,7 @@ const updateSupportMessages = async (req, res) => {
 const renderUpdate = async(req, res) => {
   try{
     const doctor = await Doctor.findOne({"email": req.session.userID }).lean()
-    res.render('ClinicianChangePassword.hbs',req.session.flash); // send data to browser
+    res.render('ClinicianChangePassword.hbs',{doctor: doctor}); // send data to browser
   }catch(err){
     console.log("error happens ", err);
 

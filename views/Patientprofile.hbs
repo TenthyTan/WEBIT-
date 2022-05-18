@@ -2,7 +2,7 @@
     <form action="/patients/profile" method="GET"> 
         <div class="sidenav">
             <img src="../public/img/head.png" />
-            <p>{{patient.userName}}</p >
+            <p><a href="/patients/home">{{patient.userName}}</a></p >
             <img src="../public/img/recording.png" />
             <p><a href="/patients/recordData">Record</a></p >
             <img src="../public/img/view.png" />
@@ -11,6 +11,9 @@
             <p><a href="/patients/recordRank">Rank</a></p >
             <img src="../public/img/profile.png" />
             <p><a href="/patients/profile">Profile</a></p >
+            <form method="POST" action="/patients/logout">
+            <button>Log out</button>
+            </form>
         </div>
 
         <div class="box_right_aaa">
@@ -35,8 +38,8 @@
                         <div class="right_ipt_b">{{patient.email}}</div>
                     </div>
                     <div class="right_ipt">
-                        <div class="right_ipt_a">Password : </div>
-                        <div class="right_ipt_b">{{patient.password}}</div><button><a href="/patients/updatePassword">Update</a></button>
+                        <div class="right_ipt_a">Change Password</div>
+                        <button><a href="/patients/updatePassword">Update</a></button>
                     </div>
                 </div>
             </div> 

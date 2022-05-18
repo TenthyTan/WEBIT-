@@ -111,6 +111,17 @@ body {
     box-shadow: 0 5px 5px -5px black;
     position: fixed;
 }
+.lightgreen_logout {
+    margin: 4px 900px;
+    font-family: 'Ranga', cursive;
+    font-weight: 400;
+    font-size: 35px;
+    top: -1px;
+    padding: 5px;
+    background-color: #E3F9EE;
+    box-shadow: 0 5px 5px -5px black;
+    position: fixed;
+}
 
 .left {
     margin: 0;

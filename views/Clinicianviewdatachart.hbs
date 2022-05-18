@@ -5,7 +5,7 @@
     <form action="/clinicians/dashboard/{{patient._id}}/viewChart" method="GET">
     <div class="sidenav">
         <img src="/img/Group-44.png" />
-        <p >{{doctor.firstName}}</p >
+        <p><a href="/clinicians/home">{{doctor.firstName}}</a></p>
 
         <img src="/img/icons8-dashboard-64.png" />
         <p><a href="/clinicians/dashboard">Dashboard</a></p >
@@ -18,6 +18,9 @@
 
         <img src="/img/icons8-search-account-64.png" />
         <p><a href="/clinicians/profile">Profile</a></p >
+        <form method="POST" action="/clinicians/logout">
+        <button>Log out</button>
+        </form>
     </div>
     <h1 style="text-align: center;"> View all data display on chart. </h1>
     <div style="width: 100%; display: flex; flex-wrap: wrap; justify-content: space-around; align-content: space-between">

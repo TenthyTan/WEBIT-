@@ -244,6 +244,7 @@ const getAllRecords = async(req, res) => {
 }
 
 const renderHomePage = async (req, res) => {
+  const patient = await Patient.findOne({"email": req.session.userID}).lean()
   // try {
   //   const patient = await Patient.findOne({"email": req.session.userID}).lean()
   //   console.log(patient);
@@ -268,7 +269,7 @@ const renderHomePage = async (req, res) => {
   //   console.log(err);
   //   res.send("error happens when render record data");
   // }
-  res.render("PatientHome.hbs")
+  res.render("PatientHome.hbs", {patient: patient})
   
 };
 
@@ -437,8 +438,8 @@ const changePassword = async(req, res) => {
 
 const renderUpdate = async(req, res) => {
   try{
-    
-   res.render('patientChangePassword.hbs',req.session.flash); // send data to browser
+   const patient = await Patient.findOne({"email": req.session.userID}).lean()
+   res.render('patientChangePassword.hbs', {patient: patient}); // send data to browser
   }catch(err){
     console.log("error happens ", err);
 
