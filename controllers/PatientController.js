@@ -179,7 +179,7 @@ const renderRecordData = async (req, res) => {
     console.log(record);
 
     // console.log("-- record info when display -- ", record);
-    res.render("Patientrecorddata.hbs", { record: record });
+    res.render("Patientrecorddata.hbs", { record: record, patient: patient });
   } catch (err) {
     res.status(400);
     res.send("error happens when render record data");
