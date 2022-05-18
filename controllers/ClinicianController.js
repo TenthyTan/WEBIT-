@@ -131,7 +131,7 @@ async function initDoctor() {
     clinician.patients.push({patientIDs: patient._id, patientName: patient.userName})
     await clinician.save()   
     console.log("success!")
-    return res.render("ClinicianHome.hbs",{message: "Create Successfully!"})
+    return res.redirect("/clinicians/dashboard/" + patient._id + "/safetyThreshold")
     
 };
 
