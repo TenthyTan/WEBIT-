@@ -427,10 +427,18 @@ const changePassword = async(req, res) => {
       return res.render("patientChangePassword.hbs", {
         input: req.body,
         message: "Update successfully!",
-    });
-
-      
+    }); 
    
+  }catch(err){
+    console.log("error happens ", err);
+
+  }
+}
+
+const renderUpdate = async(req, res) => {
+  try{
+    
+   res.render('patientChangePassword.hbs',req.session.flash); // send data to browser
   }catch(err){
     console.log("error happens ", err);
 
@@ -450,7 +458,9 @@ module.exports = {
   renderProfile,
   viewChart,
   viewTable,
-  rankBoard
+  rankBoard,
+  changePassword,
+  renderUpdate,
 };
 
 

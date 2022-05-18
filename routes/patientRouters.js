@@ -30,6 +30,8 @@ patientRouter.get('/profile', sign.isLoginPatient, demoController.renderProfile)
 patientRouter.get('/viewTable', sign.isLoginPatient, demoController.viewTable);
 patientRouter.get('/viewChart', sign.isLoginPatient, demoController.viewChart);
 patientRouter.get('/recordRank', sign.isLoginPatient, demoController.rankBoard);
+patientRouter.get('/updatePassword', sign.isLoginPatient, demoController.renderUpdate);
+patientRouter.post('/updatePassword', sign.isLoginPatient, demoController.changePassword);
 patientRouter.get('/:id', demoController.getDataById);
 // 
 
