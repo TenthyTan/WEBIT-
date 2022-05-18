@@ -7,10 +7,6 @@ const Doctor = require("../models/doctors.js");
 const Note = require("../models/note.js");
 const bcrypt = require("bcrypt");
 
-<<<<<<< Updated upstream
-
-=======
->>>>>>> Stashed changes
 
 const renderHome = async (req, res) => {
 
@@ -578,10 +574,7 @@ const renderCheckComment = async (req, res) => {
 
 
 module.exports = {
-<<<<<<< Updated upstream
     age,
-=======
->>>>>>> Stashed changes
     renderHome,
     renderLoginPage,
     initDoctor,
