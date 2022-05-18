@@ -504,19 +504,41 @@ const viewChart = async (req, res) => {
 };
 
 
+
 const renderCheckComment = async (req, res) => {
   try {
-    const doctor = await Doctor.findOne({"email": req.session.userID }).lean()
-    //const patientId = await initPatient();
-    //const record = await Record.findOne({patientID: }).lean()
-    const patient = await Patient.findOne({"_id": req.params._id}).lean()
-    const records = await Record.find({ patientID: patient._id }).lean();
-    res.render("ClinicianCheckComment.hbs", { doctor: doctor, patient: patient, record: records});
+    const doctor = await Doctor.findOne({"email": req.session.userID }).lean();
+    const patients = await Patient.find({ doctor: doctor.userName }).lean();
+    const commentList = []
+    for (patient of patients) {
+      let data = await Record.findOne(
+        { patientID: patient._id },
+        { data: true }
+
+      ).lean();
+      console.log(data)
+      if (data) {
+        for (key in data.data) {
+          if (data.data[key].status == "Recorded"){
+            if (data.data[key].createdDate == formatDate(new Date())){
+              commentList.push({
+                patientID: patient._id,
+                comment: data.data[key].comment,
+                recordDate: formatDate(new Date()),
+            })
+          }
+        }
+      }
+    }}
+    console.log(patients);
+    console.log(commentList);
+    res.render("ClinicianCheckComment.hbs", {cl: commentList, doctor:doctor})
   } catch (err) {
-    res.status(400);
-    res.send("error happens when render check comments");
+    console.log(err);
+    res.send("error happens when viewing comments");
   }
-};
+}
+
 
 
 

@@ -23,11 +23,11 @@
             <td>Comment</td>
             <td>By which data</td>
         </tr>
-        {{#each record}}
+        {{#each cl}}
         <tr>
-            <td>{{this.patientID.firstName}}</td>
-            <td>{{this.patientID.doctor}}</td>
-            <td class="comment">{{this.data.comment}}</td>
+            <td>{{this.patientId.firstName}}</td>
+            <td>{{this.patientId.doctor}}</td>
+            <td class="comment">{{this.comment}}</td>
             <td>{{this.recordDate}}</td>
         </tr>
         {{/each}}
