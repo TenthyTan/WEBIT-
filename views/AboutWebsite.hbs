@@ -1,26 +1,17 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-	<meta charset="utf-8">
-	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
-	<meta http-equiv="X-UA-Compatible" content="chrome=1, IE=edge">
-	<title>About Website</title>
-  <link href="https://fonts.googleapis.com/css2?family=EB+Garamond&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="Stylesheet.css" type="text/css">
-</head>
+<form action="/AboutWebsite">
+<link href="https://fonts.googleapis.com/css2?family=EB+Garamond&display=swap" rel="stylesheet">
 <body>
 	<nav class="nav">
-    <button class="nav-header-text" onclick="location.href='WelcomePage.html'">
-      Diabetes@Home
-    </button>
-
-    <button class="login-button">
-      Log In
-    </button>
-  </nav>
+        <button class="login-button">
+          <a href="/clinicians/login">Clinicians Log In</a>
+        </button>
+        <button class="login-button">
+          <a href="/patients/login">Patients Log In</a>
+        </button>
+    </nav>
 
   <div class="poster">
-    <img src="AboutWebsite.jpg">
+    <img src="../public/img/AboutWebsite.jpeg">
     <div class="poster-image-text">
       Diabetes@Home
     </div>
@@ -98,6 +89,5 @@
       </div>
     </footer>
   </div>
-
 </body>
-</html>
+</form>

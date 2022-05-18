@@ -77,9 +77,9 @@ app.use("/clinicians", clinicianRouter);
 app.use('/public', express.static(path.join(__dirname, 'public')))
 app.use(express.static('public'))
 
-app.get('/', (req, res) => {
-   res.send('index page')});
-
+app.get("/", (req, res) => {
+    res.render("Welcome.hbs");
+  });
 // app.get('/recordData', (req, res) => {
 //     res.render('Patientrecorddata.hbs')});
 
