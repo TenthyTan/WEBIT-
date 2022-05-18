@@ -165,12 +165,10 @@ const renderDashboard = async(req, res) => {
     const doctor = await Doctor.findOne({"email": req.session.userID}).lean()
     // find all the patients belongs to this doctor
     const patients = await Patient.find({"doctor" : doctor.userName}).lean()
-    console.log(patients)
     const records = await Record.find({patientID: {"$in" : patients}, recordDate: formatDate(new Date())}).populate({
       path: "patientID",
       options: { lean: true },
     }).lean();    
-    console.log(JSON.stringify(records))
    res.render('Cliniciandashboard.hbs', {record: records, doctor: doctor}); // send data to browser
   }catch(err){
     console.log("error happens ", err);
@@ -314,8 +312,8 @@ const updateSupportMessages = async (req, res) => {
 
 const renderUpdate = async(req, res) => {
   try{
-    
-   res.render('ClinicianChangePassword.hbs',req.session.flash); // send data to browser
+    const doctor = await Doctor.findOne({"email": req.session.userID }).lean()
+    res.render('ClinicianChangePassword.hbs',{doctor: doctor}); // send data to browser
   }catch(err){
     console.log("error happens ", err);
 
@@ -483,12 +481,21 @@ const updateNote = async (req, res) => {
 };
 
 
-
+function getDateList(timespan) {
+  const aDay = 86400000;
+  const today = Date.now();
+  const dList = [];
+  for (let i = 0; i < timespan; i++) {
+    dList.unshift(formatDate(today - i * aDay));
+  }
+  return dList;
+}
+ 
 const viewChart = async (req, res) => {
   try {
     const doctor = await Doctor.findOne({"email": req.session.userID }).lean()
-    const patient = await Patient.findById(req.params._id).lean()
-    const records = await Record.find({ patientID: patient._id }).lean();
+    const patient = await Patient.findOne({"_id": req.params._id}).lean()
+    const records = await Record.find({patientID: patient._id }).lean();
     const dList = getDateList(30);
     const dataList = { bgl: [], weight: [], doit: [], exercise: [] };
     for (date of dList) {
@@ -510,15 +517,16 @@ const viewChart = async (req, res) => {
     res.render("Clinicianviewdatachart.hbs", {
       dates: JSON.stringify(dList),
       datas: JSON.stringify(dataList),
-      doctor: doctor,
       patient: patient,
-      age: pAge
+      age: pAge,
+      doctor: doctor,
     });
   } catch (err) {
     console.log(err);
-    res.send("error happens in viewing history data (clinician)");
+    res.send("error happens in viewing history data");
   }
 };
+
 
 
 
