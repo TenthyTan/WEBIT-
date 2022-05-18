@@ -2,7 +2,7 @@
     <script src="https://cdn.bootcdn.net/ajax/libs/echarts/5.3.2/echarts.common.js"></script>
 </head>
 <body>
-    <form action="/clinicians/dashboard/{{patient._id}}/viewChart" method="GET">
+    
     <div class="sidenav">
         <img src="/img/Group-44.png" />
         <p><a href="/clinicians/home">{{doctor.firstName}}</a></p>
@@ -22,6 +22,7 @@
         <button>Log out</button>
         </form>
     </div>
+    <form action="/clinicians/dashboard/{{patient._id}}/viewChart" method="GET">
     <h1 style="text-align: center;"> View all data display on chart. </h1>
     <div style="width: 100%; display: flex; flex-wrap: wrap; justify-content: space-around; align-content: space-between">
         {{> blood dates=dates datas=datas}}
