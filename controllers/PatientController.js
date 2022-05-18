@@ -412,7 +412,6 @@ const renderUpdate = async(req, res) => {
 
 
 module.exports = {
-  getAllPatients,
   getOnePatient,
   addOnePatient,
   renderRecordData,
