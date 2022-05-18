@@ -5,6 +5,7 @@ const Patient = require("../models/patients.js");
 const Record = require("../models/records.js");
 const Doctor = require("../models/doctors.js");
 const bcrypt = require("bcrypt");
+const Patient = require("../models/patients.js");
 
 
 function formatDate(date) {
@@ -57,14 +58,71 @@ async function initPatient() {
 
 async function initRecord(patientId) {
   try {
+    const patient = await Patient.findOne({"_id": patientId})
     const result = await Record.findOne({
       patientID: patientId,
       recordDate: formatDate(new Date()),
     });
+     
+    if(patient.timeseries.bgl.check === 'true'){
+      var bglStatus = "Unrecorded"
+      var bglMin = patient.timeseries.bgl.min
+      var bglMax = patient.timeseries.bgl.max
+    }else if(patient.timeseries.bgl.check === 'false'){
+      var bglStatus = "Not required"
+    }
+
+    if(patient.timeseries.doit.check === 'true'){
+      var doitStatus = "Unrecorded"
+      var doitMin = patient.timeseries.doit.min
+      var doitMax = patient.timeseries.doit.max
+    }else if(patient.timeseries.doit.check === 'false'){
+      var doitStatus = "Not required"
+    }
+
+    if(patient.timeseries.weight.check === 'true'){
+      var weightStatus = "Unrecorded"
+      var weightMin = patient.timeseries.weight.min
+      var weightMax = patient.timeseries.weight.max
+    }else if(patient.timeseries.weight.check === 'false'){
+      var weightStatus = "Not required"
+    }
+
+    if(patient.timeseries.exercise.check === 'true'){
+      var exerciseStatus = "Unrecorded"
+      var exerciseMin = patient.timeseries.exercise.min
+      var exerciseMax = patient.timeseries.exercise.max
+    }else if(patient.timeseries.exercise.check === 'false'){
+      var exerciseStatus = "Not required"
+    }
+
+    
     if (!result) {
       const newRecord = new Record({
         patientID: patientId,
         recordDate: formatDate(new Date()),
+        data:{
+          bgl:{
+            status: bglStatus,
+            minThreshold: bglMin,
+            maxThreshold: bglMax
+          },
+          weight: {
+            status: weightStatus,
+            minThreshold: weightMin,
+            maxThreshold: weightMax
+          },
+          doit: {
+            status: doitStatus,
+            minThreshold: doitMin,
+            maxThreshold: doitMax
+          },
+          exercise: {
+            status: exerciseStatus,
+            minThreshold: exerciseMin,
+            maxThreshold: exerciseMax
+          },
+        }
       });
 
       const record = await newRecord.save();
