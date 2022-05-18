@@ -66,6 +66,7 @@ app.set('view engine', 'hbs');   // set Handlebars view engine
 
 const patientRouter = require("./routes/patientRouters.js");
 const clinicianRouter = require("./routes/clinicianRouter.js");
+
 // const messageRouter = require('./routes/message.js')
     
 // http://localhost:3000/patients
@@ -77,9 +78,17 @@ app.use("/clinicians", clinicianRouter);
 app.use('/public', express.static(path.join(__dirname, 'public')))
 app.use(express.static('public'))
 
-app.get('/', (req, res) => {
-   res.send('index page')});
+app.get("/", (req, res) => {
+    res.render("Welcome.hbs");
+  });
 
+app.get("/aboutDiabetes", (req, res) => {
+    res.render("AboutDiabetes.hbs");
+})
+
+app.get("/aboutWebsite", (req, res) => {
+    res.render("AboutWebsite.hbs");
+})
 // app.get('/recordData', (req, res) => {
 //     res.render('Patientrecorddata.hbs')});
 
