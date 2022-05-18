@@ -84,11 +84,11 @@ async function initRecord(patientId) {
 
 async function checkStatus(patientId) {
   //copy timeseries
-  const timeseries = (await Patient.findById(patientId).lean()).timeseries;
+  const timeseries = (await Patient.findOne({"_id": patientId}).lean()).timeseries;
   const data = {};
   for (key in timeseries) {
     data[key] = {};
-    if (timeseries[key] == false ) {
+    if (timeseries[key].check === false ) {
       data[key].status = "Not required";
       data[key].minThreshold = 0;
       data[key].maxThreshold = 0;
@@ -101,11 +101,7 @@ async function checkStatus(patientId) {
   return data;
 }
 
-const getAllPatients = (req, res) => {
-  
-  
-  //res.render('Cliniciandashboard.hbs', {record: Record.lean(), Patient: Patient.lean()}) // send data to browser
-}
+
 
 
 
