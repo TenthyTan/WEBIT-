@@ -16,7 +16,13 @@
         <img src="/img/icons8-search-account-64.png" />
         <p><a href="/clinicians/profile">Profile</a></p >
     </div>
-<section>
+<section class="pviewdata-section">
+<div class="pviewdata-left">
+	<div><a href="">Safty Thresholds</a></div>
+	<div><a href="">Clinical Notes</a></div>
+	<div><a href="">Support Message</a></div>
+	<div><a href="">Line Charts</a></div>
+</div>
 <div class="main">
         <div class="pviewdata-left">
             <div><a href="/clinicians/dashboard/{{patient._id}}/safetyThreshold">Safty Thresholds</a></div>
@@ -25,7 +31,7 @@
             <div><a href="/clinicians/dashboard/{{patient._id}}/viewChart">Line Charts</a></div>
         </div>
         <div class="title-data"><h6>Patient Name: {{patient.firstName}}&nbsp;&nbsp;&nbsp;&nbsp;Age: {{age.age}} &nbsp;&nbsp;&nbsp;&nbsp;Gender:Male</h6></div>
-<table>
+<table class="table-without-border">
     <thead>
         <tr>
             <th> Date </th>
