@@ -38,7 +38,7 @@ clinicianRouter.post('/updatePassword',sign.isLoginDoctor, clinicianController.c
 clinicianRouter.get('/dashboard', sign.isLoginDoctor, clinicianController.renderDashboard);
 clinicianRouter.get('/dashboard/:_id', sign.isLoginDoctor, clinicianController.renderPatientData);
 
-clinicianRouter.get('/dashboard/:_id/viewChart', sign.isLoginDoctor, clinicianController.ClinicianViewTable)
+clinicianRouter.get('/dashboard/:_id/viewChart', sign.isLoginDoctor, clinicianController.viewChart)
 
 clinicianRouter.get('/dashboard/:_id/messages', sign.isLoginDoctor, clinicianController.renderSupportMessage)
 
