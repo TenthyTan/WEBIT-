@@ -10,14 +10,14 @@ const exphbs = require('express-handlebars'); // include Handlebars module
 //const res = require('express/lib/response');
 const bodyParser = require('body-parser')
 const passport = require('passport')
-require('./passport')(passport)
+require('../passport')(passport)
 
 
 const session = require("express-session")
 const flash = require("express-flash")
 
 
-require('./models')
+require('../models')
 // Connect to mongodb
 //require('../models/database.js');
 const path = require('path')
@@ -26,7 +26,7 @@ const path = require('path')
 
 const port = 3000;
 //app.use(passport.authenticate('session'))
-Patient = require('./models/patients.js')
+Patient = require('../models/patients.js')
 
 app.use(session({
     secret: process.env.SESSION_SECRET || 'keyboard cat',
@@ -54,7 +54,7 @@ app.use(express.urlencoded({extended : true}))
 app.engine('hbs', exphbs.engine({      // configure Handlebars
     defaultlayout: 'main',
     extname: 'hbs',
-    helpers: require("./public/js/helpers.js").helpers
+    helpers: require("../public/js/helpers.js").helpers
 }));
 app.set('view engine', 'hbs');   // set Handlebars view engine
 // Tells the app to send the string: "Our demo app is working!" when you hit the '/' endpoint.
@@ -64,8 +64,8 @@ app.set('view engine', 'hbs');   // set Handlebars view engine
 //     console.log('Demo app is listening on http:localhost:' + port)});
 
 
-const patientRouter = require("./routes/patientRouters.js");
-const clinicianRouter = require("./routes/clinicianRouter.js");
+const patientRouter = require("../routes/patientRouters.js");
+const clinicianRouter = require("../routes/clinicianRouter.js");
 
 // const messageRouter = require('./routes/message.js')
     
