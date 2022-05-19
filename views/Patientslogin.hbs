@@ -1,12 +1,17 @@
-<h1>LogIn</h1>
-{{#if loginMessage}} <p>{{loginMessage}}</p > {{/if}}
+{{!-- <h1 >LogIn</h1> --}}
 <form action="/patients/login" method="POST">
+{{#if loginMessage}} <p style="pot" >{{loginMessage}}</p > {{/if}}
+
     <div class="login_box">
-        <p class="title">Sign In</p>
+
+   
+        {{!-- <p class="title" >Sign In</p> --}}
+    <h4 style="text-align: center;">Sign In</h4>
         <link href="https://fonts.googleapis.com/css2?family=Quattrocento+Sans:wght@700&display=swap" rel="stylesheet">
-        <div class="Ipt"><label for="username">Email:<input type="text" name="userID" placeholder="Enter email address here" required></label></div> 
-        <div class="Ipt"><label for="password">Password:<input type="password" name="password" placeholder="Enter password here" required></label></div>
-        <div class="golog"><input type="submit" value="Submit" /></div>
+        <div class="Ipt"><label for="username"><input type="text" name="userID" placeholder="Enter email address here" required></label></div> 
+        <div class="Ipt"><label for="password"><input type="password" name="password" placeholder="Enter password here" required></label></div>
+        <div class="int_csl"><input class="golog"  type="submit" value="LoG In" /></div>
     </div>
+
 </form>
 
