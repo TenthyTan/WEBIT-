@@ -9,38 +9,40 @@ const bcrypt = require("bcrypt");
 
 
 const renderHome = async (req, res) => {
-
-    //const doctorId = await initDoctor()
+  try{
     const doctor = await Doctor.findOne({"email": req.session.userID}).lean()
-
-
     res.render("ClinicianHome.hbs",{doctor: doctor});
-    
+  }catch(err){
+    console.log(err)
+    res.send("error happens when render clinicians home page");
+  }
 };
 
 const renderCreateProfile = async (req, res) => {
-    
-
+try{
     res.render("ClinicianCreateAccount.hbs", req.session.flash);
-    
+} catch(err){
+    console.log(err)
+    res.send("error happens when render create patient profile");
+}
 };
 
 
 
 
 const renderLoginPage = async (req, res) => {
-    
-
+  try{
     res.render("Clinicianslogin.hbs", req.session.flash);
-    
+  }catch(err){
+    console.log(err)
+    res.send("error happens when render login Page");
+  }    
 };
 
 // Create a doctor Chris
 async function initDoctor() {
     try {
       // find all document in Patient Collection to findout if it is empty
-  
-      //const hash = await bcrypt.hash('12345678', 10)
       const result = await Doctor.find();
       const doctor1 = await Doctor.findOne({ userName: "chris" });
       const doctor2 = await Doctor.findOne({ userName: "tony" });
@@ -76,69 +78,70 @@ async function initDoctor() {
   }
 
   const createProfile = async (req, res) => {
+    try{
     // check current doctor authority
-    console.log(req.session.userID)
-    const doctor = await Doctor.findOne({"email": req.session.userID}).lean()
+      console.log(req.session.userID)
+      const doctor = await Doctor.findOne({"email": req.session.userID}).lean()
 
-    if(!doctor){
-        console.log("Do not have authority to create account")
-        req.flash("Error","Do not have authority to create account")
-        return res.redirect('/clinicians/login')
-    }
-    // Check if repeated patients
-    const userName = await Patient.findOne({"userName": req.body.userName}).lean()
-    const email = await Patient.findOne({"email": req.body.email}).lean()
-    
-    if(userName){
-        console.log("exited")
-        return res.render("ClinicianCreateAccount.hbs", {
-            input: req.body,
-            message: "The user name already exists, please try again",
+      if(!doctor){
+          console.log("Do not have authority to create account")
+          req.flash("Error","Do not have authority to create account")
+          return res.redirect('/clinicians/login')
+      }
+      // Check if repeated patients
+      const userName = await Patient.findOne({"userName": req.body.userName}).lean()
+      const email = await Patient.findOne({"email": req.body.email}).lean()
+      
+      if(userName){
+          console.log("exited")
+          return res.render("ClinicianCreateAccount.hbs", {
+              input: req.body,
+              message: "The user name already exists, please try again",
+            });
+      }
+      if(email){
+          console.log("exited")
+          return res.render("ClinicianCreateAccount.hbs", {
+              input: req.body,
+              message: "The email address already exists, please try again",
+            });
+      }
+      // Check passwords are same
+      if (!(req.body.password === req.body.confirmPassword)){
+          console.log("not same password")
+          return res.render("ClinicianCreateAccount.hbs", {
+              input: req.body,
+              message: "The password is not the same, please try again",
           });
+      }
+      // Create new patient in database
+      const newPatient = await new Patient({
+          firstName: req.body.firstName,
+          lastName: req.body.lastName,
+          userName: req.body.userName,
+          password: req.body.password,
+          email: req.body.email,
+          yearOfBirth: req.body.year,
+          supportMes: req.body.supportMessage,
+          recordRate:0,
+          records: [],
+          doctor: doctor.userName
+      })
+      const patient = await newPatient.save()
+      // Save the patient id to doctor database
+      const clinician = await Doctor.findById(doctor._id)
+      clinician.patients.push({patientIDs: patient._id, patientName: patient.userName})
+      await clinician.save()   
+      console.log("success!")
+      return res.redirect("/clinicians/dashboard/" + patient._id + "/safetyThreshold")
+    }catch(err){
+      console.log(err)
+      res.send("error happens when create patient profile");
     }
-    if(email){
-        console.log("exited")
-        return res.render("ClinicianCreateAccount.hbs", {
-            input: req.body,
-            message: "The email address already exists, please try again",
-          });
-    }
-    // Check passwords are same
-    if (!(req.body.password === req.body.confirmPassword)){
-        console.log("not same password")
-        return res.render("ClinicianCreateAccount.hbs", {
-            input: req.body,
-            message: "The password is not the same, please try again",
-        });
-    }
-    // Create new patient in database
-    const newPatient = await new Patient({
-        firstName: req.body.firstName,
-        lastName: req.body.lastName,
-        userName: req.body.userName,
-        password: req.body.password,
-        email: req.body.email,
-        yearOfBirth: req.body.year,
-        supportMes: req.body.supportMessage,
-        recordRate:0,
-        records: [],
-        doctor: doctor.userName
-
-    })
-
-    const patient = await newPatient.save()
-    
-    // Save the patient id to doctor database
-    const clinician = await Doctor.findById(doctor._id)
-    clinician.patients.push({patientIDs: patient._id, patientName: patient.userName})
-    await clinician.save()   
-    console.log("success!")
-    return res.redirect("/clinicians/dashboard/" + patient._id + "/safetyThreshold")
-    
 };
 
 
-const checkbox = async (req, res) => {
+/*const checkbox = async (req, res) => {
   const patientId = await initPatient();
   const recordId = await initRecord(patientId);
   const record = await Record.findOne({ _id: recordId });
@@ -151,14 +154,16 @@ const checkbox = async (req, res) => {
       Record.findOneAndUpdate({name:""},{status:"Not require"})
     }
   }
-};
+};*/
 
 const renderProfile = async (req, res) => {
-
-  const doctor = await Doctor.findOne({"email": req.session.userID}).lean()
-
-  res.render("Clinicianprofile.hbs", { doctor: doctor });
-  
+  try{
+    const doctor = await Doctor.findOne({"email": req.session.userID}).lean()
+    res.render("Clinicianprofile.hbs", { doctor: doctor });
+  }catch(err){
+    console.log(err)
+    res.send("error happens when render profile");
+  }
 };
 
 const renderDashboard = async(req, res) => {
@@ -223,12 +228,8 @@ const changePassword = async(req, res) => {
         message: "Update successfully!",
     });
       //doctor.password = req.body.newPassword
-      
-      
-   
   }catch(err){
     console.log("error happens ", err);
-
   }
 }
 
@@ -245,33 +246,46 @@ function age(birth) {
 
 const ClinicianViewTable = async (req, res) => {
   // find current doctor
-  const patient =  await Patient.findOne({"_id": req.params._id}).lean()
+  try{
+    const patient =  await Patient.findOne({"_id": req.params._id}).lean()
   //find all patients record (for patients who belong to the doctor )//
-  const record = await Record.find({"patientID":  patient._id}).lean()
+    const record = await Record.find({"patientID":  patient._id}).lean()
   //const pAge = age(patient.yearOfBirth);
-  res.render("Clinicianviewdatachart.hbs", { patient : patient, record: record});
+    res.render("Clinicianviewdatachart.hbs", { patient : patient, record: record});
+  } catch(err){
+    console.log(err)
+    res.send("error happens when view chart");
+  }
 };
 
 const renderPatientData = async (req, res) => {
   // find current doctor
   // dashboard/:id
-  const patient =  await Patient.findOne({"_id": req.params._id}).lean()
-  const doctor = await Doctor.findOne({"email": req.session.userID }).lean()
-  const record = await Record.find({ "patientID":  patient._id}).lean()
-  const pAge = age(patient.yearOfBirth);
-
-  
-  res.render("Cliniciansviewdata.hbs", { patient : patient, record: record, age: pAge, doctor: doctor});
+  try{
+    const patient =  await Patient.findOne({"_id": req.params._id}).lean()
+    const doctor = await Doctor.findOne({"email": req.session.userID }).lean()
+    const record = await Record.find({ "patientID":  patient._id}).lean()
+    const pAge = age(patient.yearOfBirth);
+    res.render("Cliniciansviewdata.hbs", { patient : patient, record: record, age: pAge, doctor: doctor});
+  } catch(err){
+    console.log(err)
+    res.send("error happens when render patient data");
+  }
 };
 
 
 const renderSupportMessage = async (req, res) => {
   // find current doctor
-  const patient =  await Patient.findOne({"_id": req.params._id}).lean()
-  const doctor = await Doctor.findOne({"email": req.session.userID }).lean()
+  try{
+    const patient =  await Patient.findOne({"_id": req.params._id}).lean()
+    const doctor = await Doctor.findOne({"email": req.session.userID }).lean()
   
   // find all patients record (for patients who belong to the doctor )//
-  res.render("Cliniciansupportmessage.hbs", { patient : patient, doctor: doctor});
+    res.render("Cliniciansupportmessage.hbs", { patient : patient, doctor: doctor});
+  } catch(err){
+    console.log(err)
+    res.send("error happens when render support messages");
+  }
 };
 
 const updateSupportMessages = async (req, res) => {
@@ -454,11 +468,16 @@ const viewComments = async (req, res) => {
 
 
 const renderAddNote = async (req, res) => {
+  try {
   // find current doctor
   const patient =  await Patient.findOne({"_id": req.params._id}).lean()
   const doctor = await Doctor.findOne({"email": req.session.userID }).lean()
   // find all patients record (for patients who belong to the doctor )//
   res.render("ClinicianAddclinicalnotes.hbs", { patient : patient, doctor: doctor});
+  } catch(err){
+    console.log(err)
+    res.send("error happens when render note");
+  }
 };
 
 const updateNote = async (req, res) => {
@@ -631,7 +650,6 @@ module.exports = {
     initDoctor,
     renderCreateProfile,
     createProfile,
-    checkbox,
     renderProfile,
     formatDate,
     renderDashboard,
