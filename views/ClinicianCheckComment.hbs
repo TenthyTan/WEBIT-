@@ -27,7 +27,7 @@
             <td>By which data</td>
         </tr>
         {{#each cl}}
-        <tr>
+        <tr onClick="location.href='/clinicians/dashboard/{{this.patientID._id}}'">
             <td>{{this.patient.firstName}}</td>
             <td>{{this.patient.doctor}}</td>
             <td class="comment">{{this.comment}}</td>

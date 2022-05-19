@@ -2,14 +2,14 @@
   <head>
     <meta charset="UTF-8">
     <link rel="stylesheet" type="text/css" href="/css/style.css" />
+    <link href="https://fonts.googleapis.com/css2?family=Ranga&display=swap" rel="stylesheet">
   </head>
   <body>
     <div id="headerbar" class="headerbar">
-      <p id="Diabetes" class="lightgreen">Diabetes@Home</p >
-      <link href="https://fonts.googleapis.com/css2?family=Ranga&display=swap" rel="stylesheet">
-      <input style="margin-left:400px" type="button" value="original" onclick="colorDay('#E3F9EE')"/>
+      <p>Diabetes@Home</p >
+      <input style="margin-left:400px" type="button" value="Light Theme" onclick="colorDay('#E3F9EE')"/>
 
-      <input style="margin-left: 200px" type="button" value="dark" onclick= "colorNight('#9596A0')"/>
+      <input style="margin-left: 200px" type="button" value="Dark Theme" onclick= "colorNight('#9596A0')"/>
     </div>
     <main>
       {{{body}}}
@@ -24,7 +24,6 @@
         function colorNight(str){
           document.body.style.backgroundColor=str;
           document.getElementById('button').style.background= '#8688A3';
-          document.getElementById('Diabetes').style.background= '#CFD0D1';
           document.getElementById('headerbar').style.background= '#777AA4';
           document.getElementById('sidenav').style.background= '#777AA4';
           document.getElementById('table').style.background= '#8688A3';
