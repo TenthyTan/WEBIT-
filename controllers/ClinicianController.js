@@ -376,7 +376,7 @@ const UpdateThreshold = async (req, res) => {
     //record.data[key].minThreshold = req.body.min_value
     //record.data[key].maxThreshold = req.body.max_value
     await patient.save();
-    res.redirect("/clinicians/dashboard/" + req.params._id + "/safetyThreshold");
+    res.redirect("/clinicians/dashboard/" + req.params._id);
   } catch (err) {
     console.log(err);
     res.send("error happens when update timeseries");
