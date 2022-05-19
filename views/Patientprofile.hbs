@@ -1,51 +1,50 @@
 <body>
+    <div id="sidenav" class="sidenav">
+        <img src="../public/img/head.png" />
+        <p onClick="location.href='/patients/home'">{{patient.userName}}</p >
+        <img src="../public/img/recording.png" />
+        <p onClick="location.href='/patients/recordData'">Record</a></p >
+        <img src="../public/img/view.png" />
+        <p onClick="location.href='/patients/viewTable'">View</a></p >
+        <img src="../public/img/ranking.png" />
+        <p onClick="location.href='/patients/recordRank'">Rank</a></p >
+        <img src="../public/img/profile.png" />
+        <p onClick="location.href='/patients/profile'">Profile</a></p >
+        <p onClick="location.href='/patients/AboutDiabetes'">About Diabetes</a></p>
+        <p onClick="location.href='/patients/AboutWebsite'">About Website</a></p>
+        <form method="POST" action="/patients/logout">
+        <button id="button">Log out</button>
+        </form>
+    </div>
     <form action="/patients/profile" method="GET"> 
-        <div id="sidenav" class="sidenav">
-            <img src="../public/img/head.png" />
-            <p><a href="/patients/home">{{patient.userName}}</a></p >
-            <img src="../public/img/recording.png" />
-            <p><a href="/patients/recordData">Record</a></p >
-            <img src="../public/img/view.png" />
-            <p><a href="/patients/viewTable">View</a></p >
-            <img src="../public/img/ranking.png" />
-            <p><a href="/patients/recordRank">Rank</a></p >
-            <img src="../public/img/profile.png" />
-            <p><a href="/patients/profile">Profile</a></p >
-            <p><a href="/patients/AboutDiabetes">About Diabetes</a></p>
-            <p><a href="/patients/AboutWebsite">About Website</a></p>
-            <form method="POST" action="/patients/logout">
-            <button id="button">Log out</button>
-            </form>
-        </div>
-
-        <div class="box_right_aaa" style="margin: 100px;">
-            <div class="top_font">Patient Profile</div>
-            <div class="box_foot">
-                <div class="" ><img style="margin:70px 0px 0px 40px;" src="../img/head.png" alt=""></div>
-                <div>
-                    <div class="right_ipt">
-                        <div class="right_ipt_a">Full Name :</div>
-                        <div class="right_ipt_b">{{patient.firstName}} {{patient.lastName}}</div>
-                    </div>
-                    <div class="right_ipt">
-                        <div class="right_ipt_a">Doctor name :</div>
-                        <div class="right_ipt_b">{{patient.doctor}}</div>
-                    </div>
-                    <div class="right_ipt">
-                        <div class="right_ipt_a">Age : </div>
-                        <div class="right_ipt_b">{{data.age}}</div>
-                    </div>
-                    <div class="right_ipt">
-                        <div class="right_ipt_a">Email Address : </div>
-                        <div class="right_ipt_b">{{patient.email}}</div>
-                    </div>
-                    <div class="right_ipt">
-                        <div class="right_ipt_a">Change Password</div>
-                        <button id="button"><a href="/patients/updatePassword">Update</a></button>
-                    </div>
+    <div class="box_right_aaa" style="margin: 100px;">
+        <div class="top_font">Patient Profile</div>
+        <div class="box_foot">
+            <div class="" ><img style="margin:70px 0px 0px 40px;" src="../img/head.png" alt=""></div>
+            <div>
+                <div class="right_ipt">
+                    <div class="right_ipt_a">Full Name :</div>
+                    <div class="right_ipt_b">{{patient.firstName}} {{patient.lastName}}</div>
                 </div>
-            </div> 
-        </div>
+                <div class="right_ipt">
+                    <div class="right_ipt_a">Doctor name :</div>
+                    <div class="right_ipt_b">{{patient.doctor}}</div>
+                </div>
+                <div class="right_ipt">
+                    <div class="right_ipt_a">Age : </div>
+                    <div class="right_ipt_b">{{data.age}}</div>
+                </div>
+                <div class="right_ipt">
+                    <div class="right_ipt_a">Email Address : </div>
+                    <div class="right_ipt_b">{{patient.email}}</div>
+                </div>
+                <div class="right_ipt">
+                    <div class="right_ipt_a">Change Password</div>
+                    <button id="button"><a href="/patients/updatePassword">Update</a></button>
+                </div>
+            </div>
+        </div> 
+    </div>
     </form>
 </body>
 <footer>

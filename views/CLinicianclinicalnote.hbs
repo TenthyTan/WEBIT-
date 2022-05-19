@@ -1,18 +1,18 @@
 <div class="sidenav">
     <img src="/img/Group-44.png" />
-    <p ><a href="/clinicians/home">{{doctor.firstName}}</a></p >
+    <p onClick="location.href='/clinicians/home'">{{doctor.firstName}}</p >
 
     <img src="/img/icons8-dashboard-64.png" />
-    <p><a href="/clinicians/dashboard">Dashboard</a></p >
+    <p onClick="location.href='/clinicians/dashboard'">Dashboard</p >
 
     <img src="/img/Comment-1.png" />
-    <p><a href="/clinicians/checkComment">Comment</a></p >
+    <p onClick="location.href='/clinicians/checkComment'">Comment</p >
 
     <img src="/img/icons8-add-user-male-96.png" />
-    <p><a href="/clinicians/createProfile">Create</a></p >
+    <p onClick="location.href='/clinicians/createProfile'">Create</p >
 
     <img src="/img/icons8-search-account-64.png" />
-    <p><a href="/clinicians/profile">Profile</a></p >
+    <p onClick="location.href='/clinicians/profile'">Profile</p >
     <form method="POST" action="/clinicians/logout">
     <button>Log out</button>
     </form>
@@ -33,5 +33,5 @@
 </div>        
 {{/each}}
 </ul>
-<button class="send"><a href="/clinicians/dashboard/{{patient._id}}/clinicalNotes">Add New</a></button>
+<button class="send" onClick="location.href='/clinicians/dashboard/{{patient._id}}/clinicalNotes'">Add New</button>
 </form>

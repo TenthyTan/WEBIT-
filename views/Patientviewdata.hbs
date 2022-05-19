@@ -1,17 +1,16 @@
-
 <div id="sidenav" class="sidenav">
     <img src="../public/img/head.png" />
-    <p><a href="/patients/home">{{patient.userName}}</a></p >
+    <p onClick="location.href='/patients/home'">{{patient.userName}}</p >
     <img src="../public/img/recording.png" />
-    <p><a href="/patients/recordData">Record</a></p >
+    <p onClick="location.href='/patients/recordData'">Record</a></p >
     <img src="../public/img/view.png" />
-    <p><a href="/patients/viewTable">View</a></p >
+    <p onClick="location.href='/patients/viewTable'">View</a></p >
     <img src="../public/img/ranking.png" />
-    <p><a href="/patients/recordRank">Rank</a></p >
+    <p onClick="location.href='/patients/recordRank'">Rank</a></p >
     <img src="../public/img/profile.png" />
-    <p><a href="/patients/profile">Profile</a></p >
-    <p><a href="/patients/AboutDiabetes">About Diabetes</a></p>
-    <p><a href="/patients/AboutWebsite">About Website</a></p>
+    <p onClick="location.href='/patients/profile'">Profile</a></p >
+    <p onClick="location.href='/patients/AboutDiabetes'">About Diabetes</a></p>
+    <p onClick="location.href='/patients/AboutWebsite'">About Website</a></p>
     <form method="POST" action="/patients/logout">
     <button id="button">Log out</button>
     </form>
@@ -34,9 +33,8 @@
                         <th>Exercise(Step count)</th>
                     </tr>
                 </thead>
-
+                {{#each record}}
                 <tbody class="viewdatatbody">
-                    {{#each record}}
                     <td>{{this.recordDate}}</td>
                     {{#each this.data}}
                     {{#ifUnrecorded this.status}}
@@ -49,8 +47,8 @@
                     ;">{{this.value}}</td>
                     {{/ifUnrecorded}}
                     {{/each}}
-                    {{/each}}
                 </tbody>
+                {{/each}}
 
             </table>
         </div>
