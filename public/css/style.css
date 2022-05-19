@@ -798,3 +798,77 @@ table .tt_a {
     width: 20%;
     padding: 30px 0px;
   }
+
+
+
+
+  /* new */
+
+
+
+  .box_cosn {
+    margin: 20px;
+}
+
+.content_abox .cont_aa {
+    margin: 30px auto;
+    width: 350px;
+    text-align: center;
+}
+
+.content_abox .cont_bb>div {
+    margin: 20px auto;
+    width: 1000px;
+    display: flex;
+    justify-content: space-between;
+    padding: 20px;
+}
+.content_abox .cont_bb>div>div{
+    display: flex;
+    background-color: rgb(192,231,212);
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.4);
+    align-items: center;
+    border-radius: 30px;
+    width: 400px;
+}
+.content_abox .cont_bb>div>div img{
+    width: 80px;
+    height: 80px;
+}
+.content_abox .cont_bb>div>div>div{
+    margin-left: 20px;
+}
+
+.Ipt{
+    width:600px;
+    text-align:center;
+}
+
+.Ipt input{
+    width: 500px;
+    height: 90px;
+    font-weight: 400;
+    font-size: 40px;
+    line-height: 90px;
+    color: #000000;
+    border: none;
+
+}
+
+.golog{
+    width:500px;
+    border:none;
+    font-size: 40px;
+    background-color:rgb(211,243,217);
+    /* margin:20px auto; */
+}
+.int_csl{
+    margin:;
+    display:flex;
+    justify-content:center
+}
+/* .golog input{
+ 
+} */
+
+
