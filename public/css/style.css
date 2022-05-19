@@ -881,3 +881,46 @@ table .tt_a {
 }
 
 
+/* new2 */
+
+
+
+.home_aa2{
+    width: 300px;
+    height: 300px;
+}
+
+.home_box1{
+    display: flex;
+    justify-content: center;
+    margin-top: 20px;
+}
+.home_bb2{
+    width: 900px;
+    margin: 20px auto;
+    /* border: 1px solid red; */
+}
+
+.home_bb2 >div{
+    display: flex;
+    width: 900px;
+    justify-content: space-between;
+}
+.home_ab1{
+    margin-top: 50px;
+}
+.home_ab1 >div{
+    display: flex;
+    background-color: rgb(192,231,212);
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.4);
+    align-items: center;
+    border-radius: 30px;
+    width: 400px;
+}
+
+.changepwd{
+    display: flex;
+    width: 900px;
+    align-items: center;
+    justify-content: space-between;
+}
