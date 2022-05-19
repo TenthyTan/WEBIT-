@@ -12,6 +12,12 @@ const sign = require('./login.js')
 // http://localjost:3000/patients/1/recordData
 // add a route to handle the GET request for one data instance
 patientRouter.get('/home', sign.isLoginPatient, demoController.renderHomePage);
+patientRouter.get("/AboutWebsite", (req, res) => {
+    res.render("AboutWebsite1.hbs");
+});
+patientRouter.get("/AboutDiabetes", (req, res) => {
+    res.render("AboutDiabetes1.hbs");
+});
 patientRouter.get('/login', sign.unLoginPatient, demoController.renderLoginPage)
 patientRouter.post('/login',
                     sign.unLoginPatient,
