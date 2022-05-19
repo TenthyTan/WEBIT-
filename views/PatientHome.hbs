@@ -8,18 +8,21 @@
                 <div class="cont_text">
                     {{patient.userName}}
                 </div>
+                <form method="POST" action="/patients/logout">
+                <button id="button">Log out</button>
+                </form>
             </div>
             <div class="cont_bb">
                 <div>
                     <div>
                         <img src="../public/img/recording.png" alt="">
 
-                        <div><a href="/patients/recordData">Record Data</a></div>
+                        <div id="button"><a href="/patients/recordData">Record Data</a></div>
                     </div>
                     <div>
                         <img src="../public/img/view.png" alt="">
 
-                        <div><a href="/patients/viewTable">VIEW DATA</a></div>
+                        <div id="button"><a href="/patients/viewTable">VIEW DATA</a></div>
                     </div>
                 </div>
 
@@ -27,23 +30,24 @@
                     <div>
                         <img src="../public/img/ranking.png" alt="">
 
-                        <div><a href="/patients/recordRank">RECORD RANK</a></div>
+                        <div id="button"><a href="/patients/recordRank">RECORD RANK</a></div>
                     </div>
                     <div>
                         <img src="../public/img/profile.png" alt="">
 
-                        <div><a href="/patients/profile">PROFILE</a></div>
+                        <div id="button"><a href="/patients/profile">PROFILE</a></div>
                     </div>
                 </div>
 
                 <div class="" style="margin-top: 50px;">
                     <div>
-                        <div><a href="/patients/AboutDiabetes">About Diabetes</a></div>
+                        <div id="button"><a href="/patients/AboutDiabetes">About Diabetes</a></div>
                     </div>
                     <div>
-                        <div><a href="/patients/AboutWebsite">About Website</a></div>
+                        <div id="button"><a href="/patients/AboutWebsite">About Website</a></div>
                     </div>
                 </div>
+
 
             </div>
         </div>

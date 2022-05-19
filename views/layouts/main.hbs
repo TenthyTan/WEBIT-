@@ -4,21 +4,41 @@
     <link rel="stylesheet" type="text/css" href="/css/style.css" />
   </head>
   <body>
-    <div class="headerbar">
-      <p class="lightgreen">Diabetes@Home</p >
-      <img src="../public/img/sun.png" />
-      
-      <img src="../public/img/moon.png" />
+    <div id="headerbar" class="headerbar">
+      <p id="Diabetes" class="lightgreen">Diabetes@Home</p >
       <link href="https://fonts.googleapis.com/css2?family=Ranga&display=swap" rel="stylesheet">
+<<<<<<< Updated upstream
       <input type="button" value="original" onclick="color('#E3F9EE')"/>
 
       <input type="button" value="dark" onclick= "color('#A7B9C3')"/>
+=======
+      <input style="margin-left:400px" type="button" value="original" onclick="colorDay('#E3F9EE')"/>
+
+      <input style="margin-left: 200px" type="button" value="dark" onclick= "colorNight('#CFD0D1')"/>
+>>>>>>> Stashed changes
     </div>
     <main>
       {{{body}}}
       <script>
+<<<<<<< Updated upstream
         function color(str){
           document.body.style.backgroundColor=str;
+=======
+        function colorDay(str){
+          document.body.style.backgroundColor=str;
+          document.getElementById('button').style.background= '#A5E0D5';
+          document.getElementById('Diabetes').style.background= '#E3F9EE';
+          document.getElementById('headerbar').style.background= '#B2E2DC';
+          document.getElementById('sidenav').style.background= '#B2E2DC';
+        }
+        function colorNight(str){
+          document.body.style.backgroundColor=str;
+          document.getElementById('tablehead').style.background= '#706E82';
+          document.getElementById('button').style.background= '#8688A3';
+          document.getElementById('Diabetes').style.background= '#CFD0D1';
+          document.getElementById('headerbar').style.background= '#9596A0';
+          document.getElementById('sidenav').style.background= '#9596A0';
+>>>>>>> Stashed changes
         }
       </script>
     </main>

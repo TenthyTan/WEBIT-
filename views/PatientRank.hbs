@@ -1,20 +1,20 @@
 <form action="/patients/rank" method="GET">
-  <div class="sidenav">
-    <img src="../public/img/head.png" />
-    <p>{{patient.userName}}</p>
-    <img src="../public/img/recording.png" />
-    <p><a href=" ">Record</a></p>
-    <img src="../public/img/view.png" />
-    <p><a href="/patients/viewTable">View</a></p>
-    <img src="../public/img/ranking.png" />
-    <p><a href="/patients/recordRank">Rank</a></p>
-    <img src="../public/img/profile.png" />
-    <p><a href="/patients/profile">Profile</a></p>
-    <p><a href="/patients/AboutDiabetes">About Diabetes</a></p>
-    <p><a href="/patients/AboutWebsite">About Website</a></p>
-    <form method="POST" action="/patients/logout">
-    <button>Log out</button>
-    </form>
+  <div id="sidenav" class="sidenav">
+      <img src="../public/img/head.png" />
+      <p><a href="/patients/home">{{patient.userName}}</a></p >
+      <img src="../public/img/recording.png" />
+      <p><a href="/patients/recordData">Record</a></p >
+      <img src="../public/img/view.png" />
+      <p><a href="/patients/viewTable">View</a></p >
+      <img src="../public/img/ranking.png" />
+      <p><a href="/patients/recordRank">Rank</a></p >
+      <img src="../public/img/profile.png" />
+      <p><a href="/patients/profile">Profile</a></p >
+      <p><a href="/patients/AboutDiabetes">About Diabetes</a></p>
+      <p><a href="/patients/AboutWebsite">About Website</a></p>
+      <form method="POST" action="/patients/logout">
+      <button id="button">Log out</button>
+      </form>
   </div>
   <section>
     <div class="ranking-box" style="margin: 100px;padding-left:300px">

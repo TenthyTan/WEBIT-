@@ -2,8 +2,7 @@
     <script src="https://cdn.bootcdn.net/ajax/libs/echarts/5.3.2/echarts.common.js"></script>
 </head>
 <body>
-    <form action="/patients/viewChart" method="GET">
-    <div class="sidenav">
+    <div id="sidenav" class="sidenav">
         <img src="../public/img/head.png" />
         <p><a href="/patients/home">{{patient.userName}}</a></p >
         <img src="../public/img/recording.png" />
@@ -16,11 +15,11 @@
         <p><a href="/patients/profile">Profile</a></p >
         <p><a href="/patients/AboutDiabetes">About Diabetes</a></p>
         <p><a href="/patients/AboutWebsite">About Website</a></p>
-        <img src="../public/img/setting.png" />
         <form method="POST" action="/patients/logout">
-        <button>Log out</button>
+        <button id="button">Log out</button>
         </form>
     </div>
+    <form action="/patients/viewChart" method="GET">
     <h1 style="text-align: center;"> View all data display on chart. </h1>
     <div style="width: 100%; display: flex; flex-wrap: wrap; justify-content: space-around; align-content: space-between">
         {{> blood dates=dates datas=datas}}

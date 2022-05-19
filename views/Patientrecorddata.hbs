@@ -1,5 +1,5 @@
 
-<div class="sidenav">
+<div id="sidenav" class="sidenav">
     <img src="../public/img/head.png" />
     <p><a href="/patients/home">{{patient.userName}}</a></p >
     <img src="../public/img/recording.png" />
@@ -13,7 +13,7 @@
     <p><a href="/patients/AboutDiabetes">About Diabetes</a></p>
     <p><a href="/patients/AboutWebsite">About Website</a></p>
     <form method="POST" action="/patients/logout">
-    <button>Log out</button>
+    <button id="button">Log out</button>
     </form>
 </div>
 <section>
@@ -101,7 +101,7 @@
                             </div>
                         
                             <div class="d-col-12">
-                              <button type="submit"> submit </button>
+                              <button id="button" type="submit"> submit </button>
                             </div>
                         </div>
                     {{else}}

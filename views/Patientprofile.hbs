@@ -1,6 +1,6 @@
 <body>
     <form action="/patients/profile" method="GET"> 
-        <div class="sidenav">
+        <div id="sidenav" class="sidenav">
             <img src="../public/img/head.png" />
             <p><a href="/patients/home">{{patient.userName}}</a></p >
             <img src="../public/img/recording.png" />
@@ -14,7 +14,7 @@
             <p><a href="/patients/AboutDiabetes">About Diabetes</a></p>
             <p><a href="/patients/AboutWebsite">About Website</a></p>
             <form method="POST" action="/patients/logout">
-            <button>Log out</button>
+            <button id="button">Log out</button>
             </form>
         </div>
 
@@ -41,7 +41,7 @@
                     </div>
                     <div class="right_ipt">
                         <div class="right_ipt_a">Change Password</div>
-                        <button><a href="/patients/updatePassword">Update</a></button>
+                        <button id="button"><a href="/patients/updatePassword">Update</a></button>
                     </div>
                 </div>
             </div> 
