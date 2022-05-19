@@ -12,10 +12,18 @@ mongoose.connect(process.env.MONGO_URL , {
 const db = mongoose.connection.on('error', err => {
     console.error(err);
     process.exit(1)
-})
+});
 
 db.once('open',async()=>{
     console.log(`Mongo connection start on ${db.host}: ${db.port}`)
-})
+});
 
+// const btn = document.getElementById('btn');
+
+// btn.addEventListener('click', function onClick(event) {
+//     // 👇️ change background color
+//     document.body.style.backgroundColor = 'salmon';
+//     // 👇️ optionally change text color
+//     // document.body.style.color = 'white';
+// });
 

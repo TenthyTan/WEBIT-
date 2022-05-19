@@ -10,9 +10,17 @@
       
       <img src="../public/img/moon.png" />
       <link href="https://fonts.googleapis.com/css2?family=Ranga&display=swap" rel="stylesheet">
+      <input type="button" value="original" onclick="color('#E3F9EE')"/>
+
+      <input type="button" value="dark" onclick= "color('#A7B9C3')"/>
     </div>
-    <main class="container">
+    <main>
       {{{body}}}
+      <script>
+        function color(str){
+          document.body.style.backgroundColor=str;
+        }
+      </script>
     </main>
   </body>
 </html>
