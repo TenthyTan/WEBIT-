@@ -20,7 +20,8 @@ const renderHome = async (req, res) => {
 
 const renderCreateProfile = async (req, res) => {
 try{
-    res.render("ClinicianCreateAccount.hbs", req.session.flash);
+    const doctor = await Doctor.findOne({"email": req.session.userID}).lean()
+    res.render("ClinicianCreateAccount.hbs",{doctor: doctor});
 } catch(err){
     console.log(err)
     res.send("error happens when render create patient profile");
