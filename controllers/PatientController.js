@@ -409,6 +409,18 @@ const renderUpdate = async(req, res) => {
   }
 }
 
+const logout = async (req, res) => {
+  try {
+    req.session.destroy(function(err){
+      console.log(err)
+    })    
+    res.redirect("login")
+  } catch (err) {
+    console.log(err);
+    res.send("error happens when logout");
+  }
+}
+
 
 
 module.exports = {
@@ -426,6 +438,7 @@ module.exports = {
   rankBoard,
   changePassword,
   renderUpdate,
+  logout,
 };
 
 
