@@ -1,5 +1,4 @@
 <body>
-    <form action="/clinicians/home">
     <div class="container">
         <!-- merge this section to your project -->
         <section class="flex-wrapper">
@@ -10,11 +9,11 @@
                     <div class="cont_text">
                     {{doctor.userName}}
                     </div>
-                    <form method="POST" action="/patients/logout">
+                    <form method="POST" action="/clinicians/logout">
                     <button id="button">Log out</button>
                     </form>
                 </div>
-
+                <form action="/clinicians/home">
                 <div class="home_bb2">
                     <div class="home_ab1">
                         <div class="">
@@ -37,9 +36,9 @@
                         </div>
                     </div>
                 </div>
+                </form>
             </div>
         </section>
     </div>
-    </form>
 </body>
 

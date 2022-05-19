@@ -7,7 +7,7 @@
     <p><a href="/clinicians/dashboard">Dashboard</a></p >
 
     <img src="/img/Comment-1.png" />
-    <p><a href="clinicians/checkComment">Comment</a></p >
+    <p><a href="/clinicians/checkComment">Comment</a></p >
 
     <img src="/img/icons8-add-user-male-96.png" />
     <p><a href="/clinicians/createProfile">Create</a></p >
@@ -95,7 +95,11 @@
             name="supportMessage"
             placeholder="Support Message"
           /></div>
-
+        <div class="two-col-line">
+          <div class="row-item">
+            {{#if message}} <p class="Ipt">{{message}}</p > {{/if}}
+          </div>
+        </div>
         <div class="two-col-line">
           <div class="row-item"><input
               type="submit"
