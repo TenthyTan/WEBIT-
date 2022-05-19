@@ -537,6 +537,7 @@ const renderCheckComment = async (req, res) => {
     const doctor = await Doctor.findOne({"email": req.session.userID }).lean();
     const patients = await Patient.find({ doctor: doctor.userName }).lean();
     const commentList = []
+    const liveAlert = liveAlert(doctor);
     for (patient of patients) {
       let data = await Record.findOne(
         { patientID: patient._id },
@@ -562,12 +563,48 @@ const renderCheckComment = async (req, res) => {
         }
       }
     }
-    res.render("ClinicianCheckComment.hbs", {cl: commentList, doctor:doctor})
+    res.render("ClinicianCheckComment.hbs", {cl: commentList, doctor:doctor, liveAlert:liveAlert})
   } catch (err) {
     console.log(err);
     res.send("error happens when viewing comments");
   }
 }
+
+
+function liveAlert(doctor){
+  try {
+    const patients =  Patient.find({ doctor: doctor.userName }).lean();
+    const liveAlert_max = [];
+    const liveAlert_min = [];
+    for (patient in patients) {
+      let data = Record.findOne(
+        { patientId: patient._id, recordDate: formatDate(new Date()) },
+        { data: true }
+      ).lean();
+      if (data) {
+        for (key in data.data) {
+          if (data.data[key].value < data.data[key].minThreshold ) {
+              liveAlert_min.push({
+              patient: patient,
+              value: data.data[key].value,
+             })
+          }
+          if (data.data[key].value > data.data[key].maxThreshold ) {
+            liveAlert_max.push({
+            patientId: patient,
+            value: data.data[key].value,
+           })
+        }
+      }
+    }
+  return liveAlert_min, liveAlert_max
+  }}catch (err) {
+    console.log(err);
+    res.send("error happens for live alert");
+  }
+}
+
+
 
 
 
@@ -599,5 +636,6 @@ module.exports = {
     updateNote,
     viewChart,
     renderCheckComment,
+    liveAlert,
 
 }
