@@ -30,17 +30,25 @@
           </div>
           <div class="rank-tbody">
 
-            {{#each rank}}
             <div class="rank-user">
-              <div class="rank-no">1</div>
+              <div class="rank-no">No.1</div>
+              <div class="rank-no">No.2</div>
+              <div class="rank-no">No.3</div>
+              <div class="rank-no">No.4</div>
+              <div class="rank-no">No.5</div>
+              {{#each rank}}
               <div class="rank-name">
                 <img src="../public/img/head.png" alt="">
                 <span>{{this.userName}}</span>
               </div>
               <div class="rank-rate">{{this.recordRate}}</div>
+              {{/each}}
+              <div class="rank-badge"><img src="../public/img/icons8-number-60-1.png" name="" alt=""></div>
+              <div class="rank-badge"><img src="../public/img/icons8-number-60-1.png" name="" alt=""></div>
+              <div class="rank-badge"><img src="../public/img/icons8-number-60-1.png" name="" alt=""></div>
+              <div class="rank-badge"><img src="../public/img/icons8-number-60-1.png" name="" alt=""></div>
               <div class="rank-badge"><img src="../public/img/icons8-number-60-1.png" name="" alt=""></div>
             </div>
-            {{/each}}
           </div>
         </div>
       </div>
