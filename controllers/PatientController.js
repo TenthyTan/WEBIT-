@@ -37,12 +37,9 @@ async function initPatient() {
         supportMes: "You are the best",
         
       });
-      
-      
       // save new patient to database
       const patient = await newPatient.save();
       // console.log("-- id is: ", patient.id);
-      
       return patient.id;
     } else {
       // find our target patient Pat
@@ -102,12 +99,8 @@ async function checkStatus(patientId) {
 }
 
 
-
-
-
 const getOnePatient = (req, res) => {
   const patient = data.find((one) => one.id == req.params.id);
-
   if (patient) {
     res.send(patient);
   } else {
@@ -197,8 +190,6 @@ const getAllRecords = async(req, res) => {
         options: { lean: true },
       })
       .lean();
-    
-
   res.render('Cliniciandashboard.hbs', {record: record}); // send data to browser
   }catch(err){
     console.log("error happens ", err);
@@ -207,39 +198,23 @@ const getAllRecords = async(req, res) => {
 }
 
 const renderHomePage = async (req, res) => {
-  const patient = await Patient.findOne({"email": req.session.userID}).lean()
-  // try {
-  //   const patient = await Patient.findOne({"email": req.session.userID}).lean()
-  //   console.log(patient);
-  //   // engageRate(req.user._id)
-    
-  //   const patientID = req.user._id;
-  //   const recordId = await initRecord(patientID);
-
-  //   const record = await Record.findOne({ _id: recordId })
-  //     .populate({
-  //       path: "patientID",
-  //       options: { lean: true },
-  //     })
-  //     .lean();
-
-  //   // // console.log("-- record info when display -- ", record);
-  //   if (req.query.submitted === "true") {
-  //     return res.render("PatientHome.hbs", { record: record, submitted: true });
-  //   }
-  //   res.render("PatientHome.hbs", { record: record });
-  // } catch (err) {
-  //   console.log(err);
-  //   res.send("error happens when render record data");
-  // }
-  res.render("PatientHome.hbs", {patient: patient})
+  try{
+    const patient = await Patient.findOne({"email": req.session.userID}).lean()
+    res.render("PatientHome.hbs", {patient: patient})
+  }catch(err){
+    console.log(err)
+    res.send("error happens when render patient homepage");
+  }
   
 };
 
 const renderLoginPage = async (req, res) => {
-  
-  res.render("Patientslogin.hbs", req.session.flash);
-  
+  try{
+   res.render("Patientslogin.hbs", req.session.flash);
+  }catch(err){
+    console.log(err)
+    res.send("error happens when render patient login page");
+  }
 };
 
 function age(birth) {
@@ -254,11 +229,14 @@ function age(birth) {
 }
 
 const renderProfile = async (req, res) => {
-
-  const patient = await Patient.findOne({"email": req.session.userID}).lean()
-  const data = age(patient.yearOfBirth)
-  res.render("Patientprofile.hbs", { patient: patient, data: data });
-  
+  try{
+    const patient = await Patient.findOne({"email": req.session.userID}).lean()
+    const data = age(patient.yearOfBirth)
+    res.render("Patientprofile.hbs", { patient: patient, data: data });
+  }catch(err){
+    console.log(err)
+    res.send("error happens when render patient profile");
+  }
 };
 
 function getDateList(timespan) {

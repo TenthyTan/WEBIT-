@@ -9,10 +9,7 @@ const passport = require('passport')
 const sign = require('./login.js')
 
 // add a route to handle the GET request for all demo data
-// http://localhost:3000/patients/recordData/1
-
 // http://localjost:3000/patients/1/recordData
-//patientRouter.get('/', demoController.getAllPatients)
 // add a route to handle the GET request for one data instance
 patientRouter.get('/home', sign.isLoginPatient, demoController.renderHomePage);
 patientRouter.get('/login', sign.unLoginPatient, demoController.renderLoginPage)
@@ -34,7 +31,7 @@ patientRouter.get('/updatePassword', sign.isLoginPatient, demoController.renderU
 patientRouter.post('/updatePassword', sign.isLoginPatient, demoController.changePassword);
 patientRouter.post('/logout', sign.isLoginDoctor, demoController.logout)
 patientRouter.get('/:id', demoController.getDataById);
-// 
+
 
 // export the router
 module.exports = patientRouter
