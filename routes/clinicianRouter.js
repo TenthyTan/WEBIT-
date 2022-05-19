@@ -60,6 +60,8 @@ clinicianRouter.post('/dashboard/:_id/clinicalNotes', sign.isLoginDoctor, clinic
 
 clinicianRouter.get('/checkComment', sign.isLoginDoctor, clinicianController.renderCheckComment)
 
+clinicianRouter.post('/logout', sign.isLoginDoctor, clinicianController.logout)
+
 
 
 

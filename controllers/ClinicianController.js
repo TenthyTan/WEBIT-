@@ -606,6 +606,20 @@ function liveAlert(doctor){
 
 
 
+const logout = async (req, res) => {
+  try {
+    req.session.destroy(function(err){
+      console.log(err)
+    })
+
+      
+    res.redirect("login")
+  } catch (err) {
+    console.log(err);
+    res.send("error happens when logout");
+  }
+}
+
 
 
 
@@ -637,5 +651,6 @@ module.exports = {
     viewChart,
     renderCheckComment,
     liveAlert,
+    logout,
 
 }
