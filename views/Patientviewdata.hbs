@@ -1,65 +1,82 @@
-
 <form action="/patients/viewTable" method="GET">
-<div class="sidenav">
-    <img src="../public/img/head.png" />
-    <p><a href="/patients/home">{{patient.userName}}</a></p >
-    <img src="../public/img/recording.png" />
-    <p><a href="/patients/recordData">Record</a></p >
-    <img src="../public/img/view.png" />
-    <p><a href="/patients/viewTable">View</a></p >
-    <img src="../public/img/ranking.png" />
-    <p><a href="/patients/recordRank">Rank</a></p >
-    <img src="../public/img/profile.png" />
-    <p><a href="/patients/profile">Profile</a></p >
-    <form method="POST" action="/patients/logout">
-    <button>Log out</button>
-    </form>
-</div>
-<section>
-<div class="main">
-        <div class="title-data"><h6>Patient Name: {{patient.userName}}&nbsp;&nbsp;&nbsp;&nbsp;Age: {{age.age}} &nbsp;&nbsp;&nbsp;&nbsp;Gender:Male</h6></div>
-<table>
-    <thead>
-        <tr>
-            <th> Date </th>
-            <th>Blood Glucose Level(/L)</th>
-            <th>Insulin Taken(Times)</th>
-            <th>Weight (kg)</th>
-            <th>Exercise(Step count)</th>
-        </tr>
-    </thead>
-    {{#each record}}
-    <tbody>
-            <td >{{this.recordDate}}</td>
-            {{#each this.data}}
-            {{#ifUnrecorded this.status}}
-            <td style = "color: #bb1f1f">Missing</td>
-            {{else}}
-            <td style="background-color:
+    <div class="sidenav">
+        <img src="../public/img/head.png" />
+        <p><a href="/patients/home">{{patient.userName}}</a></p>
+        <img src="../public/img/recording.png" />
+        <p><a href="/patients/recordData">Record</a></p>
+        <img src="../public/img/view.png" />
+        <p><a href="/patients/viewTable">View</a></p>
+        <img src="../public/img/ranking.png" />
+        <p><a href="/patients/recordRank">Rank</a></p>
+        <img src="../public/img/profile.png" />
+        <p><a href="/patients/profile">Profile</a></p>
+        <form method="POST" action="/patients/logout">
+            <button>Log out</button>
+        </form>
+    </div>
+    <section>
+        <div class="main">
+            <div class="title-data">
+                <h6>Patient Name: {{patient.userName}}&nbsp;&nbsp;&nbsp;&nbsp;Age: {{age.age}}
+                    &nbsp;&nbsp;&nbsp;&nbsp;Gender:Male</h6>
+            </div>
+            <div style="padding: 0;height: 500px; overflow: auto;">
+                <table style="margin: 0;">
+                    <thead>
+                        <tr>
+                            <th> Date </th>
+                            <th>Blood Glucose Level(/L)</th>
+                            <th>Insulin Taken(Times)</th>
+                            <th>Weight (kg)</th>
+                            <th>Exercise(Step count)</th>
+                        </tr>
+                    </thead>
+
+                    <tbody class="viewdatatbody">
+                        {{#each record}}
+                        <td>{{this.recordDate}}</td>
+                        {{#each this.data}}
+                        {{#ifUnrecorded this.status}}
+                        <td style="color: #bb1f1f">Missing</td>
+                        {{else}}
+                        <td style="background-color:
             {{#ifNoneed this.status}}
             grey
             {{/ifNoneed }}
             ;">{{this.value}}</td>
-            {{/ifUnrecorded}}
-            {{/each}}
-    </tbody>
-    {{/each}}
-</table>
-<button class="viewdatabotton"><a href="/patients/viewChart">View</a></button>
-<p class="annotationofbotton">View Data On Chart</p >
-</section>
-<footer>
-     Doctor {{patient.doctor}} : {{patient.supportMes}}
-</footer>
+                        {{/ifUnrecorded}}
+                        {{/each}}
+                        {{/each}}
+                    </tbody>
+
+                </table>
+            </div>
+
+            <div class="viewDatacla">
+                <div>
+                    <button class=""><a href="/patients/viewChart">View</a></button>
+                </div>
+
+                <div>
+                    <p class="">View Data On Chart</p>
+                </div>
+
+            </div>
+
+    </section>
+    <footer>
+        Doctor {{patient.doctor}} : {{patient.supportMes}}
+    </footer>
 </form>
 
 
 {{!-- <h1 style="text-align: center;"> View Last 15 Days History Data </h1>
 <form action="/patients/viewData" method="GET">
-<div style="width: 100%; display: flex; flex-wrap: wrap; justify-content: space-around; align-content: space-between">
-  {{> blood dates=dates datas=datas}}
-  {{> weight dates=dates datas=datas}}
-  {{> insulin dates=dates datas=datas}}
-  {{> exercise dates=dates datas=datas}}
-</div>
+    <div
+        style="width: 100%; display: flex; flex-wrap: wrap; justify-content: space-around; align-content: space-between">
+        {{> blood dates=dates datas=datas}}
+        {{> weight dates=dates datas=datas}}
+        {{> insulin dates=dates datas=datas}}
+        {{> exercise dates=dates datas=datas}}
+    </div>
 </form> --}}
