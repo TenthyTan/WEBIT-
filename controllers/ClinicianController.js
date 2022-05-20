@@ -441,7 +441,7 @@ const addNote = async (req, res) => {
 const viewComments = async (req, res) => {
   try {
     const doctor = await Doctor.findOne({"email": req.session.userID }).lean()
-    const patients = await Patient.find({ doctor: doctor }).lean();
+    const patients = await Patient.find({ "doctor": doctor.userName }).lean();
     const commentList = []
     for (patient in patients) {
       let data = await Record.findOne(
@@ -451,10 +451,11 @@ const viewComments = async (req, res) => {
       if (data) {
         for (key in data.data) {
           if (data.data[key].status == "recorded") {
-            if(data.data[key].comment == " "){
+            if(data.data[key].comment == ""){
               commentList.push({
-              patientId: pat._id,
+              patientID: patient._id,
               comment: data.data[key].comment,
+              recordDate: formateDate(new Date()),
             })
           }
         }

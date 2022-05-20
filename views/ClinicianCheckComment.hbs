@@ -27,11 +27,11 @@
             <td>By which data</td>
         </tr>
         {{#each cl}}
-        <tr onClick="location.href='/clinicians/dashboard/{{this.patientID._id}}'">
-            <td>{{this.patient.firstName}}</td>
-            <td>{{this.patient.doctor}}</td>
+        <tr onClick="location.href='/clinicians/dashboard/{{this._id}}'">
+            <td>{{this.patientID.firstName}}</td>
+            <td>{{this.patientID.doctor}}</td>
             <td class="comment">{{this.comment}}</td>
-            <td>{{this.data}}</td>
+            <td>{{this.recordDate}}</td>
         </tr>
         {{/each}}
     </table>

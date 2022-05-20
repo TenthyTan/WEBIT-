@@ -82,11 +82,11 @@ app.get("/", (req, res) => {
     res.render("Welcome.hbs");
   });
 
-app.get("/aboutDiabetes", (req, res) => {
+app.get("/AboutDiabetes", (req, res) => {
     res.render("AboutDiabetes.hbs");
 })
 
-app.get("/aboutWebsite", (req, res) => {
+app.get("/AboutWebsite", (req, res) => {
     res.render("AboutWebsite.hbs");
 })
 // app.get('/recordData', (req, res) => {

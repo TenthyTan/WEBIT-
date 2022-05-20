@@ -321,7 +321,7 @@ const rankBoard = async (req, res) => {
   const p = await Patient.findOne({"email": req.session.userID}).lean()
   const start = new Date(formatDate(p.Create_Time)).getTime();
   const today = new Date(formatDate(Date.now())).getTime();
-  const day = today - start;
+  const day = (today - start) / (24 * 60 * 60 * 1000) + 1;
   const patients = await Patient.find({}, {});
   // console.log(patients)
 

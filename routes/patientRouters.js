@@ -13,10 +13,10 @@ const sign = require('./login.js')
 // add a route to handle the GET request for one data instance
 patientRouter.get('/home', sign.isLoginPatient, demoController.renderHomePage);
 patientRouter.get("/AboutWebsite", (req, res) => {
-    res.render("AboutWebsite1.hbs");
+    res.render("Websiteloged.hbs");
 });
 patientRouter.get("/AboutDiabetes", (req, res) => {
-    res.render("AboutDiabetes1.hbs");
+    res.render("Diabetesloged.hbs");
 });
 patientRouter.get('/login', sign.unLoginPatient, demoController.renderLoginPage)
 patientRouter.post('/login',
