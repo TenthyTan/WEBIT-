@@ -146,8 +146,9 @@ body {
     width: 80px;
     height: 40px;
     font-size: 30px;
-    background: #D9D9D9;
+    background: #E3F9EE;
     border: none;
+    border-radius: 10px;
 }
 
 .lightgreen {
@@ -413,20 +414,21 @@ h2 {
 
 .Ipt {
     width: 900px;
-    height: 90px;
-    margin: 100px auto 0;
+    height: 70px;
+    margin: 70px auto 0;
     text-align: center;
+    /* border: 1px solid red; */
 }
 
-.Ipt>input {
+.Ipt input {
     width: 100%;
-    height: 90px;
-    /* margin: 100px auto 0; */
+    height: 70px;
     font-weight: 400;
-    font-size: 40px;
-    line-height: 90px;
+    font-size: 35px;
+    line-height: 70px;
     color: #000000;
     border: none;
+    border: 1px solid red;
 }
 
 .Ipt>input::placeholder {
@@ -438,14 +440,14 @@ h2 {
 
 .golog {
     width: 900px;
-    height: 90px;
-    margin: 100px auto 0;
+    height: 70px;
+    margin: 70px auto 0;
     text-align: center;
     font-family: 'Quattrocento Sans';
     font-style: normal;
     font-weight: 400;
     font-size: 45px;
-    line-height: 90px;
+    line-height: 70px;
     background: rgba(196, 237, 195, 0.5);
     box-shadow: 0px 4px 4px rgb(0 0 0 / 40%);
 }
@@ -465,6 +467,7 @@ h2 {
 
 .box_foot {
     display: flex;
+    font-size: 25px;
 }
 
 .img {
@@ -490,7 +493,7 @@ h2 {
 
 .right_ipt_a {
     font-weight: 500;
-    font-size: 40px;
+    font-size: 25px;
     line-height: 47px;
     text-align: right;
     width: 350px;
@@ -499,10 +502,10 @@ h2 {
 
 .right_ipt_b {
     width: 445px;
-    height: 68px;
+    height: 50px;
     font-weight: 500;
-    font-size: 40px;
-    line-height: 68px;
+    font-size: 25px;
+    line-height: 50px;
     background: #FFFFFF;
 
     text-align: center;
@@ -512,8 +515,8 @@ h2 {
     width: 500px;
     height: 150px;
     font-weight: 500;
-    font-size: 40px;
-    line-height: 68px;
+    font-size: 25px;
+    line-height: 50px;
     background: #FFFFFF;
 
     text-align: center;
@@ -807,17 +810,18 @@ table .tt_a {
     color: #ce2222;
     font-style: normal;
     font-weight: 500;
+    
 }
 
 .rank {
-    width: 100%;
-    height: 450px;
+    width: 1000px;
     border: 8px solid #a4cbce;
     border-radius: 1em 1em;
     -webkit-border-radius: 1em 1em;
     -moz-border-radius: 1em 1em;
     -ms-border-radius: 1em 1em;
     -o-border-radius: 1em 1em;
+
 }
 
 .rank-table {
@@ -827,14 +831,17 @@ table .tt_a {
 .rank-thead {
     width: 100%;
     text-align: center;
-    height: 25px;
-    padding: 4px 0;
+    height: 100px;
+    display: flex;
 }
 
 .rank-title {
-    float: left;
-    width: 25%;
+    margin-top: 40px;
     color: #1b4e7e;
+    height: 40px;
+    margin-left: 95px;
+    margin-right: 130px;
+    /* border: 1px solid red; */
 }
 
 .rank-tbody {
@@ -897,17 +904,18 @@ table .tt_a {
 }
 
 .content_abox .cont_aa {
-    margin: 30px auto;
+    margin: 0px auto;
     width: 350px;
     text-align: center;
 }
 
 .content_abox .cont_bb>div {
-    margin: 20px auto;
+    margin: 0px auto;
     width: 1000px;
     display: flex;
     justify-content: space-between;
     padding: 20px;
+    font-size: 25px;
 }
 
 .content_abox .cont_bb>div>div {
@@ -916,14 +924,15 @@ table .tt_a {
     box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.4);
     align-items: center;
     border-radius: 30px;
-    width: 420px;
-    height: 80px;
+    width: 300px;
+    height: 40px;
     padding: 10px;
+    margin: -30px auto;
 }
 
 .content_abox .cont_bb>div>div img {
-    width: 80px;
-    height: 80px;
+    width: 40px;
+    height: 40px;
 }
 
 .content_abox .cont_bb>div>div>div {
@@ -937,10 +946,10 @@ table .tt_a {
 
 .Ipt input {
     width: 500px;
-    height: 90px;
+    height: 70px;
     font-weight: 400;
     font-size: 40px;
-    line-height: 90px;
+    line-height: 70px;
     color: #000000;
     border: none;
 
@@ -1097,4 +1106,34 @@ table .tt_a {
     width: 300px;
     margin: 10px auto;
     text-align: center;
+}
+
+
+
+
+.right_mg img{
+    width: 50px;
+    height: 50px;
+}
+
+.ranl_cont_a{
+    display: flex;
+    padding: 20px;
+}
+
+.ranl_cont_a >div>div{
+    height: 100px;
+    margin-left: 80px;
+    margin-right: 110px;
+}
+
+.rank_tilimg{
+    text-align: center;
+}
+.rank_tilimg img{
+    display: block;
+    margin:  0 auto;
+}
+.rank_tilimg >div{
+    margin-top: 10px;
 }
