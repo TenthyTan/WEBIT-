@@ -1,6 +1,4 @@
-if(process.env.NODE_ENV !=='production') {
-    require('dotenv').config()
-}
+
 const mongoose = require("mongoose");
 //url = "mongodb+srv://sugar-free:sugar-free@cluster0.oibut.mongodb.net/myFirstDatabase?retryWrites=true&w=majority"
 mongoose.connect(process.env.MONGO_URL , {
