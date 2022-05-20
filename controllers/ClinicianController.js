@@ -453,6 +453,7 @@ const viewComments = async (req, res) => {
       if (data) {
         for (key in data.data) {
           if (data.data[key].status == "recorded") {
+<<<<<<< Updated upstream
             if (formatDate(data.data[key].createdDate) == formatDate(new Date())){
               if(data.data[key].comment == ""){
                 commentList.push({
@@ -463,6 +464,13 @@ const viewComments = async (req, res) => {
                 })
               }
             }
+=======
+            if(data.data[key].comment == " "){
+              commentList.push({
+              patientId: patient._id,
+              comment: data.data[key].comment,
+            })
+>>>>>>> Stashed changes
           }
         }
       }
