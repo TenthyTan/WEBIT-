@@ -1,10 +1,6 @@
 //Import express//
-<<<<<<< Updated upstream
 
-//require("dotenv").config();
-=======
 require("dotenv").config();
->>>>>>> Stashed changes
 const { urlencoded } = require('express');
 const express = require('express');
 const cookieParser = require('cookie-parser')
@@ -87,19 +83,14 @@ app.get("/", (req, res) => {
     res.render("Welcome.hbs");
   });
 
-<<<<<<< Updated upstream
+
 app.get("/AboutDiabetes", (req, res) => {
     res.render("AboutDiabetes.hbs");
 })
 
-app.get("/AboutWebsite", (req, res) => {
-=======
-app.get("/aboutDiabetes", (req, res) => {
-    res.render("AboutDiabetes.hbs");
-})
 
-app.get("/aboutWebsite", (req, res) => {
->>>>>>> Stashed changes
+app.get("/AboutWebsite", (req, res) => {
+
     res.render("AboutWebsite.hbs");
 })
 // app.get('/recordData', (req, res) => {
