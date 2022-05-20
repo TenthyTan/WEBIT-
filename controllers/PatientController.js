@@ -334,7 +334,7 @@ const rankBoard = async (req, res) => {
       return b.recordRate - a.recordRate;
     })
     .slice(0, 5);
-  res.render("PatientRank.hbs", { rank: pList, patient: p, day: day});
+  res.render("rank.hbs", { rank: pList, patient: p, day: day});
 };
 
 

@@ -1,6 +1,6 @@
 //Import express//
 
-require("dotenv").config();
+// require("dotenv").config();
 const { urlencoded } = require('express');
 const express = require('express');
 const cookieParser = require('cookie-parser')
