@@ -1056,7 +1056,7 @@ table .tt_a {
     position: fixed;
     top: 10px;
     right: 400px;
-
+    margin-top: -20px;
 }
 
 .nav_wel button {
@@ -1070,9 +1070,23 @@ table .tt_a {
 
 .box_a1_dd{
     display: flex;
-    /* border: 1px solid red; */
+    border: 1px solid red;
 }
 
 .box_a1_dd .mid{
     font-weight: 600;
+}
+
+
+
+.lable_tex{
+    display: flex;
+    color: #21609C;
+    /* margin-top: 100px; */
+    width: 70%;
+    margin: 100px auto 0;
+    justify-content: space-between;
+}
+.paragraph{
+    margin-top: 100px;
 }
