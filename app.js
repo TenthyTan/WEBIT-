@@ -19,6 +19,7 @@ const flash = require("express-flash")
 
 
 require('./models')
+require('./models/index.js')
 // Connect to mongodb
 //require('../models/database.js');
 const path = require('path')
