@@ -30,7 +30,7 @@ const port = 3000;
 Patient = require('./models/patients.js')
 
 app.use(session({
-    secret: process.env.SESSION_SECRET || 'keyboard cat',
+    secret: process.env.SESSION_SECRET,
     resave: false,
     saveUninitialized: false,
     cookie: {
