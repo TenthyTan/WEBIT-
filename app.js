@@ -13,9 +13,7 @@ const bodyParser = require('body-parser')
 const passport = require('passport')
 require('./passport')(passport)
 
-if(process.env.NODE_ENV !=='production') {
-    require('dotenv').config()
-}
+
 const session = require("express-session")
 const flash = require("express-flash")
 
