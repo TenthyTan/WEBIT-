@@ -1090,3 +1090,11 @@ table .tt_a {
 .paragraph{
     margin-top: 100px;
 }
+
+.home_box1{
+    /* border: 1px solid red; */
+    display: block;
+    width: 300px;
+    margin: 10px auto;
+    text-align: center;
+}
