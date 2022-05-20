@@ -29,9 +29,11 @@ const path = require('path')
 const port = process.env.PORT || 3000;
 //app.use(passport.authenticate('session'))
 Patient = require('./models/patients.js')
-
+console.log('---------------------secret--------------------');
+console.log(process.env.SESSION_SECRET);
+console.log('-----------------------------------------')
 app.use(session({
-    secret: process.env.SESSION_SECRET || 'xxxx',
+    secret: process.env.SESSION_SECRET,
     resave: false,
     saveUninitialized: false,
     cookie: {
