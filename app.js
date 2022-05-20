@@ -31,7 +31,7 @@ const port = process.env.PORT || 3000;
 Patient = require('./models/patients.js')
 
 app.use(session({
-    secret: process.env.SESSION_SECRET,
+    secret: process.env.SESSION_SECRET || 'xxxx',
     resave: false,
     saveUninitialized: false,
     cookie: {
