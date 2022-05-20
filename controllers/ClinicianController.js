@@ -6,6 +6,7 @@ const Record = require("../models/records.js");
 const Doctor = require("../models/doctors.js");
 const Note = require("../models/note.js");
 const bcrypt = require("bcrypt");
+const { format } = require("path");
 
 
 const renderHome = async (req, res) => {
@@ -441,32 +442,40 @@ const addNote = async (req, res) => {
 const viewComments = async (req, res) => {
   try {
     const doctor = await Doctor.findOne({"email": req.session.userID }).lean()
-    const patients = await Patient.find({ "doctor": doctor.userName }).lean();
+    const patients = await Patient.find({ doctor: doctor.userName }).lean();
+    console.log(patients)
     const commentList = []
-    for (patient in patients) {
+    for (patient of patients) {
       let data = await Record.findOne(
-        { patientId: patient._id, recordDate: formatDate(new Date()) },
+        { patientID: patient._id},
         { data: true }
       ).lean();
       if (data) {
         for (key in data.data) {
           if (data.data[key].status == "recorded") {
-            if(data.data[key].comment == ""){
-              commentList.push({
-              patientID: patient._id,
-              comment: data.data[key].comment,
-              recordDate: formateDate(new Date()),
-            })
+            if (formatDate(data.data[key].createdDate) == formatDate(new Date())){
+              if(data.data[key].comment == ""){
+                commentList.push({
+                patient: patient,
+                comment: data.data[key].comment,
+                recordDate: formatDate(new Date()),
+                data: data.data[key].name
+                })
+              }
+            }
           }
         }
       }
-    }
-    res.render("viewComments.hbs", {cl: commentList})  //改hbs文件名//
-  }}catch (err) {
+      res.render("ClinicianCheckComment.hbs", {cl: commentList, doctor:doctor})  //改hbs文件名//
+    }}catch (err) {
     console.log(err);
     res.send("error happens when viewing comments");
   }
 }
+
+
+
+
 
 
 const renderAddNote = async (req, res) => {
@@ -565,13 +574,12 @@ const renderCheckComment = async (req, res) => {
         { data: true }
 
       ).lean();
-
       if (data) {
         for (key in data.data) {
           if (data.data[key].status == "Recorded"){
             if (formatDate(data.data[key].createdDate) == formatDate(new Date())){
-              console.log(data.data[key].comment)
               if(data.data[key].comment != "") {
+                console.log(data.data[key]);
                 commentList.push({
                   patient: patient,
                   comment: data.data[key].comment,

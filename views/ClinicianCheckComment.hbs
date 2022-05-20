@@ -28,10 +28,10 @@
         </tr>
         {{#each cl}}
         <tr onClick="location.href='/clinicians/dashboard/{{this._id}}'">
-            <td>{{this.patientID.firstName}}</td>
-            <td>{{this.patientID.doctor}}</td>
+            <td>{{this.patient.firstName}}</td>
+            <td>{{this.patient.doctor}}</td>
             <td class="comment">{{this.comment}}</td>
-            <td>{{this.recordDate}}</td>
+            <td>{{this.data}}</td>
         </tr>
         {{/each}}
     </table>
