@@ -5,40 +5,45 @@
 
             <div class="flex-grid">
                 <div class="home_box1">
-                    <img class="home_aa2" src="/img/Group-44.png" alt="Chris">
-                    <div class="cont_text">
-                    {{doctor.userName}}
+                    <div>
+                        <img class="home_aa2" src="/img/Group-44.png" alt="Chris">
                     </div>
+
+
+                    <div class="cont_text">
+                        {{doctor.userName}}
+                    </div>
+
                     <form method="POST" action="/clinicians/logout">
-                    <button id="button">Log out</button>
+                        <button id="button">Log out</button>
                     </form>
+
                 </div>
                 <form action="/clinicians/home">
-                <div class="home_bb2">
-                    <div class="home_ab1">
-                        <div class="">
-                            <img src="/img/icons8-dashboard-64.png" alt="dashboard">
-                            <div onClick="location.href='/clinicians/dashboard'">Dashboard</div>
+                    <div class="home_bb2">
+                        <div class="home_ab1">
+                            <div class="">
+                                <img src="/img/icons8-dashboard-64.png" alt="dashboard">
+                                <div onClick="location.href='/clinicians/dashboard'">Dashboard</div>
+                            </div>
+                            <div class="">
+                                <img src="/img/icons8-search-account-64.png" alt="Profile">
+                                <div onClick="location.href='/clinicians/profile'">Profile</a></div>
+                            </div>
                         </div>
-                        <div class="">
-                            <img src="/img/icons8-search-account-64.png" alt="Profile">
-                            <div onClick="location.href='/clinicians/profile'">Profile</a></div>
+                        <div class="home_ab1">
+                            <div class="">
+                                <img src="/img/list-dash-header.png" alt="clinical notes">
+                                <div onClick="location.href='/clinicians/checkComment'">Check comments</a></div>
+                            </div>
+                            <div class="">
+                                <img src="/img/icons8-add-user-male-96.png" alt="create account">
+                                <div onClick="location.href='/clinicians/createProfile'">Create account</a></div>
+                            </div>
                         </div>
                     </div>
-                    <div class="home_ab1">
-                        <div class="">
-                            <img src="/img/list-dash-header.png" alt="clinical notes">
-                            <div onClick="location.href='/clinicians/checkComment'">Check comments</a></div>
-                        </div>
-                        <div class="">
-                            <img src="/img/icons8-add-user-male-96.png" alt="create account">
-                            <div onClick="location.href='/clinicians/createProfile'">Create account</a></div>
-                        </div>
-                    </div>
-                </div>
                 </form>
             </div>
         </section>
     </div>
 </body>
-

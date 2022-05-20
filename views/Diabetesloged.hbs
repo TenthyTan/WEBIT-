@@ -1,57 +1,113 @@
-<form action="/patients/AboutDiabetes">
-<link href="https://fonts.googleapis.com/css2?family=EB+Garamond&display=swap" rel="stylesheet">
-<body>    
-    <br><hr><div><div><h1 class="cen"><b>Diabetes</b></h1>
-    <p class="serif">Diabetes is a group of metabolic diseases characterized by hyperglycemia. Hyperglycemia 
-        is caused by defective insulin secretion, impaired biological action, or both. 
-        Long-term hyperglycemia leads to chronic damage and dysfunction of various tissues, 
-        especially the eyes, kidneys, heart, blood vessels, and nerves. </p></div>
-    <div>
-    <iframe class="video_back"  src="https://www.youtube.com/embed/wZAjVQWbMlE" 
-        title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; 
-        clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
-        allowfullscreen></iframe></div>
-    <p class="mid">First time knowing DIABETES?  This video could help you know more.</p></div>
+{{!-- <div class="nav_box_a">
+    <button class="" onClick="location.href='/clinicians/login'">Clinicians Log In</button>
+    <button class="" onClick="location.href='/patients/login'">Patients Log In</button>
+</div> --}}
 
-    <h1 class="cen"><b>Etiology</b></h1>
-    <div class="text-center">
-    <p>1. Genetic factors: There is significant genetic heterogeneity in both type 1 and type 2 
-        diabetes. Diabetes has a family history, and 1/4 to 1/2 of the patients have a family 
-        history of diabetes.</p>
-    </div>
-    <div class="text-center">
-    <p>2. Envirnmental factor: Obesity caused by overeating and reduced physical activity is 
-        the most important environmental factor for type 2 diabetes, predisposing individuals 
-        with genetic predisposition to type 2 diabetes.</p>
-    </div>
-    <div class="text-center">
-    <p>Type 1 diabetes patients have an abnormal immune system, which leads to an autoimmune 
-        response after infection with certain viruses such as coxsackie virus, rubella virus, 
-        and parotid virus, which destroy insulin beta cells. </p> </div>  
-    
-    <h1 class="cen"><b>Clinical manifestations</b></h1>
-    <p>1. Polydipsia, polyuria, polyphagia, and weight loss</p>
-    <p>The typical symptoms of "three more and one less" appear in severe hyperglycemia, which 
-        is more common in type 1 diabetes. When ketosis or ketoacidosis occurs, the symptoms of 
-        "three more and one less" are more obvious.</p>
-    <p>2. fatigue, obesity</p>
-    <p>More common in type 2 diabetes. Type 2 diabetes is often preceded by obesity, and if not 
-        diagnosed in time, weight will gradually decrease.</p>
-    <p>At present, there is no cure for diabetes, but it can be well controlled through a variety
-         of treatments. It mainly includes five aspects: education of diabetic patients, 
-         self-monitoring of blood sugar, diet therapy, exercise therapy and drug therapy. </p>
-    </div>
-    <h1 class="cen"><b>Want know more?</b></h1>
-    <p><a href= "https://en.wikipedia.org/wiki/Diabetes">More detail about Diabetes</a></p>
-    <p><a href= "https://www.mayoclinic.org/diseases-conditions/diabetes/symptoms-causes/syc-20371444">
-        Symptoms And Causes</a></p>
-    <p><a href= "https://www.mayoclinic.org/diseases-conditions/diabetes/diagnosis-treatment/drc-20371451
+
+<form action="/AboutDiabetes">
+    <link href="https://fonts.googleapis.com/css2?family=EB+Garamond&display=swap" rel="stylesheet">
+
+    <body style="margin-top:100px;font-size:25px">
+
+
+
+
+        <div>
+
+
+            <div style="padding: 0 100px;">
+
+                <div style="padding: 0 170px ;">
+                    <div style="font-size: 40px;"><i>About Diabetes</i></div>
+                    <div>
+                        <h3 class="" style="margin :10px 0px ">Diabetes</h3>
+
+                        <div class="box_a1_dd">
+                            <p class="serif">Diabetes is a group of metabolic diseases characterized by hyperglycemia.
+                                Hyperglycemia is caused by defective insulin secretion, Long-term hyperglycemia leads to
+                                chronic damage and dysfunction of various tissues, especially the eyes, kidneys, heart,
+                                blood vessels, and nerves. </p>
+
+                        </div>
+                    </div>
+
+                    <div>
+                        {{!-- <iframe class="video_back" src="https://www.youtube.com/embed/wZAjVQWbMlE"
+                            title="YouTube video player" frameborder="0"
+                            allow="accelerometer; autoplay;clipboard-write;encrypted-media; gyroscope; picture-in-picture"
+                            allowfullscreen></iframe> --}}
+                    </div>
+
+                </div>
+
+                <div>
+                    <div>
+                        <div class="box_ad1231" style="padding: 0 170px ;">
+                            <img style="width: 100%;" src="../public/img/setright1.png" alt="">
+                        </div>
+
+
+                        <div style="padding: 0 170px ;">
+                            <p class="mid">First time knowing DIABETES? This video could help you know more.</p>
+                        </div>
+                    </div>
+                </div>
+
+
+                <div style="padding:  0  170px;">
+                    <h3 class="cen" style="margin-top: 50px;"><b>Etiology</b></h3>
+                    <div class="text-center">
+                        <p>1. Genetic factors: There is significant genetic heterogeneity in both type 1 and type 2
+                            diabetes. Diabetes has a family history, and 1/4 to 1/2 of the patients have a family
+                            history of diabetes.</p>
+                    </div>
+                    <div class="text-center">
+                        <p>2. Envirnmental factor: Obesity caused by overeating and reduced physical activity is the
+                            most important environmental factor for type 2 diabetes, predisposing individuals with
+                            genetic predisposition to type 2 diabetes.</p>
+                    </div>
+                    <div class="text-center">
+                        <p>Type 1 diabetes patients have an abnormal immune system, which leads to an autoimmune
+                            response after infection with certain viruses such as coxsackie virus, rubella virus, and
+                            parotid virus, which destroy insulin beta cells. </p>
+                    </div>
+
+                    <h3 class="cen"><b>Clinical manifestations</b></h3>
+                    <p>1. Polydipsia, polyuria, polyphagia, and weight loss</p>
+                    <p>The typical symptoms of "three more and one less" appear in severe hyperglycemia, which is more
+                        common in type 1 diabetes. When ketosis or ketoacidosis occurs, the symptoms of "three more and
+                        one less" are more obvious.</p>
+                    <p>2. fatigue, obesity</p>
+                    <p>More common in type 2 diabetes. Type 2 diabetes is often preceded by obesity, and if not
+                        diagnosed in time, weight will gradually decrease.</p>
+                    <p>At present, there is no cure for diabetes, but it can be well controlled through a variety of
+                        treatments. It mainly includes five aspects: education of diabetic patients, self-monitoring of
+                        blood sugar, diet therapy, exercise therapy and drug therapy. </p>
+                </div>
+            </div>
+
+
+            <div style="margin: 0 270px;" class="sty_a">
+                <h3 class="cen"><b>Want know more?</b></h3>
+                <p><a href="https://en.wikipedia.org/wiki/Diabetes">More detail about Diabetes</a></p>
+                <p><a href="https://www.mayoclinic.org/diseases-conditions/diabetes/symptoms-causes/syc-20371444">
+                        Symptoms And Causes</a></p>
+                <p><a href="https://www.mayoclinic.org/diseases-conditions/diabetes/diagnosis-treatment/drc-20371451
         #:~:text=Treatment%20for%20type%201%20diabetes,diabetes%20medications%2C%20insulin%20or%20both.">
-            Diagnosis and Treatment</a></p>
-    <p><a href= "https://www.mayoclinic.org/diseases-conditions/diabetes/in-depth/diabetes-management/art-20045803">
-        Diabetes care: 10 ways to avoid complications</a></p>
-    <p><a href= "https://www.niddk.nih.gov/health-information/diabetes/overview/managing-diabetes/4-steps">
-        4 Steps to Manage Your Diabetes for Life</a></p> 
+                        Diagnosis and Treatment</a></p>
+                <p><a
+                        href="https://www.mayoclinic.org/diseases-conditions/diabetes/in-depth/diabetes-management/art-20045803">
+                        Diabetes care: 10 ways to avoid complications</a></p>
+                <p><a href="https://www.niddk.nih.gov/health-information/diabetes/overview/managing-diabetes/4-steps">
+                        4 Steps to Manage Your Diabetes for Life</a></p>
+
+            </div>
+        </div>
+
+
+
+
+        </div>
+
     </body>
-</body>
 </form>

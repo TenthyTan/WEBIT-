@@ -1,158 +1,158 @@
 <div id="sidenav" class="sidenav">
     <img src="../public/img/head.png" />
-    <p onClick="location.href='/patients/home'">{{patient.userName}}</p >
+    <p onClick="location.href='/patients/home'">{{patient.userName}}</p>
     <img src="../public/img/recording.png" />
-    <p onClick="location.href='/patients/recordData'">Record</a></p >
+    <p onClick="location.href='/patients/recordData'">Record</a></p>
     <img src="../public/img/view.png" />
-    <p onClick="location.href='/patients/viewTable'">View</a></p >
+    <p onClick="location.href='/patients/viewTable'">View</a></p>
     <img src="../public/img/ranking.png" />
-    <p onClick="location.href='/patients/recordRank'">Rank</a></p >
+    <p onClick="location.href='/patients/recordRank'">Rank</a></p>
     <img src="../public/img/profile.png" />
-    <p onClick="location.href='/patients/profile'">Profile</a></p >
+    <p onClick="location.href='/patients/profile'">Profile</a></p>
     <p onClick="location.href='/patients/AboutDiabetes'">About Diabetes</a></p>
     <p onClick="location.href='/patients/AboutWebsite'">About Website</a></p>
     <form method="POST" action="/patients/logout">
-    <button id="button">Log out</button>
+        <button id="button">Log out</button>
     </form>
 </div>
 <section>
-  <div class="main">
+    <div class="main">
         <h3>Date: {{record.recordDate}}</h3>
         <div class="hint">
-        <p> * You don't need to record if the color is grey.</p >
+            <p> * You don't need to record if the color is grey.</p>
         </div>
         <div class="flex-grid">
-        {{#each record.data}} 
-        <form action="/patients/recordData" method="POST">
-            <div class="d-col-6 item-block">
-                <div class="flex-grid padding-10">
-                    {{#ifRecorded this.status}}
+            {{#each record.data}}
+            <form action="/patients/recordData" method="POST">
+                <div class="d-col-6 item-block">
+                    <div class="flex-grid padding-10">
+                        {{#ifRecorded this.status}}
                         <div class="d-col-1">
                             <div class="d-col-2">
-                            {{#ifbgl this.name}}
-                            <img class="img-1" src="/img/glucose.png" alt="glucose.png" />
-                            {{/ifbgl}}
-                            {{#ifdoit this.name}}
-                            <img class="img-2" src="/img/insulin.png" alt="insulin.png" />
-                            {{/ifdoit}}
-                            {{#ifweight this.name}}
-                            <img class="img-3" src="/img/weight.png" alt="weight.png" />
-                            {{/ifweight}}
-                            {{#ifexercise this.name}}
-                            <img class="img-4" src="/img/exercise.png" alt="exercise.png" />
-                            {{/ifexercise}}
+                                {{#ifbgl this.name}}
+                                <img class="img-1" src="/img/glucose.png" alt="glucose.png" />
+                                {{/ifbgl}}
+                                {{#ifdoit this.name}}
+                                <img class="img-2" src="/img/insulin.png" alt="insulin.png" />
+                                {{/ifdoit}}
+                                {{#ifweight this.name}}
+                                <img class="img-3" src="/img/weight.png" alt="weight.png" />
+                                {{/ifweight}}
+                                {{#ifexercise this.name}}
+                                <img class="img-4" src="/img/exercise.png" alt="exercise.png" />
+                                {{/ifexercise}}
                             </div>
                             <div class="d-col-4">
-                            <p class="left">{{@keys}} <input type="hidden" name="key" value="{{@key}}"></p >                    
+                                <p class="left">{{@keys}} <input type="hidden" name="key" value="{{@key}}"></p>
                             </div>
 
                             <div class="d-col-4">
-                            <p class="left">{{this.name}}:  {{this.value}} </p >
+                                <p class="left">{{this.name}}: {{this.value}} </p>
                             </div>
-                          
-                          
+
+
                             <div class="d-col-4">
-                            <p class="left">Recording time:  {{this.createdDate}}</p >
+                                <p class="left">Recording time: {{this.createdDate}}</p>
                             </div>
-                          
-                          
+
+
                             <div class="d-col-4">
-                            <p class="left">Data status:  {{this.status}}</p >
+                                <p class="left">Data status: {{this.status}}</p>
                             </div>
-                        
+
                             <div class="d-col-4">
-                            <p class="left">Comment:  {{this.comment}}</p >
+                                <p class="left">Comment: {{this.comment}}</p>
                             </div>
-                           
+
                         </div>
-                    {{else}}
-                    {{#ifUnrecorded this.status}}
-                        <div class="d-col-1">                         
+                        {{else}}
+                        {{#ifUnrecorded this.status}}
+                        <div class="d-col-1">
                             <div class="d-col-2">
-                            {{#ifbgl this.name}}
-                            <img class="img-1" src="/img/glucose.png" alt="glucose.png" />
-                            {{/ifbgl}}
-                            {{#ifdoit this.name}}
-                            <img class="img-2" src="/img/insulin.png" alt="insulin.png" />
-                            {{/ifdoit}}
-                            {{#ifweight this.name}}
-                            <img class="img-3" src="/img/weight.png" alt="weight.png" />
-                            {{/ifweight}}
-                            {{#ifexercise this.name}}
-                            <img class="img-4" src="/img/exercise.png" alt="exercise.png" />
-                            {{/ifexercise}}
+                                {{#ifbgl this.name}}
+                                <img class="img-1" src="/img/glucose.png" alt="glucose.png" />
+                                {{/ifbgl}}
+                                {{#ifdoit this.name}}
+                                <img class="img-2" src="/img/insulin.png" alt="insulin.png" />
+                                {{/ifdoit}}
+                                {{#ifweight this.name}}
+                                <img class="img-3" src="/img/weight.png" alt="weight.png" />
+                                {{/ifweight}}
+                                {{#ifexercise this.name}}
+                                <img class="img-4" src="/img/exercise.png" alt="exercise.png" />
+                                {{/ifexercise}}
                             </div>
                             <div class="d-col-4">
-                            <p class="left">{{@keys}} <input type="hidden" name="key" value="{{@key}}"></p >
+                                <p class="left">{{@keys}} <input type="hidden" name="key" value="{{@key}}"></p>
                             </div>
-                          
-                        
+
+
                             <div class="d-col-4">
-                            <p class="left">{{this.name}}: <input type="digit" name="value" placeholder="Enter your record here" required></p >
+                                <p class="left">{{this.name}}: <input type="digit" name="value"
+                                        placeholder="Enter your record here" required></p>
                             </div>
-                        
+
                             <div class="d-col-4">
-                            <p class="left">Data status:  {{this.status}}</p >
+                                <p class="left">Data status: {{this.status}}</p>
                             </div>
-                        
+
                             <div class="d-col-4">
-                            <p class="left">Comment: <input type="text" name="comment" placeholder="Enter your comment here"></p >
+                                <p class="left">Comment: <input type="text" name="comment"
+                                        placeholder="Enter your comment here"></p>
                             </div>
-                        
+
                             <div class="d-col-12">
-                              <button id="button" type="submit"> submit </button>
+                                <button id="button" type="submit"> submit </button>
                             </div>
                         </div>
-                    {{else}}
-                    {{#ifNoneed this.status}}
+                        {{else}}
+                        {{#ifNoneed this.status}}
                         <div class="d-col-1-grey">
                             <div class="d-col-2">
-                            {{#ifbgl this.name}}
-                            <img class="img-1" src="/img/glucose-grey.png" alt="glucose.png" />
-                            {{/ifbgl}}
-                            {{#ifdoit this.name}}
-                            <img class="img-2" src="/img/insulin-grey.png" alt="insulin.png" />
-                            {{/ifdoit}}
-                            {{#ifweight this.name}}
-                            <img class="img-3" src="/img/weight-grey.png" alt="weight.png" />
-                            {{/ifweight}}
-                            {{#ifexercise this.name}}
-                            <img class="img-4" src="/img/exercise-grey.png" alt="exercise.png" />
-                            {{/ifexercise}}
+                                {{#ifbgl this.name}}
+                                <img class="img-1" src="/img/glucose-grey.png" alt="glucose.png" />
+                                {{/ifbgl}}
+                                {{#ifdoit this.name}}
+                                <img class="img-2" src="/img/insulin-grey.png" alt="insulin.png" />
+                                {{/ifdoit}}
+                                {{#ifweight this.name}}
+                                <img class="img-3" src="/img/weight-grey.png" alt="weight.png" />
+                                {{/ifweight}}
+                                {{#ifexercise this.name}}
+                                <img class="img-4" src="/img/exercise-grey.png" alt="exercise.png" />
+                                {{/ifexercise}}
                             </div>
-                           
+
                             <div class="d-col-4">
-                            <p class="left">{{@keys}} <input type="hidden" name="key" value="{{@key}}"></p >
+                                <p class="left">{{@keys}} <input type="hidden" name="key" value="{{@key}}"></p>
                             </div>
-                        
+
                             <div class="d-col-4">
-                            <p class="left">{{this.name}}:</p >
+                                <p class="left">{{this.name}}:</p>
                             </div>
-                        
+
                             <div class="d-col-4">
-                            <p class="left">Recording time:</p >
+                                <p class="left">Recording time:</p>
                             </div>
-                          
+
                             <div class="d-col-4">
-                            <p class="left">Data status:  {{this.status}}</p >
+                                <p class="left">Data status: {{this.status}}</p>
                             </div>
-                        
+
                             <div class="d-col-4">
-                            <p class="left">Comment:</p >
+                                <p class="left">Comment:</p>
                             </div>
-                            
+
                         </div>
-                    {{/ifNoneed}}
-                    {{/ifUnrecorded}}
-                    {{/ifRecorded}}
-                    </form>
-                    {{/each}}
-                </div>
-            </div>
+                        {{/ifNoneed}}
+                        {{/ifUnrecorded}}
+                        {{/ifRecorded}}
+            </form>
+            {{/each}}
+        </div>
     </div>
-</section> 
-<footer>
-     Doctor {{patient.doctor}} : {{patient.supportMes}}
+    </div>
+</section>
+<footer style="text-align: center;">
+    Doctor {{patient.doctor}} : {{patient.supportMes}}
 </footer>
-
-

@@ -1,34 +1,50 @@
 <head>
     <script src="https://cdn.bootcdn.net/ajax/libs/echarts/5.3.2/echarts.common.js"></script>
 </head>
+
 <body>
     <div id="sidenav" class="sidenav">
         <img src="../public/img/head.png" />
-        <p onClick="location.href='/patients/home'">{{patient.userName}}</p >
+        <p onClick="location.href='/patients/home'">{{patient.userName}}</p>
         <img src="../public/img/recording.png" />
-        <p onClick="location.href='/patients/recordData'">Record</a></p >
+        <p onClick="location.href='/patients/recordData'">Record</a></p>
         <img src="../public/img/view.png" />
-        <p onClick="location.href='/patients/viewTable'">View</a></p >
+        <p onClick="location.href='/patients/viewTable'">View</a></p>
         <img src="../public/img/ranking.png" />
-        <p onClick="location.href='/patients/recordRank'">Rank</a></p >
+        <p onClick="location.href='/patients/recordRank'">Rank</a></p>
         <img src="../public/img/profile.png" />
-        <p onClick="location.href='/patients/profile'">Profile</a></p >
+        <p onClick="location.href='/patients/profile'">Profile</a></p>
         <p onClick="location.href='/patients/AboutDiabetes'">About Diabetes</a></p>
         <p onClick="location.href='/patients/AboutWebsite'">About Website</a></p>
         <form method="POST" action="/patients/logout">
-        <button id="button">Log out</button>
+            <button id="button">Log out</button>
         </form>
     </div>
-    <form action="/patients/viewChart" method="GET">
-    <h1 style="text-align: center;"> View all data display on chart. </h1>
-    <div style="width: 100%; display: flex; flex-wrap: wrap; justify-content: space-around; align-content: space-between">
-        {{> blood dates=dates datas=datas}}
-        {{> weight dates=dates datas=datas}}
-        {{> insulin dates=dates datas=datas}}
-        {{> exercise dates=dates datas=datas}}
+    <div style="margin: 100px 0 0 100px;">
+        <form action="/patients/viewChart" method="GET">
+            {{!-- <h1 style="text-align: center;"> View all data display on chart. </h1> --}}
+
+            <div class="spass_abox">
+
+                <div>
+                    {{> blood dates=dates datas=datas}}
+
+                </div>
+                {{> weight dates=dates datas=datas}}
+
+                <div>
+                    {{> insulin dates=dates datas=datas}}
+
+                </div>
+                <div>
+                    {{> exercise dates=dates datas=datas}}
+
+                </div>
+            </div>
+        </form>
     </div>
-    </form>
+
 </body>
 <footer>
-     Doctor {{patient.doctor}} : {{patient.supportMes}}
+    Doctor {{patient.doctor}} : {{patient.supportMes}}
 </footer>

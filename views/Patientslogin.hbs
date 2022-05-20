@@ -1,12 +1,23 @@
-{{!-- <h1 >LogIn</h1> --}}
+{{!-- <h1>LogIn</h1> --}}
 <form action="/patients/login" method="POST">
-    <div class="login_box">  
-    <h4 style="text-align: center;">Sign In</h4>
+    <div class="login_box" style="margin-top: 100px;">
+        <h4 style="text-align: center;">Sign In</h4>
         <link href="https://fonts.googleapis.com/css2?family=Quattrocento+Sans:wght@700&display=swap" rel="stylesheet">
-        <div class="Ipt"><label for="username"><input type="text" name="userID" placeholder="Enter email address here" required></label></div> 
-        <div class="Ipt"><label for="password"><input type="password" name="password" placeholder="Enter password here" required></label></div>
-        {{#if loginMessage}} <p style="pot" >{{loginMessage}}</p> {{/if}}
-        <div class="int_csl" id="button"><input class="golog"  type="submit" value="Log In" /></div>
+        <div class="Ipt">
+            <label for="username">
+                <input  type="text" name="userID" placeholder="Enter email address here" required>
+            </label>
+        </div>
+        <div class="Ipt"><label for="password">
+                <input type="password" name="password" placeholder="Enter password here" required>
+            </label>
+        </div>
+        <div style="text-align:center ;color:red">
+       {{#if loginMessage}} <p style="pot">{{loginMessage}}</p> {{/if}}
+        </div>
+ 
+        <div  class="int_csl" id="button">
+            <input class="golog" type="submit" value="Log In" />
+            </div>
     </div>
 </form>
-

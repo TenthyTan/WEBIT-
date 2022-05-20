@@ -1,71 +1,71 @@
 <div id="sidenav" class="sidenav">
     <img src="../public/img/head.png" />
-    <p onClick="location.href='/patients/home'">{{patient.userName}}</p >
+    <p onClick="location.href='/patients/home'">{{patient.userName}}</p>
     <img src="../public/img/recording.png" />
-    <p onClick="location.href='/patients/recordData'">Record</a></p >
+    <p onClick="location.href='/patients/recordData'">Record</a></p>
     <img src="../public/img/view.png" />
-    <p onClick="location.href='/patients/viewTable'">View</a></p >
+    <p onClick="location.href='/patients/viewTable'">View</a></p>
     <img src="../public/img/ranking.png" />
-    <p onClick="location.href='/patients/recordRank'">Rank</a></p >
+    <p onClick="location.href='/patients/recordRank'">Rank</a></p>
     <img src="../public/img/profile.png" />
-    <p onClick="location.href='/patients/profile'">Profile</a></p >
+    <p onClick="location.href='/patients/profile'">Profile</a></p>
     <p onClick="location.href='/patients/AboutDiabetes'">About Diabetes</a></p>
     <p onClick="location.href='/patients/AboutWebsite'">About Website</a></p>
     <form method="POST" action="/patients/logout">
-    <button id="button">Log out</button>
+        <button id="button">Log out</button>
     </form>
 </div>
 <form action="/patients/viewTable" method="GET">
-<section>
-    <div class="main">
-        <div class="title-data">
-            <h6>Patient Name: {{patient.userName}}&nbsp;&nbsp;&nbsp;&nbsp;Age: {{age.age}}
-                &nbsp;&nbsp;&nbsp;&nbsp;</h6>
-        </div>
-        <div style="padding: 0;height: 500px; overflow: auto;">
-            <table id="table" style="margin: 0;">
-                <thead id="tablehead">
-                    <tr>
-                        <th> Date </th>
-                        <th>Blood Glucose Level(/L)</th>
-                        <th>Insulin Taken(Times)</th>
-                        <th>Weight (kg)</th>
-                        <th>Exercise(Step count)</th>
-                    </tr>
-                </thead>
-                {{#each record}}
-                <tbody class="viewdatatbody">
-                    <td>{{this.recordDate}}</td>
-                    {{#each this.data}}
-                    {{#ifUnrecorded this.status}}
-                    <td style="color: #bb1f1f">Missing</td>
-                    {{else}}
-                    <td style="background-color:
+    <section>
+        <div class="main">
+            <div class="title-data">
+                <h6>Patient Name: {{patient.userName}}&nbsp;&nbsp;&nbsp;&nbsp;Age: {{age.age}}
+                    &nbsp;&nbsp;&nbsp;&nbsp;</h6>
+            </div>
+            <div style="padding: 0;height: 500px; overflow: auto;">
+                <table id="table" style="margin: 0;">
+                    <thead id="tablehead">
+                        <tr>
+                            <th> Date </th>
+                            <th>Blood Glucose Level(/L)</th>
+                            <th>Insulin Taken(Times)</th>
+                            <th>Weight (kg)</th>
+                            <th>Exercise(Step count)</th>
+                        </tr>
+                    </thead>
+                    {{#each record}}
+                    <tbody class="viewdatatbody">
+                        <td>{{this.recordDate}}</td>
+                        {{#each this.data}}
+                        {{#ifUnrecorded this.status}}
+                        <td style="color: #bb1f1f">Missing</td>
+                        {{else}}
+                        <td style="background-color:
                     {{#ifNoneed this.status}}
                     grey
                     {{/ifNoneed }}
                     ;">{{this.value}}</td>
-                    {{/ifUnrecorded}}
+                        {{/ifUnrecorded}}
+                        {{/each}}
+                    </tbody>
                     {{/each}}
-                </tbody>
-                {{/each}}
 
-            </table>
-        </div>
-
-        <div class="viewDatacla">
-            <div id="button">
-                <button><a href="/patients/viewChart">View</a></button>
+                </table>
             </div>
 
-            <div>
-                <p class="">View Data On Chart</p>
-            </div>
+            <div class="viewDatacla">
+                <div id="button" style="margin-top:80px;">
+                    <button><a href="/patients/viewChart" style="padding:10px;font-size: 30px;">View</a></button>
+                </div>
 
-        </div>
+                <div style="text-align: center;font-size:20px;margin:50px auto">
+                    <p class="">View Data On Chart</p>
+                </div>
+
+            </div>
 
     </section>
-    <footer>
+    <footer style="margin-top: 150px;">
         Doctor {{patient.doctor}} : {{patient.supportMes}}
     </footer>
 </form>
