@@ -298,9 +298,12 @@ const updateSupportMessages = async (req, res) => {
    
     const patient =  await Patient.findById(req.params._id)
     console.log(req.body.supportMessage)
-    patient.supportMes = req.body.supportMessage;
+    if(req.body.supportMessage !== ""){
+      patient.supportMes = req.body.supportMessage;
+      await patient.save();
+    }
 
-    await patient.save(); ///patient Id 要改
+     ///patient Id 要改
     res.redirect("/clinicians/dashboard/" + req.params._id + "/messages");
    
   } catch (err) {
