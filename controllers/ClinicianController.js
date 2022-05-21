@@ -143,21 +143,6 @@ async function initDoctor() {
 };
 
 
-/*const checkbox = async (req, res) => {
-  const patientId = await initPatient();
-  const recordId = await initRecord(patientId);
-  const record = await Record.findOne({ _id: recordId });
-  const input = await Record.findOne({ _id: recordId });
-  if (input.type == 'checkbox' & input.name == 'bgl_checkbox'){
-    if(input.checked){
-      Record.findOneAndUpdate({name:""},{status:"Unrecorded"})
-    }
-    else{
-      Record.findOneAndUpdate({name:""},{status:"Not require"})
-    }
-  }
-};*/
-
 const renderProfile = async (req, res) => {
   try{
     const doctor = await Doctor.findOne({"email": req.session.userID}).lean()
@@ -303,7 +288,6 @@ const updateSupportMessages = async (req, res) => {
       await patient.save();
     }
 
-     ///patient Id 要改
     res.redirect("/clinicians/dashboard/" + req.params._id + "/messages");
    
   } catch (err) {
@@ -314,22 +298,6 @@ const updateSupportMessages = async (req, res) => {
   }
 };
 
-
-
-
-// const renderThreshold = async (req, res) => {
-//   const doctor = await Doctor.findOne({"email": req.session.userID }).lean()
-//   // find all the patients belongs to this doctor
-//   const patient = await Patient.find({"doctor" : doctor.userName}).lean()
-//   const record = await Record.find({patientID: {"$in" : patient}}).lean()
-//   console.log(req)
-//   var MinThreshold_bgl = $('input[name="value_bgl_min"]').val();
-//   var MaxThreshold_bgl = $('input[name="value_bgl_max"]').val();
-//   record.findOneAndUpdate({"name":"Blood Glucose Level (nmol/L)"}, {"minThreshold":MinThreshold_bgl});
-//   record.findOneAndUpdate({"name":"Blood Glucose Level (nmol/L)"}, {"maxThreshold":MaxThreshold_bgl});
-  
-//   res.render("Clinicianthreshold.hbs");
-// };
 
 const renderUpdate = async(req, res) => {
   try{
@@ -392,8 +360,7 @@ const UpdateThreshold = async (req, res) => {
       patient.timeseries.exercise.check = "false"
     }
 
-    //record.data[key].minThreshold = req.body.min_value
-    //record.data[key].maxThreshold = req.body.max_value
+
     await patient.save();
     res.redirect("/clinicians/dashboard/" + req.params._id);
   } catch (err) {
@@ -410,7 +377,7 @@ const renderClinicalNotes = async (req, res) => {
   try {
     const doctor = await Doctor.findOne({"email": req.session.userID }).lean()
     const patient = await Patient.findOne({"_id": req.params._id}).lean();  //修改成patientID
-    const notes = await Note.find({ //还没建数据库
+    const notes = await Note.find({ 
       "Patient": patient._id,
       "Doctor": doctor._id,
     }).lean();
@@ -433,7 +400,6 @@ const addNote = async (req, res) => {
       recordDate: formatDate(new Date()),
       text: req.body.notes,
     });
-    console.log("addNO" + req.body.notes)
     await newNote.save();
     res.redirect("/clinicians/dashboard/" + req.params._id + "/listClinicalNotes");
   } catch (err) {
@@ -503,8 +469,11 @@ const updateNote = async (req, res) => {
     // find all the patients belongs to this doctor
     const patient =  await Patient.findById(req.params._id)
     const note = await Note.findOne({patientId: patient._id }).lean()
-    console.log(req.body.clinicalnotes)
-    note.text = req.body.clinicalnotes;
+    if(req.body.clinicalnotes!== ""){
+      note.text = req.body.clinicalnotes;
+      await note.save()
+    }
+    
 
     await patient.save();
     res.redirect("/clinicians/dashboard/" + req.params._id + "/clinicalNotes");
@@ -605,47 +574,11 @@ const renderCheckComment = async (req, res) => {
 }
 
 
-// function liveAlert(doctor){
-//   try {
-//     const patients =  Patient.find({ doctor: doctor.userName }).lean();
-//     const liveAlert_max = [];
-//     const liveAlert_min = [];
-//     for (patient in patients) {
-//       let data = Record.findOne(
-//         { patientId: patient._id, recordDate: formatDate(new Date()) },
-//         { data: true }
-//       ).lean();
-//       if (data) {
-//         for (key in data.data) {
-//           if (data.data[key].value < data.data[key].minThreshold ) {
-//               liveAlert_min.push({
-//               patient: patient,
-//               value: data.data[key].value,
-//              })
-//           }
-//           if (data.data[key].value > data.data[key].maxThreshold ) {
-//             liveAlert_max.push({
-//             patientId: patient,
-//             value: data.data[key].value,
-//            })
-//         }
-//       }
-//     }
-//   return liveAlert_min, liveAlert_max
-//   }}catch (err) {
-//     console.log(err);
-//     res.send("error happens for live alert");
-//   }
-// }
-
-
-
 const logout = async (req, res) => {
   try {
     req.session.destroy(function(err){
       console.log(err)
     })
-
       
     res.redirect("login")
   } catch (err) {
@@ -653,9 +586,6 @@ const logout = async (req, res) => {
     res.send("error happens when logout");
   }
 }
-
-
-
 
 
 module.exports = {
@@ -683,7 +613,6 @@ module.exports = {
     updateNote,
     viewChart,
     renderCheckComment,
-  //liveAlert,
     logout,
 
 }
