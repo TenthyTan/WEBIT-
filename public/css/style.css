@@ -397,6 +397,14 @@ body {
         width: 90%;
         margin: 0 20% 0 20%;
     }
+    .supportmes{
+        text-align: center;
+        margin-top: 5%;
+        font-size: 36;
+    }
+    .content_abox{
+        margin-top: 5%;
+    }
 }
 
 .padding-10 {
@@ -507,14 +515,6 @@ body {
 
 }
 
-/* log in css */
-/* 
-.login_box {
-    background-color: rgb(227, 249, 238);
-    width: 100%;
-    height: calc(100vh - 60px);
-    overflow: hidden;
-} */
 
 .title {
     text-align: center;
@@ -527,7 +527,6 @@ body {
 
 .errormessage{
     color: #C82C2C;
-    width: 200%;
     text-align: center;
     font-size: 20;
 }
@@ -1102,7 +1101,7 @@ table .tt_a {
     border: none;
     font-size: 40px;
     background-color: rgb(211, 243, 217);
-    /* margin:20px auto; */
+    margin-top: -10%;
 }
 
 .int_csl {
