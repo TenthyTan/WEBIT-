@@ -31,7 +31,7 @@
         </thead>
         <tbody>
         {{#each cl}}
-        <tr onClick="location.href='/clinicians/dashboard/{{this._id}}'">
+        <tr onClick="location.href='/clinicians/dashboard/{{patient._id}}'">
             <td>{{this.patient.firstName}}</td>
             <td>{{this.patient.doctor}}</td>
             <td class="comment">{{this.comment}}</td>
