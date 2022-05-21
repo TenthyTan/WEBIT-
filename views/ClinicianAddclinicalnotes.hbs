@@ -17,11 +17,11 @@
     <button>Log out</button>
     </form>
 </div>
-<form action="/clinicians/dashboard/{{patient._id}}/clinicalNotes" method="POST">
-<div class="ClinicalNote"> 
+<form action="/clinicians/dashboard/{{patient._id}}/clinicalNotes" method="POST" class="clin_note_form" style="margin-top: 100px;">
+<div class="ClinicalNote" style="text-align: left;padding-left: 500px;"> 
     Clinical Notes
 </div>
-<div class="clinical_box2">
+<div class="clinical_box2" style="margin-left: 200px;">
     <div >Patient Name: </div>
     <div class="clinical_box">{{patient.firstName}}</div>
 </div>
@@ -30,7 +30,7 @@
         <input type="hidden" name="patientId" value="{{doctor.patients.patientIDs}}">
         <textarea type ="text" placeholder="Enter Clinical Notes" name="notes"></textarea>
     </div>
-    <button class="send">
+    <button class="send" style="border: 0;margin-left:500px;">
         Send
     </button>
 </div>

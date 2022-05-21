@@ -17,25 +17,27 @@
     <button>Log out</button>
     </form>
 </div>
-<div class="box_right_aaa">
+<div class="box_right_aaa" style="margin-top: 100px;margin-left:100px;">
     <form action="/clinicians/dashboard/{{patient._id}}/safetyThreshold" method="POST">
         <div class="pat_title">
 
             <div>Patient Name:</div>                                  
             <div class="pat_a" style="width: 400px;text-align: center;">{{patient.firstName}}</div> 
-            <button class="pat_a" style="margin-left: 200px;width: 300px;">Update</button>
+            <button class="pat_a" style="margin-left: 200px;width: 300px;border:0;font-size:24px;">Update</button>
         </div>
-
-        <table border="2" style="border-collapse: collapse;">
+<div class="table-without-border">
+        <table>
+            <thead>
             <tr>
-                <td>Data Status</td>
-                <td>Data Type</td>
-                <td>Safety Threshold</td>
+                <th  style="text-align: center;">Data Status</th>
+                <th  style="text-align: center;">Data Type</th>
+                <th  style="text-align: center;">Safety Threshold</th>
 
             </tr>
+            </thead>
              {{#each patient.timeseries}} 
-            <tr>
-                <td>
+            <tr  style="text-align: center;">
+                <td style="text-align: center;">
                 <input type="hidden" name="patientID" value="{{doctor.patients.patientIDs}}">
                 <input type="hidden" name="key" value="{{@key}}">
 
@@ -51,10 +53,12 @@
                 <label for="{{@key.check}}_no"> Not required  </label>
                 </td>
                 {{/if}}
-                <td>{{this.name}}</td>
-                <td>Min: <input type="digit" name="{{@key}}_min_value" placeholder="{{this.min}}">           Max: <input type="digit" name="{{@key}}_max_value" placeholder="{{this.max}}"></td>
+                <td style="text-align: center;">{{this.name}}</td>
+                <td class="threshold_last_td" style="text-align: center;"><div class="threshold_min">Min: <input type="digit" name="{{@key}}_min_value" placeholder="{{this.min}}" class="threshold_min_max">  </div>      
+                  <div class="threshold_max"> Max: <input type="digit" name="{{@key}}_max_value" placeholder="{{this.max}}" class="threshold_min_max"></div></td>
             </tr>    
             {{/each}}
         </table>
+        </div>
     </form>   
 </div>
