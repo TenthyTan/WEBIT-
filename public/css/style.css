@@ -333,7 +333,7 @@ body {
 
     .sidenav img {
         width: 40px;
-        margin: 100% 20px 0 20px;
+        margin: 50% 20px 0 20px;
     }
 
     .sidenav p {
@@ -343,7 +343,7 @@ body {
         font-size: 15px;
         text-align: center;
         line-height: 19px;
-        margin: 0 0 50% 0;
+        margin: 0 0 15% 0;
     }
 
     .sidenav button{
@@ -1064,9 +1064,35 @@ table .tt_a {
 
 
 /* new */
+.clin_login_box{
+    width: 500px;
+    height: 70px;
+    margin: 70px auto 0;
+    text-align: center;
+}
+.clin_login_box input{
+    margin:10% 0;
+    height: 70px;
+    width: 500px;
+    display: flex;
+    justify-content: center;
+    border: none;
+}
+
+.Ipt_cli{
+    margin:20% 10%;
 
 
-
+}
+.Ipt_cli input{
+    margin:10% 0 -10% 0;
+    height: 70px;
+    width: 450px;
+    display: flex;
+    justify-content: center;
+    border: none;
+    font-size: 30
+}
 .box_cosn {
     margin: 20px;
 }
@@ -1120,6 +1146,7 @@ table .tt_a {
     line-height: 70px;
     color: #000000;
     border: none;
+    margin: 20%
 
 }
 
