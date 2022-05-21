@@ -131,7 +131,6 @@ const renderRecordData = async (req, res) => {
         options: { lean: true },
       })
       .lean();
-    console.log(record);
     res.render("Patientrecorddata.hbs", { record: record, patient: patient });
   } catch (err) {
     res.status(400);
@@ -148,14 +147,10 @@ const updateRecord = async (req, res) => {
     const key = req.body.key
     record.data[key].value = req.body.value
     record.data[key].comment = req.body.comment
-    // data.value = req.body.value
-    // data.comment = req.body.comment
     record.data[key].status = "Recorded"
     record.data[key].createdDate = new Date()
-    // await data.save();
-    // Record.findOneAndUpdate({}, {});
+
     await record.save();
-    console.log(record);
     res.redirect("/patients/recordData");
   } catch (err) {
     console.log("error happens in update record: ", err);
@@ -279,12 +274,10 @@ const viewTable = async (req, res) => {
 function checkRecorded(record) {
   var flag = false;
   for (key in record.data) {
-    // console.log(record.data[key]);
     if (record.data[key].status == "Recorded") {
       flag = true;
     }
   }
-  // console.log(flag);
   return flag;
 }
 
@@ -307,7 +300,6 @@ const rankBoard = async (req, res) => {
     const today = new Date(formatDate(Date.now())).getTime();
     const day = (today - start) / (24 * 60 * 60 * 1000) + 1;
     const patients = await Patient.find({}, {});
-    // console.log(patients)
 
     for (patient of patients) {
       await engageRate(patient._id);

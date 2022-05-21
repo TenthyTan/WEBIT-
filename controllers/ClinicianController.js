@@ -30,8 +30,6 @@ try{
 };
 
 
-
-
 const renderLoginPage = async (req, res) => {
   try{
     res.render("Clinicianslogin.hbs", req.session.flash);
@@ -192,18 +190,21 @@ const changePassword = async(req, res) => {
       return res.render("clinicianChangePassword.hbs", {
           input: req.body,
           message: "The old password is incorrect, please try again",
+          doctor: doctor
       });
     }else if (!(req.body.newPassword === req.body.confirmPassword)){
       console.log("not same password")
       return res.render("clinicianChangePassword.hbs", {
           input: req.body,
           message: "The password is not the same, please try again",
+          doctor: doctor
       });
     } else if ((req.body.oldPassword === req.body.newPassword)){
       console.log("the old psd is same as new password")
       return res.render("clinicianChangePassword.hbs", {
           input: req.body,
           message: "The old password is the same as the new password, please try again",
+          doctor: doctor
       });
     }
       const clinician = await Doctor.findById(doctor._id)
@@ -213,6 +214,7 @@ const changePassword = async(req, res) => {
       return res.render("clinicianChangePassword.hbs", {
         input: req.body,
         message: "Update successfully!",
+        doctor: doctor
     });
       //doctor.password = req.body.newPassword
   }catch(err){
@@ -282,7 +284,6 @@ const updateSupportMessages = async (req, res) => {
     // find all the patients belongs to this doctor
    
     const patient =  await Patient.findById(req.params._id)
-    console.log(req.body.supportMessage)
     if(req.body.supportMessage !== ""){
       patient.supportMes = req.body.supportMessage;
       await patient.save();
@@ -312,8 +313,6 @@ const renderUpdate = async(req, res) => {
 const renderThreshold = async (req, res) => {
   try {
     const doctor = await Doctor.findOne({"email": req.session.userID }).lean()
-    //const patientId = await initPatient();
-    //const record = await Record.findOne({patientID: }).lean()
     const patient = await Patient.findOne({"_id": req.params._id}).lean()
     res.render("Clinicianthreshold.hbs", { doctor: doctor, patient: patient});
   } catch (err) {
@@ -327,7 +326,6 @@ const UpdateThreshold = async (req, res) => {
     console.log("-- req body when update threshold", req.body);
     const patient = await Patient.findById(req.params._id);
     const record = await Record.findOne({patientID: patient._id});
-    console.log(req.body.bgl)
     if (req.body.bgl === "Record"){
       patient.timeseries.bgl.check = "true"
       patient.timeseries.bgl.min = req.body.bgl_min_value
@@ -433,8 +431,6 @@ const updateNote = async (req, res) => {
       note.text = req.body.clinicalnotes;
       await note.save()
     }
-    
-
     await patient.save();
     res.redirect("/clinicians/dashboard/" + req.params._id + "/clinicalNotes");
    
@@ -500,9 +496,7 @@ const viewChart = async (req, res) => {
 const renderCheckComment = async (req, res) => {
   try {
     const doctor = await Doctor.findOne({"email": req.session.userID }).lean();
-    console.log(doctor)
     const patients = await Patient.find({ doctor: doctor.userName }).lean();
-    console.log(patients)
     const commentList = []
     //const liveAlert = liveAlert(doctor);
     for (patient of patients) {
@@ -516,7 +510,6 @@ const renderCheckComment = async (req, res) => {
         for (key in data.data) {
           if (data.data[key].status == "Recorded"){
               if(data.data[key].comment != "") {
-                console.log(data.data[key]);
                 commentList.push({
                   patient: patient,
                   comment: data.data[key].comment,
