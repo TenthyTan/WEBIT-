@@ -336,18 +336,21 @@ const changePassword = async(req, res) => {
     if (!await bcrypt.compare(req.body.oldPassword, patient.password)){
       console.log("The old password is not correct")
       return res.render("patientChangePassword.hbs", {
+          patient: patient,
           input: req.body,
           message: "The old password is incorrect, please try again",
       });
     }else if (!(req.body.newPassword === req.body.confirmPassword)){
       console.log("not same password")
       return res.render("patientChangePassword.hbs", {
+          patient: patient,
           input: req.body,
           message: "The password is not the same, please try again",
       });
     } else if ((req.body.oldPassword === req.body.newPassword)){
       console.log("the old psd is same as new password")
-      return res.render("clinicianChangePassword.hbs", {
+      return res.render("patientChangePassword.hbs", {
+          patient: patient,
           input: req.body,
           message: "The old password is the same as the new password, please try again",
       });
@@ -357,6 +360,7 @@ const changePassword = async(req, res) => {
       await p.save()
       //Doctor.findOneAndUpdate({email: req.session.userID},{password: req.body.newPassword})
       return res.render("patientChangePassword.hbs", {
+        patient: patient,
         input: req.body,
         message: "Update successfully!",
     }); 
