@@ -363,7 +363,7 @@ const changePassword = async(req, res) => {
 const renderUpdate = async(req, res) => {
   try{
    const patient = await Patient.findOne({"email": req.session.userID}).lean()
-   res.render('patientChangePassword.hbs', {patient: patient}); // send data to browser
+   res.render('PatientChangePassword.hbs', {patient: patient}); // send data to browser
   }catch(err){
     console.log("error happens ", err);
 
