@@ -35,7 +35,7 @@ section{grid-area: section}
 }
 
 html {
-    font-size: 4.5vh;
+    font-size: 30px;
 }
 @font-face {
     font-family: Ranga;
@@ -484,7 +484,9 @@ body {
 /* .login_box {
     overflow: hidden;
 } */
-
+.login_box p{
+    color: #ce2222;
+}
 .login_box .Ipt {
     width: 500px;
     height: 70px;
@@ -514,7 +516,6 @@ body {
 .golog {
     width: 900px;
     height: 70px;
-    margin: 70px auto 0;
     text-align: center;
     font-family: 'Quattrocento Sans';
     font-style: normal;
