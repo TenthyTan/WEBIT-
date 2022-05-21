@@ -122,7 +122,6 @@ const addOnePatient = (req, res) => {
 
 const renderRecordData = async (req, res) => {
   try {
-    //const patientId = await initPatient();
     const patient = await Patient.findOne({"email": req.session.userID}).lean()
     const recordId = await initRecord(patient._id);
     // const patient = await Patient.findOne({ _id: patientId }).lean();
@@ -133,8 +132,6 @@ const renderRecordData = async (req, res) => {
       })
       .lean();
     console.log(record);
-
-    // console.log("-- record info when display -- ", record);
     res.render("Patientrecorddata.hbs", { record: record, patient: patient });
   } catch (err) {
     res.status(400);
@@ -176,7 +173,7 @@ const getAllRecords = async(req, res) => {
         options: { lean: true },
       })
       .lean();
-  res.render('Cliniciandashboard.hbs', {record: record}); // send data to browser
+  res.render('Cliniciandashboard.hbs', {record: record});
   }catch(err){
     console.log("error happens ", err);
 

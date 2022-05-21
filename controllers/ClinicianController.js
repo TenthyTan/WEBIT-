@@ -408,46 +408,6 @@ const addNote = async (req, res) => {
   }
 };
 
-const viewComments = async (req, res) => {
-  try {
-    const doctor = await Doctor.findOne({"email": req.session.userID }).lean()
-    const patients = await Patient.find({ doctor: doctor.userName }).lean();
-    console.log(patients)
-    const commentList = []
-    for (patient of patients) {
-      let data = await Record.findOne(
-        { patientID: patient._id},
-        { data: true }
-      ).lean();
-      if (data) {
-        for (key in data.data) {
-          if (data.data[key].status == "recorded") {
-            if (formatDate(data.data[key].createdDate) == formatDate(new Date())){
-              if(data.data[key].comment == ""){
-                commentList.push({
-                patient: patient,
-                comment: data.data[key].comment,
-                recordDate: formatDate(new Date()),
-                data: data.data[key].name
-                })
-              }
-            }
-          }    
-        }
-      }
-    }
-
-    res.render("ClinicianCheckComment.hbs", {cl: commentList, doctor:doctor})  //改hbs文件名//
-    }catch (err) {
-    console.log(err);
-    res.send("error happens when viewing comments");
-  }
-}
-
-
-
-
-
 
 const renderAddNote = async (req, res) => {
   try {
@@ -500,6 +460,7 @@ function getDateList(timespan) {
 const viewChart = async (req, res) => {
   try {
     const doctor = await Doctor.findOne({"email": req.session.userID }).lean()
+    console.log(doctor)
     const patient = await Patient.findOne({"_id": req.params._id}).lean()
     const records = await Record.find({patientID: patient._id }).lean();
     const dList = getDateList(30);
@@ -539,19 +500,21 @@ const viewChart = async (req, res) => {
 const renderCheckComment = async (req, res) => {
   try {
     const doctor = await Doctor.findOne({"email": req.session.userID }).lean();
+    console.log(doctor)
     const patients = await Patient.find({ doctor: doctor.userName }).lean();
+    console.log(patients)
     const commentList = []
     //const liveAlert = liveAlert(doctor);
     for (patient of patients) {
       let data = await Record.findOne(
         { patientID: patient._id },
-        { data: true }
-
+        { data: true },
+        { recordDate: formatDate(new Date())}
+      
       ).lean();
       if (data) {
         for (key in data.data) {
           if (data.data[key].status == "Recorded"){
-            if (formatDate(data.data[key].createdDate) == formatDate(new Date())){
               if(data.data[key].comment != "") {
                 console.log(data.data[key]);
                 commentList.push({
@@ -561,7 +524,6 @@ const renderCheckComment = async (req, res) => {
                   data:data.data[key].name
                 })
               }
-            }
           }
         }
       }
@@ -606,7 +568,6 @@ module.exports = {
     renderUpdate,
     renderClinicalNotes,
     addNote,
-    viewComments,
     renderPatientData,
     ClinicianViewTable,
     renderAddNote,
