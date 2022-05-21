@@ -5,7 +5,7 @@
     <div class="clin_login_box">
         <div><label style="display:flex;align-items:center" for="username"><input style="font-size: 36;" type="text" name="userID" placeholder="Enter email address here" required></label></div> 
         <div><label style="display:flex;align-items:center" for="password"><input style="font-size: 36;" type="password" name="password" placeholder="Enter password here" required></label></div>
-        {{#if loginMessage}} <p class="Ipt">{{loginMessage}}</p > {{/if}}
+        {{#if loginMessage}} <p style="color: red; margin-left: -40%;" class="Ipt">{{loginMessage}}</p > {{/if}}
         <div class="int_csl"><input class="clinicianlogin" type="submit" value="Log In" /></div>
     </div>
 </form>
