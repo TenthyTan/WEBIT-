@@ -37,9 +37,9 @@ section{grid-area: section}
     padding-right: 15px;
 }
 
-html {
+/* html {
     font-size: 4.5vh;
-}
+} */
 @font-face {
     font-family: Ranga;
     src: url(./Ranga/Ranga-Regular.ttf);
@@ -355,6 +355,47 @@ body {
         border-radius: 10px;
         font-family: Ranga;
         margin: 5px 0 10px 6px;
+    }
+    .welcom_log_a {
+        width: 90%;
+        display: block;
+        margin: 100px 5% 8% 5%;
+    }
+    .webcome_text_bot {
+        text-align: center;
+        font-size: 40;
+        font-family: 'IBM Plex Serif', serif;
+    }
+    .webcome_btn_bot {
+        margin: 0 auto;
+        width: 80%;
+        display: flex;
+        justify-content: space-between;
+        text-align: center;
+    }
+    
+    .webcome_btn_bot h4 {
+        width: 500px;
+        height: 70px;
+        background: #C4F0E4;
+        box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.4);
+        padding: 3px 5px;
+        margin-left: 20px;
+        line-height: 70px;
+        font-family: 'Quando', serif;
+        color:#21609C;
+        font-size: 30;
+    }
+    .serif{
+        font-family: 'EB Garamond', serif;
+    }
+    .text-center{
+        margin :10px 0px; font-family: 'EB Garamond', serif;
+        font-size:36;
+    }
+    .websiteposition{
+        width: 90%;
+        margin: 0 20% 0 20%;
     }
 }
 
@@ -1132,34 +1173,8 @@ table .tt_a {
 
 /* new3 */
 
-.welcom_log_a {
-    width: 90%;
-    display: block;
-    margin: 100px auto 50px;
-}
 
-.webcome_text_bot {
-    display: flex;
-    justify-content: center;
-}
 
-.webcome_btn_bot {
-    margin: 0 auto;
-    width: 1000px;
-    display: flex;
-    justify-content: space-between;
-    text-align: center;
-}
-
-.webcome_btn_bot h4 {
-    width: 500px;
-    height: 70px;
-    background: #C4F0E4;
-    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.4);
-    padding: 3px 5px;
-    margin-left: 20px;
-    line-height: 70px;
-}
 
 
 .nav_wel {
