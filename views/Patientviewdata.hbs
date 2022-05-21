@@ -20,9 +20,12 @@
         <div class="main">
             <div class="title-data">
                 <h6>Patient Name: {{patient.userName}}&nbsp;&nbsp;&nbsp;&nbsp;Age: {{age.age}}
-                    &nbsp;&nbsp;&nbsp;&nbsp;</h6>
+                    &nbsp;&nbsp;&nbsp;&nbsp;</h6> 
+                <div class="viewDatacla" id="button">
+                    <button><a href="/patients/viewChart" style="padding:10px;font-size: 30px;">View Chart</a></button>
+                </div>
             </div>
-            <div style="padding: 0;height: 500px; overflow: auto;">
+            <div style="padding: 0;height: 1000px; overflow: auto;">
                 <table id="table" style="margin: 0;">
                     <thead id="tablehead">
                         <tr>
@@ -52,22 +55,7 @@
 
                 </table>
             </div>
-
-            <div class="viewDatacla">
-                <div id="button" style="margin-top:80px;">
-                    <button><a href="/patients/viewChart" style="padding:10px;font-size: 30px;">View</a></button>
-                </div>
-
-                <div style="text-align: center;font-size:20px;margin:50px auto">
-                    <p class="">View Data On Chart</p>
-                </div>
-
-            </div>
-
     </section>
-    <footer style="margin-top: 150px;">
-        Doctor {{patient.doctor}} : {{patient.supportMes}}
-    </footer>
 </form>
 
 

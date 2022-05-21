@@ -17,12 +17,12 @@
                     <div>
                         <img src="../public/img/recording.png" alt="">
 
-                        <div onClick="location.href='/patients/recordData'">Record Data</div>
+                        <div id="button" onClick="location.href='/patients/recordData'">Record Data</div>
                     </div>
                     <div>
                         <img style="width: 35px; height: 35px;" src="../public/img/view.png" alt="">
 
-                        <div onClick="location.href='/patients/viewTable'">VIEW DATA</div>
+                        <div id="button" onClick="location.href='/patients/viewTable'">VIEW DATA</div>
                     </div>
                 </div>
 
@@ -30,27 +30,27 @@
                     <div>
                         <img style="width: 35px; height: 35px;" src="../public/img/ranking.png" alt="">
 
-                        <div onClick="location.href='/patients/recordRank'">RECORD RANK</div>
+                        <div id="button" onClick="location.href='/patients/recordRank'">RECORD RANK</div>
                     </div>
                     <div>
                         <img src="../public/img/profile.png" alt="">
 
-                        <div onClick="location.href='/patients/profile'">PROFILE</div>
+                        <div id="button" onClick="location.href='/patients/profile'">PROFILE</div>
                     </div>
                 </div>
 
                 <div class="" style="margin-top: 50px;">
                     <div>
-                        <div onClick="location.href='/patients/AboutDiabetes'">About Diabetes</div>
+                        <div id="button" onClick="location.href='/patients/AboutDiabetes'">About Diabetes</div>
                     </div>
                     <div>
-                        <div onClick="location.href='/patients/AboutWebsite'">About Website</div>
+                        <div id="button" onClick="location.href='/patients/AboutWebsite'">About Website</div>
                     </div>
                 </div>
             </div>
         </form>
     </div>
 </div>
-<footer style="text-align: center;margin-top:300px">
+<footer style="text-align: center">
     Doctor {{patient.doctor}} : {{patient.supportMes}}
 </footer>

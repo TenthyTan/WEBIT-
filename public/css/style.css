@@ -10,7 +10,6 @@ html {
     margin-left: 10px;
 }
 
-
 /* assign regions of the page to the grid */
 header {
     grid-area: header;
@@ -45,7 +44,7 @@ body {
 }
 
 .container {
-    background-color: #E3F9EE;
+    -color: #E3F9EE;
 }
 
 
@@ -993,17 +992,15 @@ table .tt_a {
     justify-content: center
 }
 
-.viewDatacla>div {
-    display: flex;
-    justify-content: center;
-}
+
 
 .viewDatacla button {
-    width: 100px;
     height: 30px;
     border: none;
-    box-shadow: 0px 3px 3px 1px rgb(165, 164, 164);
+    box-shadow: 0px 3px 3px 1px rgb(165 164 164);
     background-color: rgb(213, 246, 230);
+    margin-left: 35%;
+    margin-top: -6%;
 }
 
 
