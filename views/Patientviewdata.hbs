@@ -16,43 +16,47 @@
   </form>
 </div>
 <form action="/patients/viewTable" method="GET">
-    <section>
+    <section style="margin-top: 100px;margin-left:100px;">
         <div class="main">
             <div class="title-data">
                 <h6>Patient Name: {{patient.userName}}&nbsp;&nbsp;&nbsp;&nbsp;Age: {{age.age}}
-                    &nbsp;&nbsp;&nbsp;&nbsp; <button><a href="/patients/viewChart" style="padding:10px;font-size: 30px;">View Chart</a></button></h6> 
+                    &nbsp;&nbsp;&nbsp;&nbsp; <button style="border: 0;height:40px;box-shadow: 1px 2px 2px #ccc;background-color:#B2E2DC;"><a href="/patients/viewChart" style="padding:10px;font-size: 30px;">View Chart</a></button></h6> 
             </div>
-            <div class = "table-without-border">
+            <div class = "table-without-border" style="height: 800px;">
                 <table id="table" >
                     <thead id="tablehead">
                         <tr>
-                            <th> Date </th>
-                            <th>Blood Glucose Level(/L)</th>
-                            <th>Insulin Taken(Times)</th>
-                            <th>Weight (kg)</th>
-                            <th>Exercise(Step count)</th>
+                            <th style="text-align:center;"> Date </th>
+                            <th style="text-align:center;">Blood Glucose Level(/L)</th>
+                            <th style="text-align:center;">Insulin Taken(Times)</th>
+                            <th style="text-align:center;">Weight (kg)</th>
+                            <th style="text-align:center;">Exercise(Step count)</th>
                         </tr>
                     </thead>
-                    {{#each record}}
+                    
                     <tbody class="viewdatatbody">
-                        <td>{{this.recordDate}}</td>
+                        {{#each record}}
+                        <tr>
+                        <td style="text-align:center;">{{this.recordDate}}</td>
                         {{#each this.data}}
                         {{#ifUnrecorded this.status}}
-                        <td style="color: #bb1f1f">Missing</td>
+                        <td style="color: #bb1f1f;text-align:center;">Missing</td>
                         {{else}}
                         <td style="background-color:
                     {{#ifNoneed this.status}}
                     grey
                     {{/ifNoneed }}
-                    ;">{{this.value}}</td>
+                    ;text-align:center;">{{this.value}}</td>
                         {{/ifUnrecorded}}
                         {{/each}}
+                        </tr>
+                           {{/each}}
                     </tbody>
-                    {{/each}}
+                 
 
                 </table>
             </div>
-    </section>
+             </section>
 </form>
 
 
