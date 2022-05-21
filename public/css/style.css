@@ -1241,3 +1241,17 @@ table .tt_a {
     font-size: 25px;
     height: 60px;
 }
+
+.tagb_a_b{
+    width:  90%;
+    display: flex;
+    justify-content: center;
+    margin-top: 0;
+}
+.tagb_a_b .tt_ab{
+    text-align: center;
+    
+}
+.tagb_a_b .tt_ab td{
+    background-color: rgb(156,217,222) !important;
+}

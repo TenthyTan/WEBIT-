@@ -20,9 +20,9 @@
     </div>
     <form action="/clinicians/profile" method="GET"> 
     <div class="box_right_aaa" style="margin: 100px;">
-        <div class="top_font">Clinician Profile</div>
+        {{!-- <div class="top_font">Clinician Profile</div> --}}
         <div class="box_foot">
-            <div class="" style="width: 400px;height:400px"><img style="width: 400px;height:400px;margin:20px 0 0 10px" src="../img/Group-44.png" alt=""></div>
+            <div class="" style="width: 400px;height:400px"><img style="width:170px;margin-top:100px;margin-left:100px" src="../img/Group-44.png" alt=""></div>
             <div>
                 <div class="right_ipt">
                     <div class="right_ipt_a">Full Name :</div>
@@ -34,10 +34,11 @@
                 </div>
                 <div class="right_ipt">
                     <div class="right_ipt_a">Patients name :</div>
-                    <div class="right_ipt_bb">{{doctor.patients.patientName}}</div>
+                    <div class="right_ipt_b">{{doctor.patients.patientName}}</div>
                 </div>
-                <div class="right_ipt">
-                    <button onClick="location.href='/clinicians/updatePassword'">Update Password</button>
+                <div class="right_ipt " style="display: flex;justify-content: center;">
+                    <button style="margin-left:20px;margin-top:20px;background: rgba(196, 237, 195, 0.5);
+    box-shadow: 0px 4px 4px rgb(0 0 0 / 40%);border:none;font-size:30px" onClick="location.href='/clinicians/updatePassword'">Update Password</button>
                 </div>
             </div>
         </div> 

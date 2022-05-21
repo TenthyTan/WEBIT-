@@ -1,118 +1,65 @@
 <body>
   <div class="sidenav">
     <img src="/img/Group-44.png" />
-    <p onClick="location.href='/clinicians/home'">{{doctor.firstName}}</p >
+    <p onClick="location.href='/clinicians/home'">{{doctor.firstName}}</p>
 
     <img src="/img/icons8-dashboard-64.png" />
-    <p onClick="location.href='/clinicians/dashboard'">Dashboard</p >
+    <p onClick="location.href='/clinicians/dashboard'">Dashboard</p>
 
     <img src="/img/Comment-1.png" />
-    <p onClick="location.href='/clinicians/checkComment'">Comment</p >
+    <p onClick="location.href='/clinicians/checkComment'">Comment</p>
 
     <img src="/img/icons8-add-user-male-96.png" />
-    <p onClick="location.href='/clinicians/createProfile'">Create</p >
+    <p onClick="location.href='/clinicians/createProfile'">Create</p>
 
     <img src="/img/icons8-search-account-64.png" />
-    <p onClick="location.href='/clinicians/profile'">Profile</p >
+    <p onClick="location.href='/clinicians/profile'">Profile</p>
     <form method="POST" action="/clinicians/logout">
-    <button>Log out</button>
+      <button>Log out</button>
     </form>
   </div>
   <form action="/clinicians/createProfile" method="POST">
-    <div class="login_box">
+    <div class="login_box" style="margin: 100px;">
       <p class="title-account">Create Patient's Account</p>
-      <link
-        href="https://fonts.googleapis.com/css2?family=Quattrocento+Sans:wght@700&display=swap"
-        rel="stylesheet"
-      />
+      <link href="https://fonts.googleapis.com/css2?family=Quattrocento+Sans:wght@700&display=swap" rel="stylesheet" />
       <div class="center-form-box">
-        <div class="line-css"><input
-            class="input-css"
-            type="text"
-            name="userName"
-            placeholder="User name"
-            required
-          /></div>
+        <div class="line-css"><input class="input-css" type="text" name="userName" placeholder="User name" required />
+        </div>
         <div class="two-col-line">
           <div class="row-item">
-            <input
-              class="input-css"
-              type="text"
-              name="password"
-              placeholder="Password"
-              required
-            />
+            <input class="input-css" type="text" name="password" placeholder="Password" required />
           </div>
           <div class="row-item">
-            <input
-              class="input-css"
-              type="text"
-              name="confirmPassword"
-              placeholder="Confirm Password"
-              required
-            />
+            <input class="input-css" type="text" name="confirmPassword" placeholder="Confirm Password" required />
           </div>
         </div>
         <div class="two-col-line">
           <div class="row-item">
-            <input
-              class="input-css"
-              type="text"
-              name="firstName"
-              placeholder="First name"
-              required
-            />
+            <input class="input-css" type="text" name="firstName" placeholder="First name" required />
           </div>
           <div class="row-item">
-            <input
-              class="input-css"
-              type="text"
-              name="lastName"
-              placeholder="Last name"
-              required
-            />
+            <input class="input-css" type="text" name="lastName" placeholder="Last name" required />
           </div>
         </div>
-        <div class="line-css"><input
-            class="input-css"
-            type="text"
-            name="email"
-            placeholder="Email Address"
-            required
-          /></div>
+        <div class="line-css"><input class="input-css" type="text" name="email" placeholder="Email Address" required />
+        </div>
         <div class="line-css">
-          <input 
-          class="input-css"
-          type="Number"
-          name="year"
-          placeholder="Birth Year"
-          required 
-          /></div>
-          <br>
-        <div class="line-css1"><input
-            class="input-css"
-            type="text"
-            name="supportMessage"
-            placeholder="Support Message"
-          /></div>
+          <input class="input-css" type="Number" name="year" placeholder="Birth Year" required />
+        </div>
+        <br>
+        <div class="line-css1"><input class="input-css" type="text" name="supportMessage"
+            placeholder="Support Message" /></div>
         <div class="two-col-line">
           <div class="row-item">
-            {{#if message}} <p class="Ipt">{{message}}</p > {{/if}}
+            {{#if message}} <p class="Ipt">{{message}}</p> {{/if}}
           </div>
         </div>
         <div class="two-col-line">
-          <div class="row-item"><input
-              type="submit"
-              value="CANCEL"
-              class="submit-css"
-            /></div>
-          <div class="row-item"><input
-              type="submit"
-              value="CREATE ACCOUNT"
-              class="submit-css"
-              onclick="Submit Successfully"
-            /></div>
+          <div class="row-item"><input type="submit" value="CANCEL" class="submit-css" /></div>
+          <div class="row-item"><input type="submit" value="CREATE ACCOUNT" class="submit-css"
+              onclick="Submit Successfully" /></div>
         </div>
       </div>
+    </div>
   </form>
 </body>
