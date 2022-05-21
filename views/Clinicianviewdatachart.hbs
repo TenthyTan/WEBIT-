@@ -22,7 +22,7 @@
         </form>
     </div>
     <form action="/clinicians/dashboard/{{patient._id}}/viewChart" method="GET" style="margin-top: 100px;">
-    <h1 style="text-align: center;"> View all data display on chart. </h1>
+    <h1 style="text-align: center; font-size: 35;"> View all data display on chart. </h1>
    <div style="width: 100%; display: flex; flex-wrap: wrap; justify-content: space-around; align-content: space-between;margin-left:90px;">
        <div style="width: 45%;"> {{> blood dates=dates datas=datas}}    </div>
        <div style="width: 45%;"> {{> weight dates=dates datas=datas}}   </div>

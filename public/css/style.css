@@ -91,7 +91,6 @@ body {
 }
 
 .title-data {
-    margin-top: 100px;
     height: 60px;
     font-size: 36px;
 
@@ -644,12 +643,12 @@ body {
     outline: none;
 }
 .textarea_footer {
-    width: 1012px;
-    /* margin: 10px auto 0; */
+    width: 70%;
     font-weight: 400;
     font-size: 24px;
     line-height: 47px;
     text-align: right;
+    margin-top: -30%;
 }
 
 
@@ -667,7 +666,7 @@ body {
     width: 212px;
     box-shadow: 0px 3px 3px 1px rgb(165, 164, 164);
     background-color: rgb(241, 252, 247);
-    margin: 20% auto;
+    margin: 4% 40%;
     font-weight: 700;
     font-size: 36px;
     line-height: 82px;
@@ -825,13 +824,13 @@ table {
 
 }
 
-.send {
+.addnew {
     text-align: center;
     height: 82px;
     width: 212px;
     box-shadow: 0px 3px 3px 1px rgb(165, 164, 164);
     background-color: rgb(241, 252, 247);
-    margin: 100px auto 0;
+    margin: 15% 40% 0;
     font-weight: 700;
     font-size: 36px;
     line-height: 82px;
@@ -1345,7 +1344,7 @@ table .tt_a {
 	text-align: center;
 	border: 0px solid black;
 	border-collapse: collapse;
-    margin-top: 80px;
+
 }
 
 .table-without-border table tbody {
