@@ -165,20 +165,6 @@ const updateRecord = async (req, res) => {
   }
 };
 
-// handle request to get one data instance
-const getDataById = (req, res) => {
-    // search the database by ID
-    const data = Record.find(data => data.id === req.params.id)
-        // return data if this ID exists
-        if (data) {
-            res.send(data)
-        } else {
-            // You can decide what to do if the data is not found.
-            // Currently, a 404 response is sent.
-            res.sendStatus(404)
-    } 
-}
-
 
 const getAllRecords = async(req, res) => {
   try{
@@ -318,23 +304,27 @@ async function engageRate(patientID) {
 }
 
 const rankBoard = async (req, res) => {
-  const p = await Patient.findOne({"email": req.session.userID}).lean()
-  const start = new Date(formatDate(p.Create_Time)).getTime();
-  const today = new Date(formatDate(Date.now())).getTime();
-  const day = (today - start) / (24 * 60 * 60 * 1000) + 1;
-  const patients = await Patient.find({}, {});
-  // console.log(patients)
+  try{
+    const p = await Patient.findOne({"email": req.session.userID}).lean()
+    const start = new Date(formatDate(p.Create_Time)).getTime();
+    const today = new Date(formatDate(Date.now())).getTime();
+    const day = (today - start) / (24 * 60 * 60 * 1000) + 1;
+    const patients = await Patient.find({}, {});
+    // console.log(patients)
 
-  for (patient of patients) {
-    await engageRate(patient._id);
+    for (patient of patients) {
+      await engageRate(patient._id);
+    }
+    var pList = await Patient.find({}, {}).lean();
+    pList = pList
+      .sort((a, b) => {
+        return b.recordRate - a.recordRate;
+      })
+      .slice(0, 5);
+    res.render("PatientRank.hbs", { rank: pList, patient: p, day: day});
+  }catch(err){
+    console.log("rank board error happens ", err);
   }
-  var pList = await Patient.find({}, {}).lean();
-  pList = pList
-    .sort((a, b) => {
-      return b.recordRate - a.recordRate;
-    })
-    .slice(0, 5);
-  res.render("PatientRank.hbs", { rank: pList, patient: p, day: day});
 };
 
 
@@ -406,7 +396,6 @@ module.exports = {
   addOnePatient,
   renderRecordData,
   updateRecord,
-  getDataById,
   getAllRecords,
   renderHomePage,
   renderLoginPage,

@@ -36,7 +36,6 @@ patientRouter.get('/recordRank', sign.isLoginPatient, demoController.rankBoard);
 patientRouter.get('/updatePassword', sign.isLoginPatient, demoController.renderUpdate);
 patientRouter.post('/updatePassword', sign.isLoginPatient, demoController.changePassword);
 patientRouter.post('/logout', sign.isLoginPatient, demoController.logout)
-patientRouter.get('/:id', demoController.getDataById);
 
 
 // export the router
