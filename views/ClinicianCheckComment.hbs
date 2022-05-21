@@ -1,4 +1,4 @@
-<div class="sidenav">
+<div id="sidenav" class="sidenav">
     <img src="/img/Group-44.png" />
     <p onClick="location.href='/clinicians/home'">{{doctor.firstName}}</p >
 
@@ -17,15 +17,19 @@
     <button>Log out</button>
     </form>
 </div>
-<form action="/clinicians/checkComment" method="GET">
-<div class="tabBal">
-    <table border="2" style="border-collapse: collapse;">
-        <tr class="tt_a">
-            <td>Patient Name</td>
-            <td>Clinician Name</td>
-            <td>Comment</td>
-            <td>By which data</td>
-        </tr>
+<form action="/clinicians/checkComment" method="GET" style="margin-top: 100px;">
+<div class="table-without-border">
+
+    <table style="margin-left: 100px;">
+        <thead class="tt_a">
+            
+            <th>Patient Name</th>
+            <th>Clinician Name</th>
+            <th>Comment</th>
+            <th>By which data</th>
+            
+        </thead>
+        <tbody>
         {{#each cl}}
         <tr onClick="location.href='/clinicians/dashboard/{{this._id}}'">
             <td>{{this.patient.firstName}}</td>
@@ -34,6 +38,8 @@
             <td>{{this.data}}</td>
         </tr>
         {{/each}}
+        
+        </tbody>
     </table>
 </div>
 </form>

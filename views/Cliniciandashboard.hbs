@@ -1,4 +1,4 @@
-<div class="sidenav">
+<div id="sidenav" class="sidenav">
   <img src="/img/Group-44.png" />
   <p onClick="location.href='/clinicians/home'">{{doctor.firstName}}</p >
 
@@ -19,17 +19,19 @@
 </div>
 <form action="/clinicians/dashboard" method="GET"> 
 <body>
-  <div class="main">
-    <table border="2" style="border-collapse: collapse; ">
-        <thead style="width:200px; background-color:#9CD9DE">
+  <div class="main bor_table_a" style="margin: 100px;">
+    <div class="table-without-border ">
+    <table >
+        <thead>
             <th>Patient Name</th>
             <th>Blood Glucose Level(/L)</th>
             <th>Insulin Taken(Times)</th>
             <th>Weight (kg)</th>
             <th>Exercise(Step count)</th>
         </thead>
-        {{#each record}} 
-        <tbody>          
+       
+        <tbody>      
+           {{#each record}}     
                 <tr onClick="location.href='/clinicians/dashboard/{{this.patientID._id}}'">
                   <td >{{this.patientID.userName}}</td>
                   {{#each this.data}} 
@@ -50,9 +52,11 @@
                   {{/ifUnrecorded}}
                   {{/each}}
                 </tr>
+                  {{/each}}
         </tbody>
-        {{/each}}
+      
     </table>
+    </div>
   </div>
 </body>
 </form>

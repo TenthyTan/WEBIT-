@@ -2,7 +2,7 @@
     <script src="https://cdn.bootcdn.net/ajax/libs/echarts/5.3.2/echarts.common.js"></script>
 </head>
 <body>
-    <div class="sidenav">
+    <div id="sidenav" class="sidenav">
         <img src="/img/Group-44.png" />
         <p onClick="location.href='/clinicians/home'">{{doctor.firstName}}</p >
 
@@ -21,13 +21,13 @@
         <button>Log out</button>
         </form>
     </div>
-    <form action="/clinicians/dashboard/{{patient._id}}/viewChart" method="GET">
-    <h1 style="text-align: center;"> View all data display on chart. </h1>
-    <div style="width: 100%; display: flex; flex-wrap: wrap; justify-content: space-around; align-content: space-between">
-        {{> blood dates=dates datas=datas}}
-        {{> weight dates=dates datas=datas}}
-        {{> insulin dates=dates datas=datas}}
-        {{> exercise dates=dates datas=datas}}
+    <form action="/clinicians/dashboard/{{patient._id}}/viewChart" method="GET" style="margin-top: 100px;">
+    <h1 style="text-align: center; font-size: 35;"> View all data display on chart. </h1>
+   <div style="width: 100%; display: flex; flex-wrap: wrap; justify-content: space-around; align-content: space-between;margin-left:90px;">
+       <div style="width: 45%;"> {{> blood dates=dates datas=datas}}    </div>
+       <div style="width: 45%;"> {{> weight dates=dates datas=datas}}   </div>
+       <div style="width: 45%;"> {{> insulin dates=dates datas=datas}}  </div>
+       <div style="width: 45%;"> {{> exercise dates=dates datas=datas}} </div>
     </div>
     </form>
 </body>

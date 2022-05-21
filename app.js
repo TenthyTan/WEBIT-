@@ -1,6 +1,6 @@
 //Import express//
 
-// require("dotenv").config();
+require("dotenv").config();
 const { urlencoded } = require('express');
 const express = require('express');
 const cookieParser = require('cookie-parser')
@@ -31,7 +31,7 @@ const port = 3000;
 Patient = require('./models/patients.js')
 
 app.use(session({
-    secret: process.env.SESSION_SECRET,
+    secret: process.env.SESSION_SECRET || 'keyboard cat',
     resave: false,
     saveUninitialized: false,
     cookie: {

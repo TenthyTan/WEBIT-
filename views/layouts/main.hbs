@@ -1,34 +1,37 @@
 <html lang="en">
-  <head>
-    <meta charset="UTF-8">
-    <link rel="stylesheet" type="text/css" href="/css/style.css" />
-    <link href="https://fonts.googleapis.com/css2?family=Ranga&display=swap" rel="stylesheet">
-  </head>
-  <body>
-    <div id="headerbar" class="headerbar">
-      <p>Diabetes@Home</p >
-      <input style="margin-left:400px" type="button" value="Light Theme" onclick="colorDay('#E3F9EE')"/>
 
-      <input style="margin-left: 200px" type="button" value="Dark Theme" onclick= "colorNight('#9596A0')"/>
+<head>
+  <meta charset="UTF-8">
+  <link rel="stylesheet" type="text/css" href="/css/style.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Ranga&display=swap" rel="stylesheet">
+</head>
+
+<body>
+  <div id="headerbar" class="headerbar">
+    <p class="box_header">Diabetes@Home</p>
+    <div>
+      <input  type="button" value="Light" onclick="colorDay('#E3F9EE')" />
+      <input  type="button" value="Dark" onclick="colorNight('#9596A0')" />
     </div>
-    <main>
-      {{{body}}}
-      <script>
-        function colorDay(str){
-          document.body.style.backgroundColor=str;
-          document.getElementById('button').style.background= '#A5E0D5';
-          document.getElementById('Diabetes').style.background= '#E3F9EE';
-          document.getElementById('headerbar').style.background= '#B2E2DC';
-          document.getElementById('sidenav').style.background= '#B2E2DC';
-        }
-        function colorNight(str){
-          document.body.style.backgroundColor=str;
-          document.getElementById('button').style.background= '#8688A3';
-          document.getElementById('headerbar').style.background= '#777AA4';
-          document.getElementById('sidenav').style.background= '#777AA4';
-          document.getElementById('table').style.background= '#8688A3';
-        }
-      </script>
-    </main>
-  </body>
+
+  </div>
+  <main>
+    <div>
+    {{{body}}}
+    </div>
+    <script>
+      function colorDay(str) {
+        document.body.style.backgroundColor = str;
+        document.getElementById('headerbar').style.background = '#B2E2DC';
+        document.getElementById('sidenav').style.background = '#B2E2DC';
+      }
+      function colorNight(str) {
+        document.body.style.backgroundColor = str;
+        document.getElementById('headerbar').style.background = '#777AA4';
+        document.getElementById('sidenav').style.background = '#777AA4';
+      }
+    </script>
+  </main>
+</body>
+
 </html>

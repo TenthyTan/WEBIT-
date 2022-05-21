@@ -1,4 +1,4 @@
-<div class="sidenav">
+<div id="sidenav" class="sidenav">
     <img src="/img/Group-44.png" />
     <p onClick="location.href='/clinicians/home'">{{doctor.firstName}}</p >
 
@@ -18,15 +18,17 @@
     </form>
 </div>
 <form action="/clinicians/dashboard/{{patient._id}}" method="GET">
-<section>
-<div class="main">
-        <div class="pviewdata-left">
+<section   class="pviewdata-section"  style="margin-top: 100px;margin-left:100px;">
+    <div class="pviewdata-left">
             <div><a href="/clinicians/dashboard/{{patient._id}}/safetyThreshold">Safty Thresholds</a></div>
             <div><a href="/clinicians/dashboard/{{patient._id}}/listClinicalNotes">Clinical Notes</a></div>
             <div><a href="/clinicians/dashboard/{{patient._id}}/messages">Support Message</a></div>
             <div><a href="/clinicians/dashboard/{{patient._id}}/viewChart">Line Charts</a></div>
         </div>
-        <div class="title-data"><h6>Patient Name: {{patient.firstName}}&nbsp;&nbsp;&nbsp;&nbsp;Age: {{age.age}} &nbsp;&nbsp;&nbsp;&nbsp;Gender:Male</h6></div>
+<div class="main">
+        
+        <div class="title-data"><h6 style="margin-left: 100px; margin-top: -1%;">Patient Name: {{patient.firstName}}&nbsp;&nbsp;&nbsp;&nbsp;Age: {{age.age}} &nbsp;&nbsp;&nbsp;&nbsp;Gender:Male</h6></div>
+        <div class="table-without-border">
 <table>
     <thead>
         <tr>
@@ -38,8 +40,10 @@
 
         </tr>
     </thead>
-    {{#each record}}
+    
     <tbody>
+        {{#each record}}
+        <tr>
             <td >{{this.recordDate}}</td>
             {{#each this.data}}
             {{#ifUnrecorded this.status}}
@@ -52,8 +56,11 @@
             ;">{{this.value}}</td>
             {{/ifUnrecorded}}
             {{/each}}
+            </tr>
+            {{/each}}
     </tbody>
-    {{/each}}
+    
 </table>
+</div>
 </section>
 </form>

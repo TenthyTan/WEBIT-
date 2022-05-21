@@ -1,10 +1,11 @@
 <form action="/clinicians/login" method="POST">
-    <div class="login_box">
-        <h3 style="text-align:center">Sign In</h3>
+       <h3 style="text-align:center;margin-top:100px;font-size: 36;">Sign In</h3>
         <link href="https://fonts.googleapis.com/css2?family=Quattrocento+Sans:wght@700&display=swap" rel="stylesheet">
+
+    <div class="login_box">
         <div class="Ipt"><label style="display:flex;align-items:center" for="username"><input type="text" name="userID" placeholder="Enter email address here" required></label></div> 
         <div class="Ipt"><label style="display:flex;align-items:center" for="password"><input type="password" name="password" placeholder="Enter password here" required></label></div>
         {{#if loginMessage}} <p class="Ipt">{{loginMessage}}</p > {{/if}}
-        <div class="int_csl" id="button"><input class="golog" type="submit" value="Log In" /></div>
+        <div class="int_csl"><input class="clinicianlogin" type="submit" value="Log In" /></div>
     </div>
 </form>
