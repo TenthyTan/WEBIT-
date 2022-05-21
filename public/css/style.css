@@ -1,10 +1,7 @@
-@media screen and (max-width: 640px) {  /* page layout for phones */
+@media screen and (max-width: 1920px) {  /* page layout for phones */
     body {
         background-size: cover;
         overflow-x: hidden;
-    }
-    .container {
-        width: 1170px;
     }
 }
 header {grid-area: header;}
@@ -80,7 +77,7 @@ body {
 }
 
 .container {
-    -color: #E3F9EE;
+    background-color: #E3F9EE;
 }
 
 
