@@ -23,7 +23,7 @@
         {{!-- <div class="top_font">Clinician Profile</div> --}}
         <div class="box_foot">
             <div class="" style="width: 400px;height:400px"><img style="width:220px;margin-top:100px;margin-left:100px" src="../img/Group-44.png" alt=""></div>
-            <div style="margin-left: -150px;">
+            <div style="margin-left: -10%; margin-top:5%">
                 <div class="right_ipt">
                     <div class="right_ipt_a">Full Name :</div>
                     <div class="right_ipt_b">{{doctor.firstName}} {{doctor.lastName}}</div>
@@ -32,13 +32,9 @@
                     <div class="right_ipt_a">Email Address: </div>
                     <div class="right_ipt_b">{{doctor.email}}</div>
                 </div>
-                <div class="right_ipt">
-                    <div class="right_ipt_a">Patients name :</div>
-                    <div class="right_ipt_b">{{doctor.patients.patientName}}</div>
-                </div>
                 <div class="right_ipt " style="display: flex;justify-content: center;">
                     <button style="margin-left:20px;margin-top:20px;background: rgba(196, 237, 195, 0.5);
-    box-shadow: 0px 4px 4px rgb(0 0 0 / 40%);border:none;font-size:30px" onClick="location.href='/clinicians/updatePassword'">Update Password</button>
+    box-shadow: 0px 4px 4px rgb(0 0 0 / 40%);border:none;font-size:30px"><a href="/clinicians/updatePassword">Update Password</a></button>
                 </div>
             </div>
         </div> 
