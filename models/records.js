@@ -17,7 +17,7 @@ const recordSchema = new mongoose.Schema({
             maxThreshold: {type: Number, default: 20},
         },
         doit: {
-            name: {type: String, default: "Insulin Taken (units)", immutable: true},
+            name: {type: String, default: "Insulin Taken (doses)", immutable: true},
             value: {type: Number,  maxLength: 3, min: 0, max: 500},
             status: {type: String, enum: ["Recorded", "Unrecorded", "Not required"], default: "Unrecorded"},
             comment: {type: String, default: " "},
