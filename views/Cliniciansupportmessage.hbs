@@ -21,12 +21,12 @@
     <form action="/clinicians/dashboard/{{patient._id}}/messages" method="POST">
     <div class="pn_box2" style="margin-top: 100px;">
         <div>Support Message : {{patient.supportMes}}</div>
-        <div style="display: flex;flex-direction:row"><div style="line-height: 90px;vertical-align: middle;">Patient Name:</div><div class="pp_box" style="padding-left:20px;">{{patient.firstName}}</div></div>
+        <div style="display: flex;flex-direction:row"><div style="line-height: 85px;vertical-align: middle;">Patient Name:</div><div class="pp_box" style="padding-left:20px;">{{patient.firstName}}</div></div>
         
     
     </div>
 
-    <div class="textarea" style="width: 40%;height:400px;margin-left:30%;margin-bottom:30%;">
+    <div class="textarea" style="width: 75%;height: 400px;margin-left: 15%; margin-bottom: 30%;">
         <input type="hidden" name="patientId" value="{{doctor.patients.patientIDs}}">
         <textarea name="supportMessage" id="supportMessage"  placeholder="Enter Support Message"></textarea>
     </div>
