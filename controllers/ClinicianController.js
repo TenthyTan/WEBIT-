@@ -254,8 +254,13 @@ const renderPatientData = async (req, res) => {
     const patient =  await Patient.findOne({"_id": req.params._id}).lean()
     const doctor = await Doctor.findOne({"email": req.session.userID }).lean()
     const record = await Record.find({ "patientID":  patient._id}).lean()
+    // sorted date
+    const sorted = record.sort(function (a, b) {
+      var dateA = new Date(a.recordDate), dateB = new Date(b.recordDate)
+      return dateB - dateA
+    });
     const pAge = age(patient.yearOfBirth);
-    res.render("Cliniciansviewdata.hbs", { patient : patient, record: record, age: pAge, doctor: doctor});
+    res.render("Cliniciansviewdata.hbs", { patient : patient, record: sorted, age: pAge, doctor: doctor});
   } catch(err){
     console.log(err)
     res.send("error happens when render patient data");
@@ -496,17 +501,14 @@ const viewChart = async (req, res) => {
 const renderCheckComment = async (req, res) => {
   try {
     const doctor = await Doctor.findOne({"email": req.session.userID }).lean();
-    const patients = await Patient.find({ doctor: doctor.userName }).lean();
+    const patients = await Patient.find({ "doctor": doctor.userName }).lean();
     const commentList = []
     //const liveAlert = liveAlert(doctor);
     for (patient of patients) {
-      let data = await Record.findOne(
-        { patientID: patient._id },
-        { data: true },
-        { recordDate: formatDate(new Date())}
-      
-      ).lean();
+      let data = await Record.findOne({ "patientID": patient._id, "recordDate": formatDate(new Date())}).lean();
+    
       if (data) {
+        console.log(data.recordDate)
         for (key in data.data) {
           if (data.data[key].status == "Recorded"){
               if(data.data[key].comment != "") {

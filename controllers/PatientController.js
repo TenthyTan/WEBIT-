@@ -267,9 +267,14 @@ const viewTable = async (req, res) => {
   const patient = await Patient.findOne({"email": req.session.userID}).lean()
   const records = await Record.find({ "patientID": patient._id }).lean();
   const pAge = age(patient.yearOfBirth);
-  console.log({records});
-  res.render("Patientviewdata.hbs", { patient : patient, record: records, age: pAge});
+  const sorted = records.sort(function (a, b) {
+    var dateA = new Date(a.recordDate), dateB = new Date(b.recordDate)
+    return dateB - dateA
+  });
+
+  res.render("Patientviewdata.hbs", { patient : patient, record: sorted, age: pAge});
 }
+
 
 function checkRecorded(record) {
   var flag = false;
