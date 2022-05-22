@@ -33,7 +33,7 @@
         <tbody>      
            {{#each record}}     
                 <tr onClick="location.href='/clinicians/dashboard/{{this.patientID._id}}'">
-                  <td >{{this.patientID.userName}}</td>
+                  <td >{{this.patientID.firstName}}</td>
                   {{#each this.data}} 
                   {{#ifUnrecorded this.status}}
                   <td style = "color: #bb1f1f">Missing</td>
