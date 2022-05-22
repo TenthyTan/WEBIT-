@@ -23,7 +23,7 @@ const patientSchema = new mongoose.Schema({
             max: {type: Number,  default: '10'}
         },
         doit: { 
-            name :{type: String, default:"Insulin Taken (does)" },
+            name :{type: String, default:"Insulin Taken (doses)" },
             check: {type: Boolean, required: true, default: 'true'},
             min: {type: Number,  default: '1'},
             max: {type: Number,  default: '10'}
