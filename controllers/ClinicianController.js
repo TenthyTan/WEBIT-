@@ -80,7 +80,6 @@ async function initDoctor() {
   const createProfile = async (req, res) => {
     try{
     // check current doctor authority
-      console.log(req.session.userID)
       const doctor = await Doctor.findOne({"email": req.session.userID}).lean()
 
       if(!doctor){
@@ -461,7 +460,6 @@ function getDateList(timespan) {
 const viewChart = async (req, res) => {
   try {
     const doctor = await Doctor.findOne({"email": req.session.userID }).lean()
-    console.log(doctor)
     const patient = await Patient.findOne({"_id": req.params._id}).lean()
     const records = await Record.find({patientID: patient._id }).lean();
     const dList = getDateList(30);
@@ -508,7 +506,6 @@ const renderCheckComment = async (req, res) => {
       let data = await Record.findOne({ "patientID": patient._id, "recordDate": formatDate(new Date())}).lean();
     
       if (data) {
-        console.log(data.recordDate)
         for (key in data.data) {
           if (data.data[key].status == "Recorded"){
               if(data.data[key].comment != "") {
