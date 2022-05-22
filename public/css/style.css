@@ -947,13 +947,13 @@ a {
 
 table .tt_a {
     font-weight: 600;
-    font-size: 36px;
+    font-size: 25px;
     line-height: 42px;
 }
 
 .comment {
-    font-weight: 400;
-    font-size: 30px;
+    font-weight: 600;
+    font-size: 25px;
     line-height: 38px;
 }
 
