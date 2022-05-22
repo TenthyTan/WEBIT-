@@ -68,7 +68,6 @@ async function initRecord(patientId) {
       });
       const record = await newRecord.save();
       // Insert record to patient record list
-      console.log("new: " + record)
       patient.records.push({recordIDs: record._id})
       return record.id;
     } else {
