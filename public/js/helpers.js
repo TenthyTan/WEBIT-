@@ -52,7 +52,7 @@ const helpers = {
       return options.inverse(this);
   },
   ifdoit: function(name, options){
-    if (name == "Insulin Taken (units)"){
+    if (name == "Insulin Taken (doses)"){
       return options.fn(this);
     }
     return options.inverse(this);
